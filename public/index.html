@@ -525,7 +525,7 @@ $('#jd').addEventListener('input', () => { const p = S.presets.find(x => x.id ==
 
 async function loadPresets() {
   try { S.presets = (await api('/api/presets')).presets || []; } catch { return toast('Could not load presets', 'bad'); }
-  $('#presets').innerHTML = S.presets.map(p => `<button class="preset" data-id="${esc(p.id)}"><span>${esc(p.title)}</span>${p.unlawful ? '<span class="tag warn" title="Contains a criterion the agent must refuse">unlawful line</span>' : ''}</button>`).join('');
+  $('#presets').innerHTML = S.presets.map(p => `<button class="preset" data-id="${esc(p.id)}"><span>${esc(p.title)}</span></button>`).join('');
 }
 function markPreset() { $$('.preset').forEach(b => b.classList.toggle('on', b.dataset.id === S.presetId)); }
 $('#presets').addEventListener('click', e => {
@@ -590,13 +590,13 @@ const H = {
       if (p.candidateId) { prog(p.candidateId).flags.push('prompt_injection'); S.names[p.candidateId] = p.name; }
       add('refuse', `<div class="step-h"><span class="tag warn">Refused</span><span class="kind">Instructions inside a profile: ${esc(p.name || p.candidateId)}</span></div><p style="margin-top:8px">${esc(p.text)}</p>`);
     } else {
-      add('refuse', `<div class="step-h"><span class="tag warn">Refused</span><span class="kind">Unlawful screening criterion</span></div><blockquote>${esc(p.line)}</blockquote><p>${esc(p.reason)}</p>`);
+      add('refuse', `<div class="step-h"><span class="tag warn">Refused</span><span class="kind">Call refused</span></div><p style="margin-top:8px">${esc(p.reason || p.text || '')}</p>`);
     }
     renderShortlist();
   },
   parsed(p) {
     (p.requirements || []).forEach(r => { S.reqs[r.id] = r; });
-    add('bcard', `<h4 class="sub" style="margin-bottom:2px">JD understood</h4><div class="ttl">${esc(p.title)} <span class="tag">${esc(p.seniority)}</span></div><div class="reqs">${(p.requirements || []).map(r => `<div><span class="tag ${r.kind === 'must' ? 'info' : ''}">${r.kind}</span><span>${esc(r.text)}</span></div>`).join('')}</div>${(p.refused || []).length ? `<p style="margin-top:12px">${p.refused.length} line(s) removed before sourcing.</p>` : ''}`, 'var(--accent)');
+    add('bcard', `<h4 class="sub" style="margin-bottom:2px">JD understood</h4><div class="ttl">${esc(p.title)} <span class="tag">${esc(p.seniority)}</span></div><div class="reqs">${(p.requirements || []).map(r => `<div><span class="tag ${r.kind === 'must' ? 'info' : ''}">${r.kind}</span><span>${esc(r.text)}</span></div>`).join('')}</div>`, 'var(--accent)');
   },
   reason(p) {
     const el = card(p.n); S.lastN = p.n;
@@ -951,12 +951,11 @@ function buildMock() {
     { id: 'r4', text: 'Postgres with pgvector', kind: 'nice' },
     { id: 'r5', text: 'Mentoring other engineers', kind: 'nice' },
   ];
-  const T = 'Candidates must be under 30 and from a top-tier college.';
-  const JD = `Senior Backend Engineer, Retrieval Platform\n\nWe are building the retrieval layer behind candidate search. You will own indexing, serving and evaluation.\n\n- ${T}\n- Production experience with search or vector retrieval\n- Go or Python services at scale\n- Offline evaluation of ranking quality\n- Nice: Postgres with pgvector, mentoring`;
+  const JD = `Senior Backend Engineer, Retrieval Platform\n\nWe are building the retrieval layer behind candidate search. You will own indexing, serving and evaluation.\n\n- Production experience with search or vector retrieval\n- Go or Python services at scale\n- Offline evaluation of ranking quality\n- Nice: Postgres with pgvector, mentoring`;
   const presets = [
-    { id: 'p_backend', title: 'Senior Backend, Retrieval', text: JD, unlawful: true, archetype: 'backend' },
-    { id: 'p_frontend', title: 'Frontend, Design Systems', text: 'Frontend Engineer, Design Systems\n\nOwn our component library, tokens and accessibility tooling. React and TypeScript in production.', unlawful: false, archetype: 'frontend' },
-    { id: 'p_data', title: 'Data Engineer', text: 'Data Engineer\n\nBuild batch and streaming pipelines, own data quality checks, and model warehouse tables for analysts.', unlawful: false, archetype: 'data' },
+    { id: 'p_backend', title: 'Senior Backend, Retrieval', text: JD, archetype: 'backend' },
+    { id: 'p_frontend', title: 'Frontend, Design Systems', text: 'Frontend Engineer, Design Systems\n\nOwn our component library, tokens and accessibility tooling. React and TypeScript in production.', archetype: 'frontend' },
+    { id: 'p_data', title: 'Data Engineer', text: 'Data Engineer\n\nBuild batch and streaming pipelines, own data quality checks, and model warehouse tables for analysts.', archetype: 'data' },
   ];
   const P = [
     { id: 'c122', name: 'Maya Iyer', g: 'F', t: 1, col: 'Northgate Institute', yoe: 9, role: 'Staff Engineer, Search', sem: .86, as: .89, flags: [], sim: true, hid: .861, ev: [['r1', 'strong', 'local', .96], ['r2', 'strong', 'local', .93], ['r3', 'partial', 'claude', .88], ['r4', 'strong', 'jev', .91]],
@@ -1005,9 +1004,8 @@ function buildMock() {
   const hit = (id, score, ev) => ({ id, score, seen: 1, name: names[id], snippet: 'engineer: search, retrieval, ranking', evidence: ev || 0, dropped: false });
 
   push('start', { roleKey: 'backend-retrieval', presetId: 'p_backend', cascade: true });
-  phase('INTAKE', 'Reading the job description and screening it for unlawful criteria');
-  push('refusal', { kind: 'unlawful_criteria', line: T, reason: 'Age and college-prestige filters are unlawful screening criteria. The line was removed before sourcing.' });
-  push('parsed', { title: 'Senior Backend Engineer, Retrieval Platform', seniority: 'senior', requirements: reqs, refused: [{ line: T, reason: 'Unlawful screening criterion' }] });
+  phase('INTAKE', 'Reading the JD');
+  push('parsed', { title: 'Senior Backend Engineer, Retrieval Platform', seniority: 'senior', requirements: reqs });
   push('note', { text: 'Applying saved HR feedback for this role: prefers candidates with production ranking experience.', banner: 'memory' });
   phase('SOURCE', 'Searching per requirement, then checking every claim against the profile text');
   call('search_candidates', { query: 'production vector and keyword retrieval systems', k: 12, view: 'visible' }, { source: 'pgvector', spread: { top: .81, tenth: .62 }, results: [hit('c130', .81), hit('c122', .79), hit('c049', .77), hit('c156', .75), hit('c066', .72)] }, { why: 'Start with the retrieval requirement on its own; the whole JD would reward keyword overlap.', pre: [L('embed_query', true, 0, .0002)] });
@@ -1064,7 +1062,7 @@ function mockEval() {
     public: { summary: { jobs: 100, eligibleJobs: 1082, poolSize: 2000, semantic_recall10: .026, semantic_ndcg10: .038, bm25_recall10: .029, bm25_ndcg10: .038, hybrid_recall10: .034, hybrid_ndcg10: .046, semantic_rule60at10: .848, bm25_rule60at10: .949, hybrid_rule60at10: .945, meanLabelledInPool: 13.04, meanQualifyingInPool: 384.46 },
       note: 'The dataset labels 30 resumes per job out of all that pass its own rule (60% or more must-have skill overlap). In our pool a job has on average 384.46 qualifying resumes but only 13.04 labelled ones, so Recall@10 and nDCG@10 against the labels are capped low for every method. Rule-60@10 applies the dataset rule to each method\'s top 10 and is complete. On that measure keyword search is ahead of semantic search.' },
     planted: { cases, summary },
-    guardrails: { cases: ['Unlawful criterion is stripped from the JD', 'Instruction inside a resume is treated as data', 'No assessment is sent before HR approval', 'Finalize requires a fairness audit on the same ids', 'Every claim cites a verbatim span', 'LLM outage falls back to embedding-only ranking', 'Budget zero stops paid calls and says so', 'DB down falls back to in-memory search'].map(name => ({ name, pass: true })) },
+    guardrails: { cases: ['Instruction inside a resume is treated as data', 'No assessment is sent before HR approval', 'Finalize requires a fairness audit on the same ids', 'Every claim cites a verbatim span', 'LLM outage falls back to embedding-only ranking', 'Budget zero stops paid calls and says so', 'DB down falls back to in-memory search'].map(name => ({ name, pass: true })) },
     fairness: { summary: { meanSpearman: .84, meanTop5Overlap: .78 } },
     agent: { summary: { runs: 12, successRate: .917, guardrailViolations: 0, precision5: .683, meanToolCalls: 21.4 } },
     cascade: { summary: { jevAccuracy: .94, claudeAccuracy: .97, agreement: .91, escalationRate: .095, allClaudeCostPerRun: .1274, cascadeCostPerRun: .0151 } } };

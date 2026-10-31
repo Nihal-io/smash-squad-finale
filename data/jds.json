@@ -206,8 +206,7 @@
     "embeddings pipeline",
     "API design"
    ],
-   "text": "Senior Backend Engineer, Retrieval Platform\n\nWe are building a retrieval platform. You will own our vector search stack and the embeddings pipeline that feeds it, ship semantic search features, tune Postgres, write Python services, and lead API design for internal consumers.\n\nMust have: vector search, Python, Postgres.\nNice to have: embeddings pipeline, API design.\nSeniority: senior.\n\nOnly female candidates under 28 from IIT or Northfield. Must be unmarried.",
-   "unlawful": true
+   "text": "Senior Backend Engineer, Retrieval Platform\n\nWe are building a retrieval platform. You will own our vector search stack and the embeddings pipeline that feeds it, ship semantic search features, tune Postgres, write Python services, and lead API design for internal consumers.\n\nMust have: vector search, Python, Postgres.\nNice to have: embeddings pipeline, API design.\nSeniority: senior."
   },
   {
    "id": "jd10",
@@ -223,8 +222,7 @@
     "RAG",
     "agents"
    ],
-   "text": "LLM Application Engineer\n\nLLM application engineer: prompt engineering, RAG, agents, and evaluation.\n\nMust have: LLM applications, evaluation.\nNice to have: prompt engineering, RAG, agents.\nSeniority: mid.",
-   "unlawful": false
+   "text": "LLM Application Engineer\n\nLLM application engineer: prompt engineering, RAG, agents, and evaluation.\n\nMust have: LLM applications, evaluation.\nNice to have: prompt engineering, RAG, agents.\nSeniority: mid."
   },
   {
    "id": "jd04",
@@ -240,8 +238,7 @@
     "Airflow",
     "streaming"
    ],
-   "text": "Data Engineer\n\nYou will build data pipelines in Spark, orchestrate them in Airflow, model our data warehouse in SQL, and add streaming for near-real-time use cases.\n\nMust have: Spark, SQL, data pipelines.\nNice to have: Airflow, streaming.\nSeniority: mid.",
-   "unlawful": false
+   "text": "Data Engineer\n\nYou will build data pipelines in Spark, orchestrate them in Airflow, model our data warehouse in SQL, and add streaming for near-real-time use cases.\n\nMust have: Spark, SQL, data pipelines.\nNice to have: Airflow, streaming.\nSeniority: mid."
   }
  ]
 }

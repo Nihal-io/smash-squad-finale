@@ -41,7 +41,7 @@ export interface AgentState {
   runId: string;
   roleKey: string;
   chaos: Record<string, boolean>;
-  jd: { raw: string; title: string; seniority: string; requirements: Requirement[]; refused: { line: string; reason: string }[] };
+  jd: { raw: string; title: string; seniority: string; requirements: Requirement[] };
   phase: Phase;
   targetN: number;
   reformulations: number;
@@ -61,7 +61,7 @@ export interface AgentState {
 export function newState(runId: string, roleKey: string, raw: string, chaos: Record<string, boolean> = {}): AgentState {
   return {
     runId, roleKey, chaos,
-    jd: { raw, title: "", seniority: "", requirements: [], refused: [] },
+    jd: { raw, title: "", seniority: "", requirements: [] },
     phase: "SOURCE", targetN: 5, reformulations: 0, toolCalls: [], searches: [], candidates: {}, shortlist: [], memoryApplied: [], degraded: [], nudges: 0,
   };
 }

@@ -12,7 +12,6 @@ export async function GET() {
     id: p.id,
     title: p.title,
     text: p.text,
-    unlawful: !!p.unlawful,
     archetype: p.archetype,
   }));
   return NextResponse.json({ presets });

@@ -396,11 +396,11 @@ for (const l of Object.values(labels)) {
 }
 injectionId = idMap.get(injectionId)!;
 
-// Preset JDs for the UI: first three, the first one with an unlawful line to trigger the refusal guardrail.
+// Preset JDs for the UI: three JDs from the planted set, taken exactly as written.
 const presets = [
-  { ...jds[0], title: jds[0].title, text: jds[0].text + "\n\nOnly female candidates under 28 from IIT or Northfield. Must be unmarried.", unlawful: true },
-  { ...jds[9], unlawful: false },
-  { ...jds[3], unlawful: false },
+  { ...jds[0] },
+  { ...jds[9] },
+  { ...jds[3] },
 ];
 
 mkdirSync("data", { recursive: true });

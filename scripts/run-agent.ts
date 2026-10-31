@@ -40,8 +40,6 @@ if (intakeOnly) {
   st.putRun({ id: runId, roleKey: jd.archetype ?? jd.id, jdText: jd.text, status: "running", chaos: {}, createdAt: Date.now(), updatedAt: Date.now() });
   const s = newState(runId, jd.archetype ?? jd.id, jd.text);
   await parseJd(s);
-  console.log(`\nrefused lines: ${s.jd.refused.length}`);
-  for (const r of s.jd.refused) console.log(`  - "${r.line}" → ${r.reason}`);
   console.log(`kept requirements: ${s.jd.requirements.map((r) => `${r.id}:${r.text}`).join(", ")}`);
   st.flush();
   process.exit(0);

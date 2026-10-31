@@ -31,7 +31,7 @@ export type FairnessRow = FairnessAudit["rows"][number];
 export interface SpendSummary { calls: number; cached: number; cost: number; budget: number; totalSpent: number; remaining: number }
 export interface CascadeSummary { decisions: number; byTier: Record<string, number>; resolvedBeforeClaude: number; resolvedByJev: number; escalationRate: number; actualUsd: number; allClaudeUsd: number }
 
-export interface Preset { id: string; title: string; text: string; unlawful: boolean; archetype: string }
+export interface Preset { id: string; title: string; text: string; archetype: string }
 
 export function toShortlist(state: AgentState): ShortlistItem[] {
   const ids = state.final?.ranked ?? state.approval?.approved ?? state.shortlist;

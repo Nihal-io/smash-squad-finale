@@ -69,7 +69,7 @@ async function intakeNode(s: G): Promise<Partial<G>> {
   const state = s.agent;
   if (!state.jd.requirements.length) await parseJd(state);
   emit(state.runId, "phase", { phase: "SOURCE", text: `Entering SOURCE. Exit: ${exitCondition("SOURCE")}` }, "phase");
-  const first: ChatMessage = { role: "user", content: `Job description (lawful parts):\n<<<JD\n${state.jd.raw.split("\n").filter((l) => !state.jd.refused.some((r) => r.line === l.trim())).join("\n")}\nJD>>>\n\n${stateDigest(state)}\n\nStart with recall_memory for role "${state.roleKey}", then search.` };
+  const first: ChatMessage = { role: "user", content: `Job description:\n<<<JD\n${state.jd.raw}\nJD>>>\n\n${stateDigest(state)}\n\nStart with recall_memory for role "${state.roleKey}", then search.` };
   store.patchRun(state.runId, { state });
   return { agent: state, messages: [first] };
 }

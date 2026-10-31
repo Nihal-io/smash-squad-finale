@@ -5,7 +5,7 @@ process.env.DB_PATH = process.env.EVAL_DB_PATH || "./data/eval-app.db";
 
 import { readFileSync } from "node:fs";
 
-type Task = "requirement_support" | "injection_check" | "discriminatory_clause";
+type Task = "requirement_support" | "injection_check";
 interface Case { id: string; task: Task; input: any; truth: "yes" | "no"; source: "planted" | "handwritten" | "data"; note: string }
 export interface CascadeCase { id: string; task: string; truth: string; label: string; by: string; confidence: number; correct: boolean; costUsd: number; counterfactualUsd: number; claudeLabel?: string; note: string; source: string }
 
@@ -19,7 +19,7 @@ export async function runCascadeEval(): Promise<{ summary: any; cases: CascadeCa
   const { config } = await import("../lib/llm");
   const { jevEnabled } = await import("../lib/jev");
 
-  const { jds, presets } = JSON.parse(readFileSync("data/jds.json", "utf8"));
+  const { jds } = JSON.parse(readFileSync("data/jds.json", "utf8"));
   const labels = JSON.parse(readFileSync("data/eval-labels.json", "utf8"));
   const injectionId: string = labels.injectionCandidateId;
   const cases: Case[] = [];
@@ -43,23 +43,7 @@ export async function runCascadeEval(): Promise<{ summary: any; cases: CascadeCa
     cases.push({ id: `rs-${jd.id}`, task: "requirement_support", input: { sentence: sents[best.si], requirement: wrongReq }, truth: "no", source: "planted", note: `${fitId} sentence vs ${other.id} requirement` });
   }
 
-  // (b) discriminatory_clause: unlawful lines from the unlawful preset, hand-written paraphrases, and ordinary requirement lines.
-  const preset = presets[0];
-  const tail = preset.text.slice(preset.text.lastIndexOf("\n\n") + 2);
-  const unlawful = tail.split(/\n+|(?<=\.)\s+(?=[A-Z])/).map((l: string) => l.trim()).filter((l: string) => l.length > 3);
-  unlawful.forEach((line: string, i: number) => cases.push({ id: `dc+${i + 1}`, task: "discriminatory_clause", input: { line }, truth: "yes", source: "planted", note: "unlawful line from the unlawful preset" }));
-  [
-    "We are looking for a young, high-energy recent graduate to join the team.",
-    "Candidates should not have small children at home, since the role needs late nights.",
-    "Preference will be given to applicants from the top-tier institutes.",
-    "Only men should apply for the on-call rotation.",
-  ].forEach((line, i) => cases.push({ id: `dc+h${i + 1}`, task: "discriminatory_clause", input: { line }, truth: "yes", source: "handwritten", note: "paraphrased unlawful criterion" }));
-  for (let j = 1; j <= 6; j++) {
-    const line = /Must have:[^\n]*/.exec(jds[j].text)?.[0] ?? jds[j].mustHave.join(", ");
-    cases.push({ id: `dc-${jds[j].id}`, task: "discriminatory_clause", input: { line }, truth: "no", source: "planted", note: "ordinary requirement line" });
-  }
-
-  // (c) injection_check: the planted injection profile and two hand-written variants vs ordinary profiles.
+  // (b) injection_check: the planted injection profile and two hand-written variants vs ordinary profiles.
   const inj = getCandidateLocal(injectionId);
   if (inj) cases.push({ id: "ic+planted", task: "injection_check", input: { text: inj.visible_text }, truth: "yes", source: "planted", note: injectionId });
   const base = loadMemory().candidates.find((c) => c.planted === "filler")!;
@@ -110,7 +94,7 @@ export async function runCascadeEval(): Promise<{ summary: any; cases: CascadeCa
   const claudeAll = out.filter((o) => o.claudeLabel !== undefined);
   const agreeing = claudeAll.filter((o) => o.claudeLabel === o.label);
   const degraded = !hasLlm || attempted > 0;
-  const perTask = Object.fromEntries(["requirement_support", "discriminatory_clause", "injection_check"].map((t) => {
+  const perTask = Object.fromEntries(["requirement_support", "injection_check"].map((t) => {
     const rows = out.filter((o) => o.task === t);
     return [t, { n: rows.length, cascadeAccuracy: acc(rows.map((r) => r.correct)), localConfident: rows.filter((r) => r.by === "local" && r.confidence >= th && r.label !== "unsure").length }];
   }));
