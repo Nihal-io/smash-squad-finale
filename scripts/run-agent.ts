@@ -6,10 +6,12 @@ import { store } from "../src/lib/store";
 
 const args = process.argv.slice(2);
 const which = args.find((a) => !a.startsWith("--")) ?? "0";
+const textArg = args.find((a) => a.startsWith("--text="))?.slice(7);
+const intakeOnly = args.includes("--intake-only");
 const chaosArg = args.find((a) => a.startsWith("--chaos="))?.slice(8) ?? "";
 for (const f of chaosArg.split(",").filter(Boolean)) process.env[`CHAOS_${f}`] = "1";
 const { jds, presets } = JSON.parse(readFileSync("data/jds.json", "utf8"));
-const jd = /^\d+$/.test(which) ? presets[Number(which)] : jds.find((j: any) => j.id === which);
+const jd = textArg ? { id: "custom", archetype: "custom", title: "custom", text: textArg.replace(/\\n/g, "\n") } : /^\d+$/.test(which) ? presets[Number(which)] : jds.find((j: any) => j.id === which);
 if (!jd) throw new Error(`unknown JD ${which}`);
 const runId = `run_${Date.now().toString(36)}`;
 
@@ -31,6 +33,19 @@ subscribe(runId, (ev) => {
 });
 
 const t0 = Date.now();
+if (intakeOnly) {
+  const { newState } = await import("../src/agent/state");
+  const { parseJd } = await import("../src/agent/parse");
+  const { store: st } = await import("../src/lib/store");
+  st.putRun({ id: runId, roleKey: jd.archetype ?? jd.id, jdText: jd.text, status: "running", chaos: {}, createdAt: Date.now(), updatedAt: Date.now() });
+  const s = newState(runId, jd.archetype ?? jd.id, jd.text);
+  await parseJd(s);
+  console.log(`\nrefused lines: ${s.jd.refused.length}`);
+  for (const r of s.jd.refused) console.log(`  - "${r.line}" → ${r.reason}`);
+  console.log(`kept requirements: ${s.jd.requirements.map((r) => `${r.id}:${r.text}`).join(", ")}`);
+  st.flush();
+  process.exit(0);
+}
 let state = await startRun({ runId, jdText: jd.text, roleKey: jd.archetype ?? jd.id, presetId: jd.id });
 if (store.getRun(runId)?.status === "waiting_approval") {
   const ids: string[] = state.shortlist;

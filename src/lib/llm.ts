@@ -171,7 +171,14 @@ export function extractJson(text: string): any {
   const start = body.indexOf("{");
   const end = body.lastIndexOf("}");
   if (start < 0 || end < 0) throw new LlmParseError("no JSON object in response");
-  return JSON.parse(body.slice(start, end + 1));
+  const raw = body.slice(start, end + 1);
+  try {
+    return JSON.parse(raw);
+  } catch (e) {
+    // Common model slips: trailing commas, or literal newlines inside strings.
+    const cleaned = raw.replace(/,\s*([}\]])/g, "$1").replace(/"((?:[^"\\]|\\.)*)"/gs, (m) => m.replace(/\n/g, "\\n").replace(/\t/g, "\\t"));
+    return JSON.parse(cleaned);
+  }
 }
 
 // Structured call: JSON validated against a Zod schema. One repair retry, then a visible failure.

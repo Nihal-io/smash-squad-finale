@@ -5,7 +5,7 @@ export type Phase = "SOURCE" | "ASSESS" | "AUDIT" | "FINALIZE" | "DONE";
 export const Requirement = z.object({ id: z.string(), text: z.string(), kind: z.enum(["must", "nice"]) });
 export type Requirement = z.infer<typeof Requirement>;
 
-export interface Evidence { requirementId: string; start: number; end: number; quote: string; strength: "strong" | "partial"; by: "local" | "jev" | "claude"; confidence: number }
+export interface Evidence { requirementId: string; start: number; end: number; quote: string; strength: "strong" | "partial"; basis: "explicit" | "implied"; by: "local" | "jev" | "claude"; confidence: number }
 
 export interface CandidateState {
   id: string;
@@ -44,7 +44,7 @@ export interface AgentState {
   targetN: number;
   reformulations: number;
   toolCalls: { n: number; name: string; reason: string; ok: boolean; summary: string; phase: Phase }[];
-  searches: { query: string; view: "visible" | "redacted"; k: number; source: string; top: { id: string; score: number }[] }[];
+  searches: { query: string; mode?: "semantic" | "keyword" | "hybrid"; view: "visible" | "redacted"; k: number; source: string; top: { id: string; score: number }[] }[];
   candidates: Record<string, CandidateState>;
   shortlist: string[]; // proposed to HR
   approval?: { approved: string[]; removed: string[] };

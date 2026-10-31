@@ -32,7 +32,7 @@ export async function createAssessment(state: AgentState, st: CandidateState, un
     runId,
     system: `You write short, fair candidate assessments for a specific role. Three questions: one short-answer (kind "short"), one scenario (kind "scenario"), one small JavaScript coding task (kind "code") with 3 hidden tests. Questions must target the listed requirements that could not be verified from the candidate's profile; each question lists which requirement texts it targets. The coding task must be solvable in under 15 minutes as a single function named \`solve(input)\` that takes a string and returns a string; tests give input and expected output strings. Rubrics are 2–3 sentences describing a good answer. Never reference the candidate's name, gender, college or background. Also draft the email that delivers the assessment. ${EMAIL_STYLE}`,
     messages: [{ role: "user", content: `Role: ${state.jd.title} (${state.jd.seniority}).\nAll requirements: ${reqs.map((x) => x.text).join("; ")}.\nUnverified requirements to target: ${fallbackTargets.join("; ")}.` }],
-    maxTokens: 4000,
+    maxTokens: 8000,
   });
   return { id: `asm_${state.runId.slice(-6)}_${st.id}`, questions: r.data.questions, emailSubject: r.data.emailSubject, emailBody: r.data.emailBody, unverified: fallbackTargets };
 }

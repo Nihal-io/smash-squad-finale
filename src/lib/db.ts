@@ -2,6 +2,7 @@
 import { Pool } from "pg";
 import { readFileSync } from "node:fs";
 import { EMBED_DIM } from "./embed";
+import { BM25, rrf } from "./bm25";
 
 export interface CandidateRow {
   id: string;
@@ -116,6 +117,38 @@ export async function vectorSearch(queryVec: ArrayLike<number>, mode: Mode, k: n
   }
   const f = filters ? (c: CandidateRow) => (filters.minYoe === undefined || c.yoe >= filters.minYoe) && (filters.maxYoe === undefined || c.yoe <= filters.maxYoe) : undefined;
   return { hits: memorySearch(queryVec, mode, k, f), source: "memory" };
+}
+
+// ---------- keyword (BM25) and hybrid (RRF) over the same pool ----------
+const bm25Index: Partial<Record<Mode, BM25>> = {};
+function bm25For(mode: Mode): BM25 {
+  if (!bm25Index[mode]) {
+    const { candidates } = loadMemory();
+    bm25Index[mode] = new BM25(candidates.map((c) => ({ id: c.id, text: mode === "visible" ? c.visible_text : c.redacted_text })));
+  }
+  return bm25Index[mode]!;
+}
+
+export function keywordSearch(query: string, mode: Mode, k: number, filter?: (c: CandidateRow) => boolean): SearchHit[] {
+  const { byId } = loadMemory();
+  return bm25For(mode).search(query, filter ? k * 4 : k).filter((h) => !filter || filter(byId.get(h.id)!)).slice(0, k);
+}
+
+export type SearchMode = "semantic" | "keyword" | "hybrid";
+export interface PoolHit { id: string; score: number; cosine: number }
+
+export async function searchPool(queryVec: ArrayLike<number>, query: string, mode: SearchMode, view: Mode, k: number, filters?: { minYoe?: number; maxYoe?: number }): Promise<{ hits: PoolHit[]; source: "pgvector" | "memory" }> {
+  const f = filters ? (c: CandidateRow) => (filters.minYoe === undefined || c.yoe >= filters.minYoe) && (filters.maxYoe === undefined || c.yoe <= filters.maxYoe) : undefined;
+  const cosineOf = (id: string) => { const v = memVector(id, view); return v ? dot(queryVec, v) : 0; };
+  if (mode === "keyword") {
+    return { hits: keywordSearch(query, view, k, f).map((h) => ({ id: h.id, score: h.score, cosine: cosineOf(h.id) })), source: "memory" };
+  }
+  const sem = await vectorSearch(queryVec, view, mode === "hybrid" ? k * 4 : k, filters);
+  if (mode === "semantic") return { hits: sem.hits.map((h) => ({ id: h.id, score: h.score, cosine: h.score })), source: sem.source };
+  const kw = keywordSearch(query, view, k * 4, f);
+  const fused = rrf([sem.hits.map((h) => h.id), kw.map((h) => h.id)]);
+  const semScore = new Map(sem.hits.map((h) => [h.id, h.score]));
+  return { hits: fused.slice(0, k).map((x) => ({ id: x.id, score: x.score, cosine: semScore.get(x.id) ?? cosineOf(x.id) })), source: sem.source };
 }
 
 export async function getCandidates(ids: string[]): Promise<CandidateRow[]> {

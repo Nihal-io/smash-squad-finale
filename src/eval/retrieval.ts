@@ -4,7 +4,7 @@
 import { readFileSync } from "node:fs";
 import { embedTexts, QUERY_PREFIX } from "../lib/embed";
 import { memorySearch, loadMemory, memVector, dot } from "../lib/db";
-import { BM25 } from "../lib/bm25";
+import { BM25, rrf } from "../lib/bm25";
 
 interface Scored { top10: string[]; p5: number; r10: number; ndcg5: number; stuffersInTop5: number; gemsInTop5: number }
 export interface RetrievalCase {
@@ -16,7 +16,8 @@ export interface RetrievalCase {
   semantic: Scored;
   semanticSplit: Scored;
   bm25: Scored;
-  judged: { semantic: Scored; semanticSplit: Scored; bm25: Scored }; // ranking restricted to the 180 judged (planted) candidates
+  hybrid: Scored;
+  judged: { semantic: Scored; semanticSplit: Scored; bm25: Scored; hybrid: Scored }; // ranking restricted to the 180 judged (planted) candidates
 }
 
 function metrics(ranked: string[], relevant: Set<string>, stuffers: Set<string>, gems: Set<string>): Scored {
@@ -64,28 +65,34 @@ export async function runRetrievalEval(): Promise<{ cases: RetrievalCase[]; summ
     const reqs = [...jd.mustHave.map((r: string) => ({ text: `${jd.title}: experience with ${r}`, weight: 2 })), ...jd.niceToHave.map((r: string) => ({ text: `${jd.title}: experience with ${r}`, weight: 1 }))];
     const vecs = await embedTexts([QUERY_PREFIX + jd.text, ...reqs.map((r) => QUERY_PREFIX + r.text)]);
     const reqVecs = reqs.map((r, i) => ({ vec: vecs[i + 1], weight: r.weight }));
-    const sem = memorySearch(vecs[0], "visible", 10).map((h) => h.id);
+    const sem50 = memorySearch(vecs[0], "visible", 50).map((h) => h.id);
+    const kw50 = bm25.search(jd.text, 50).map((h) => h.id);
+    const sem = sem50.slice(0, 10);
+    const kw = kw50.slice(0, 10);
+    const hy = rrf([sem50, kw50]).slice(0, 10).map((x) => x.id);
     const split = requirementSplitRank(reqVecs, "visible", 10).map((h) => h.id);
-    const kw = bm25.search(jd.text, 10).map((h) => h.id);
-    const semJ = memorySearch(vecs[0], "visible", 10, (c) => judged.has(c.id)).map((h) => h.id);
+    const semJ50 = memorySearch(vecs[0], "visible", 50, (c) => judged.has(c.id)).map((h) => h.id);
+    const kwJ50 = bm25Judged.search(jd.text, 50).map((h) => h.id);
+    const semJ = semJ50.slice(0, 10);
+    const kwJ = kwJ50.slice(0, 10);
+    const hyJ = rrf([semJ50, kwJ50]).slice(0, 10).map((x) => x.id);
     const splitJ = requirementSplitRank(reqVecs, "visible", 10, (id) => judged.has(id)).map((h) => h.id);
-    const kwJ = bm25Judged.search(jd.text, 10).map((h) => h.id);
     cases.push({
       jdId: jd.id, title: jd.title, relevant: lab.trueFits, stuffers: lab.stuffers, hiddenGems: lab.hiddenGems,
-      semantic: metrics(sem, rel, stuf, gems), semanticSplit: metrics(split, rel, stuf, gems), bm25: metrics(kw, rel, stuf, gems),
-      judged: { semantic: metrics(semJ, rel, stuf, gems), semanticSplit: metrics(splitJ, rel, stuf, gems), bm25: metrics(kwJ, rel, stuf, gems) },
+      semantic: metrics(sem, rel, stuf, gems), semanticSplit: metrics(split, rel, stuf, gems), bm25: metrics(kw, rel, stuf, gems), hybrid: metrics(hy, rel, stuf, gems),
+      judged: { semantic: metrics(semJ, rel, stuf, gems), semanticSplit: metrics(splitJ, rel, stuf, gems), bm25: metrics(kwJ, rel, stuf, gems), hybrid: metrics(hyJ, rel, stuf, gems) },
     });
   }
   const mean = (f: (c: RetrievalCase) => number) => +(cases.reduce((s, c) => s + f(c), 0) / cases.length).toFixed(3);
   const summary: Record<string, number> = {};
-  for (const k of ["semantic", "semanticSplit", "bm25"] as const) {
+  for (const k of ["semantic", "semanticSplit", "bm25", "hybrid"] as const) {
     summary[`${k}_p5`] = mean((c) => c[k].p5);
     summary[`${k}_r10`] = mean((c) => c[k].r10);
     summary[`${k}_ndcg5`] = mean((c) => c[k].ndcg5);
     summary[`${k}_stuffers_top5`] = mean((c) => c[k].stuffersInTop5);
     summary[`${k}_gems_top5`] = mean((c) => c[k].gemsInTop5);
   }
-  for (const k of ["semantic", "semanticSplit", "bm25"] as const) {
+  for (const k of ["semantic", "semanticSplit", "bm25", "hybrid"] as const) {
     summary[`judged_${k}_p5`] = mean((c) => c.judged[k].p5);
     summary[`judged_${k}_r10`] = mean((c) => c.judged[k].r10);
     summary[`judged_${k}_ndcg5`] = mean((c) => c.judged[k].ndcg5);

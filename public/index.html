@@ -6,16 +6,24 @@
 <title>Reverse Match</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Fira+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#0d0f12; --panel:#15191f; --panel2:#1a1f27; --line:#232932; --line2:#2d3541;
-  --text:#e8eaee; --muted:#8c95a4; --faint:#5c6573;
-  --accent:#8ab4ff; --ok:#5ccf93; --warn:#f2b650; --bad:#f0706e;
-  --local:#5ccf93; --jev:#8ab4ff; --claude:#c79bff;
-  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
-  --sans:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --bg:#0F172A; --panel:#1E293B; --panel2:#243049; --line:#334155; --line2:#475569;
+  --text:#F8FAFC; --muted:#94A3B8; --faint:#64748B;
+  --accent:#22C55E; --ok:#22C55E; --warn:#F59E0B; --bad:#F87171;
+  --local:#2DD4BF; --jev:#60A5FA; --claude:#C084FC;
+  --mono:"Fira Code",ui-monospace,Menlo,Consolas,monospace;
+  --sans:"Fira Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
 }
+/* interaction + accessibility (skill checklist) */
+button,[role=button],.ec,.preset,.tab,label.sw,summary,.pill,.chip,a{cursor:pointer}
+button:disabled{cursor:not-allowed;opacity:.6}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px}
+.btn,.primary,button.primary,.approve,.modal button{min-height:40px}
+@media (prefers-reduced-motion: reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+@media (max-width:768px){body{font-size:16px}}
+
 *{box-sizing:border-box}
 html,body{height:100%}
 body{margin:0;background:var(--bg);color:var(--text);font:14px/1.5 var(--sans);-webkit-font-smoothing:antialiased;overflow:hidden}
@@ -217,6 +225,7 @@ pre{margin:8px 0 0;padding:12px;background:#0b0d10;border:1px solid var(--line);
 .ec .sd{width:8px;height:8px;border-radius:50%;border:1.5px solid var(--ok);flex:none}
 .ec.strong .sd{background:var(--ok)}
 .ec .by{font:500 10px var(--mono);padding:1px 6px;border-radius:10px;border:1px solid}
+.ec .bs{font:500 10px var(--mono);padding:1px 6px;border-radius:10px;border:1px dashed var(--line2);color:var(--muted,#9aa4b2)}.ec .bs.explicit{border-style:solid}
 .ec .by.local{color:var(--local);border-color:#1f4a35}.ec .by.jev{color:var(--jev);border-color:#27406b}.ec .by.claude{color:var(--claude);border-color:#4c3770}
 .tba{margin-top:10px;font-size:12px;color:var(--warn)}
 .tba b{font-weight:600}
@@ -578,7 +587,7 @@ function compactInput(inp) {
 function peek(name, r) {
   if (r == null) return '';
   if (name === 'search_candidates' && r.results) return `${r.results.length} results · top ${r.spread?.top ?? ''} · ${r.source || ''}`;
-  if (name === 'cite_evidence') return r.accepted ? `accepted · ${r.strength} · by ${r.decidedBy} ${r.confidence}` : 'rejected · ' + clip(r.reason || '', 70);
+  if (name === 'cite_evidence') { if (r.results) { const ok = r.results.filter(x => x.accepted).length; return `${ok}/${r.results.length} accepted · must-haves ${r.mustHavesCovered || ''}${r.results.filter(x => !x.accepted).map(x => ' · ' + x.requirement_id + ' rejected: ' + clip(x.reason || '', 60)).join('')}`; } return r.accepted ? `accepted · ${r.strength} · ${r.basis || ''} · by ${r.decidedBy} ${r.confidence}` : 'rejected · ' + clip(r.reason || '', 70); }
   return clip(typeof r === 'string' ? r : JSON.stringify(r), 100);
 }
 const tcDecision = n => { const c = S.cards[n ?? S.lastN]; return c ? $('.chips', c) : null; };
@@ -695,12 +704,20 @@ const H = {
 /* domain updates from tool results, so the shortlist fills in while the agent works */
 function ingest(name, el, r) {
   if (!r) return;
-  if (name === 'search_candidates' && r.results) r.results.forEach(x => { S.names[x.id] = x.name; const c = prog(x.id); c.name = x.name; c.semantic = Math.max(c.semantic, x.score); });
+  if (name === 'search_candidates' && r.results) r.results.forEach(x => { S.names[x.id] = x.name; const c = prog(x.id); c.name = x.name; c.semantic = Math.max(c.semantic, x.cosine ?? x.score); });
   if (name === 'get_profile' && r.id) { const c = prog(r.id); c.name = r.name || c.name; (r.flags || []).forEach(f => { if (!c.flags.includes(f)) c.flags.push(f); }); }
-  if (name === 'cite_evidence' && r.accepted) {
-    const call = lastCall(el), c = prog(call.candidate_id);
-    c.evidence = c.evidence.filter(e => e.requirementId !== call.requirement_id);
-    c.evidence.push({ requirementId: call.requirement_id, start: r.span[0], end: r.span[1], quote: call.quote, strength: r.strength, by: r.decidedBy, confidence: r.confidence });
+  if (name === 'cite_evidence') {
+    const call = lastCall(el), c = prog(call.candidate_id || r.candidate_id);
+    if (r.accepted && r.span) {
+      c.evidence = c.evidence.filter(e => e.requirementId !== call.requirement_id);
+      c.evidence.push({ requirementId: call.requirement_id, start: r.span[0], end: r.span[1], quote: call.quote, strength: r.strength, basis: r.basis, by: r.decidedBy, confidence: r.confidence });
+    }
+    (r.results || []).forEach((x, i) => {
+      if (!x.accepted || !x.span) return;
+      const cit = (call.citations || [])[i] || {};
+      c.evidence = c.evidence.filter(e => e.requirementId !== x.requirement_id);
+      c.evidence.push({ requirementId: x.requirement_id, start: x.span[0], end: x.span[1], quote: cit.quote || '', strength: x.strength, basis: x.basis, by: x.decidedBy, confidence: x.confidence });
+    });
   }
   if (name === 'drop_candidate' && r.dropped) prog(r.dropped).dropped = 'dropped';
   if (['search_candidates', 'get_profile', 'cite_evidence', 'drop_candidate'].includes(name)) renderShortlist();
@@ -770,7 +787,7 @@ function renderShortlist() {
         <div>assessment<b>${it.assessment == null ? 'not assessed' : num(it.assessment)}</b><div class="mini"><i style="width:${(it.assessment || 0) * 100}%"></i></div></div></div>
       ${it.prov ? '' : `<div class="formula">${it.assessment == null ? 'final = semantic alone' : `final = ${w.semantic} semantic + ${w.assessment} assessment`}</div>`}
       ${badges ? `<div class="badges">${badges}</div>` : ''}
-      <div class="ecs">${(it.evidence || []).map((e, k) => `<button class="ec ${esc(e.strength)}" data-cid="${esc(it.id)}" data-i="${k}" title="${esc(e.strength)} · confidence ${num(e.confidence)}"><span class="sd"></span><span class="rt">${esc(S.reqs[e.requirementId]?.text || e.requirementId)}</span><span class="by ${esc(e.by)}">${esc(e.by)}</span></button>`).join('')}</div>
+      <div class="ecs">${(it.evidence || []).map((e, k) => `<button class="ec ${esc(e.strength)}" data-cid="${esc(it.id)}" data-i="${k}" title="${esc(e.strength)} · confidence ${num(e.confidence)}"><span class="sd"></span><span class="rt">${esc(S.reqs[e.requirementId]?.text || e.requirementId)}</span>${e.basis ? `<span class="bs ${esc(e.basis)}">${esc(e.basis)}</span>` : ''}<span class="by ${esc(e.by)}">${esc(e.by)}</span></button>`).join('')}</div>
       ${(it.unverified || []).length ? `<div class="tba"><b>To be assessed:</b> ${it.unverified.map(u => esc(S.reqs[u]?.text || u)).join('; ')}</div>` : ''}
       ${it.prov ? '' : '<button class="link nofit">Not a fit</button>'}
     </article>`;
@@ -812,7 +829,7 @@ function drawProfile(c) {
   }
   const ae = P.ev[P.active];
   el.innerHTML = `<header><div><h3>${esc(c.name)}</h3><div class="meta">${esc([c.role, c.yoe != null ? c.yoe + ' yrs' : '', c.college].filter(Boolean).join(' · '))}</div></div><button class="x" aria-label="Close">&times;</button></header>
-    <div class="ctx">${ae ? `Evidence for <b>${esc(S.reqs[ae.requirementId]?.text || ae.requirementId)}</b> · ${esc(ae.strength)} · decided by ${esc(ae.by)} (${num(ae.confidence)}) · chars ${ae.start}–${ae.end}` : 'Hover an evidence chip to highlight its exact span. Underlined text is cited evidence.'}</div>
+    <div class="ctx">${ae ? `Evidence for <b>${esc(S.reqs[ae.requirementId]?.text || ae.requirementId)}</b> · ${esc(ae.strength)}${ae.basis ? ' · ' + esc(ae.basis) : ''} · decided by ${esc(ae.by)} (${num(ae.confidence)}) · chars ${ae.start}–${ae.end}` : 'Hover an evidence chip to highlight its exact span. Underlined text is cited evidence.'}</div>
     <div class="ptext">${body}</div>`;
   el.classList.add('open');
   const t = $('.ptext', el), on = $('mark.on', el);

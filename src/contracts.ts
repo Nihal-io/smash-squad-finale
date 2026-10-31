@@ -16,7 +16,7 @@ export interface ShortlistItem {
   semantic: number; // best cosine seen (0..1)
   assessment: number | null; // graded 0..1, null when not assessed
   final: number; // 0.6*semantic + 0.4*assessment, or semantic alone
-  evidence: Evidence[]; // verbatim spans into Candidate.visible_text
+  evidence: Evidence[]; // verbatim spans into Candidate.visible_text; each carries basis: "explicit" | "implied"
   unverified: string[]; // requirement ids without evidence
   flags: string[]; // prompt_injection | grader_disagreement
   dropped?: string;

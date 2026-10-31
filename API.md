@@ -32,8 +32,8 @@ Step kinds and payloads the UI should render:
 | `refusal` | `{kind:"unlawful_criteria", line, reason}` or `{kind:"prompt_injection", candidateId, name, text}` |
 | `parsed` | `{title, seniority, requirements: Requirement[], refused:[{line,reason}]}` |
 | `reason` | `{n, text, source:"llm"\|"auto"}` — the one-line reason before tool call n |
-| `tool_call` | `{n, name, input, phase}` |
-| `tool_result` | `{n, name, ok, result}` or `{n, name, ok:false, error}` |
+| `tool_call` | `{n, name, input, phase}` — `search_candidates.input.mode` ∈ semantic \| keyword \| hybrid; `cite_evidence.input.citations[]` = `{requirement_id, quote}` |
+| `tool_result` | `{n, name, ok, result}` or `{n, name, ok:false, error}` — for `cite_evidence`, `result.results[]` = `{requirement_id, accepted, strength, basis:"explicit"\|"implied", decidedBy, confidence, span:[start,end]}` |
 | `gate_blocked` | `{n, gate, name, text}` |
 | `decision` | `{task, by:"local"\|"jev"\|"claude", label, confidence, costUsd, input, rationale}` |
 | `llm` | `{purpose, cached, costUsd, wouldCost?, model, ms?, usage?}` |

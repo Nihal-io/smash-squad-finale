@@ -5,7 +5,7 @@ import { parquetReadObjects } from "hyparquet";
 import { readFileSync } from "node:fs";
 import { embedTexts, QUERY_PREFIX } from "../lib/embed";
 import { memorySearch, loadMemory } from "../lib/db";
-import { BM25 } from "../lib/bm25";
+import { BM25, rrf as rrfScored } from "../lib/bm25";
 import { mulberry32 } from "../lib/synth";
 
 interface Job { job_id: string; job_title: string; seniority: string; industry: string; must_have_skills: string[]; nice_to_have_skills: string[]; description: string; requirements: string[] }
@@ -25,9 +25,7 @@ function metricsAt10(ranked: string[], relevant: Set<string>) {
 }
 
 export function rrf(lists: string[][], k = 60): string[] {
-  const score = new Map<string, number>();
-  for (const l of lists) l.forEach((id, i) => score.set(id, (score.get(id) ?? 0) + 1 / (k + i + 1)));
-  return [...score.entries()].sort((a, b) => b[1] - a[1]).map(([id]) => id);
+  return rrfScored(lists, k).map((x) => x.id);
 }
 
 function readParquet<T>(path: string): Promise<T[]> {

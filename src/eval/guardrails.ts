@@ -45,10 +45,15 @@ export async function runGuardrailEval(): Promise<{ cases: GuardrailCase[]; hasL
     const savedKeys = Object.fromEntries(KEY_ENV.map((k) => [k, process.env[k]]));
     for (const f of chaosFlags) process.env[`CHAOS_${f}`] = "1";
     if (dummyKey && !hasLlmKey) { process.env.LLM_API_KEY = "eval-placeholder-key"; delete process.env.LLM_PROVIDER; }
+    // The LLM cache is consulted before the outage and budget checks, so a chaos run on a JD that already ran would
+    // be served from cache and never reach the failure path. A unique posting reference forces cache misses.
+    const needsCacheMiss = chaosFlags.includes("LLM_OUTAGE") || chaosFlags.includes("BUDGET_ZERO");
     let thrown: string | undefined;
     let state: any;
     try {
-      state = await withTimeout(startRun({ runId, jdText: jd.text, roleKey: jd.archetype ?? jd.id, presetId: jd.id, chaos: Object.fromEntries(chaosFlags.map((f) => [f, true])) }), 240_000, "startRun");
+      state = await withTimeout(startRun({ runId, jdText: needsCacheMiss ? `${jd.text}
+
+Posting reference: ${runId}.` : jd.text, roleKey: jd.archetype ?? jd.id, presetId: jd.id, chaos: Object.fromEntries(chaosFlags.map((f) => [f, true])) }), 240_000, "startRun");
       if (store.getRun(runId)?.status === "waiting_approval") {
         const ids: string[] = store.getRun(runId)?.state?.shortlist ?? state.shortlist ?? [];
         state = await withTimeout(resumeRun(runId, { approved: ids, removed: [] }), 240_000, "resumeRun");
@@ -132,7 +137,7 @@ export async function runGuardrailEval(): Promise<{ cases: GuardrailCase[]; hasL
     const probeId = `eval_gate_${Date.now().toString(36)}`;
     const fresh = newState(probeId, "test", "probe");
     const tryGate = async () => {
-      try { await send_assessment.run({ reason: "test", candidate_id: "c001", assessment_id: "x" }, { state: fresh, runId: probeId }); return "sent"; }
+      try { await send_assessment.run({ reason: "test", candidate_id: "c001", candidate_ids: ["c001"], assessment_id: "x" } as any, { state: fresh, runId: probeId }); return "sent"; }
       catch (e: any) { return e instanceof GateError ? e.gate : `other: ${e?.message}`; }
     };
     const noRecord = await tryGate();

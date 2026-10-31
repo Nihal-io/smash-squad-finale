@@ -1,7 +1,7 @@
 // File-backed app state at DB_PATH (default ./data/app.db). Runs, trace events, LLM cache, spend, HR memory,
 // outbox, approvals and decisions all live here so the app keeps working when Postgres is unreachable.
 // Writes are whole-file, atomic (write temp + rename). Scale is a hackathon's worth of runs.
-import { readFileSync, writeFileSync, renameSync, mkdirSync, existsSync } from "node:fs";
+import { readFileSync, writeFileSync, renameSync, mkdirSync, existsSync, statSync } from "node:fs";
 import { dirname } from "node:path";
 
 export interface TraceEvent {
@@ -47,21 +47,46 @@ const EMPTY: Db = { runs: {}, events: {}, cache: {}, spend: [], decisions: [], m
 let db: Db | null = null;
 let dirty = false;
 let flushTimer: NodeJS.Timeout | null = null;
+let loadedMtime = 0;
 
 export function dbPath() {
   return process.env.DB_PATH || "./data/app.db";
 }
 
+// Several processes (dev server, CLI runs, prewarm) share the file. Reads and writes both MERGE the on-disk copy with
+// memory instead of replacing either: a run keeps whichever copy was updated last, event lists keep the longer one,
+// append-only lists are unioned. Nothing a process wrote is lost because another process wrote in between.
+function mergeInto(mine: Db, other: Partial<Db>, preferMine: boolean): Db {
+  const out: Db = { ...EMPTY, ...mine };
+  for (const [id, r] of Object.entries(other.runs ?? {})) {
+    const m = out.runs[id];
+    if (!m) out.runs[id] = r;
+    else if (preferMine ? (r.updatedAt > m.updatedAt && !dirty) : r.updatedAt >= m.updatedAt) out.runs[id] = r;
+  }
+  for (const [id, list] of Object.entries(other.events ?? {})) {
+    const m = out.events[id];
+    if (!m || list.length > m.length) out.events[id] = list;
+  }
+  out.approvals = { ...(other.approvals ?? {}), ...out.approvals };
+  out.memory = mergeByTs(other.memory ?? [], out.memory);
+  out.spend = mergeByTs(other.spend ?? [], out.spend);
+  out.decisions = mergeByTs(other.decisions ?? [], out.decisions);
+  out.outbox = mergeByTs(other.outbox ?? [], out.outbox);
+  return out;
+}
+
+function readDisk(p: string): Partial<Db> | null {
+  try { return existsSync(p) ? (JSON.parse(readFileSync(p, "utf8")) as Partial<Db>) : null; } catch { return null; }
+}
+
 function load(): Db {
-  if (db) return db;
   const p = dbPath();
-  if (existsSync(p)) {
-    try {
-      db = { ...EMPTY, ...JSON.parse(readFileSync(p, "utf8")) };
-    } catch {
-      db = structuredClone(EMPTY);
-    }
-  } else db = structuredClone(EMPTY);
+  let mtime = 0;
+  try { mtime = existsSync(p) ? statSync(p).mtimeMs : 0; } catch {}
+  if (db && mtime === loadedMtime) return db;
+  const disk = readDisk(p);
+  db = db ? (disk ? mergeInto(db, disk, true) : db) : { ...EMPTY, ...(disk ?? {}) };
+  loadedMtime = mtime;
   return db!;
 }
 
@@ -69,9 +94,48 @@ function flushNow() {
   if (!db || !dirty) return;
   const p = dbPath();
   mkdirSync(dirname(p), { recursive: true });
+  try {
+    if (existsSync(p) && statSync(p).mtimeMs !== loadedMtime) {
+      const other = readDisk(p);
+      if (other) db = mergeInto(db, other, true);
+    }
+  } catch {}
   writeFileSync(p + ".tmp", JSON.stringify(db));
   renameSync(p + ".tmp", p);
   dirty = false;
+  try { loadedMtime = statSync(p).mtimeMs; } catch {}
+}
+
+type CacheDb = Db["cache"];
+let cacheDb: CacheDb | null = null;
+let cacheDirty = false;
+let cacheMtime = 0;
+let cacheTimer: NodeJS.Timeout | null = null;
+export function cachePath() { return process.env.LLM_CACHE_PATH || "./data/llm-cache.db"; }
+function loadCache(): CacheDb {
+  const p = cachePath();
+  if (cacheDb && cacheDirty) return cacheDb;
+  let mtime = 0;
+  try { mtime = existsSync(p) ? statSync(p).mtimeMs : 0; } catch {}
+  if (cacheDb && mtime === cacheMtime) return cacheDb;
+  try { const disk = existsSync(p) ? JSON.parse(readFileSync(p, "utf8")) : {}; cacheDb = { ...disk, ...(cacheDb ?? {}) }; } catch { cacheDb = cacheDb ?? {}; }
+  cacheMtime = mtime;
+  return cacheDb!;
+}
+function flushCache() {
+  if (!cacheDb || !cacheDirty) return;
+  const p = cachePath();
+  mkdirSync(dirname(p), { recursive: true });
+  try { if (existsSync(p) && statSync(p).mtimeMs !== cacheMtime) cacheDb = { ...JSON.parse(readFileSync(p, "utf8")), ...cacheDb }; } catch {}
+  writeFileSync(p + ".tmp", JSON.stringify(cacheDb));
+  renameSync(p + ".tmp", p);
+  cacheDirty = false;
+  try { cacheMtime = statSync(p).mtimeMs; } catch {}
+}
+
+function mergeByTs<T extends { ts: number }>(a: T[], b: T[]): T[] {
+  const seen = new Set(b.map((x) => JSON.stringify(x)));
+  return [...a.filter((x) => !seen.has(JSON.stringify(x))), ...b];
 }
 
 function mark() {
@@ -79,10 +143,10 @@ function mark() {
   if (!flushTimer) flushTimer = setTimeout(() => { flushTimer = null; flushNow(); }, 150);
 }
 
-process.on?.("beforeExit", flushNow);
+process.on?.("beforeExit", () => { flushNow(); flushCache(); });
 
 export const store = {
-  flush: flushNow,
+  flush: () => { flushNow(); flushCache(); },
   // runs
   getRun: (id: string) => load().runs[id],
   listRuns: () => Object.values(load().runs).sort((a, b) => b.createdAt - a.createdAt),
@@ -98,10 +162,10 @@ export const store = {
     mark();
     return ev;
   },
-  // cache
-  cacheGet: (key: string) => load().cache[key],
-  cachePut(key: string, v: { response: any; costUsd: number; model: string }) { load().cache[key] = { ...v, ts: Date.now() }; mark(); },
-  cacheSize: () => Object.keys(load().cache).length,
+  // cache: its own file (LLM_CACHE_PATH, default ./data/llm-cache.db) so the eval, the CLI and the app share one cache
+  cacheGet: (key: string) => loadCache()[key],
+  cachePut(key: string, v: { response: any; costUsd: number; model: string }) { loadCache()[key] = { ...v, ts: Date.now() }; cacheDirty = true; if (!cacheTimer) cacheTimer = setTimeout(() => { cacheTimer = null; flushCache(); }, 150); },
+  cacheSize: () => Object.keys(loadCache()).length,
   // spend
   addSpend(s: SpendRecord) { load().spend.push(s); mark(); },
   spend: (runId?: string) => load().spend.filter((s) => !runId || s.runId === runId),

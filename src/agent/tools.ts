@@ -2,7 +2,7 @@
 import { z } from "zod";
 import { zodToJsonSchema } from "zod-to-json-schema";
 import { embedTexts, QUERY_PREFIX } from "../lib/embed";
-import { vectorSearch, getCandidates, getCandidateLocal, memVector, dot } from "../lib/db";
+import { searchPool, getCandidates, getCandidateLocal, memVector, dot } from "../lib/db";
 import { decide, sentences } from "../lib/decide";
 import { store } from "../lib/store";
 import { emit } from "../lib/trace";
@@ -22,6 +22,15 @@ const reason = z.string().min(3).describe("One line: why this call, given what y
 
 function clip(s: string, n = 140) { return s.length > n ? s.slice(0, n - 1) + "…" : s; }
 
+// "explicit" when the quote names the requirement itself (any content word of it, stem-insensitive);
+// "implied" when the support comes through a framework, tool or outcome instead (FastAPI → Python).
+const STOP = new Set(["and", "with", "the", "for", "experience", "using", "skills", "strong", "knowledge", "systems", "system", "design"]);
+export function evidenceBasis(requirement: string, quote: string): "explicit" | "implied" {
+  const q = quote.toLowerCase();
+  const toks = requirement.toLowerCase().replace(/[^a-z0-9+#./ -]/g, " ").split(/[\s/]+/).map((t) => t.replace(/s$/, "")).filter((t) => t.length >= 3 && !STOP.has(t));
+  return toks.some((t) => q.includes(t)) ? "explicit" : "implied";
+}
+
 function ensureCandidate(state: AgentState, id: string): CandidateState {
   const c = getCandidateLocal(id);
   if (!c) throw new Error(`unknown candidate ${id}`);
@@ -31,24 +40,24 @@ function ensureCandidate(state: AgentState, id: string): CandidateState {
 // ---------- SOURCE ----------
 export const search_candidates: ToolSpec = {
   name: "search_candidates",
-  description: "Semantic search over the candidate pool (pgvector cosine on local embeddings). Use one focused query per requirement cluster, not the whole JD. `view` = visible (default) or redacted (identity hidden). Returns ids with cosine scores and a one-line snippet; it never returns full profiles.",
+  description: "Search the candidate pool. mode=semantic (default): cosine over local embeddings, finds people who did the work in different words. mode=keyword: BM25 over the profile text, exact terms only. mode=hybrid: both lists fused with reciprocal rank fusion; good when a requirement names a specific tool people write verbatim. Use one focused query per requirement cluster, not the whole JD. `view` = visible (default) or redacted (identity hidden). Returns ids with scores (cosine always included) and a one-line snippet; never full profiles.",
   phases: ["SOURCE"],
-  schema: z.object({ reason, query: z.string().min(3), k: z.number().int().min(3).max(40).default(12), view: z.enum(["visible", "redacted"]).default("visible"), filters: z.object({ minYoe: z.number().optional(), maxYoe: z.number().optional() }).optional() }),
+  schema: z.object({ reason, query: z.string().min(3), k: z.number().int().min(3).max(40).default(12), mode: z.enum(["semantic", "keyword", "hybrid"]).default("semantic"), view: z.enum(["visible", "redacted"]).default("visible"), filters: z.object({ minYoe: z.number().optional(), maxYoe: z.number().optional() }).optional() }),
   async run(input, { state, runId }) {
     const [qv] = await embedTexts([QUERY_PREFIX + input.query]);
-    const { hits, source } = await vectorSearch(qv, input.view, input.k, input.filters);
-    if (source === "memory" && !state.degraded.includes("db")) { state.degraded.push("db"); emit(runId, "note", { banner: "db", text: "Postgres unreachable: searching the same vectors in memory" }, "search_candidates"); }
+    const { hits, source } = await searchPool(qv, input.query, input.mode, input.view, input.k, input.filters);
+    if (source === "memory" && input.mode !== "keyword" && !state.degraded.includes("db")) { state.degraded.push("db"); emit(runId, "note", { banner: "db", text: "Postgres unreachable: searching the same vectors in memory" }, "search_candidates"); }
     const rows = await getCandidates(hits.map((h) => h.id));
     const results = hits.map((h) => {
       const c = rows.find((r) => r.id === h.id)!;
       const st = ensureCandidate(state, h.id);
-      st.semantic = Math.max(st.semantic, h.score);
+      st.semantic = Math.max(st.semantic, h.cosine);
       st.seen += 1;
-      return { id: h.id, score: +h.score.toFixed(3), seen: st.seen, name: c.name, snippet: clip(`${c.role || c.archetype}, ${c.yoe}y: ${c.skills.slice(0, 5).join(", ")}`), evidence: st.evidence.length, dropped: !!st.dropped };
+      return { id: h.id, score: +h.score.toFixed(3), cosine: +h.cosine.toFixed(3), seen: st.seen, name: c.name, snippet: clip(`${c.role || c.archetype}, ${c.yoe}y: ${c.skills.slice(0, 5).join(", ")}`), evidence: st.evidence.length, dropped: !!st.dropped };
     });
-    state.searches.push({ query: input.query, view: input.view, k: input.k, source, top: hits.slice(0, 10).map((h) => ({ id: h.id, score: +h.score.toFixed(3) })) });
-    const scores = hits.map((h) => h.score);
-    return { source, spread: { top: +Math.max(...scores).toFixed(3), tenth: +(scores[9] ?? scores[scores.length - 1]).toFixed(3) }, results };
+    state.searches.push({ query: input.query, mode: input.mode, view: input.view, k: input.k, source, top: hits.slice(0, 10).map((h) => ({ id: h.id, score: +h.score.toFixed(3) })) });
+    const cos = hits.map((h) => h.cosine);
+    return { mode: input.mode, source, spread: { topCosine: +Math.max(...cos).toFixed(3), tenthCosine: +(cos[9] ?? cos[cos.length - 1]).toFixed(3) }, results };
   },
 };
 
@@ -112,9 +121,10 @@ export const cite_evidence: ToolSpec = {
         results.push({ requirement_id: req.id, accepted: false, reason: `Does not show real experience with "${req.text}" (decided by ${d.by}, ${d.confidence.toFixed(2)}). ${d.rationale ?? ""}` });
         continue;
       }
+      const basis = evidenceBasis(req.text, q);
       st.evidence = st.evidence.filter((e) => e.requirementId !== req.id);
-      st.evidence.push({ requirementId: req.id, start, end, quote: q, strength: d.confidence >= 0.9 ? "strong" : "partial", by: d.by, confidence: d.confidence });
-      results.push({ requirement_id: req.id, accepted: true, strength: d.confidence >= 0.9 ? "strong" : "partial", decidedBy: d.by, confidence: +d.confidence.toFixed(2), span: [start, end] });
+      st.evidence.push({ requirementId: req.id, start, end, quote: q, strength: d.confidence >= 0.9 ? "strong" : "partial", basis, by: d.by, confidence: d.confidence });
+      results.push({ requirement_id: req.id, accepted: true, strength: d.confidence >= 0.9 ? "strong" : "partial", basis, decidedBy: d.by, confidence: +d.confidence.toFixed(2), span: [start, end] });
     }
     const musts = mustHaves(state);
     const covered = musts.filter((r) => st.evidence.some((e) => e.requirementId === r.id)).length;
@@ -202,11 +212,16 @@ export const create_assessment: ToolSpec = {
     for (const c of input.candidates) {
       const st = ensureCandidate(state, c.candidate_id);
       if (st.dropped) continue;
-      const a = await createAssessment(state, st, c.unverified_requirement_ids, runId);
-      st.assessment = a;
-      out.push({ candidate_id: st.id, assessment_id: a.id, targets: a.unverified, questions: a.questions.map((q) => ({ kind: q.kind, prompt: clip(q.prompt, 160), targets: q.targets })) });
+      try {
+        const a = await createAssessment(state, st, c.unverified_requirement_ids, runId);
+        st.assessment = a;
+        out.push({ candidate_id: st.id, assessment_id: a.id, targets: a.unverified, questions: a.questions.map((q) => ({ kind: q.kind, prompt: clip(q.prompt, 160), targets: q.targets })) });
+      } catch (e: any) {
+        if (e instanceof GateError) throw e;
+        out.push({ candidate_id: st.id, error: `assessment generation failed: ${String(e?.message ?? e).slice(0, 120)}; call again for this candidate` });
+      }
     }
-    return { created: out.length, assessments: out };
+    return { created: out.filter((o) => !o.error).length, assessments: out };
   },
 };
 

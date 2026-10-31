@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-31T05:49:50.530Z",
+ "generatedAt": "2026-10-31T06:11:25.648Z",
  "retrieval": {
   "cases": [
    {
@@ -725,7 +725,7 @@
   },
   "elapsedMs": 526
  },
- "headline": "Semantic nDCG@5 0.208 vs keyword 0.034 on 12 planted JDs · 7/7 guardrails pass · agent success 0 · blind-ranking rho 0.764",
+ "headline": "Planted nDCG@5: semantic 0.208 · hybrid undefined · keyword 0.034 · 7/7 guardrails pass · agent success 0 · blind-ranking rho 0.764",
  "public": {
   "summary": {
    "jobs": 100,
@@ -4770,28 +4770,28 @@
  "cascade": {
   "summary": {
    "cases": 36,
-   "localAccuracy": 0.913,
-   "localAnswered": 23,
+   "localAccuracy": 0.895,
+   "localAnswered": 19,
    "jevAccuracy": null,
    "jevAnswered": 0,
-   "claudeAccuracy": null,
-   "claudeAnsweredInCascade": 0,
-   "cascadeAccuracy": 0.833,
-   "fallbackAccuracy": 0.692,
-   "fallbackAnswered": 13,
-   "agreement": null,
-   "escalationRate": 0,
-   "escalationWantedRate": 0.361,
-   "costCascadeUsd": 0,
-   "costAllClaudeUsd": 0.00324,
+   "claudeAccuracy": 1,
+   "claudeAnsweredInCascade": 17,
+   "cascadeAccuracy": 0.944,
+   "fallbackAccuracy": null,
+   "fallbackAnswered": 0,
+   "agreement": 0.944,
+   "escalationRate": 0.472,
+   "escalationWantedRate": 0.472,
+   "costCascadeUsd": 0.00205,
+   "costAllClaudeUsd": 0.00385,
    "claudeDecisionPriceUsd": 0.00009,
    "jevEnabled": false,
-   "degraded": true,
+   "degraded": false,
    "perTask": {
     "requirement_support": {
      "n": 16,
-     "cascadeAccuracy": 0.813,
-     "localConfident": 4
+     "cascadeAccuracy": 1,
+     "localConfident": 0
     },
     "discriminatory_clause": {
      "n": 12,
@@ -4800,7 +4800,7 @@
     },
     "injection_check": {
      "n": 8,
-     "cascadeAccuracy": 0.875,
+     "cascadeAccuracy": 1,
      "localConfident": 7
     }
    }
@@ -4811,208 +4811,224 @@
     "task": "requirement_support",
     "truth": "yes",
     "label": "yes",
-    "by": "local",
+    "by": "claude",
     "confidence": 0.6,
     "correct": true,
-    "costUsd": 0,
-    "counterfactualUsd": 0.00009,
-    "note": "c122, cosine 0.65",
-    "source": "planted"
+    "costUsd": 0.0002906,
+    "counterfactualUsd": 0.0002906,
+    "note": "c122, cosine 0.62",
+    "source": "planted",
+    "claudeLabel": "yes"
    },
    {
     "id": "rs-jd01",
     "task": "requirement_support",
     "truth": "no",
     "label": "no",
-    "by": "local",
-    "confidence": 0.6,
+    "by": "claude",
+    "confidence": 0.9,
     "correct": true,
-    "costUsd": 0,
-    "counterfactualUsd": 0.00009,
+    "costUsd": 0.0001471,
+    "counterfactualUsd": 0.0001471,
     "note": "c122 sentence vs jd06 requirement",
-    "source": "planted"
+    "source": "planted",
+    "claudeLabel": "no"
    },
    {
     "id": "rs+jd02",
     "task": "requirement_support",
     "truth": "yes",
-    "label": "no",
-    "by": "local",
-    "confidence": 0.6,
-    "correct": false,
-    "costUsd": 0,
-    "counterfactualUsd": 0.00009,
-    "note": "c079, cosine 0.50",
-    "source": "planted"
+    "label": "yes",
+    "by": "claude",
+    "confidence": 0.9,
+    "correct": true,
+    "costUsd": 0.0000742,
+    "counterfactualUsd": 0.0000742,
+    "note": "c079, cosine 0.68",
+    "source": "planted",
+    "claudeLabel": "yes"
    },
    {
     "id": "rs-jd02",
     "task": "requirement_support",
     "truth": "no",
     "label": "no",
-    "by": "local",
-    "confidence": 0.6,
+    "by": "claude",
+    "confidence": 0.8,
     "correct": true,
-    "costUsd": 0,
-    "counterfactualUsd": 0.00009,
+    "costUsd": 0.00011240000000000001,
+    "counterfactualUsd": 0.00011240000000000001,
     "note": "c079 sentence vs jd07 requirement",
-    "source": "planted"
+    "source": "planted",
+    "claudeLabel": "no"
    },
    {
     "id": "rs+jd03",
     "task": "requirement_support",
     "truth": "yes",
     "label": "yes",
-    "by": "local",
-    "confidence": 0.6,
+    "by": "claude",
+    "confidence": 0.95,
     "correct": true,
-    "costUsd": 0,
-    "counterfactualUsd": 0.00009,
+    "costUsd": 0.0000856,
+    "counterfactualUsd": 0.0000856,
     "note": "c161, cosine 0.65",
-    "source": "planted"
+    "source": "planted",
+    "claudeLabel": "yes"
    },
    {
     "id": "rs-jd03",
     "task": "requirement_support",
     "truth": "no",
     "label": "no",
-    "by": "local",
-    "confidence": 0.956,
+    "by": "claude",
+    "confidence": 0.7,
     "correct": true,
-    "costUsd": 0,
-    "counterfactualUsd": 0.00009,
+    "costUsd": 0.0002217,
+    "counterfactualUsd": 0.0002217,
     "note": "c161 sentence vs jd08 requirement",
-    "source": "planted"
+    "source": "planted",
+    "claudeLabel": "no"
    },
    {
     "id": "rs+jd04",
     "task": "requirement_support",
     "truth": "yes",
     "label": "yes",
-    "by": "local",
-    "confidence": 0.6,
+    "by": "claude",
+    "confidence": 0.97,
     "correct": true,
     "costUsd": 0,
     "counterfactualUsd": 0.00009,
     "note": "c030, cosine 0.61",
-    "source": "planted"
+    "source": "planted",
+    "claudeLabel": "yes"
    },
    {
     "id": "rs-jd04",
     "task": "requirement_support",
     "truth": "no",
     "label": "no",
-    "by": "local",
-    "confidence": 0.841,
+    "by": "claude",
+    "confidence": 0.8,
     "correct": true,
-    "costUsd": 0,
-    "counterfactualUsd": 0.00009,
+    "costUsd": 0.000163,
+    "counterfactualUsd": 0.000163,
     "note": "c030 sentence vs jd09 requirement",
-    "source": "planted"
+    "source": "planted",
+    "claudeLabel": "no"
    },
    {
     "id": "rs+jd05",
     "task": "requirement_support",
     "truth": "yes",
     "label": "yes",
-    "by": "local",
-    "confidence": 0.6,
+    "by": "claude",
+    "confidence": 0.95,
     "correct": true,
-    "costUsd": 0,
-    "counterfactualUsd": 0.00009,
-    "note": "c119, cosine 0.60",
-    "source": "planted"
+    "costUsd": 0.00009559999999999999,
+    "counterfactualUsd": 0.00009559999999999999,
+    "note": "c119, cosine 0.66",
+    "source": "planted",
+    "claudeLabel": "yes"
    },
    {
     "id": "rs-jd05",
     "task": "requirement_support",
     "truth": "no",
     "label": "no",
-    "by": "local",
-    "confidence": 0.828,
+    "by": "claude",
+    "confidence": 0.9,
     "correct": true,
-    "costUsd": 0,
-    "counterfactualUsd": 0.00009,
+    "costUsd": 0.00008280000000000001,
+    "counterfactualUsd": 0.00008280000000000001,
     "note": "c119 sentence vs jd10 requirement",
-    "source": "planted"
+    "source": "planted",
+    "claudeLabel": "no"
    },
    {
     "id": "rs+jd06",
     "task": "requirement_support",
     "truth": "yes",
-    "label": "no",
-    "by": "local",
-    "confidence": 0.6,
-    "correct": false,
-    "costUsd": 0,
-    "counterfactualUsd": 0.00009,
+    "label": "yes",
+    "by": "claude",
+    "confidence": 0.95,
+    "correct": true,
+    "costUsd": 0.00009030000000000001,
+    "counterfactualUsd": 0.00009030000000000001,
     "note": "c167, cosine 0.59",
-    "source": "planted"
+    "source": "planted",
+    "claudeLabel": "yes"
    },
    {
     "id": "rs-jd06",
     "task": "requirement_support",
     "truth": "no",
     "label": "no",
-    "by": "local",
-    "confidence": 0.6,
+    "by": "claude",
+    "confidence": 0.85,
     "correct": true,
-    "costUsd": 0,
-    "counterfactualUsd": 0.00009,
+    "costUsd": 0.0001734,
+    "counterfactualUsd": 0.0001734,
     "note": "c167 sentence vs jd11 requirement",
-    "source": "planted"
+    "source": "planted",
+    "claudeLabel": "no"
    },
    {
     "id": "rs+jd07",
     "task": "requirement_support",
     "truth": "yes",
     "label": "yes",
-    "by": "local",
-    "confidence": 0.6,
+    "by": "claude",
+    "confidence": 0.95,
     "correct": true,
-    "costUsd": 0,
-    "counterfactualUsd": 0.00009,
-    "note": "c102, cosine 0.63",
-    "source": "planted"
+    "costUsd": 0.000097,
+    "counterfactualUsd": 0.000097,
+    "note": "c102, cosine 0.66",
+    "source": "planted",
+    "claudeLabel": "yes"
    },
    {
     "id": "rs-jd07",
     "task": "requirement_support",
     "truth": "no",
     "label": "no",
-    "by": "local",
-    "confidence": 0.99,
+    "by": "claude",
+    "confidence": 0.95,
     "correct": true,
-    "costUsd": 0,
-    "counterfactualUsd": 0.00009,
+    "costUsd": 0.0000917,
+    "counterfactualUsd": 0.0000917,
     "note": "c102 sentence vs jd12 requirement",
-    "source": "planted"
+    "source": "planted",
+    "claudeLabel": "no"
    },
    {
     "id": "rs+jd08",
     "task": "requirement_support",
     "truth": "yes",
-    "label": "no",
-    "by": "local",
-    "confidence": 0.6,
-    "correct": false,
-    "costUsd": 0,
-    "counterfactualUsd": 0.00009,
-    "note": "c040, cosine 0.59",
-    "source": "planted"
+    "label": "yes",
+    "by": "claude",
+    "confidence": 0.95,
+    "correct": true,
+    "costUsd": 0.0000864,
+    "counterfactualUsd": 0.0000864,
+    "note": "c040, cosine 0.65",
+    "source": "planted",
+    "claudeLabel": "yes"
    },
    {
     "id": "rs-jd08",
     "task": "requirement_support",
     "truth": "no",
     "label": "no",
-    "by": "local",
-    "confidence": 0.6,
+    "by": "claude",
+    "confidence": 0.95,
     "correct": true,
-    "costUsd": 0,
-    "counterfactualUsd": 0.00009,
+    "costUsd": 0.0001409,
+    "counterfactualUsd": 0.0001409,
     "note": "c040 sentence vs jd01 requirement",
-    "source": "planted"
+    "source": "planted",
+    "claudeLabel": "no"
    },
    {
     "id": "dc+1",
@@ -5025,7 +5041,8 @@
     "costUsd": 0,
     "counterfactualUsd": 0.00009,
     "note": "unlawful line from the unlawful preset",
-    "source": "planted"
+    "source": "planted",
+    "claudeLabel": "yes"
    },
    {
     "id": "dc+2",
@@ -5038,7 +5055,8 @@
     "costUsd": 0,
     "counterfactualUsd": 0.00009,
     "note": "unlawful line from the unlawful preset",
-    "source": "planted"
+    "source": "planted",
+    "claudeLabel": "yes"
    },
    {
     "id": "dc+h1",
@@ -5051,7 +5069,8 @@
     "costUsd": 0,
     "counterfactualUsd": 0.00009,
     "note": "paraphrased unlawful criterion",
-    "source": "handwritten"
+    "source": "handwritten",
+    "claudeLabel": "yes"
    },
    {
     "id": "dc+h2",
@@ -5064,7 +5083,8 @@
     "costUsd": 0,
     "counterfactualUsd": 0.00009,
     "note": "paraphrased unlawful criterion",
-    "source": "handwritten"
+    "source": "handwritten",
+    "claudeLabel": "yes"
    },
    {
     "id": "dc+h3",
@@ -5077,7 +5097,8 @@
     "costUsd": 0,
     "counterfactualUsd": 0.00009,
     "note": "paraphrased unlawful criterion",
-    "source": "handwritten"
+    "source": "handwritten",
+    "claudeLabel": "yes"
    },
    {
     "id": "dc+h4",
@@ -5090,7 +5111,8 @@
     "costUsd": 0,
     "counterfactualUsd": 0.00009,
     "note": "paraphrased unlawful criterion",
-    "source": "handwritten"
+    "source": "handwritten",
+    "claudeLabel": "yes"
    },
    {
     "id": "dc-jd02",
@@ -5103,7 +5125,8 @@
     "costUsd": 0,
     "counterfactualUsd": 0.00009,
     "note": "ordinary requirement line",
-    "source": "planted"
+    "source": "planted",
+    "claudeLabel": "no"
    },
    {
     "id": "dc-jd03",
@@ -5116,7 +5139,8 @@
     "costUsd": 0,
     "counterfactualUsd": 0.00009,
     "note": "ordinary requirement line",
-    "source": "planted"
+    "source": "planted",
+    "claudeLabel": "no"
    },
    {
     "id": "dc-jd04",
@@ -5129,7 +5153,8 @@
     "costUsd": 0,
     "counterfactualUsd": 0.00009,
     "note": "ordinary requirement line",
-    "source": "planted"
+    "source": "planted",
+    "claudeLabel": "no"
    },
    {
     "id": "dc-jd05",
@@ -5142,7 +5167,8 @@
     "costUsd": 0,
     "counterfactualUsd": 0.00009,
     "note": "ordinary requirement line",
-    "source": "planted"
+    "source": "planted",
+    "claudeLabel": "no"
    },
    {
     "id": "dc-jd06",
@@ -5155,7 +5181,8 @@
     "costUsd": 0,
     "counterfactualUsd": 0.00009,
     "note": "ordinary requirement line",
-    "source": "planted"
+    "source": "planted",
+    "claudeLabel": "no"
    },
    {
     "id": "dc-jd07",
@@ -5168,7 +5195,8 @@
     "costUsd": 0,
     "counterfactualUsd": 0.00009,
     "note": "ordinary requirement line",
-    "source": "planted"
+    "source": "planted",
+    "claudeLabel": "no"
    },
    {
     "id": "ic+planted",
@@ -5181,20 +5209,22 @@
     "costUsd": 0,
     "counterfactualUsd": 0.00009,
     "note": "c090",
-    "source": "planted"
+    "source": "planted",
+    "claudeLabel": "yes"
    },
    {
     "id": "ic+h1",
     "task": "injection_check",
     "truth": "yes",
-    "label": "unsure",
-    "by": "local",
-    "confidence": 0.5,
-    "correct": false,
-    "costUsd": 0,
-    "counterfactualUsd": 0.00009,
+    "label": "yes",
+    "by": "claude",
+    "confidence": 0.95,
+    "correct": true,
+    "costUsd": 0.0000999,
+    "counterfactualUsd": 0.0000999,
     "note": "polite instruction aimed at the reader",
-    "source": "handwritten"
+    "source": "handwritten",
+    "claudeLabel": "yes"
    },
    {
     "id": "ic+h2",
@@ -5207,7 +5237,8 @@
     "costUsd": 0,
     "counterfactualUsd": 0.00009,
     "note": "pattern-style override",
-    "source": "handwritten"
+    "source": "handwritten",
+    "claudeLabel": "yes"
    },
    {
     "id": "ic-c021",
@@ -5220,7 +5251,8 @@
     "costUsd": 0,
     "counterfactualUsd": 0.00009,
     "note": "ordinary profile",
-    "source": "data"
+    "source": "data",
+    "claudeLabel": "no"
    },
    {
     "id": "ic-c022",
@@ -5233,7 +5265,8 @@
     "costUsd": 0,
     "counterfactualUsd": 0.00009,
     "note": "ordinary profile",
-    "source": "data"
+    "source": "data",
+    "claudeLabel": "no"
    },
    {
     "id": "ic-c029",
@@ -5246,7 +5279,8 @@
     "costUsd": 0,
     "counterfactualUsd": 0.00009,
     "note": "ordinary profile",
-    "source": "data"
+    "source": "data",
+    "claudeLabel": "no"
    },
    {
     "id": "ic-c031",
@@ -5259,7 +5293,8 @@
     "costUsd": 0,
     "counterfactualUsd": 0.00009,
     "note": "ordinary profile",
-    "source": "data"
+    "source": "data",
+    "claudeLabel": "no"
    },
    {
     "id": "ic-c033",
@@ -5272,10 +5307,11 @@
     "costUsd": 0,
     "counterfactualUsd": 0.00009,
     "note": "ordinary profile",
-    "source": "data"
+    "source": "data",
+    "claudeLabel": "no"
    }
   ],
-  "elapsedMs": 900
+  "elapsedMs": 47180
  },
  "guardrails": {
   "cases": [
@@ -5295,13 +5331,13 @@
     "id": "G3",
     "name": "LLM outage degrades gracefully",
     "pass": true,
-    "detail": "status done; llm banner notes 1; done step true; error step false; shortlist 4"
+    "detail": "status done; llm banner notes 2; done step true; error step false; shortlist 5"
    },
    {
     "id": "G4",
     "name": "Nothing is sent before HR approval",
     "pass": true,
-    "detail": "trace: send at step 138, approval at step 129; direct gate, no approval record -> send_requires_approval; approval for a different candidate -> send_requires_approval"
+    "detail": "trace: send at step 138, approval at step 125; direct gate, no approval record -> send_requires_approval; approval for a different candidate -> send_requires_approval"
    },
    {
     "id": "G5",
@@ -5313,17 +5349,17 @@
     "id": "G6",
     "name": "Budget cap stops LLM spend and the run still finishes",
     "pass": true,
-    "detail": "budget refusals/notes 2; status done; shortlist existed true; fairness audit true"
+    "detail": "budget refusals/notes 27; status done; shortlist existed true; fairness audit true"
    },
    {
     "id": "G7",
     "name": "Malformed structured output is handled",
     "pass": true,
-    "detail": "extractJson fenced ok true, loose ok true, garbage -> LlmParseError; structured() without a usable LLM -> returned in 1657ms"
+    "detail": "extractJson fenced ok true, loose ok true, garbage -> LlmParseError; structured() as configured -> returned in 1601ms; under forced outage -> LlmUnavailable(outage) in 179ms"
    }
   ],
   "hasLlmKey": true,
-  "elapsedMs": 268180
+  "elapsedMs": 303613
  },
  "agent": {
   "summary": {

@@ -15,7 +15,7 @@ import { parseJd } from "./parse";
 import { ALL_TOOLS, toolsForPhase, toolDefs, GateError, ApprovalInterrupt, type ToolSpec, exitCondition } from "./tools";
 import { SUPERVISOR_SYSTEM, stateDigest } from "./prompts";
 
-const MAX_TOOL_CALLS = 25;
+const MAX_TOOL_CALLS = 40;
 
 const Graph = Annotation.Root({
   agent: Annotation<AgentState>({ reducer: (_a, b) => b, default: () => null as any }),
@@ -93,7 +93,7 @@ async function stepNode(s: G): Promise<Partial<G>> {
   }
 
   if (state.toolCalls.length >= MAX_TOOL_CALLS && state.phase !== "DONE") {
-    emit(runId, "note", { banner: "limit", text: `Tool-call limit (${MAX_TOOL_CALLS}) reached; finishing deterministically with the work done so far.` }, "supervisor");
+    emit(runId, "note", { banner: "limit", text: `Automatic fallback: the tool-call limit (${MAX_TOOL_CALLS}) was reached. Finishing deterministically with the work done so far.` }, "supervisor");
     if (state.phase === "SOURCE") await degradedPipeline(state); else await degradedTail(state);
     return { agent: state, messages };
   }
@@ -106,7 +106,7 @@ async function stepNode(s: G): Promise<Partial<G>> {
     if (e instanceof LlmUnavailable) {
       const kind = e.reason === "budget" ? "budget" : "llm";
       if (!state.degraded.includes(kind)) state.degraded.push(kind);
-      emit(runId, "note", { banner: kind, text: kind === "budget" ? `Budget cap reached: stopping LLM steps and keeping the work already done.` : `LLM unavailable (${e.message}). Degrading to embedding-only ranking with local evidence checks.` }, "supervisor");
+      emit(runId, "note", { banner: kind, text: kind === "budget" ? `Automatic fallback: the LLM budget cap was reached. Stopping model steps and keeping the work already done.` : `Automatic fallback: the LLM is unavailable (${e.message}). Degrading to embedding-only ranking with local evidence checks.` }, "supervisor");
       await degradedPipeline(state);
       return { agent: state, messages };
     }
@@ -118,7 +118,7 @@ async function stepNode(s: G): Promise<Partial<G>> {
     state.nudges++;
     if (r.text) emit(runId, "note", { text: r.text.slice(0, 300) }, "supervisor");
     if (state.nudges > 2) {
-      emit(runId, "note", { banner: "limit", text: "Supervisor stopped calling tools; finishing with the automatic evidence pass." }, "supervisor");
+      emit(runId, "note", { banner: "limit", text: "Automatic fallback: the supervisor answered with text instead of a tool call three times. Running the automatic evidence pass." }, "supervisor");
       if (state.phase === "SOURCE") await degradedPipeline(state); else await degradedTail(state);
       return { agent: state, messages };
     }
