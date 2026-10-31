@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-31T04:58:02.319Z",
+ "generatedAt": "2026-10-31T05:10:49.280Z",
  "retrieval": {
   "cases": [
    {
@@ -725,5 +725,3810 @@
   },
   "elapsedMs": 526
  },
- "headline": "Semantic nDCG@5 0.153 vs keyword 0.034 across 12 JDs"
+ "headline": "Semantic recall@10 0.593 vs keyword 0.203 on 12 planted JDs",
+ "public": {
+  "summary": {
+   "jobs": 100,
+   "eligibleJobs": 1082,
+   "poolSize": 2000,
+   "semantic_recall10": 0.026,
+   "semantic_ndcg10": 0.038,
+   "bm25_recall10": 0.029,
+   "bm25_ndcg10": 0.038,
+   "hybrid_recall10": 0.034,
+   "hybrid_ndcg10": 0.046,
+   "semantic_rule60at10": 0.848,
+   "bm25_rule60at10": 0.949,
+   "hybrid_rule60at10": 0.945,
+   "meanLabelledInPool": 13.04,
+   "meanQualifyingInPool": 384.46
+  },
+  "cases": [
+   {
+    "jobId": "J_000785",
+    "title": "Backend Engineer",
+    "relevantInPool": 14,
+    "qualifyingInPool": 610,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    }
+   },
+   {
+    "jobId": "J_000379",
+    "title": "Customer Support Specialist",
+    "relevantInPool": 10,
+    "qualifyingInPool": 138,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    },
+    "bm25": {
+     "recall10": 0.1,
+     "ndcg10": 0.06625422345438903,
+     "rule60at10": 0.9
+    },
+    "hybrid": {
+     "recall10": 0.1,
+     "ndcg10": 0.06943122193677727,
+     "rule60at10": 0.9
+    }
+   },
+   {
+    "jobId": "J_001075",
+    "title": "Software Engineer",
+    "relevantInPool": 10,
+    "qualifyingInPool": 572,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.8
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.8
+    }
+   },
+   {
+    "jobId": "J_000596",
+    "title": "Technical Product Manager",
+    "relevantInPool": 5,
+    "qualifyingInPool": 169,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.6
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.8
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.9
+    }
+   },
+   {
+    "jobId": "J_000710",
+    "title": "Business Analyst",
+    "relevantInPool": 21,
+    "qualifyingInPool": 515,
+    "semantic": {
+     "recall10": 0.09523809523809523,
+     "ndcg10": 0.18340980524840012,
+     "rule60at10": 1
+    },
+    "bm25": {
+     "recall10": 0.09523809523809523,
+     "ndcg10": 0.1610425878239398,
+     "rule60at10": 1
+    },
+    "hybrid": {
+     "recall10": 0.14285714285714285,
+     "ndcg10": 0.38113435412202,
+     "rule60at10": 0.9
+    }
+   },
+   {
+    "jobId": "J_002307",
+    "title": "Technical Support Specialist",
+    "relevantInPool": 6,
+    "qualifyingInPool": 188,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.8
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    }
+   },
+   {
+    "jobId": "J_001828",
+    "title": "Software Engineer",
+    "relevantInPool": 15,
+    "qualifyingInPool": 453,
+    "semantic": {
+     "recall10": 0.06666666666666667,
+     "ndcg10": 0.09478836436955078,
+     "rule60at10": 1
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.8
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.9
+    }
+   },
+   {
+    "jobId": "J_001066",
+    "title": "BI Analyst",
+    "relevantInPool": 16,
+    "qualifyingInPool": 575,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.9
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    }
+   },
+   {
+    "jobId": "J_002316",
+    "title": "Backend Engineer",
+    "relevantInPool": 18,
+    "qualifyingInPool": 434,
+    "semantic": {
+     "recall10": 0.05555555555555555,
+     "ndcg10": 0.07336392209936005,
+     "rule60at10": 0.9
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.9
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.9
+    }
+   },
+   {
+    "jobId": "J_000901",
+    "title": "Customer Support Specialist",
+    "relevantInPool": 7,
+    "qualifyingInPool": 186,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.7
+    },
+    "bm25": {
+     "recall10": 0.14285714285714285,
+     "ndcg10": 0.10633668103022985,
+     "rule60at10": 1
+    },
+    "hybrid": {
+     "recall10": 0.14285714285714285,
+     "ndcg10": 0.08671382849411972,
+     "rule60at10": 0.9
+    }
+   },
+   {
+    "jobId": "J_001226",
+    "title": "Business Analyst",
+    "relevantInPool": 20,
+    "qualifyingInPool": 515,
+    "semantic": {
+     "recall10": 0.05,
+     "ndcg10": 0.13886244387355454,
+     "rule60at10": 1
+    },
+    "bm25": {
+     "recall10": 0.05,
+     "ndcg10": 0.06625422345438903,
+     "rule60at10": 0.9
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    }
+   },
+   {
+    "jobId": "J_001327",
+    "title": "Product Manager",
+    "relevantInPool": 6,
+    "qualifyingInPool": 134,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.5
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.6
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.6
+    }
+   },
+   {
+    "jobId": "J_000189",
+    "title": "Full Stack Engineer",
+    "relevantInPool": 19,
+    "qualifyingInPool": 437,
+    "semantic": {
+     "recall10": 0.05263157894736842,
+     "ndcg10": 0.07839826897867533,
+     "rule60at10": 0.9
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    },
+    "hybrid": {
+     "recall10": 0.10526315789473684,
+     "ndcg10": 0.1736666713479918,
+     "rule60at10": 1
+    }
+   },
+   {
+    "jobId": "J_000617",
+    "title": "Technical Support Specialist",
+    "relevantInPool": 7,
+    "qualifyingInPool": 189,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    }
+   },
+   {
+    "jobId": "J_000930",
+    "title": "BI Analyst",
+    "relevantInPool": 19,
+    "qualifyingInPool": 586,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.8
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    }
+   },
+   {
+    "jobId": "J_000810",
+    "title": "Data Analyst",
+    "relevantInPool": 15,
+    "qualifyingInPool": 529,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.9
+    },
+    "bm25": {
+     "recall10": 0.06666666666666667,
+     "ndcg10": 0.22009176629808017,
+     "rule60at10": 0.9
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.9
+    }
+   },
+   {
+    "jobId": "J_001542",
+    "title": "Technical Support Specialist",
+    "relevantInPool": 6,
+    "qualifyingInPool": 199,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.9
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    }
+   },
+   {
+    "jobId": "J_001911",
+    "title": "Customer Support Specialist",
+    "relevantInPool": 5,
+    "qualifyingInPool": 150,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.8
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.9
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.9
+    }
+   },
+   {
+    "jobId": "J_001529",
+    "title": "Technical Product Manager",
+    "relevantInPool": 6,
+    "qualifyingInPool": 181,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.7
+    },
+    "bm25": {
+     "recall10": 0.16666666666666666,
+     "ndcg10": 0.10086747116627115,
+     "rule60at10": 1
+    },
+    "hybrid": {
+     "recall10": 0.16666666666666666,
+     "ndcg10": 0.30260241349881345,
+     "rule60at10": 1
+    }
+   },
+   {
+    "jobId": "J_001569",
+    "title": "Backend Engineer",
+    "relevantInPool": 17,
+    "qualifyingInPool": 584,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    },
+    "bm25": {
+     "recall10": 0.058823529411764705,
+     "ndcg10": 0.13886244387355454,
+     "rule60at10": 1
+    },
+    "hybrid": {
+     "recall10": 0.058823529411764705,
+     "ndcg10": 0.22009176629808017,
+     "rule60at10": 1
+    }
+   },
+   {
+    "jobId": "J_001928",
+    "title": "Business Analyst",
+    "relevantInPool": 16,
+    "qualifyingInPool": 393,
+    "semantic": {
+     "recall10": 0.125,
+     "ndcg10": 0.1884441521277154,
+     "rule60at10": 0.6
+    },
+    "bm25": {
+     "recall10": 0.0625,
+     "ndcg10": 0.09478836436955078,
+     "rule60at10": 1
+    },
+    "hybrid": {
+     "recall10": 0.125,
+     "ndcg10": 0.33013764944712026,
+     "rule60at10": 0.9
+    }
+   },
+   {
+    "jobId": "J_000233",
+    "title": "Data Analyst",
+    "relevantInPool": 15,
+    "qualifyingInPool": 417,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.9
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.9
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.9
+    }
+   },
+   {
+    "jobId": "J_001625",
+    "title": "Backend Engineer",
+    "relevantInPool": 14,
+    "qualifyingInPool": 604,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.9
+    }
+   },
+   {
+    "jobId": "J_001628",
+    "title": "Business Analyst",
+    "relevantInPool": 18,
+    "qualifyingInPool": 587,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.8
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    }
+   },
+   {
+    "jobId": "J_001701",
+    "title": "Backend Engineer",
+    "relevantInPool": 20,
+    "qualifyingInPool": 559,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.8
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    }
+   },
+   {
+    "jobId": "J_000157",
+    "title": "Customer Success Associate",
+    "relevantInPool": 6,
+    "qualifyingInPool": 205,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.9
+    },
+    "bm25": {
+     "recall10": 0.16666666666666666,
+     "ndcg10": 0.15130120674940672,
+     "rule60at10": 1
+    },
+    "hybrid": {
+     "recall10": 0.16666666666666666,
+     "ndcg10": 0.10086747116627115,
+     "rule60at10": 1
+    }
+   },
+   {
+    "jobId": "J_000654",
+    "title": "Data Analyst",
+    "relevantInPool": 14,
+    "qualifyingInPool": 401,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.9
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.5
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.9
+    }
+   },
+   {
+    "jobId": "J_000897",
+    "title": "Product Manager",
+    "relevantInPool": 6,
+    "qualifyingInPool": 183,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.6
+    },
+    "bm25": {
+     "recall10": 0.16666666666666666,
+     "ndcg10": 0.10778915452451093,
+     "rule60at10": 1
+    },
+    "hybrid": {
+     "recall10": 0.16666666666666666,
+     "ndcg10": 0.10778915452451093,
+     "rule60at10": 1
+    }
+   },
+   {
+    "jobId": "J_000914",
+    "title": "Technical Product Manager",
+    "relevantInPool": 5,
+    "qualifyingInPool": 193,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.9
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    }
+   },
+   {
+    "jobId": "J_001986",
+    "title": "Backend Engineer",
+    "relevantInPool": 16,
+    "qualifyingInPool": 614,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.9
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    }
+   },
+   {
+    "jobId": "J_000668",
+    "title": "Backend Engineer",
+    "relevantInPool": 23,
+    "qualifyingInPool": 607,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.9
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.9
+    }
+   },
+   {
+    "jobId": "J_001573",
+    "title": "Data Analyst",
+    "relevantInPool": 14,
+    "qualifyingInPool": 562,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.8
+    },
+    "bm25": {
+     "recall10": 0.07142857142857142,
+     "ndcg10": 0.06943122193677727,
+     "rule60at10": 1
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.9
+    }
+   },
+   {
+    "jobId": "J_000155",
+    "title": "Product Manager",
+    "relevantInPool": 9,
+    "qualifyingInPool": 146,
+    "semantic": {
+     "recall10": 0.1111111111111111,
+     "ndcg10": 0.11752277470724268,
+     "rule60at10": 0.6
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.9
+    }
+   },
+   {
+    "jobId": "J_001644",
+    "title": "Technical Support Specialist",
+    "relevantInPool": 6,
+    "qualifyingInPool": 140,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.8
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    }
+   },
+   {
+    "jobId": "J_001303",
+    "title": "Technical Support Specialist",
+    "relevantInPool": 11,
+    "qualifyingInPool": 147,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.8
+    },
+    "bm25": {
+     "recall10": 0.09090909090909091,
+     "ndcg10": 0.11004588314904008,
+     "rule60at10": 0.9
+    },
+    "hybrid": {
+     "recall10": 0.09090909090909091,
+     "ndcg10": 0.13886244387355454,
+     "rule60at10": 0.9
+    }
+   },
+   {
+    "jobId": "J_001786",
+    "title": "BI Analyst",
+    "relevantInPool": 17,
+    "qualifyingInPool": 546,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.8
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.9
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    }
+   },
+   {
+    "jobId": "J_000820",
+    "title": "Full Stack Engineer",
+    "relevantInPool": 16,
+    "qualifyingInPool": 448,
+    "semantic": {
+     "recall10": 0.125,
+     "ndcg10": 0.15457433957839825,
+     "rule60at10": 0.9
+    },
+    "bm25": {
+     "recall10": 0.0625,
+     "ndcg10": 0.13886244387355454,
+     "rule60at10": 0.9
+    },
+    "hybrid": {
+     "recall10": 0.0625,
+     "ndcg10": 0.11004588314904008,
+     "rule60at10": 0.9
+    }
+   },
+   {
+    "jobId": "J_000119",
+    "title": "Software Engineer",
+    "relevantInPool": 14,
+    "qualifyingInPool": 417,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.8
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.9
+    },
+    "hybrid": {
+     "recall10": 0.07142857142857142,
+     "ndcg10": 0.06625422345438903,
+     "rule60at10": 0.8
+    }
+   },
+   {
+    "jobId": "J_002375",
+    "title": "Technical Product Manager",
+    "relevantInPool": 8,
+    "qualifyingInPool": 186,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.8
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.9
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    }
+   },
+   {
+    "jobId": "J_001736",
+    "title": "Software Engineer",
+    "relevantInPool": 17,
+    "qualifyingInPool": 581,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.8
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    },
+    "hybrid": {
+     "recall10": 0.058823529411764705,
+     "ndcg10": 0.06625422345438903,
+     "rule60at10": 1
+    }
+   },
+   {
+    "jobId": "J_001583",
+    "title": "BI Analyst",
+    "relevantInPool": 17,
+    "qualifyingInPool": 565,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.9
+    },
+    "bm25": {
+     "recall10": 0.058823529411764705,
+     "ndcg10": 0.06625422345438903,
+     "rule60at10": 0.7
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.9
+    }
+   },
+   {
+    "jobId": "J_001038",
+    "title": "BI Analyst",
+    "relevantInPool": 16,
+    "qualifyingInPool": 581,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    }
+   },
+   {
+    "jobId": "J_000234",
+    "title": "Business Analyst",
+    "relevantInPool": 19,
+    "qualifyingInPool": 405,
+    "semantic": {
+     "recall10": 0.05263157894736842,
+     "ndcg10": 0.07839826897867533,
+     "rule60at10": 0.9
+    },
+    "bm25": {
+     "recall10": 0.05263157894736842,
+     "ndcg10": 0.08514311764162098,
+     "rule60at10": 1
+    },
+    "hybrid": {
+     "recall10": 0.05263157894736842,
+     "ndcg10": 0.13886244387355454,
+     "rule60at10": 0.9
+    }
+   },
+   {
+    "jobId": "J_000675",
+    "title": "Customer Support Specialist",
+    "relevantInPool": 5,
+    "qualifyingInPool": 207,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.8
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.9
+    }
+   },
+   {
+    "jobId": "J_001091",
+    "title": "Full Stack Engineer",
+    "relevantInPool": 21,
+    "qualifyingInPool": 426,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.9
+    },
+    "bm25": {
+     "recall10": 0.047619047619047616,
+     "ndcg10": 0.06625422345438903,
+     "rule60at10": 0.9
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.9
+    }
+   },
+   {
+    "jobId": "J_000867",
+    "title": "Full Stack Engineer",
+    "relevantInPool": 14,
+    "qualifyingInPool": 618,
+    "semantic": {
+     "recall10": 0.07142857142857142,
+     "ndcg10": 0.22009176629808017,
+     "rule60at10": 0.8
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    },
+    "hybrid": {
+     "recall10": 0.07142857142857142,
+     "ndcg10": 0.13886244387355454,
+     "rule60at10": 1
+    }
+   },
+   {
+    "jobId": "J_001778",
+    "title": "Customer Success Associate",
+    "relevantInPool": 5,
+    "qualifyingInPool": 139,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    }
+   },
+   {
+    "jobId": "J_001306",
+    "title": "Business Analyst",
+    "relevantInPool": 19,
+    "qualifyingInPool": 534,
+    "semantic": {
+     "recall10": 0.05263157894736842,
+     "ndcg10": 0.22009176629808017,
+     "rule60at10": 1
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    },
+    "hybrid": {
+     "recall10": 0.05263157894736842,
+     "ndcg10": 0.08514311764162098,
+     "rule60at10": 1
+    }
+   },
+   {
+    "jobId": "J_001281",
+    "title": "Technical Product Manager",
+    "relevantInPool": 6,
+    "qualifyingInPool": 191,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    },
+    "hybrid": {
+     "recall10": 0.16666666666666666,
+     "ndcg10": 0.0874717141014082,
+     "rule60at10": 1
+    }
+   },
+   {
+    "jobId": "J_000204",
+    "title": "Technical Product Manager",
+    "relevantInPool": 9,
+    "qualifyingInPool": 187,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.5
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.9
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.9
+    }
+   },
+   {
+    "jobId": "J_001138",
+    "title": "Customer Success Associate",
+    "relevantInPool": 5,
+    "qualifyingInPool": 190,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.9
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    }
+   },
+   {
+    "jobId": "J_001004",
+    "title": "Customer Support Specialist",
+    "relevantInPool": 7,
+    "qualifyingInPool": 193,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.9
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    }
+   },
+   {
+    "jobId": "J_001326",
+    "title": "Customer Success Associate",
+    "relevantInPool": 11,
+    "qualifyingInPool": 153,
+    "semantic": {
+     "recall10": 0.09090909090909091,
+     "ndcg10": 0.07839826897867533,
+     "rule60at10": 0.9
+    },
+    "bm25": {
+     "recall10": 0.09090909090909091,
+     "ndcg10": 0.13886244387355454,
+     "rule60at10": 1
+    },
+    "hybrid": {
+     "recall10": 0.18181818181818182,
+     "ndcg10": 0.18340980524840012,
+     "rule60at10": 1
+    }
+   },
+   {
+    "jobId": "J_001247",
+    "title": "Business Analyst",
+    "relevantInPool": 19,
+    "qualifyingInPool": 546,
+    "semantic": {
+     "recall10": 0.05263157894736842,
+     "ndcg10": 0.13886244387355454,
+     "rule60at10": 0.9
+    },
+    "bm25": {
+     "recall10": 0.05263157894736842,
+     "ndcg10": 0.06625422345438903,
+     "rule60at10": 1
+    },
+    "hybrid": {
+     "recall10": 0.05263157894736842,
+     "ndcg10": 0.07336392209936005,
+     "rule60at10": 1
+    }
+   },
+   {
+    "jobId": "J_000194",
+    "title": "BI Analyst",
+    "relevantInPool": 19,
+    "qualifyingInPool": 387,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.7
+    },
+    "bm25": {
+     "recall10": 0.05263157894736842,
+     "ndcg10": 0.13886244387355454,
+     "rule60at10": 0.9
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.9
+    }
+   },
+   {
+    "jobId": "J_000003",
+    "title": "Full Stack Engineer",
+    "relevantInPool": 22,
+    "qualifyingInPool": 437,
+    "semantic": {
+     "recall10": 0.045454545454545456,
+     "ndcg10": 0.07336392209936005,
+     "rule60at10": 1
+    },
+    "bm25": {
+     "recall10": 0.045454545454545456,
+     "ndcg10": 0.09478836436955078,
+     "rule60at10": 1
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    }
+   },
+   {
+    "jobId": "J_001665",
+    "title": "BI Analyst",
+    "relevantInPool": 13,
+    "qualifyingInPool": 549,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.9
+    },
+    "bm25": {
+     "recall10": 0.07692307692307693,
+     "ndcg10": 0.11004588314904008,
+     "rule60at10": 1
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    }
+   },
+   {
+    "jobId": "J_001712",
+    "title": "Software Engineer",
+    "relevantInPool": 17,
+    "qualifyingInPool": 606,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.7
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.9
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.9
+    }
+   },
+   {
+    "jobId": "J_001929",
+    "title": "Technical Support Specialist",
+    "relevantInPool": 5,
+    "qualifyingInPool": 148,
+    "semantic": {
+     "recall10": 0.4,
+     "ndcg10": 0.2591217516005785,
+     "rule60at10": 0.9
+    },
+    "bm25": {
+     "recall10": 0.2,
+     "ndcg10": 0.14606834984270645,
+     "rule60at10": 1
+    },
+    "hybrid": {
+     "recall10": 0.4,
+     "ndcg10": 0.31608365985743925,
+     "rule60at10": 1
+    }
+   },
+   {
+    "jobId": "J_000211",
+    "title": "BI Analyst",
+    "relevantInPool": 21,
+    "qualifyingInPool": 541,
+    "semantic": {
+     "recall10": 0.047619047619047616,
+     "ndcg10": 0.11004588314904008,
+     "rule60at10": 0.9
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.9
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    }
+   },
+   {
+    "jobId": "J_001325",
+    "title": "BI Analyst",
+    "relevantInPool": 18,
+    "qualifyingInPool": 586,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    },
+    "hybrid": {
+     "recall10": 0.05555555555555555,
+     "ndcg10": 0.09478836436955078,
+     "rule60at10": 1
+    }
+   },
+   {
+    "jobId": "J_000083",
+    "title": "Software Engineer",
+    "relevantInPool": 15,
+    "qualifyingInPool": 615,
+    "semantic": {
+     "recall10": 0.06666666666666667,
+     "ndcg10": 0.07336392209936005,
+     "rule60at10": 0.8
+    },
+    "bm25": {
+     "recall10": 0.06666666666666667,
+     "ndcg10": 0.06943122193677727,
+     "rule60at10": 1
+    },
+    "hybrid": {
+     "recall10": 0.06666666666666667,
+     "ndcg10": 0.22009176629808017,
+     "rule60at10": 1
+    }
+   },
+   {
+    "jobId": "J_002482",
+    "title": "Business Analyst",
+    "relevantInPool": 17,
+    "qualifyingInPool": 554,
+    "semantic": {
+     "recall10": 0.058823529411764705,
+     "ndcg10": 0.22009176629808017,
+     "rule60at10": 0.9
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    },
+    "hybrid": {
+     "recall10": 0.11764705882352941,
+     "ndcg10": 0.1487639058405727,
+     "rule60at10": 1
+    }
+   },
+   {
+    "jobId": "J_000726",
+    "title": "Associate Product Manager",
+    "relevantInPool": 9,
+    "qualifyingInPool": 141,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.7
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.9
+    }
+   },
+   {
+    "jobId": "J_001175",
+    "title": "Customer Success Associate",
+    "relevantInPool": 7,
+    "qualifyingInPool": 200,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    }
+   },
+   {
+    "jobId": "J_002098",
+    "title": "Product Manager",
+    "relevantInPool": 7,
+    "qualifyingInPool": 194,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    }
+   },
+   {
+    "jobId": "J_001254",
+    "title": "Customer Support Specialist",
+    "relevantInPool": 9,
+    "qualifyingInPool": 174,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    },
+    "bm25": {
+     "recall10": 0.1111111111111111,
+     "ndcg10": 0.08372491399919346,
+     "rule60at10": 0.9
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.8
+    }
+   },
+   {
+    "jobId": "J_001090",
+    "title": "Backend Engineer",
+    "relevantInPool": 17,
+    "qualifyingInPool": 455,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.8
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.9
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.9
+    }
+   },
+   {
+    "jobId": "J_001722",
+    "title": "Associate Product Manager",
+    "relevantInPool": 7,
+    "qualifyingInPool": 174,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.9
+    },
+    "bm25": {
+     "recall10": 0.14285714285714285,
+     "ndcg10": 0.27487633291429087,
+     "rule60at10": 1
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    }
+   },
+   {
+    "jobId": "J_000135",
+    "title": "Associate Product Manager",
+    "relevantInPool": 6,
+    "qualifyingInPool": 137,
+    "semantic": {
+     "recall10": 0.16666666666666666,
+     "ndcg10": 0.11706259313796354,
+     "rule60at10": 0.8
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.9
+    },
+    "hybrid": {
+     "recall10": 0.16666666666666666,
+     "ndcg10": 0.15130120674940672,
+     "rule60at10": 1
+    }
+   },
+   {
+    "jobId": "J_002438",
+    "title": "Software Engineer",
+    "relevantInPool": 18,
+    "qualifyingInPool": 569,
+    "semantic": {
+     "recall10": 0.05555555555555555,
+     "ndcg10": 0.06943122193677727,
+     "rule60at10": 0.8
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    }
+   },
+   {
+    "jobId": "J_000239",
+    "title": "Backend Engineer",
+    "relevantInPool": 18,
+    "qualifyingInPool": 569,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.7
+    },
+    "bm25": {
+     "recall10": 0.05555555555555555,
+     "ndcg10": 0.13886244387355454,
+     "rule60at10": 1
+    },
+    "hybrid": {
+     "recall10": 0.05555555555555555,
+     "ndcg10": 0.09478836436955078,
+     "rule60at10": 0.9
+    }
+   },
+   {
+    "jobId": "J_000246",
+    "title": "Associate Product Manager",
+    "relevantInPool": 6,
+    "qualifyingInPool": 180,
+    "semantic": {
+     "recall10": 0.16666666666666666,
+     "ndcg10": 0.13032376591037062,
+     "rule60at10": 0.9
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    }
+   },
+   {
+    "jobId": "J_000934",
+    "title": "Backend Engineer",
+    "relevantInPool": 19,
+    "qualifyingInPool": 625,
+    "semantic": {
+     "recall10": 0.05263157894736842,
+     "ndcg10": 0.06362078819895171,
+     "rule60at10": 1
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.9
+    },
+    "hybrid": {
+     "recall10": 0.05263157894736842,
+     "ndcg10": 0.08514311764162098,
+     "rule60at10": 0.9
+    }
+   },
+   {
+    "jobId": "J_002437",
+    "title": "BI Analyst",
+    "relevantInPool": 14,
+    "qualifyingInPool": 548,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.8
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    }
+   },
+   {
+    "jobId": "J_000087",
+    "title": "Customer Support Specialist",
+    "relevantInPool": 9,
+    "qualifyingInPool": 193,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    }
+   },
+   {
+    "jobId": "J_000115",
+    "title": "Business Analyst",
+    "relevantInPool": 17,
+    "qualifyingInPool": 539,
+    "semantic": {
+     "recall10": 0.058823529411764705,
+     "ndcg10": 0.11004588314904008,
+     "rule60at10": 0.9
+    },
+    "bm25": {
+     "recall10": 0.058823529411764705,
+     "ndcg10": 0.11004588314904008,
+     "rule60at10": 1
+    },
+    "hybrid": {
+     "recall10": 0.058823529411764705,
+     "ndcg10": 0.22009176629808017,
+     "rule60at10": 1
+    }
+   },
+   {
+    "jobId": "J_000192",
+    "title": "Product Manager",
+    "relevantInPool": 7,
+    "qualifyingInPool": 170,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.8
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    }
+   },
+   {
+    "jobId": "J_002084",
+    "title": "Backend Engineer",
+    "relevantInPool": 15,
+    "qualifyingInPool": 568,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.9
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    }
+   },
+   {
+    "jobId": "J_000108",
+    "title": "Business Analyst",
+    "relevantInPool": 16,
+    "qualifyingInPool": 387,
+    "semantic": {
+     "recall10": 0.1875,
+     "ndcg10": 0.3714891073940902,
+     "rule60at10": 0.9
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.9
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.9
+    }
+   },
+   {
+    "jobId": "J_000648",
+    "title": "Backend Engineer",
+    "relevantInPool": 16,
+    "qualifyingInPool": 419,
+    "semantic": {
+     "recall10": 0.0625,
+     "ndcg10": 0.22009176629808017,
+     "rule60at10": 0.7
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    },
+    "hybrid": {
+     "recall10": 0.125,
+     "ndcg10": 0.1487639058405727,
+     "rule60at10": 0.9
+    }
+   },
+   {
+    "jobId": "J_002287",
+    "title": "Software Engineer",
+    "relevantInPool": 21,
+    "qualifyingInPool": 424,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.9
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.9
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.7
+    }
+   },
+   {
+    "jobId": "J_001160",
+    "title": "Technical Product Manager",
+    "relevantInPool": 5,
+    "qualifyingInPool": 192,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.8
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    }
+   },
+   {
+    "jobId": "J_002484",
+    "title": "Data Analyst",
+    "relevantInPool": 20,
+    "qualifyingInPool": 531,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.7
+    },
+    "bm25": {
+     "recall10": 0.05,
+     "ndcg10": 0.13886244387355454,
+     "rule60at10": 1
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    }
+   },
+   {
+    "jobId": "J_001236",
+    "title": "Data Analyst",
+    "relevantInPool": 17,
+    "qualifyingInPool": 399,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.8
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.6
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.6
+    }
+   },
+   {
+    "jobId": "J_001135",
+    "title": "Product Manager",
+    "relevantInPool": 8,
+    "qualifyingInPool": 179,
+    "semantic": {
+     "recall10": 0.125,
+     "ndcg10": 0.10893649261775588,
+     "rule60at10": 0.8
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    },
+    "hybrid": {
+     "recall10": 0.125,
+     "ndcg10": 0.07979453856244817,
+     "rule60at10": 1
+    }
+   },
+   {
+    "jobId": "J_002491",
+    "title": "Backend Engineer",
+    "relevantInPool": 17,
+    "qualifyingInPool": 610,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.9
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    },
+    "hybrid": {
+     "recall10": 0.058823529411764705,
+     "ndcg10": 0.06943122193677727,
+     "rule60at10": 1
+    }
+   },
+   {
+    "jobId": "J_000985",
+    "title": "Full Stack Engineer",
+    "relevantInPool": 16,
+    "qualifyingInPool": 563,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.9
+    },
+    "bm25": {
+     "recall10": 0.0625,
+     "ndcg10": 0.22009176629808017,
+     "rule60at10": 1
+    },
+    "hybrid": {
+     "recall10": 0.0625,
+     "ndcg10": 0.11004588314904008,
+     "rule60at10": 1
+    }
+   },
+   {
+    "jobId": "J_000126",
+    "title": "Data Analyst",
+    "relevantInPool": 15,
+    "qualifyingInPool": 407,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.7
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    }
+   },
+   {
+    "jobId": "J_000091",
+    "title": "Full Stack Engineer",
+    "relevantInPool": 13,
+    "qualifyingInPool": 423,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.9
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    }
+   },
+   {
+    "jobId": "J_000850",
+    "title": "Business Analyst",
+    "relevantInPool": 15,
+    "qualifyingInPool": 405,
+    "semantic": {
+     "recall10": 0.06666666666666667,
+     "ndcg10": 0.07839826897867533,
+     "rule60at10": 0.8
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.9
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.9
+    }
+   },
+   {
+    "jobId": "J_000608",
+    "title": "Business Analyst",
+    "relevantInPool": 19,
+    "qualifyingInPool": 513,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.9
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    }
+   },
+   {
+    "jobId": "J_001249",
+    "title": "Associate Product Manager",
+    "relevantInPool": 5,
+    "qualifyingInPool": 175,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.7
+    },
+    "bm25": {
+     "recall10": 0.2,
+     "ndcg10": 0.14606834984270645,
+     "rule60at10": 0.9
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.9
+    }
+   },
+   {
+    "jobId": "J_000890",
+    "title": "Technical Support Specialist",
+    "relevantInPool": 8,
+    "qualifyingInPool": 198,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    }
+   },
+   {
+    "jobId": "J_001227",
+    "title": "Technical Support Specialist",
+    "relevantInPool": 6,
+    "qualifyingInPool": 143,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.4
+    },
+    "bm25": {
+     "recall10": 0.16666666666666666,
+     "ndcg10": 0.15130120674940672,
+     "rule60at10": 0.9
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.7
+    }
+   },
+   {
+    "jobId": "J_000045",
+    "title": "BI Analyst",
+    "relevantInPool": 20,
+    "qualifyingInPool": 565,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.8
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.9
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    }
+   },
+   {
+    "jobId": "J_001001",
+    "title": "Full Stack Engineer",
+    "relevantInPool": 13,
+    "qualifyingInPool": 602,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.7
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.9
+    }
+   },
+   {
+    "jobId": "J_001715",
+    "title": "Customer Support Specialist",
+    "relevantInPool": 8,
+    "qualifyingInPool": 179,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.6
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.9
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.9
+    }
+   },
+   {
+    "jobId": "J_001347",
+    "title": "Software Engineer",
+    "relevantInPool": 16,
+    "qualifyingInPool": 625,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    }
+   },
+   {
+    "jobId": "J_000196",
+    "title": "Software Engineer",
+    "relevantInPool": 18,
+    "qualifyingInPool": 433,
+    "semantic": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 1
+    },
+    "bm25": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.8
+    },
+    "hybrid": {
+     "recall10": 0,
+     "ndcg10": 0,
+     "rule60at10": 0.9
+    }
+   }
+  ],
+  "note": "The dataset labels 30 resumes per job out of all that pass its own rule (>=60% must-have skill overlap). In our pool a job has on average 384.46 qualifying resumes but only 13.04 labelled ones, so Recall@10 and nDCG@10 against the labels are capped low for every method. rule60at10 applies the dataset's own rule to each method's top 10 and is label-complete.",
+  "elapsedMs": 2019
+ },
+ "planted": {
+  "cases": [
+   {
+    "jdId": "jd01",
+    "title": "Senior Backend Engineer, Retrieval Platform",
+    "relevant": [
+     "c122",
+     "c156",
+     "c066",
+     "c002",
+     "c049"
+    ],
+    "stuffers": [
+     "c127",
+     "c130",
+     "c178"
+    ],
+    "hiddenGems": [
+     "c122",
+     "c002",
+     "c049"
+    ],
+    "semantic": {
+     "top10": [
+      "c127",
+      "c178",
+      "c130",
+      "c049",
+      "c122",
+      "c156",
+      "R_009522",
+      "R_003385",
+      "R_007420",
+      "R_008819"
+     ],
+     "p5": 0.4,
+     "r10": 0.6,
+     "ndcg5": 0.277,
+     "stuffersInTop5": 3,
+     "gemsInTop5": 2
+    },
+    "semanticSplit": {
+     "top10": [
+      "R_003898",
+      "R_005258",
+      "R_008431",
+      "R_005572",
+      "R_002905",
+      "R_005176",
+      "R_008208",
+      "R_005179",
+      "R_006706",
+      "R_009277"
+     ],
+     "p5": 0,
+     "r10": 0,
+     "ndcg5": 0,
+     "stuffersInTop5": 0,
+     "gemsInTop5": 0
+    },
+    "bm25": {
+     "top10": [
+      "c178",
+      "c130",
+      "c127",
+      "c049",
+      "c122",
+      "c156",
+      "c066",
+      "c124",
+      "c023",
+      "c059"
+     ],
+     "p5": 0.4,
+     "r10": 0.8,
+     "ndcg5": 0.277,
+     "stuffersInTop5": 3,
+     "gemsInTop5": 2
+    },
+    "judged": {
+     "semantic": {
+      "top10": [
+       "c127",
+       "c178",
+       "c130",
+       "c049",
+       "c122",
+       "c156",
+       "c002",
+       "c124",
+       "c066",
+       "c134"
+      ],
+      "p5": 0.4,
+      "r10": 1,
+      "ndcg5": 0.277,
+      "stuffersInTop5": 3,
+      "gemsInTop5": 2
+     },
+     "semanticSplit": {
+      "top10": [
+       "c049",
+       "c156",
+       "c122",
+       "c178",
+       "c127",
+       "c130",
+       "c066",
+       "c002",
+       "c124",
+       "c023"
+      ],
+      "p5": 0.6,
+      "r10": 1,
+      "ndcg5": 0.723,
+      "stuffersInTop5": 2,
+      "gemsInTop5": 2
+     },
+     "bm25": {
+      "top10": [
+       "c178",
+       "c130",
+       "c127",
+       "c027",
+       "c122",
+       "c049",
+       "c066",
+       "c032",
+       "c156",
+       "c144"
+      ],
+      "p5": 0.2,
+      "r10": 0.8,
+      "ndcg5": 0.131,
+      "stuffersInTop5": 3,
+      "gemsInTop5": 1
+     }
+    }
+   },
+   {
+    "jdId": "jd02",
+    "title": "Frontend Engineer, Design Systems",
+    "relevant": [
+     "c079",
+     "c034",
+     "c047",
+     "c154",
+     "c108",
+     "c006"
+    ],
+    "stuffers": [
+     "c155",
+     "c056",
+     "c070"
+    ],
+    "hiddenGems": [
+     "c079"
+    ],
+    "semantic": {
+     "top10": [
+      "c056",
+      "c155",
+      "c070",
+      "R_009553",
+      "R_001119",
+      "R_002193",
+      "c108",
+      "R_002484",
+      "R_001880",
+      "R_003896"
+     ],
+     "p5": 0,
+     "r10": 0.167,
+     "ndcg5": 0,
+     "stuffersInTop5": 3,
+     "gemsInTop5": 0
+    },
+    "semanticSplit": {
+     "top10": [
+      "R_007043",
+      "R_009757",
+      "R_005179",
+      "R_003275",
+      "R_003898",
+      "c070",
+      "R_008666",
+      "c056",
+      "R_002193",
+      "R_007143"
+     ],
+     "p5": 0,
+     "r10": 0,
+     "ndcg5": 0,
+     "stuffersInTop5": 0,
+     "gemsInTop5": 0
+    },
+    "bm25": {
+     "top10": [
+      "c155",
+      "c056",
+      "c070",
+      "c154",
+      "c006",
+      "c108",
+      "c047",
+      "c079",
+      "c164",
+      "c106"
+     ],
+     "p5": 0.4,
+     "r10": 0.833,
+     "ndcg5": 0.277,
+     "stuffersInTop5": 3,
+     "gemsInTop5": 0
+    },
+    "judged": {
+     "semantic": {
+      "top10": [
+       "c056",
+       "c155",
+       "c070",
+       "c108",
+       "c047",
+       "c034",
+       "c006",
+       "c154",
+       "c117",
+       "c079"
+      ],
+      "p5": 0.4,
+      "r10": 1,
+      "ndcg5": 0.277,
+      "stuffersInTop5": 3,
+      "gemsInTop5": 0
+     },
+     "semanticSplit": {
+      "top10": [
+       "c070",
+       "c056",
+       "c006",
+       "c047",
+       "c034",
+       "c155",
+       "c170",
+       "c029",
+       "c105",
+       "c123"
+      ],
+      "p5": 0.6,
+      "r10": 0.5,
+      "ndcg5": 0.447,
+      "stuffersInTop5": 2,
+      "gemsInTop5": 0
+     },
+     "bm25": {
+      "top10": [
+       "c056",
+       "c155",
+       "c070",
+       "c154",
+       "c006",
+       "c108",
+       "c047",
+       "c079",
+       "c164",
+       "c012"
+      ],
+      "p5": 0.4,
+      "r10": 0.833,
+      "ndcg5": 0.277,
+      "stuffersInTop5": 3,
+      "gemsInTop5": 0
+     }
+    }
+   },
+   {
+    "jdId": "jd03",
+    "title": "ML Platform Engineer",
+    "relevant": [
+     "c161",
+     "c160",
+     "c043",
+     "c147"
+    ],
+    "stuffers": [
+     "c089",
+     "c042",
+     "c141"
+    ],
+    "hiddenGems": [
+     "c161",
+     "c160",
+     "c147"
+    ],
+    "semantic": {
+     "top10": [
+      "c089",
+      "c141",
+      "c042",
+      "R_002410",
+      "c016",
+      "R_009522",
+      "R_005071",
+      "R_006595",
+      "R_004994",
+      "R_003592"
+     ],
+     "p5": 0,
+     "r10": 0,
+     "ndcg5": 0,
+     "stuffersInTop5": 3,
+     "gemsInTop5": 0
+    },
+    "semanticSplit": {
+     "top10": [
+      "c141",
+      "c089",
+      "c042",
+      "R_009522",
+      "R_008231",
+      "R_007263",
+      "R_005176",
+      "R_006706",
+      "R_007143",
+      "R_001874"
+     ],
+     "p5": 0,
+     "r10": 0,
+     "ndcg5": 0,
+     "stuffersInTop5": 3,
+     "gemsInTop5": 0
+    },
+    "bm25": {
+     "top10": [
+      "c042",
+      "c141",
+      "c089",
+      "c024",
+      "c054",
+      "c074",
+      "c100",
+      "c026",
+      "c077",
+      "c112"
+     ],
+     "p5": 0,
+     "r10": 0,
+     "ndcg5": 0,
+     "stuffersInTop5": 3,
+     "gemsInTop5": 0
+    },
+    "judged": {
+     "semantic": {
+      "top10": [
+       "c089",
+       "c141",
+       "c042",
+       "c016",
+       "c030",
+       "c176",
+       "c023",
+       "c005",
+       "c178",
+       "c043"
+      ],
+      "p5": 0,
+      "r10": 0.25,
+      "ndcg5": 0,
+      "stuffersInTop5": 3,
+      "gemsInTop5": 0
+     },
+     "semanticSplit": {
+      "top10": [
+       "c141",
+       "c089",
+       "c042",
+       "c176",
+       "c043",
+       "c016",
+       "c005",
+       "c032",
+       "c041",
+       "c023"
+      ],
+      "p5": 0.2,
+      "r10": 0.25,
+      "ndcg5": 0.151,
+      "stuffersInTop5": 3,
+      "gemsInTop5": 0
+     },
+     "bm25": {
+      "top10": [
+       "c042",
+       "c141",
+       "c089",
+       "c024",
+       "c054",
+       "c074",
+       "c100",
+       "c077",
+       "c020",
+       "c026"
+      ],
+      "p5": 0,
+      "r10": 0,
+      "ndcg5": 0,
+      "stuffersInTop5": 3,
+      "gemsInTop5": 0
+     }
+    }
+   },
+   {
+    "jdId": "jd04",
+    "title": "Data Engineer",
+    "relevant": [
+     "c030",
+     "c118",
+     "c171",
+     "c051",
+     "c016",
+     "c041"
+    ],
+    "stuffers": [
+     "c177",
+     "c169",
+     "c135"
+    ],
+    "hiddenGems": [
+     "c030",
+     "c118",
+     "c041"
+    ],
+    "semantic": {
+     "top10": [
+      "c177",
+      "c135",
+      "c169",
+      "c030",
+      "R_005044",
+      "c041",
+      "c051",
+      "c171",
+      "R_003806",
+      "c016"
+     ],
+     "p5": 0.2,
+     "r10": 0.833,
+     "ndcg5": 0.146,
+     "stuffersInTop5": 3,
+     "gemsInTop5": 1
+    },
+    "semanticSplit": {
+     "top10": [
+      "R_005044",
+      "R_004020",
+      "R_006307",
+      "R_000762",
+      "R_001204",
+      "c177",
+      "R_008734",
+      "c169",
+      "R_004510",
+      "R_006551"
+     ],
+     "p5": 0,
+     "r10": 0,
+     "ndcg5": 0,
+     "stuffersInTop5": 0,
+     "gemsInTop5": 0
+    },
+    "bm25": {
+     "top10": [
+      "c135",
+      "c177",
+      "c169",
+      "c163",
+      "c132",
+      "c011",
+      "c025",
+      "c064",
+      "R_004873",
+      "R_005685"
+     ],
+     "p5": 0,
+     "r10": 0,
+     "ndcg5": 0,
+     "stuffersInTop5": 3,
+     "gemsInTop5": 0
+    },
+    "judged": {
+     "semantic": {
+      "top10": [
+       "c177",
+       "c135",
+       "c169",
+       "c030",
+       "c041",
+       "c051",
+       "c171",
+       "c016",
+       "c118",
+       "c178"
+      ],
+      "p5": 0.4,
+      "r10": 1,
+      "ndcg5": 0.277,
+      "stuffersInTop5": 3,
+      "gemsInTop5": 2
+     },
+     "semanticSplit": {
+      "top10": [
+       "c177",
+       "c169",
+       "c135",
+       "c030",
+       "c118",
+       "c041",
+       "c100",
+       "c023",
+       "c178",
+       "c176"
+      ],
+      "p5": 0.4,
+      "r10": 0.5,
+      "ndcg5": 0.277,
+      "stuffersInTop5": 3,
+      "gemsInTop5": 2
+     },
+     "bm25": {
+      "top10": [
+       "c135",
+       "c177",
+       "c169",
+       "c163",
+       "c132",
+       "c011",
+       "c025",
+       "c064",
+       "c102",
+       "c145"
+      ],
+      "p5": 0,
+      "r10": 0,
+      "ndcg5": 0,
+      "stuffersInTop5": 3,
+      "gemsInTop5": 0
+     }
+    }
+   },
+   {
+    "jdId": "jd05",
+    "title": "iOS Engineer",
+    "relevant": [
+     "c119",
+     "c158",
+     "c126",
+     "c075"
+    ],
+    "stuffers": [
+     "c112",
+     "c026",
+     "c104"
+    ],
+    "hiddenGems": [
+     "c119",
+     "c158"
+    ],
+    "semantic": {
+     "top10": [
+      "c026",
+      "c112",
+      "c119",
+      "c104",
+      "c126",
+      "c075",
+      "c158",
+      "R_008990",
+      "R_008819",
+      "R_002883"
+     ],
+     "p5": 0.4,
+     "r10": 1,
+     "ndcg5": 0.346,
+     "stuffersInTop5": 3,
+     "gemsInTop5": 1
+    },
+    "semanticSplit": {
+     "top10": [
+      "c026",
+      "c126",
+      "R_008819",
+      "c075",
+      "R_003275",
+      "R_009931",
+      "c119",
+      "R_008785",
+      "R_002973",
+      "R_005643"
+     ],
+     "p5": 0.4,
+     "r10": 0.75,
+     "ndcg5": 0.414,
+     "stuffersInTop5": 1,
+     "gemsInTop5": 0
+    },
+    "bm25": {
+     "top10": [
+      "c026",
+      "c112",
+      "c104",
+      "c170",
+      "c097",
+      "c105",
+      "c152",
+      "c029",
+      "c036",
+      "c062"
+     ],
+     "p5": 0,
+     "r10": 0,
+     "ndcg5": 0,
+     "stuffersInTop5": 3,
+     "gemsInTop5": 0
+    },
+    "judged": {
+     "semantic": {
+      "top10": [
+       "c026",
+       "c112",
+       "c119",
+       "c104",
+       "c126",
+       "c075",
+       "c158",
+       "c069",
+       "c090",
+       "c100"
+      ],
+      "p5": 0.4,
+      "r10": 1,
+      "ndcg5": 0.346,
+      "stuffersInTop5": 3,
+      "gemsInTop5": 1
+     },
+     "semanticSplit": {
+      "top10": [
+       "c026",
+       "c126",
+       "c075",
+       "c119",
+       "c104",
+       "c158",
+       "c112",
+       "c069",
+       "c090",
+       "c100"
+      ],
+      "p5": 0.6,
+      "r10": 1,
+      "ndcg5": 0.61,
+      "stuffersInTop5": 2,
+      "gemsInTop5": 1
+     },
+     "bm25": {
+      "top10": [
+       "c026",
+       "c112",
+       "c104",
+       "c089",
+       "c042",
+       "c141",
+       "c100",
+       "c170",
+       "c020",
+       "c097"
+      ],
+      "p5": 0,
+      "r10": 0,
+      "ndcg5": 0,
+      "stuffersInTop5": 3,
+      "gemsInTop5": 0
+     }
+    }
+   },
+   {
+    "jdId": "jd06",
+    "title": "Site Reliability Engineer",
+    "relevant": [
+     "c167",
+     "c069",
+     "c145",
+     "c015"
+    ],
+    "stuffers": [
+     "c008",
+     "c153",
+     "c037"
+    ],
+    "hiddenGems": [
+     "c167",
+     "c145"
+    ],
+    "semantic": {
+     "top10": [
+      "c008",
+      "c153",
+      "c037",
+      "R_005369",
+      "R_000823",
+      "R_003949",
+      "R_001806",
+      "R_009302",
+      "R_000391",
+      "R_002275"
+     ],
+     "p5": 0,
+     "r10": 0,
+     "ndcg5": 0,
+     "stuffersInTop5": 3,
+     "gemsInTop5": 0
+    },
+    "semanticSplit": {
+     "top10": [
+      "c008",
+      "c153",
+      "c037",
+      "R_001651",
+      "R_005369",
+      "R_009302",
+      "R_000165",
+      "R_000823",
+      "R_002275",
+      "R_008727"
+     ],
+     "p5": 0,
+     "r10": 0,
+     "ndcg5": 0,
+     "stuffersInTop5": 3,
+     "gemsInTop5": 0
+    },
+    "bm25": {
+     "top10": [
+      "c153",
+      "c008",
+      "c037",
+      "c079",
+      "c034",
+      "c108",
+      "R_001192",
+      "R_003568",
+      "R_004957",
+      "R_006199"
+     ],
+     "p5": 0,
+     "r10": 0,
+     "ndcg5": 0,
+     "stuffersInTop5": 3,
+     "gemsInTop5": 0
+    },
+    "judged": {
+     "semantic": {
+      "top10": [
+       "c008",
+       "c153",
+       "c037",
+       "c145",
+       "c001",
+       "c013",
+       "c124",
+       "c173",
+       "c096",
+       "c067"
+      ],
+      "p5": 0.2,
+      "r10": 0.25,
+      "ndcg5": 0.168,
+      "stuffersInTop5": 3,
+      "gemsInTop5": 1
+     },
+     "semanticSplit": {
+      "top10": [
+       "c008",
+       "c153",
+       "c037",
+       "c013",
+       "c107",
+       "c162",
+       "c122",
+       "c005",
+       "c045",
+       "c043"
+      ],
+      "p5": 0,
+      "r10": 0,
+      "ndcg5": 0,
+      "stuffersInTop5": 3,
+      "gemsInTop5": 0
+     },
+     "bm25": {
+      "top10": [
+       "c153",
+       "c008",
+       "c037",
+       "c079",
+       "c034",
+       "c108",
+       "c047",
+       "c071",
+       "c101",
+       "c045"
+      ],
+      "p5": 0,
+      "r10": 0,
+      "ndcg5": 0,
+      "stuffersInTop5": 3,
+      "gemsInTop5": 0
+     }
+    }
+   },
+   {
+    "jdId": "jd07",
+    "title": "Application Security Engineer",
+    "relevant": [
+     "c102",
+     "c055",
+     "c099",
+     "c140",
+     "c065",
+     "c159"
+    ],
+    "stuffers": [
+     "c093",
+     "c091",
+     "c116"
+    ],
+    "hiddenGems": [
+     "c102",
+     "c055",
+     "c099",
+     "c065",
+     "c159"
+    ],
+    "semantic": {
+     "top10": [
+      "c093",
+      "c116",
+      "c091",
+      "R_005662",
+      "R_009302",
+      "R_000227",
+      "R_002130",
+      "R_003582",
+      "R_002238",
+      "R_006166"
+     ],
+     "p5": 0,
+     "r10": 0,
+     "ndcg5": 0,
+     "stuffersInTop5": 3,
+     "gemsInTop5": 0
+    },
+    "semanticSplit": {
+     "top10": [
+      "c093",
+      "c116",
+      "R_009302",
+      "R_005662",
+      "R_003582",
+      "R_002867",
+      "R_002130",
+      "R_002119",
+      "R_007935",
+      "R_005369"
+     ],
+     "p5": 0,
+     "r10": 0,
+     "ndcg5": 0,
+     "stuffersInTop5": 2,
+     "gemsInTop5": 0
+    },
+    "bm25": {
+     "top10": [
+      "c091",
+      "c116",
+      "c093",
+      "c041",
+      "c016",
+      "c118",
+      "c030",
+      "R_001250",
+      "c051",
+      "R_001120"
+     ],
+     "p5": 0,
+     "r10": 0,
+     "ndcg5": 0,
+     "stuffersInTop5": 3,
+     "gemsInTop5": 0
+    },
+    "judged": {
+     "semantic": {
+      "top10": [
+       "c093",
+       "c116",
+       "c091",
+       "c032",
+       "c055",
+       "c038",
+       "c070",
+       "c162",
+       "c065",
+       "c007"
+      ],
+      "p5": 0.2,
+      "r10": 0.333,
+      "ndcg5": 0.131,
+      "stuffersInTop5": 3,
+      "gemsInTop5": 1
+     },
+     "semanticSplit": {
+      "top10": [
+       "c093",
+       "c116",
+       "c091",
+       "c055",
+       "c159",
+       "c065",
+       "c007",
+       "c032",
+       "c162",
+       "c045"
+      ],
+      "p5": 0.4,
+      "r10": 0.5,
+      "ndcg5": 0.277,
+      "stuffersInTop5": 3,
+      "gemsInTop5": 2
+     },
+     "bm25": {
+      "top10": [
+       "c091",
+       "c116",
+       "c093",
+       "c123",
+       "c137",
+       "c032",
+       "c142",
+       "c041",
+       "c016",
+       "c118"
+      ],
+      "p5": 0,
+      "r10": 0,
+      "ndcg5": 0,
+      "stuffersInTop5": 3,
+      "gemsInTop5": 0
+     }
+    }
+   },
+   {
+    "jdId": "jd08",
+    "title": "Data Scientist, Experimentation",
+    "relevant": [
+     "c040",
+     "c117",
+     "c082",
+     "c009",
+     "c142"
+    ],
+    "stuffers": [
+     "c027",
+     "c144",
+     "c032"
+    ],
+    "hiddenGems": [
+     "c040",
+     "c117",
+     "c009"
+    ],
+    "semantic": {
+     "top10": [
+      "c027",
+      "c032",
+      "c144",
+      "R_005406",
+      "R_002342",
+      "R_007126",
+      "c082",
+      "R_003760",
+      "R_009437",
+      "R_007622"
+     ],
+     "p5": 0,
+     "r10": 0.2,
+     "ndcg5": 0,
+     "stuffersInTop5": 3,
+     "gemsInTop5": 0
+    },
+    "semanticSplit": {
+     "top10": [
+      "R_005406",
+      "R_003274",
+      "c032",
+      "R_007214",
+      "R_008407",
+      "R_007622",
+      "R_006688",
+      "R_003179",
+      "R_002250",
+      "R_000876"
+     ],
+     "p5": 0,
+     "r10": 0,
+     "ndcg5": 0,
+     "stuffersInTop5": 1,
+     "gemsInTop5": 0
+    },
+    "bm25": {
+     "top10": [
+      "c027",
+      "c032",
+      "c144",
+      "R_003716",
+      "c132",
+      "R_001006",
+      "R_006662",
+      "c064",
+      "c163",
+      "R_008976"
+     ],
+     "p5": 0,
+     "r10": 0,
+     "ndcg5": 0,
+     "stuffersInTop5": 3,
+     "gemsInTop5": 0
+    },
+    "judged": {
+     "semantic": {
+      "top10": [
+       "c027",
+       "c032",
+       "c144",
+       "c082",
+       "c117",
+       "c084",
+       "c142",
+       "c151",
+       "c130",
+       "c081"
+      ],
+      "p5": 0.4,
+      "r10": 0.6,
+      "ndcg5": 0.277,
+      "stuffersInTop5": 3,
+      "gemsInTop5": 1
+     },
+     "semanticSplit": {
+      "top10": [
+       "c032",
+       "c084",
+       "c144",
+       "c027",
+       "c082",
+       "c142",
+       "c029",
+       "c117",
+       "c036",
+       "c009"
+      ],
+      "p5": 0.2,
+      "r10": 0.8,
+      "ndcg5": 0.131,
+      "stuffersInTop5": 3,
+      "gemsInTop5": 0
+     },
+     "bm25": {
+      "top10": [
+       "c027",
+       "c032",
+       "c144",
+       "c169",
+       "c135",
+       "c177",
+       "c127",
+       "c178",
+       "c130",
+       "c145"
+      ],
+      "p5": 0,
+      "r10": 0,
+      "ndcg5": 0,
+      "stuffersInTop5": 3,
+      "gemsInTop5": 0
+     }
+    }
+   },
+   {
+    "jdId": "jd09",
+    "title": "Backend Engineer, Java Platform",
+    "relevant": [
+     "c028",
+     "c039",
+     "c138",
+     "c005",
+     "c086"
+    ],
+    "stuffers": [
+     "c157",
+     "c111",
+     "c046"
+    ],
+    "hiddenGems": [
+     "c028",
+     "c039",
+     "c138",
+     "c005",
+     "c086"
+    ],
+    "semantic": {
+     "top10": [
+      "c111",
+      "c157",
+      "c046",
+      "R_008600",
+      "R_005179",
+      "R_008479",
+      "R_005276",
+      "R_006845",
+      "R_006706",
+      "R_001479"
+     ],
+     "p5": 0,
+     "r10": 0,
+     "ndcg5": 0,
+     "stuffersInTop5": 3,
+     "gemsInTop5": 0
+    },
+    "semanticSplit": {
+     "top10": [
+      "R_003275",
+      "R_008666",
+      "R_005179",
+      "R_007212",
+      "R_009570",
+      "R_005276",
+      "R_003898",
+      "R_006706",
+      "R_009698",
+      "R_008208"
+     ],
+     "p5": 0,
+     "r10": 0,
+     "ndcg5": 0,
+     "stuffersInTop5": 0,
+     "gemsInTop5": 0
+    },
+    "bm25": {
+     "top10": [
+      "c111",
+      "c046",
+      "c157",
+      "c016",
+      "c028",
+      "c005",
+      "c086",
+      "c171",
+      "c118",
+      "c138"
+     ],
+     "p5": 0.2,
+     "r10": 0.8,
+     "ndcg5": 0.131,
+     "stuffersInTop5": 3,
+     "gemsInTop5": 1
+    },
+    "judged": {
+     "semantic": {
+      "top10": [
+       "c111",
+       "c157",
+       "c046",
+       "c005",
+       "c016",
+       "c028",
+       "c030",
+       "c171",
+       "c041",
+       "c138"
+      ],
+      "p5": 0.2,
+      "r10": 0.6,
+      "ndcg5": 0.146,
+      "stuffersInTop5": 3,
+      "gemsInTop5": 1
+     },
+     "semanticSplit": {
+      "top10": [
+       "c111",
+       "c157",
+       "c046",
+       "c005",
+       "c007",
+       "c138",
+       "c086",
+       "c131",
+       "c149",
+       "c162"
+      ],
+      "p5": 0.2,
+      "r10": 0.6,
+      "ndcg5": 0.146,
+      "stuffersInTop5": 3,
+      "gemsInTop5": 1
+     },
+     "bm25": {
+      "top10": [
+       "c111",
+       "c046",
+       "c157",
+       "c144",
+       "c016",
+       "c028",
+       "c005",
+       "c118",
+       "c138",
+       "c086"
+      ],
+      "p5": 0,
+      "r10": 0.8,
+      "ndcg5": 0,
+      "stuffersInTop5": 3,
+      "gemsInTop5": 0
+     }
+    }
+   },
+   {
+    "jdId": "jd10",
+    "title": "LLM Application Engineer",
+    "relevant": [
+     "c100",
+     "c162",
+     "c077",
+     "c020"
+    ],
+    "stuffers": [
+     "c131",
+     "c129",
+     "c060"
+    ],
+    "hiddenGems": [
+     "c100",
+     "c162"
+    ],
+    "semantic": {
+     "top10": [
+      "c131",
+      "c060",
+      "c129",
+      "R_000747",
+      "R_003410",
+      "R_005653",
+      "R_000664",
+      "R_004583",
+      "R_002202",
+      "R_006002"
+     ],
+     "p5": 0,
+     "r10": 0,
+     "ndcg5": 0,
+     "stuffersInTop5": 3,
+     "gemsInTop5": 0
+    },
+    "semanticSplit": {
+     "top10": [
+      "c129",
+      "c060",
+      "c131",
+      "R_003410",
+      "R_000747",
+      "R_003544",
+      "R_009469",
+      "R_008466",
+      "R_002202",
+      "R_006943"
+     ],
+     "p5": 0,
+     "r10": 0,
+     "ndcg5": 0,
+     "stuffersInTop5": 3,
+     "gemsInTop5": 0
+    },
+    "bm25": {
+     "top10": [
+      "c129",
+      "c060",
+      "c131",
+      "c091",
+      "c116",
+      "c093",
+      "R_004365",
+      "R_006170",
+      "R_007831",
+      "R_002918"
+     ],
+     "p5": 0,
+     "r10": 0,
+     "ndcg5": 0,
+     "stuffersInTop5": 3,
+     "gemsInTop5": 0
+    },
+    "judged": {
+     "semantic": {
+      "top10": [
+       "c131",
+       "c060",
+       "c129",
+       "c100",
+       "c007",
+       "c013",
+       "c048",
+       "c177",
+       "c063",
+       "c069"
+      ],
+      "p5": 0.2,
+      "r10": 0.25,
+      "ndcg5": 0.168,
+      "stuffersInTop5": 3,
+      "gemsInTop5": 1
+     },
+     "semanticSplit": {
+      "top10": [
+       "c129",
+       "c060",
+       "c131",
+       "c007",
+       "c013",
+       "c048",
+       "c005",
+       "c100",
+       "c014",
+       "c058"
+      ],
+      "p5": 0,
+      "r10": 0.25,
+      "ndcg5": 0,
+      "stuffersInTop5": 3,
+      "gemsInTop5": 0
+     },
+     "bm25": {
+      "top10": [
+       "c129",
+       "c060",
+       "c131",
+       "c091",
+       "c116",
+       "c093",
+       "c053",
+       "c073",
+       "c146",
+       "c013"
+      ],
+      "p5": 0,
+      "r10": 0,
+      "ndcg5": 0,
+      "stuffersInTop5": 3,
+      "gemsInTop5": 0
+     }
+    }
+   },
+   {
+    "jdId": "jd11",
+    "title": "Full-stack Engineer, Node",
+    "relevant": [
+     "c088",
+     "c124",
+     "c059",
+     "c176",
+     "c023",
+     "c172"
+    ],
+    "stuffers": [
+     "c134",
+     "c083",
+     "c012"
+    ],
+    "hiddenGems": [
+     "c088",
+     "c124",
+     "c023"
+    ],
+    "semantic": {
+     "top10": [
+      "c083",
+      "c134",
+      "c012",
+      "R_004698",
+      "R_001651",
+      "R_009061",
+      "R_006193",
+      "R_002883",
+      "R_004506",
+      "R_002307"
+     ],
+     "p5": 0,
+     "r10": 0,
+     "ndcg5": 0,
+     "stuffersInTop5": 3,
+     "gemsInTop5": 0
+    },
+    "semanticSplit": {
+     "top10": [
+      "c083",
+      "c012",
+      "c134",
+      "R_009061",
+      "R_001651",
+      "R_006525",
+      "R_004506",
+      "R_009276",
+      "R_002883",
+      "R_008990"
+     ],
+     "p5": 0,
+     "r10": 0,
+     "ndcg5": 0,
+     "stuffersInTop5": 3,
+     "gemsInTop5": 0
+    },
+    "bm25": {
+     "top10": [
+      "c012",
+      "c134",
+      "c083",
+      "c056",
+      "c070",
+      "c155",
+      "c122",
+      "c002",
+      "c071",
+      "c101"
+     ],
+     "p5": 0,
+     "r10": 0,
+     "ndcg5": 0,
+     "stuffersInTop5": 3,
+     "gemsInTop5": 0
+    },
+    "judged": {
+     "semantic": {
+      "top10": [
+       "c083",
+       "c134",
+       "c012",
+       "c124",
+       "c122",
+       "c120",
+       "c118",
+       "c155",
+       "c028",
+       "c100"
+      ],
+      "p5": 0.2,
+      "r10": 0.167,
+      "ndcg5": 0.146,
+      "stuffersInTop5": 3,
+      "gemsInTop5": 1
+     },
+     "semanticSplit": {
+      "top10": [
+       "c083",
+       "c012",
+       "c134",
+       "c128",
+       "c122",
+       "c124",
+       "c028",
+       "c070",
+       "c086",
+       "c120"
+      ],
+      "p5": 0,
+      "r10": 0.167,
+      "ndcg5": 0,
+      "stuffersInTop5": 3,
+      "gemsInTop5": 0
+     },
+     "bm25": {
+      "top10": [
+       "c012",
+       "c134",
+       "c083",
+       "c056",
+       "c070",
+       "c155",
+       "c122",
+       "c002",
+       "c071",
+       "c101"
+      ],
+      "p5": 0,
+      "r10": 0,
+      "ndcg5": 0,
+      "stuffersInTop5": 3,
+      "gemsInTop5": 0
+     }
+    }
+   },
+   {
+    "jdId": "jd12",
+    "title": "Computer Vision Engineer",
+    "relevant": [
+     "c011",
+     "c132",
+     "c081",
+     "c064",
+     "c163",
+     "c025"
+    ],
+    "stuffers": [
+     "c054",
+     "c024",
+     "c074"
+    ],
+    "hiddenGems": [
+     "c011",
+     "c132",
+     "c081"
+    ],
+    "semantic": {
+     "top10": [
+      "c054",
+      "c024",
+      "c074",
+      "c163",
+      "c011",
+      "c132",
+      "c090",
+      "R_003582",
+      "R_000104",
+      "c081"
+     ],
+     "p5": 0.4,
+     "r10": 0.667,
+     "ndcg5": 0.277,
+     "stuffersInTop5": 3,
+     "gemsInTop5": 1
+    },
+    "semanticSplit": {
+     "top10": [
+      "c054",
+      "c024",
+      "c074",
+      "c163",
+      "c011",
+      "c132",
+      "R_005286",
+      "R_009302",
+      "c064",
+      "R_000104"
+     ],
+     "p5": 0.4,
+     "r10": 0.667,
+     "ndcg5": 0.277,
+     "stuffersInTop5": 3,
+     "gemsInTop5": 1
+    },
+    "bm25": {
+     "top10": [
+      "c054",
+      "c074",
+      "c024",
+      "c089",
+      "c042",
+      "c141",
+      "c079",
+      "c034",
+      "c108",
+      "c047"
+     ],
+     "p5": 0,
+     "r10": 0,
+     "ndcg5": 0,
+     "stuffersInTop5": 3,
+     "gemsInTop5": 0
+    },
+    "judged": {
+     "semantic": {
+      "top10": [
+       "c054",
+       "c024",
+       "c074",
+       "c163",
+       "c011",
+       "c132",
+       "c090",
+       "c081",
+       "c141",
+       "c178"
+      ],
+      "p5": 0.4,
+      "r10": 0.667,
+      "ndcg5": 0.277,
+      "stuffersInTop5": 3,
+      "gemsInTop5": 1
+     },
+     "semanticSplit": {
+      "top10": [
+       "c054",
+       "c024",
+       "c074",
+       "c163",
+       "c011",
+       "c132",
+       "c064",
+       "c081",
+       "c043",
+       "c090"
+      ],
+      "p5": 0.4,
+      "r10": 0.833,
+      "ndcg5": 0.277,
+      "stuffersInTop5": 3,
+      "gemsInTop5": 1
+     },
+     "bm25": {
+      "top10": [
+       "c054",
+       "c074",
+       "c024",
+       "c089",
+       "c042",
+       "c141",
+       "c100",
+       "c077",
+       "c020",
+       "c079"
+      ],
+      "p5": 0,
+      "r10": 0,
+      "ndcg5": 0,
+      "stuffersInTop5": 3,
+      "gemsInTop5": 0
+     }
+    }
+   }
+  ],
+  "summary": {
+   "semantic_p5": 0.117,
+   "semantic_r10": 0.289,
+   "semantic_ndcg5": 0.087,
+   "semantic_stuffers_top5": 3,
+   "semantic_gems_top5": 0.417,
+   "semanticSplit_p5": 0.067,
+   "semanticSplit_r10": 0.118,
+   "semanticSplit_ndcg5": 0.058,
+   "semanticSplit_stuffers_top5": 1.583,
+   "semanticSplit_gems_top5": 0.083,
+   "bm25_p5": 0.083,
+   "bm25_r10": 0.203,
+   "bm25_ndcg5": 0.057,
+   "bm25_stuffers_top5": 3,
+   "bm25_gems_top5": 0.25,
+   "judged_semantic_p5": 0.283,
+   "judged_semantic_r10": 0.593,
+   "judged_semantic_ndcg5": 0.208,
+   "judged_semantic_stuffers_top5": 3,
+   "judged_semantic_gems_top5": 1,
+   "judged_semanticSplit_p5": 0.3,
+   "judged_semanticSplit_r10": 0.533,
+   "judged_semanticSplit_ndcg5": 0.253,
+   "judged_semanticSplit_stuffers_top5": 2.75,
+   "judged_semanticSplit_gems_top5": 0.75,
+   "judged_bm25_p5": 0.05,
+   "judged_bm25_r10": 0.203,
+   "judged_bm25_ndcg5": 0.034,
+   "judged_bm25_stuffers_top5": 3,
+   "judged_bm25_gems_top5": 0.083,
+   "poolSize": 2180,
+   "judgedSize": 180
+  },
+  "elapsedMs": 857
+ }
 }

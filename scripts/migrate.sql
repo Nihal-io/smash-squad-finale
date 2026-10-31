@@ -2,11 +2,13 @@ create extension if not exists vector;
 
 create table if not exists candidates (
   id text primary key,
+  source text not null default 'planted',
   name text not null,
   gender text not null,
   college text not null,
   tier int not null,
   yoe int not null,
+  role text not null default '',
   skills text[] not null,
   projects text[] not null,
   bio text not null,

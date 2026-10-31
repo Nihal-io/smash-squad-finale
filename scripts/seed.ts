@@ -3,17 +3,8 @@
 import { writeFileSync, mkdirSync } from "node:fs";
 import { redactProfile } from "../src/lib/redact";
 
-// ---------- RNG ----------
-function mulberry32(seed: number) {
-  let a = seed >>> 0;
-  return () => {
-    a = (a + 0x6d2b79f5) >>> 0;
-    let t = a;
-    t = Math.imul(t ^ (t >>> 15), t | 1);
-    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
-    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
-  };
-}
+import { mulberry32, FIRST_F, FIRST_M, FIRST_NB, LAST, TIER1, TIER2, TIER3, WOMENS_COLLEGE, type Gender, type Tier } from "../src/lib/synth";
+
 const rand = mulberry32(20261031);
 const pick = <T>(arr: T[]): T => arr[Math.floor(rand() * arr.length)];
 const int = (lo: number, hi: number) => lo + Math.floor(rand() * (hi - lo + 1));
@@ -26,21 +17,6 @@ const shuffle = <T>(arr: T[]): T[] => {
   return a;
 };
 const takeN = <T>(arr: T[], n: number) => shuffle(arr).slice(0, n);
-
-// ---------- Names (synthetic people) ----------
-const FIRST_F = ["Ananya", "Priya", "Meera", "Kavya", "Sneha", "Riya", "Ishita", "Divya", "Nandini", "Aisha", "Pooja", "Shreya", "Tanvi", "Neha", "Lakshmi", "Sara", "Zoya", "Elena", "Mariam", "Chloe", "Hana", "Lucia", "Ines", "Fatima"];
-const FIRST_M = ["Arjun", "Rohan", "Aditya", "Karthik", "Vikram", "Rahul", "Siddharth", "Nikhil", "Varun", "Aman", "Dev", "Harsh", "Kunal", "Manish", "Pranav", "Omar", "Daniel", "Mateo", "Tomas", "Felix", "Samuel", "Yusuf", "Leon", "Ivan"];
-const FIRST_NB = ["Sam", "Alex", "Robin", "Kiran", "Noor", "Avi", "Jay", "Ira"];
-const LAST = ["Sharma", "Iyer", "Patel", "Nair", "Reddy", "Menon", "Gupta", "Bose", "Rao", "Kulkarni", "Desai", "Chawla", "Kapoor", "Mehta", "Verma", "Joshi", "Pillai", "Bhat", "Saxena", "Mukherjee", "Okafor", "Novak", "Haddad", "Lindqvist", "Moreau", "Tanaka", "Silva", "Kowalski"];
-
-// ---------- Colleges (synthetic) ----------
-const TIER1 = ["Northfield Institute of Technology", "Meridian Institute of Technology", "Carrow National Institute", "Aldergate Institute of Science"];
-const TIER2 = ["Westbrook University", "Lakeside State University", "Harrowgate College of Engineering", "Sunfield Technical University", "St. Ada's College for Women"];
-const TIER3 = ["Riverbend Polytechnic", "Greenhill Institute", "Eastvale Engineering College", "Pinecrest Community College", "Oakridge Institute of Technology", "Bluefield College"];
-const WOMENS_COLLEGE = "St. Ada's College for Women";
-
-type Gender = "female" | "male" | "non-binary";
-type Tier = 1 | 2 | 3;
 
 // ---------- Archetypes ----------
 interface Archetype {
@@ -416,7 +392,7 @@ const presets = [
 ];
 
 mkdirSync("data", { recursive: true });
-writeFileSync("data/candidates.json", JSON.stringify(shuffled, null, 1));
+writeFileSync("data/planted.json", JSON.stringify(shuffled.map((c) => ({ ...c, source: "planted", role: c.archetype })), null, 1));
 writeFileSync("data/jds.json", JSON.stringify({ jds, presets }, null, 1));
 writeFileSync("data/eval-labels.json", JSON.stringify({ injectionCandidateId: injectionId, labels }, null, 1));
 

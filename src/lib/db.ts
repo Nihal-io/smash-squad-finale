@@ -1,15 +1,17 @@
-// Postgres access with an in-memory fallback. Env is read inside functions, never at module top level.
+// Postgres access with an in-memory fallback over the same vectors. Env is read inside functions.
 import { Pool } from "pg";
 import { readFileSync } from "node:fs";
-import { cosine } from "./embed";
+import { EMBED_DIM } from "./embed";
 
 export interface CandidateRow {
   id: string;
+  source: string;
   name: string;
   gender: string;
   college: string;
   tier: number;
   yoe: number;
+  role: string;
   skills: string[];
   projects: string[];
   bio: string;
@@ -46,43 +48,74 @@ export async function dbHealthy(): Promise<boolean> {
     await p.query("select 1");
     return true;
   } catch {
-    dbDownUntil = Date.now() + 30_000; // stop hammering a dead DB for 30s
+    dbDownUntil = Date.now() + 30_000;
     return false;
   }
 }
 
-// ---------- in-memory fallback over the same vectors ----------
-let memCandidates: CandidateRow[] | null = null;
-let memVectors: Record<string, { visible: number[]; redacted: number[] }> | null = null;
+// ---------- in-memory store over the same vectors ----------
+interface Mem { candidates: CandidateRow[]; byId: Map<string, CandidateRow>; index: Map<string, number>; vectors: Float32Array }
+let mem: Mem | null = null;
 
-export function loadMemory() {
-  if (!memCandidates) memCandidates = JSON.parse(readFileSync("data/candidates.json", "utf8"));
-  if (!memVectors) memVectors = JSON.parse(readFileSync("data/vectors.json", "utf8"));
-  return { candidates: memCandidates!, vectors: memVectors! };
+export function loadMemory(): Mem {
+  if (!mem) {
+    const candidates = JSON.parse(readFileSync("data/candidates.json", "utf8")) as CandidateRow[];
+    const buf = readFileSync("data/vectors.bin");
+    const vectors = new Float32Array(buf.buffer, buf.byteOffset, buf.byteLength / 4);
+    if (vectors.length !== candidates.length * 2 * EMBED_DIM) throw new Error("vectors.bin does not match candidates.json; run bun run embed");
+    mem = { candidates, byId: new Map(candidates.map((c) => [c.id, c])), index: new Map(candidates.map((c, i) => [c.id, i])), vectors };
+  }
+  return mem;
 }
 
-export function memorySearch(queryVec: number[], mode: Mode, k: number): SearchHit[] {
-  const { vectors } = loadMemory();
+export function memVector(id: string, mode: Mode): Float32Array | null {
+  const m = loadMemory();
+  const i = m.index.get(id);
+  if (i === undefined) return null;
+  const off = i * 2 * EMBED_DIM + (mode === "visible" ? 0 : EMBED_DIM);
+  return m.vectors.subarray(off, off + EMBED_DIM);
+}
+
+export function dot(a: ArrayLike<number>, b: ArrayLike<number>): number {
+  let s = 0;
+  for (let i = 0; i < EMBED_DIM; i++) s += a[i] * b[i];
+  return s;
+}
+
+export function memorySearch(queryVec: ArrayLike<number>, mode: Mode, k: number, filter?: (c: CandidateRow) => boolean): SearchHit[] {
+  const m = loadMemory();
   const hits: SearchHit[] = [];
-  for (const [id, v] of Object.entries(vectors)) hits.push({ id, score: cosine(queryVec, v[mode]) });
+  const off0 = mode === "visible" ? 0 : EMBED_DIM;
+  for (let i = 0; i < m.candidates.length; i++) {
+    if (filter && !filter(m.candidates[i])) continue;
+    const off = i * 2 * EMBED_DIM + off0;
+    let s = 0;
+    for (let j = 0; j < EMBED_DIM; j++) s += queryVec[j] * m.vectors[off + j];
+    hits.push({ id: m.candidates[i].id, score: s });
+  }
   return hits.sort((a, b) => b.score - a.score).slice(0, k);
 }
 
 // ---------- search with fallback ----------
-export async function vectorSearch(queryVec: number[], mode: Mode, k: number): Promise<{ hits: SearchHit[]; source: "pgvector" | "memory" }> {
+export async function vectorSearch(queryVec: ArrayLike<number>, mode: Mode, k: number, filters?: { minYoe?: number; maxYoe?: number }): Promise<{ hits: SearchHit[]; source: "pgvector" | "memory" }> {
   if (await dbHealthy()) {
     try {
       const col = mode === "visible" ? "emb_visible" : "emb_redacted";
+      const where: string[] = [];
+      const params: any[] = [`[${Array.from(queryVec).join(",")}]`, k];
+      if (filters?.minYoe !== undefined) { params.push(filters.minYoe); where.push(`yoe >= $${params.length}`); }
+      if (filters?.maxYoe !== undefined) { params.push(filters.maxYoe); where.push(`yoe <= $${params.length}`); }
       const r = await getPool()!.query(
-        `select id, 1 - (${col} <=> $1::vector) as score from candidates order by ${col} <=> $1::vector limit $2`,
-        [`[${queryVec.join(",")}]`, k],
+        `select id, 1 - (${col} <=> $1::vector) as score from candidates ${where.length ? "where " + where.join(" and ") : ""} order by ${col} <=> $1::vector limit $2`,
+        params,
       );
       return { hits: r.rows.map((x: any) => ({ id: x.id, score: Number(x.score) })), source: "pgvector" };
     } catch {
       dbDownUntil = Date.now() + 30_000;
     }
   }
-  return { hits: memorySearch(queryVec, mode, k), source: "memory" };
+  const f = filters ? (c: CandidateRow) => (filters.minYoe === undefined || c.yoe >= filters.minYoe) && (filters.maxYoe === undefined || c.yoe <= filters.maxYoe) : undefined;
+  return { hits: memorySearch(queryVec, mode, k, f), source: "memory" };
 }
 
 export async function getCandidates(ids: string[]): Promise<CandidateRow[]> {
@@ -90,7 +123,7 @@ export async function getCandidates(ids: string[]): Promise<CandidateRow[]> {
   if (await dbHealthy()) {
     try {
       const r = await getPool()!.query(
-        `select id,name,gender,college,tier,yoe,skills,projects,bio,visible_text,redacted_text,archetype,planted,planted_for,flags from candidates where id = any($1)`,
+        `select id,source,name,gender,college,tier,yoe,role,skills,projects,bio,visible_text,redacted_text,archetype,planted,planted_for,flags from candidates where id = any($1)`,
         [ids],
       );
       const byId = new Map(r.rows.map((x: any) => [x.id, x as CandidateRow]));
@@ -99,11 +132,21 @@ export async function getCandidates(ids: string[]): Promise<CandidateRow[]> {
       dbDownUntil = Date.now() + 30_000;
     }
   }
-  const { candidates } = loadMemory();
-  const byId = new Map(candidates.map((c) => [c.id, c]));
+  const { byId } = loadMemory();
   return ids.map((id) => byId.get(id)!).filter(Boolean);
 }
 
-export async function allCandidates(): Promise<CandidateRow[]> {
-  return loadMemory().candidates;
+export function getCandidateLocal(id: string): CandidateRow | undefined {
+  return loadMemory().byId.get(id);
+}
+
+export async function sql<T = any>(text: string, params: any[] = []): Promise<T[] | null> {
+  if (!(await dbHealthy())) return null;
+  try {
+    const r = await getPool()!.query(text, params);
+    return r.rows as T[];
+  } catch {
+    dbDownUntil = Date.now() + 30_000;
+    return null;
+  }
 }
