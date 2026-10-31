@@ -1,0 +1,37 @@
+[
+ {
+  "roleKey": "retrieval-backend",
+  "note": "Senior Backend Engineer, Retrieval Platform. Must-haves: vector search, Python, Postgres. Nice: embeddings pipeline, API design. The pool's strongest matches were pgvector/FAISS/HNSW + FastAPI profiles, found with a pgvector-focused query. Postgres evidence is often a strengths-list mention, so cite project sentences such as the pgvector/HNSW migration. Five candidates were fully evidenced and approved (c156, c122, c049, c066, c002). Assessment on API design and embeddings gave grades 0.93, 0.93, 0.68, 0.45, 0.28; the code tests were the main differentiator. c122 had only partial Postgres evidence and the lowest grade. The JD contained unlawful criteria (gender, age, college, marital status); these were ignored and not used in any judgement.",
+  "preferredSkills": [
+   "vector search (pgvector, FAISS, HNSW)",
+   "Python services (FastAPI, asyncio)",
+   "PostgreSQL tuning",
+   "embeddings pipeline",
+   "API design (REST contracts, pagination)"
+  ],
+  "ts": 1793426207016
+ },
+ {
+  "roleKey": "llm-apps",
+  "note": "Pool had few real LLM-app builders. Profiles tagged \"llm-apps\" with keyword-only skill lists and game-dev projects (c060 Ravi Sharma, c131 Rahul Bose) failed citation for both must-haves; drop them. Real matches came from shipped-work wording: \"shipped grounded chat assistants with a graded held-out set gating releases\" (c077, c020, c100). Evaluation search wording produced mostly CV/ML-platform noise. Only 3 of 5 targets were fully evidenced. Sandbox code tests were 2/3 for all approved; rubric grades c100 0.63, c077 0.30, c020 0.25. Consider widening the sourcing pool for mid-level LLM-eval roles.",
+  "preferredSkills": [
+   "LLM applications (shipped chat assistants or copilots)",
+   "evaluation (held-out sets, rubric grading, regression tracking)",
+   "tool-calling workflows",
+   "RAG over internal docs"
+  ],
+  "ts": 1793427019740
+ },
+ {
+  "roleKey": "retrieval-backend",
+  "note": "Hybrid search naming pgvector, HNSW, FAISS and FastAPI on PostgreSQL returned the strongest pool. Five candidates were fully evidenced with project sentences (c049, c156, c066, c122, c002); c122's Postgres evidence was a strengths-list line only. Assessment grades: c156 0.93, c066 0.90, c002 0.90 (after one regrade, first pass flagged low code confidence), c049 0.61 (code part 0.05), c122 0.25. run_code failed twice with harness error \"a is not a function\", so code tests never ran and grades rest on rubric. Check run_code before relying on code grades. The JD's gender, age, college and marital-status criteria were unlawful and were excluded. Final ranking should not use identity fields. Fairness audit: rho 1, top-5 overlap 100%, no moves of 3+ places, so blind ranking not needed.",
+  "preferredSkills": [
+   "vector search (pgvector, FAISS, HNSW)",
+   "Python services (FastAPI, asyncio, Pydantic)",
+   "PostgreSQL project work (pgvector/HNSW migration, recall tuning)",
+   "embeddings pipeline (sentence-encoder serving)",
+   "API design (REST contract ownership)"
+  ],
+  "ts": 1793427291909
+ }
+]

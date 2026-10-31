@@ -15,6 +15,6 @@ data/app.db.tmp
 data/eval-app.db
 data/eval-app.db.tmp
 data/hf/
-data/llm-cache.db
 data/llm-cache.db.tmp
 data/*.tmp
+tsconfig.tsbuildinfo

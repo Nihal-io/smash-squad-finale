@@ -12,7 +12,8 @@
     "migrate": "bun run scripts/migrate.ts",
     "eval": "bun run src/eval/index.ts",
     "agent": "bun run scripts/run-agent.ts",
-    "prewarm": "bun run scripts/prewarm.ts"
+    "prewarm": "bun run scripts/prewarm.ts",
+    "demo:reset": "bun run scripts/demo-reset.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^1.3.0",

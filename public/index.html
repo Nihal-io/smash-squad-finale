@@ -915,17 +915,18 @@ function renderEval(r) {
   let planted = '';
   if (pl && pl.cases) {
     const cmp = (a, b) => a == null || b == null || a === b ? ['', ''] : a > b ? ['win', ''] : ['', 'win'];
-    const cells = (s, b) => {
-      const out = [], ks = ['p5', 'r10', 'ndcg5'];
+    const cells = (s, b, h) => {
+      const out = [], ks = ['p5', 'r10', 'ndcg5'], hy = h || {};
       ks.forEach(k => out.push([m2(s[k]), cmp(s[k], b[k])[0]]));
+      ks.forEach(k => out.push([hy[k] == null ? '–' : m2(hy[k]), '']));
       ks.forEach(k => out.push([m2(b[k]), cmp(s[k], b[k])[1]]));
       out.push([`${s.stuffersInTop5} / ${b.stuffersInTop5}`, '']); out.push([`${s.gemsInTop5} / ${b.gemsInTop5}`, '']);
       return out.map(([v, c]) => `<td class="${c}">${v}</td>`).join('');
     };
     const sm = pl.summary || {}, mean = (pre) => { const g = k => sm[`${pre}${k}`]; return { p5: g('p5'), r10: g('r10'), ndcg5: g('ndcg5'), stuffersInTop5: num(g('stuffers_top5'), 1), gemsInTop5: num(g('gems_top5'), 1) }; };
-    const body = pl.cases.map(c => `<tr><td>${esc(c.title)}</td>${cells(c.judged.semantic, c.judged.bm25)}</tr><tr class="sec"><td>full pool of ${sm.poolSize ?? '–'}</td>${cells(c.semantic, c.bm25)}</tr>`).join('');
-    const mj = cells(mean('judged_semantic_'), mean('judged_bm25_')), mf = cells(mean('semantic_'), mean('bm25_'));
-    planted = `<div class="panel" style="overflow:auto"><table class="t"><thead><tr><th rowspan="2">Case</th><th colspan="3" style="text-align:center">Semantic</th><th colspan="3" style="text-align:center">BM25</th><th rowspan="2">Stuffers in top 5<br>(sem / bm25)</th><th rowspan="2">Gems in top 5<br>(sem / bm25)</th></tr><tr><th>P@5</th><th>R@10</th><th>nDCG@5</th><th>P@5</th><th>R@10</th><th>nDCG@5</th></tr></thead><tbody>${body}<tr class="mean"><td>Mean · judged only</td>${mj}</tr><tr class="sec"><td>Mean · full pool</td>${mf}</tr></tbody></table></div>`;
+    const body = pl.cases.map(c => `<tr><td>${esc(c.title)}</td>${cells(c.judged.semantic, c.judged.bm25, c.judged.hybrid)}</tr><tr class="sec"><td>full pool of ${sm.poolSize ?? '–'}</td>${cells(c.semantic, c.bm25, c.hybrid)}</tr>`).join('');
+    const mj = cells(mean('judged_semantic_'), mean('judged_bm25_'), sm.judged_hybrid_p5 == null ? null : mean('judged_hybrid_')), mf = cells(mean('semantic_'), mean('bm25_'), sm.hybrid_p5 == null ? null : mean('hybrid_'));
+    planted = `<div class="panel" style="overflow:auto"><table class="t"><thead><tr><th rowspan="2">Case</th><th colspan="3" style="text-align:center">Semantic</th><th colspan="3" style="text-align:center">Hybrid</th><th colspan="3" style="text-align:center">Keyword (BM25)</th><th rowspan="2">Stuffers in top 5<br>(sem / bm25)</th><th rowspan="2">Gems in top 5<br>(sem / bm25)</th></tr><tr><th>P@5</th><th>R@10</th><th>nDCG@5</th><th>P@5</th><th>R@10</th><th>nDCG@5</th><th>P@5</th><th>R@10</th><th>nDCG@5</th></tr></thead><tbody>${body}<tr class="mean"><td>Mean · judged only</td>${mj}</tr><tr class="sec"><td>Mean · full pool</td>${mf}</tr></tbody></table></div>`;
   }
   let pub = '';
   if (pu && pu.summary) {

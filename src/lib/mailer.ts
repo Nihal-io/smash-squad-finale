@@ -19,7 +19,7 @@ export async function sendAssessmentEmail(runId: string, st: CandidateState, a: 
       channel = "outbox";
     }
   }
-  const id = `msg_${Date.now().toString(36)}_${st.id}`;
-  store.addOutbox({ id, runId, candidateId: st.id, to, subject: a.emailSubject, body, channel, status, ts: Date.now() });
+  const id = `msg_${st.id}`;
+  store.addOutbox({ id: `${runId}_${id}`, runId, candidateId: st.id, to, subject: a.emailSubject, body, channel, status, ts: Date.now() });
   return { messageId: id, channel, status, to: channel === "resend" ? to : "(outbox)", subject: a.emailSubject };
 }

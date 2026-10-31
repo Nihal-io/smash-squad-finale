@@ -34,7 +34,7 @@ export async function createAssessment(state: AgentState, st: CandidateState, un
     messages: [{ role: "user", content: `Role: ${state.jd.title} (${state.jd.seniority}).\nAll requirements: ${reqs.map((x) => x.text).join("; ")}.\nUnverified requirements to target: ${fallbackTargets.join("; ")}.` }],
     maxTokens: 8000,
   });
-  return { id: `asm_${state.runId.slice(-6)}_${st.id}`, questions: r.data.questions, emailSubject: r.data.emailSubject, emailBody: r.data.emailBody, unverified: fallbackTargets };
+  return { id: `asm_${st.id}`, questions: r.data.questions, emailSubject: r.data.emailSubject, emailBody: r.data.emailBody, unverified: fallbackTargets };
 }
 
 const Responses = z.object({ answers: z.array(z.object({ kind: z.enum(["short", "scenario", "code"]), answer: z.string() })).length(3) });

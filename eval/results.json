@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-31T06:12:19.908Z",
+ "generatedAt": "2026-10-31T06:24:05.064Z",
  "retrieval": {
   "cases": [
    {
@@ -725,7 +725,7 @@
   },
   "elapsedMs": 526
  },
- "headline": "Planted nDCG@5: semantic 0.208 · hybrid undefined · keyword 0.034 · 7/7 guardrails pass · agent success 1 · blind-ranking rho 0.764",
+ "headline": "Planted nDCG@5: semantic 0.198 · hybrid 0.062 · keyword 0 · 7/7 guardrails pass · agent success 1 · blind-ranking rho 0.745",
  "public": {
   "summary": {
    "jobs": 100,
@@ -2846,7 +2846,7 @@
    }
   ],
   "note": "The dataset labels 30 resumes per job out of all that pass its own rule (>=60% must-have skill overlap). In our pool a job has on average 384.46 qualifying resumes but only 13.04 labelled ones, so Recall@10 and nDCG@10 against the labels are capped low for every method. rule60at10 applies the dataset's own rule to each method's top 10 and is label-complete.",
-  "elapsedMs": 2019
+  "elapsedMs": 1813
  },
  "planted": {
   "cases": [
@@ -2875,9 +2875,9 @@
       "c127",
       "c178",
       "c130",
+      "c156",
       "c049",
       "c122",
-      "c156",
       "R_009522",
       "R_003385",
       "R_007420",
@@ -2887,7 +2887,7 @@
      "r10": 0.6,
      "ndcg5": 0.277,
      "stuffersInTop5": 3,
-     "gemsInTop5": 2
+     "gemsInTop5": 1
     },
     "semanticSplit": {
      "top10": [
@@ -2913,19 +2913,38 @@
       "c178",
       "c130",
       "c127",
-      "c049",
-      "c122",
+      "c088",
+      "c059",
       "c156",
-      "c066",
+      "c049",
       "c124",
       "c023",
-      "c059"
+      "c176"
+     ],
+     "p5": 0,
+     "r10": 0.4,
+     "ndcg5": 0,
+     "stuffersInTop5": 3,
+     "gemsInTop5": 0
+    },
+    "hybrid": {
+     "top10": [
+      "c178",
+      "c127",
+      "c130",
+      "c156",
+      "c049",
+      "c122",
+      "R_009522",
+      "R_006706",
+      "c124",
+      "c066"
      ],
      "p5": 0.4,
      "r10": 0.8,
      "ndcg5": 0.277,
      "stuffersInTop5": 3,
-     "gemsInTop5": 2
+     "gemsInTop5": 1
     },
     "judged": {
      "semantic": {
@@ -2933,36 +2952,36 @@
        "c127",
        "c178",
        "c130",
+       "c156",
        "c049",
        "c122",
-       "c156",
        "c002",
-       "c124",
        "c066",
+       "c124",
        "c134"
       ],
       "p5": 0.4,
       "r10": 1,
       "ndcg5": 0.277,
       "stuffersInTop5": 3,
-      "gemsInTop5": 2
+      "gemsInTop5": 1
      },
      "semanticSplit": {
       "top10": [
-       "c049",
        "c156",
        "c122",
        "c178",
+       "c049",
        "c127",
        "c130",
        "c066",
        "c002",
-       "c124",
-       "c023"
+       "c023",
+       "c124"
       ],
       "p5": 0.6,
       "r10": 1,
-      "ndcg5": 0.723,
+      "ndcg5": 0.699,
       "stuffersInTop5": 2,
       "gemsInTop5": 2
      },
@@ -2972,16 +2991,35 @@
        "c130",
        "c127",
        "c027",
-       "c122",
+       "c032",
+       "c144",
+       "c156",
        "c049",
        "c066",
-       "c032",
-       "c156",
-       "c144"
+       "c003"
       ],
-      "p5": 0.2,
+      "p5": 0,
+      "r10": 0.6,
+      "ndcg5": 0,
+      "stuffersInTop5": 3,
+      "gemsInTop5": 0
+     },
+     "hybrid": {
+      "top10": [
+       "c178",
+       "c127",
+       "c130",
+       "c156",
+       "c049",
+       "c027",
+       "c032",
+       "c066",
+       "c122",
+       "c124"
+      ],
+      "p5": 0.4,
       "r10": 0.8,
-      "ndcg5": 0.131,
+      "ndcg5": 0.277,
       "stuffersInTop5": 3,
       "gemsInTop5": 1
      }
@@ -3012,16 +3050,16 @@
       "c155",
       "c070",
       "R_009553",
+      "c047",
       "R_001119",
+      "c034",
       "R_002193",
       "c108",
-      "R_002484",
-      "R_001880",
-      "R_003896"
+      "R_002484"
      ],
-     "p5": 0,
-     "r10": 0.167,
-     "ndcg5": 0,
+     "p5": 0.2,
+     "r10": 0.5,
+     "ndcg5": 0.131,
      "stuffersInTop5": 3,
      "gemsInTop5": 0
     },
@@ -3049,17 +3087,36 @@
       "c155",
       "c056",
       "c070",
-      "c154",
-      "c006",
-      "c108",
-      "c047",
-      "c079",
+      "c019",
+      "c095",
+      "c013",
       "c164",
-      "c106"
+      "c106",
+      "c174",
+      "c018"
      ],
-     "p5": 0.4,
-     "r10": 0.833,
-     "ndcg5": 0.277,
+     "p5": 0,
+     "r10": 0,
+     "ndcg5": 0,
+     "stuffersInTop5": 3,
+     "gemsInTop5": 0
+    },
+    "hybrid": {
+     "top10": [
+      "c056",
+      "c155",
+      "c070",
+      "R_009553",
+      "c019",
+      "c047",
+      "c095",
+      "R_001119",
+      "c013",
+      "c034"
+     ],
+     "p5": 0,
+     "r10": 0.333,
+     "ndcg5": 0,
      "stuffersInTop5": 3,
      "gemsInTop5": 0
     },
@@ -3069,13 +3126,13 @@
        "c056",
        "c155",
        "c070",
-       "c108",
        "c047",
        "c034",
-       "c006",
+       "c108",
        "c154",
-       "c117",
-       "c079"
+       "c006",
+       "c079",
+       "c100"
       ],
       "p5": 0.4,
       "r10": 1,
@@ -3087,19 +3144,19 @@
       "top10": [
        "c070",
        "c056",
-       "c006",
-       "c047",
        "c034",
+       "c047",
        "c155",
+       "c006",
        "c170",
+       "c154",
        "c029",
-       "c105",
-       "c123"
+       "c162"
       ],
-      "p5": 0.6,
-      "r10": 0.5,
-      "ndcg5": 0.447,
-      "stuffersInTop5": 2,
+      "p5": 0.4,
+      "r10": 0.667,
+      "ndcg5": 0.316,
+      "stuffersInTop5": 3,
       "gemsInTop5": 0
      },
      "bm25": {
@@ -3107,17 +3164,36 @@
        "c056",
        "c155",
        "c070",
-       "c154",
-       "c006",
-       "c108",
-       "c047",
-       "c079",
        "c164",
-       "c012"
+       "c012",
+       "c134",
+       "c083",
+       "c106",
+       "c031",
+       "c019"
       ],
-      "p5": 0.4,
-      "r10": 0.833,
-      "ndcg5": 0.277,
+      "p5": 0,
+      "r10": 0,
+      "ndcg5": 0,
+      "stuffersInTop5": 3,
+      "gemsInTop5": 0
+     },
+     "hybrid": {
+      "top10": [
+       "c056",
+       "c155",
+       "c070",
+       "c134",
+       "c012",
+       "c174",
+       "c120",
+       "c019",
+       "c083",
+       "c130"
+      ],
+      "p5": 0,
+      "r10": 0,
+      "ndcg5": 0,
       "stuffersInTop5": 3,
       "gemsInTop5": 0
      }
@@ -3148,12 +3224,12 @@
       "c141",
       "c042",
       "R_002410",
+      "c030",
       "c016",
       "R_009522",
       "R_005071",
       "R_006595",
-      "R_004994",
-      "R_003592"
+      "R_004994"
      ],
      "p5": 0,
      "r10": 0,
@@ -3188,14 +3264,33 @@
       "c024",
       "c054",
       "c074",
-      "c100",
       "c026",
-      "c077",
+      "c147",
+      "c100",
       "c112"
      ],
      "p5": 0,
-     "r10": 0,
+     "r10": 0.25,
      "ndcg5": 0,
+     "stuffersInTop5": 3,
+     "gemsInTop5": 0
+    },
+    "hybrid": {
+     "top10": [
+      "c089",
+      "c042",
+      "c141",
+      "c043",
+      "c025",
+      "R_002410",
+      "c024",
+      "c030",
+      "c054",
+      "c016"
+     ],
+     "p5": 0.2,
+     "r10": 0.25,
+     "ndcg5": 0.168,
      "stuffersInTop5": 3,
      "gemsInTop5": 0
     },
@@ -3205,13 +3300,13 @@
        "c089",
        "c141",
        "c042",
-       "c016",
        "c030",
-       "c176",
+       "c016",
+       "c043",
        "c023",
-       "c005",
-       "c178",
-       "c043"
+       "c176",
+       "c025",
+       "c163"
       ],
       "p5": 0,
       "r10": 0.25,
@@ -3224,17 +3319,17 @@
        "c141",
        "c089",
        "c042",
-       "c176",
        "c043",
+       "c030",
+       "c176",
        "c016",
-       "c005",
+       "c023",
        "c032",
-       "c041",
-       "c023"
+       "c147"
       ],
       "p5": 0.2,
-      "r10": 0.25,
-      "ndcg5": 0.151,
+      "r10": 0.5,
+      "ndcg5": 0.168,
       "stuffersInTop5": 3,
       "gemsInTop5": 0
      },
@@ -3246,16 +3341,35 @@
        "c024",
        "c054",
        "c074",
+       "c147",
        "c100",
-       "c077",
-       "c020",
-       "c026"
+       "c043",
+       "c160"
       ],
       "p5": 0,
-      "r10": 0,
+      "r10": 0.75,
       "ndcg5": 0,
       "stuffersInTop5": 3,
       "gemsInTop5": 0
+     },
+     "hybrid": {
+      "top10": [
+       "c089",
+       "c042",
+       "c141",
+       "c043",
+       "c147",
+       "c024",
+       "c163",
+       "c025",
+       "c160",
+       "c161"
+      ],
+      "p5": 0.4,
+      "r10": 1,
+      "ndcg5": 0.319,
+      "stuffersInTop5": 3,
+      "gemsInTop5": 1
      }
     }
    },
@@ -3289,12 +3403,12 @@
       "R_005044",
       "c041",
       "c051",
-      "c171",
-      "R_003806",
-      "c016"
+      "c016",
+      "c118",
+      "c171"
      ],
      "p5": 0.2,
-     "r10": 0.833,
+     "r10": 1,
      "ndcg5": 0.146,
      "stuffersInTop5": 3,
      "gemsInTop5": 1
@@ -3337,6 +3451,25 @@
      "stuffersInTop5": 3,
      "gemsInTop5": 0
     },
+    "hybrid": {
+     "top10": [
+      "c177",
+      "c135",
+      "c169",
+      "R_006660",
+      "R_000762",
+      "R_007607",
+      "c030",
+      "c163",
+      "R_005044",
+      "c132"
+     ],
+     "p5": 0,
+     "r10": 0.167,
+     "ndcg5": 0,
+     "stuffersInTop5": 3,
+     "gemsInTop5": 0
+    },
     "judged": {
      "semantic": {
       "top10": [
@@ -3346,9 +3479,9 @@
        "c030",
        "c041",
        "c051",
-       "c171",
        "c016",
        "c118",
+       "c171",
        "c178"
       ],
       "p5": 0.4,
@@ -3366,12 +3499,12 @@
        "c118",
        "c041",
        "c100",
+       "c016",
        "c023",
-       "c178",
        "c176"
       ],
       "p5": 0.4,
-      "r10": 0.5,
+      "r10": 0.667,
       "ndcg5": 0.277,
       "stuffersInTop5": 3,
       "gemsInTop5": 2
@@ -3382,15 +3515,34 @@
        "c177",
        "c169",
        "c163",
-       "c132",
        "c011",
        "c025",
+       "c132",
        "c064",
-       "c102",
+       "c081",
        "c145"
       ],
       "p5": 0,
       "r10": 0,
+      "ndcg5": 0,
+      "stuffersInTop5": 3,
+      "gemsInTop5": 0
+     },
+     "hybrid": {
+      "top10": [
+       "c177",
+       "c135",
+       "c169",
+       "c163",
+       "c132",
+       "c011",
+       "c043",
+       "c030",
+       "c118",
+       "c016"
+      ],
+      "p5": 0,
+      "r10": 0.5,
       "ndcg5": 0,
       "stuffersInTop5": 3,
       "gemsInTop5": 0
@@ -3420,9 +3572,9 @@
       "c026",
       "c112",
       "c119",
+      "c075",
       "c104",
       "c126",
-      "c075",
       "c158",
       "R_008990",
       "R_008819",
@@ -3430,7 +3582,7 @@
      ],
      "p5": 0.4,
      "r10": 1,
-     "ndcg5": 0.346,
+     "ndcg5": 0.363,
      "stuffersInTop5": 3,
      "gemsInTop5": 1
     },
@@ -3438,20 +3590,20 @@
      "top10": [
       "c026",
       "c126",
-      "R_008819",
       "c075",
+      "c119",
+      "R_008819",
       "R_003275",
       "R_009931",
-      "c119",
+      "c158",
       "R_008785",
-      "R_002973",
-      "R_005643"
+      "R_002973"
      ],
-     "p5": 0.4,
-     "r10": 0.75,
-     "ndcg5": 0.414,
+     "p5": 0.6,
+     "r10": 1,
+     "ndcg5": 0.61,
      "stuffersInTop5": 1,
-     "gemsInTop5": 0
+     "gemsInTop5": 1
     },
     "bm25": {
      "top10": [
@@ -3462,9 +3614,9 @@
       "c097",
       "c105",
       "c152",
+      "c089",
       "c029",
-      "c036",
-      "c062"
+      "c036"
      ],
      "p5": 0,
      "r10": 0,
@@ -3472,23 +3624,42 @@
      "stuffersInTop5": 3,
      "gemsInTop5": 0
     },
+    "hybrid": {
+     "top10": [
+      "c026",
+      "c112",
+      "c104",
+      "c075",
+      "c119",
+      "c126",
+      "c158",
+      "c100",
+      "c020",
+      "R_007148"
+     ],
+     "p5": 0.4,
+     "r10": 1,
+     "ndcg5": 0.319,
+     "stuffersInTop5": 3,
+     "gemsInTop5": 1
+    },
     "judged": {
      "semantic": {
       "top10": [
        "c026",
        "c112",
        "c119",
+       "c075",
        "c104",
        "c126",
-       "c075",
        "c158",
-       "c069",
+       "c100",
        "c090",
-       "c100"
+       "c020"
       ],
       "p5": 0.4,
       "r10": 1,
-      "ndcg5": 0.346,
+      "ndcg5": 0.363,
       "stuffersInTop5": 3,
       "gemsInTop5": 1
      },
@@ -3498,35 +3669,54 @@
        "c126",
        "c075",
        "c119",
-       "c104",
        "c158",
+       "c104",
        "c112",
-       "c069",
        "c090",
-       "c100"
+       "c100",
+       "c020"
       ],
-      "p5": 0.6,
+      "p5": 0.8,
       "r10": 1,
-      "ndcg5": 0.61,
-      "stuffersInTop5": 2,
-      "gemsInTop5": 1
+      "ndcg5": 0.761,
+      "stuffersInTop5": 1,
+      "gemsInTop5": 2
      },
      "bm25": {
       "top10": [
        "c026",
        "c112",
        "c104",
+       "c100",
+       "c020",
        "c089",
        "c042",
        "c141",
-       "c100",
-       "c170",
-       "c020",
-       "c097"
+       "c075",
+       "c170"
       ],
       "p5": 0,
-      "r10": 0,
+      "r10": 0.25,
       "ndcg5": 0,
+      "stuffersInTop5": 3,
+      "gemsInTop5": 0
+     },
+     "hybrid": {
+      "top10": [
+       "c026",
+       "c112",
+       "c104",
+       "c100",
+       "c075",
+       "c020",
+       "c119",
+       "c126",
+       "c158",
+       "c042"
+      ],
+      "p5": 0.2,
+      "r10": 1,
+      "ndcg5": 0.151,
       "stuffersInTop5": 3,
       "gemsInTop5": 0
      }
@@ -3593,13 +3783,32 @@
       "c153",
       "c008",
       "c037",
-      "c079",
-      "c034",
-      "c108",
       "R_001192",
       "R_003568",
       "R_004957",
-      "R_006199"
+      "R_006199",
+      "R_003847",
+      "R_003949",
+      "R_004375"
+     ],
+     "p5": 0,
+     "r10": 0,
+     "ndcg5": 0,
+     "stuffersInTop5": 3,
+     "gemsInTop5": 0
+    },
+    "hybrid": {
+     "top10": [
+      "c008",
+      "c153",
+      "c037",
+      "R_003949",
+      "R_000823",
+      "R_004375",
+      "R_006199",
+      "R_000391",
+      "R_000012",
+      "R_009092"
      ],
      "p5": 0,
      "r10": 0,
@@ -3615,11 +3824,11 @@
        "c037",
        "c145",
        "c001",
-       "c013",
        "c124",
+       "c013",
+       "c059",
        "c173",
-       "c096",
-       "c067"
+       "c096"
       ],
       "p5": 0.2,
       "r10": 0.25,
@@ -3633,12 +3842,12 @@
        "c153",
        "c037",
        "c013",
-       "c107",
        "c162",
-       "c122",
-       "c005",
+       "c107",
        "c045",
-       "c043"
+       "c100",
+       "c044",
+       "c001"
       ],
       "p5": 0,
       "r10": 0,
@@ -3651,13 +3860,32 @@
        "c153",
        "c008",
        "c037",
-       "c079",
+       "c154",
        "c034",
-       "c108",
+       "c079",
+       "c122",
        "c047",
-       "c071",
-       "c101",
-       "c045"
+       "c108",
+       "c006"
+      ],
+      "p5": 0,
+      "r10": 0,
+      "ndcg5": 0,
+      "stuffersInTop5": 3,
+      "gemsInTop5": 0
+     },
+     "hybrid": {
+      "top10": [
+       "c008",
+       "c153",
+       "c037",
+       "c092",
+       "c173",
+       "c001",
+       "c013",
+       "c067",
+       "c066",
+       "c101"
       ],
       "p5": 0,
       "r10": 0,
@@ -3734,12 +3962,31 @@
       "c116",
       "c093",
       "c041",
-      "c016",
       "c118",
       "c030",
+      "c016",
       "R_001250",
       "c051",
       "R_001120"
+     ],
+     "p5": 0,
+     "r10": 0,
+     "ndcg5": 0,
+     "stuffersInTop5": 3,
+     "gemsInTop5": 0
+    },
+    "hybrid": {
+     "top10": [
+      "c093",
+      "c091",
+      "c116",
+      "R_005662",
+      "c041",
+      "R_009302",
+      "c118",
+      "R_000227",
+      "c030",
+      "R_002130"
      ],
      "p5": 0,
      "r10": 0,
@@ -3754,37 +4001,37 @@
        "c116",
        "c091",
        "c032",
+       "c162",
        "c055",
        "c038",
        "c070",
-       "c162",
-       "c065",
-       "c007"
+       "c159",
+       "c140"
       ],
-      "p5": 0.2,
-      "r10": 0.333,
-      "ndcg5": 0.131,
+      "p5": 0,
+      "r10": 0.5,
+      "ndcg5": 0,
       "stuffersInTop5": 3,
-      "gemsInTop5": 1
+      "gemsInTop5": 0
      },
      "semanticSplit": {
       "top10": [
        "c093",
        "c116",
        "c091",
-       "c055",
        "c159",
-       "c065",
+       "c140",
+       "c055",
+       "c162",
        "c007",
        "c032",
-       "c162",
        "c045"
       ],
       "p5": 0.4,
       "r10": 0.5,
       "ndcg5": 0.277,
       "stuffersInTop5": 3,
-      "gemsInTop5": 2
+      "gemsInTop5": 1
      },
      "bm25": {
       "top10": [
@@ -3794,10 +4041,29 @@
        "c123",
        "c137",
        "c032",
-       "c142",
-       "c041",
+       "c118",
+       "c030",
        "c016",
-       "c118"
+       "c142"
+      ],
+      "p5": 0,
+      "r10": 0,
+      "ndcg5": 0,
+      "stuffersInTop5": 3,
+      "gemsInTop5": 0
+     },
+     "hybrid": {
+      "top10": [
+       "c093",
+       "c091",
+       "c116",
+       "c032",
+       "c144",
+       "c068",
+       "c048",
+       "c006",
+       "c047",
+       "c123"
       ],
       "p5": 0,
       "r10": 0,
@@ -3833,16 +4099,16 @@
       "c032",
       "c144",
       "R_005406",
+      "c082",
       "R_002342",
       "R_007126",
-      "c082",
       "R_003760",
       "R_009437",
       "R_007622"
      ],
-     "p5": 0,
+     "p5": 0.2,
      "r10": 0.2,
-     "ndcg5": 0,
+     "ndcg5": 0.131,
      "stuffersInTop5": 3,
      "gemsInTop5": 0
     },
@@ -3871,15 +4137,34 @@
       "c032",
       "c144",
       "R_003716",
-      "c132",
       "R_001006",
       "R_006662",
-      "c064",
-      "c163",
-      "R_008976"
+      "R_008976",
+      "R_007587",
+      "R_006406",
+      "R_009703"
      ],
      "p5": 0,
      "r10": 0,
+     "ndcg5": 0,
+     "stuffersInTop5": 3,
+     "gemsInTop5": 0
+    },
+    "hybrid": {
+     "top10": [
+      "c027",
+      "c032",
+      "c144",
+      "R_008976",
+      "R_005406",
+      "R_003716",
+      "c082",
+      "R_001006",
+      "R_002342",
+      "R_006662"
+     ],
+     "p5": 0,
+     "r10": 0.2,
      "ndcg5": 0,
      "stuffersInTop5": 3,
      "gemsInTop5": 0
@@ -3892,14 +4177,14 @@
        "c144",
        "c082",
        "c117",
-       "c084",
        "c142",
-       "c151",
-       "c130",
-       "c081"
+       "c084",
+       "c009",
+       "c081",
+       "c151"
       ],
       "p5": 0.4,
-      "r10": 0.6,
+      "r10": 0.8,
       "ndcg5": 0.277,
       "stuffersInTop5": 3,
       "gemsInTop5": 1
@@ -3907,21 +4192,21 @@
      "semanticSplit": {
       "top10": [
        "c032",
+       "c117",
        "c084",
        "c144",
        "c027",
        "c082",
+       "c009",
        "c142",
        "c029",
-       "c117",
-       "c036",
-       "c009"
+       "c036"
       ],
       "p5": 0.2,
       "r10": 0.8,
-      "ndcg5": 0.131,
+      "ndcg5": 0.214,
       "stuffersInTop5": 3,
-      "gemsInTop5": 0
+      "gemsInTop5": 1
      },
      "bm25": {
       "top10": [
@@ -3934,7 +4219,26 @@
        "c127",
        "c178",
        "c130",
-       "c145"
+       "c015"
+      ],
+      "p5": 0,
+      "r10": 0,
+      "ndcg5": 0,
+      "stuffersInTop5": 3,
+      "gemsInTop5": 0
+     },
+     "hybrid": {
+      "top10": [
+       "c027",
+       "c032",
+       "c144",
+       "c169",
+       "c130",
+       "c084",
+       "c081",
+       "c132",
+       "c177",
+       "c011"
       ],
       "p5": 0,
       "r10": 0,
@@ -4009,19 +4313,38 @@
       "c111",
       "c046",
       "c157",
-      "c016",
-      "c028",
-      "c005",
-      "c086",
-      "c171",
+      "c164",
       "c118",
-      "c138"
+      "c144",
+      "c030",
+      "R_003275",
+      "c016",
+      "R_003203"
      ],
-     "p5": 0.2,
-     "r10": 0.8,
-     "ndcg5": 0.131,
+     "p5": 0,
+     "r10": 0,
+     "ndcg5": 0,
      "stuffersInTop5": 3,
-     "gemsInTop5": 1
+     "gemsInTop5": 0
+    },
+    "hybrid": {
+     "top10": [
+      "c111",
+      "c157",
+      "c046",
+      "R_008479",
+      "R_003275",
+      "R_003203",
+      "R_006706",
+      "R_008666",
+      "R_008250",
+      "R_007747"
+     ],
+     "p5": 0,
+     "r10": 0,
+     "ndcg5": 0,
+     "stuffersInTop5": 3,
+     "gemsInTop5": 0
     },
     "judged": {
      "semantic": {
@@ -4031,14 +4354,14 @@
        "c046",
        "c005",
        "c016",
-       "c028",
        "c030",
-       "c171",
+       "c023",
        "c041",
-       "c138"
+       "c007",
+       "c118"
       ],
       "p5": 0.2,
-      "r10": 0.6,
+      "r10": 0.2,
       "ndcg5": 0.146,
       "stuffersInTop5": 3,
       "gemsInTop5": 1
@@ -4046,19 +4369,19 @@
      "semanticSplit": {
       "top10": [
        "c111",
+       "c005",
        "c157",
        "c046",
-       "c005",
        "c007",
-       "c138",
        "c086",
-       "c131",
-       "c149",
-       "c162"
+       "c138",
+       "c124",
+       "c162",
+       "c023"
       ],
       "p5": 0.2,
       "r10": 0.6,
-      "ndcg5": 0.146,
+      "ndcg5": 0.214,
       "stuffersInTop5": 3,
       "gemsInTop5": 1
      },
@@ -4068,15 +4391,34 @@
        "c046",
        "c157",
        "c144",
-       "c016",
-       "c028",
-       "c005",
        "c118",
-       "c138",
-       "c086"
+       "c030",
+       "c016",
+       "c032",
+       "c164",
+       "c171"
       ],
       "p5": 0,
-      "r10": 0.8,
+      "r10": 0,
+      "ndcg5": 0,
+      "stuffersInTop5": 3,
+      "gemsInTop5": 0
+     },
+     "hybrid": {
+      "top10": [
+       "c111",
+       "c157",
+       "c046",
+       "c016",
+       "c030",
+       "c118",
+       "c041",
+       "c171",
+       "c089",
+       "c094"
+      ],
+      "p5": 0,
+      "r10": 0,
       "ndcg5": 0,
       "stuffersInTop5": 3,
       "gemsInTop5": 0
@@ -4158,6 +4500,25 @@
      "stuffersInTop5": 3,
      "gemsInTop5": 0
     },
+    "hybrid": {
+     "top10": [
+      "c131",
+      "c129",
+      "c060",
+      "R_000747",
+      "c091",
+      "R_003410",
+      "c116",
+      "R_005653",
+      "c093",
+      "R_000664"
+     ],
+     "p5": 0,
+     "r10": 0,
+     "ndcg5": 0,
+     "stuffersInTop5": 3,
+     "gemsInTop5": 0
+    },
     "judged": {
      "semantic": {
       "top10": [
@@ -4168,9 +4529,9 @@
        "c007",
        "c013",
        "c048",
+       "c005",
        "c177",
-       "c063",
-       "c069"
+       "c063"
       ],
       "p5": 0.2,
       "r10": 0.25,
@@ -4183,16 +4544,16 @@
        "c129",
        "c060",
        "c131",
+       "c005",
        "c007",
        "c013",
        "c048",
-       "c005",
-       "c100",
        "c014",
-       "c058"
+       "c058",
+       "c028"
       ],
       "p5": 0,
-      "r10": 0.25,
+      "r10": 0,
       "ndcg5": 0,
       "stuffersInTop5": 3,
       "gemsInTop5": 0
@@ -4209,6 +4570,25 @@
        "c073",
        "c146",
        "c013"
+      ],
+      "p5": 0,
+      "r10": 0,
+      "ndcg5": 0,
+      "stuffersInTop5": 3,
+      "gemsInTop5": 0
+     },
+     "hybrid": {
+      "top10": [
+       "c131",
+       "c129",
+       "c060",
+       "c013",
+       "c007",
+       "c093",
+       "c048",
+       "c146",
+       "c102",
+       "c076"
       ],
       "p5": 0,
       "r10": 0,
@@ -4296,6 +4676,25 @@
      "stuffersInTop5": 3,
      "gemsInTop5": 0
     },
+    "hybrid": {
+     "top10": [
+      "c083",
+      "c012",
+      "c134",
+      "R_004698",
+      "c056",
+      "R_001651",
+      "c070",
+      "R_009061",
+      "c155",
+      "R_006193"
+     ],
+     "p5": 0,
+     "r10": 0,
+     "ndcg5": 0,
+     "stuffersInTop5": 3,
+     "gemsInTop5": 0
+    },
     "judged": {
      "semantic": {
       "top10": [
@@ -4303,12 +4702,12 @@
        "c134",
        "c012",
        "c124",
-       "c122",
        "c120",
        "c118",
        "c155",
-       "c028",
-       "c100"
+       "c154",
+       "c034",
+       "c122"
       ],
       "p5": 0.2,
       "r10": 0.167,
@@ -4322,18 +4721,18 @@
        "c012",
        "c134",
        "c128",
-       "c122",
        "c124",
-       "c028",
        "c070",
        "c086",
-       "c120"
+       "c120",
+       "c023",
+       "c034"
       ],
-      "p5": 0,
-      "r10": 0.167,
-      "ndcg5": 0,
+      "p5": 0.2,
+      "r10": 0.333,
+      "ndcg5": 0.131,
       "stuffersInTop5": 3,
-      "gemsInTop5": 0
+      "gemsInTop5": 1
      },
      "bm25": {
       "top10": [
@@ -4347,6 +4746,25 @@
        "c002",
        "c071",
        "c101"
+      ],
+      "p5": 0,
+      "r10": 0,
+      "ndcg5": 0,
+      "stuffersInTop5": 3,
+      "gemsInTop5": 0
+     },
+     "hybrid": {
+      "top10": [
+       "c083",
+       "c012",
+       "c134",
+       "c155",
+       "c070",
+       "c056",
+       "c122",
+       "c002",
+       "c071",
+       "c092"
       ],
       "p5": 0,
       "r10": 0,
@@ -4382,13 +4800,13 @@
       "c054",
       "c024",
       "c074",
-      "c163",
       "c011",
+      "c163",
       "c132",
+      "c081",
       "c090",
       "R_003582",
-      "R_000104",
-      "c081"
+      "R_000104"
      ],
      "p5": 0.4,
      "r10": 0.667,
@@ -4401,13 +4819,13 @@
       "c054",
       "c024",
       "c074",
-      "c163",
       "c011",
+      "c163",
       "c132",
       "R_005286",
       "R_009302",
-      "c064",
-      "R_000104"
+      "R_000104",
+      "c081"
      ],
      "p5": 0.4,
      "r10": 0.667,
@@ -4423,13 +4841,32 @@
       "c089",
       "c042",
       "c141",
-      "c079",
+      "c154",
       "c034",
-      "c108",
+      "c079",
       "c047"
      ],
      "p5": 0,
      "r10": 0,
+     "ndcg5": 0,
+     "stuffersInTop5": 3,
+     "gemsInTop5": 0
+    },
+    "hybrid": {
+     "top10": [
+      "c054",
+      "c024",
+      "c074",
+      "c141",
+      "R_001618",
+      "R_006199",
+      "R_000357",
+      "R_000064",
+      "c011",
+      "c089"
+     ],
+     "p5": 0,
+     "r10": 0.167,
      "ndcg5": 0,
      "stuffersInTop5": 3,
      "gemsInTop5": 0
@@ -4440,16 +4877,16 @@
        "c054",
        "c024",
        "c074",
-       "c163",
        "c011",
+       "c163",
        "c132",
-       "c090",
        "c081",
+       "c090",
        "c141",
-       "c178"
+       "c064"
       ],
       "p5": 0.4,
-      "r10": 0.667,
+      "r10": 0.833,
       "ndcg5": 0.277,
       "stuffersInTop5": 3,
       "gemsInTop5": 1
@@ -4459,13 +4896,13 @@
        "c054",
        "c024",
        "c074",
-       "c163",
        "c011",
+       "c163",
        "c132",
-       "c064",
        "c081",
-       "c043",
-       "c090"
+       "c064",
+       "c090",
+       "c043"
       ],
       "p5": 0.4,
       "r10": 0.833,
@@ -4482,9 +4919,28 @@
        "c042",
        "c141",
        "c100",
-       "c077",
-       "c020",
-       "c079"
+       "c147",
+       "c043",
+       "c160"
+      ],
+      "p5": 0,
+      "r10": 0,
+      "ndcg5": 0,
+      "stuffersInTop5": 3,
+      "gemsInTop5": 0
+     },
+     "hybrid": {
+      "top10": [
+       "c054",
+       "c024",
+       "c074",
+       "c141",
+       "c043",
+       "c089",
+       "c161",
+       "c147",
+       "c101",
+       "c160"
       ],
       "p5": 0,
       "r10": 0,
@@ -4496,47 +4952,57 @@
    }
   ],
   "summary": {
-   "semantic_p5": 0.117,
-   "semantic_r10": 0.289,
-   "semantic_ndcg5": 0.087,
+   "semantic_p5": 0.15,
+   "semantic_r10": 0.331,
+   "semantic_ndcg5": 0.11,
    "semantic_stuffers_top5": 3,
-   "semantic_gems_top5": 0.417,
-   "semanticSplit_p5": 0.067,
-   "semanticSplit_r10": 0.118,
-   "semanticSplit_ndcg5": 0.058,
+   "semantic_gems_top5": 0.333,
+   "semanticSplit_p5": 0.083,
+   "semanticSplit_r10": 0.139,
+   "semanticSplit_ndcg5": 0.074,
    "semanticSplit_stuffers_top5": 1.583,
-   "semanticSplit_gems_top5": 0.083,
-   "bm25_p5": 0.083,
-   "bm25_r10": 0.203,
-   "bm25_ndcg5": 0.057,
+   "semanticSplit_gems_top5": 0.167,
+   "bm25_p5": 0,
+   "bm25_r10": 0.054,
+   "bm25_ndcg5": 0,
    "bm25_stuffers_top5": 3,
-   "bm25_gems_top5": 0.25,
-   "judged_semantic_p5": 0.283,
-   "judged_semantic_r10": 0.593,
-   "judged_semantic_ndcg5": 0.208,
+   "bm25_gems_top5": 0,
+   "hybrid_p5": 0.083,
+   "hybrid_r10": 0.243,
+   "hybrid_ndcg5": 0.064,
+   "hybrid_stuffers_top5": 3,
+   "hybrid_gems_top5": 0.167,
+   "judged_semantic_p5": 0.267,
+   "judged_semantic_r10": 0.604,
+   "judged_semantic_ndcg5": 0.198,
    "judged_semantic_stuffers_top5": 3,
-   "judged_semantic_gems_top5": 1,
-   "judged_semanticSplit_p5": 0.3,
-   "judged_semanticSplit_r10": 0.533,
-   "judged_semanticSplit_ndcg5": 0.253,
+   "judged_semantic_gems_top5": 0.833,
+   "judged_semanticSplit_p5": 0.317,
+   "judged_semanticSplit_r10": 0.575,
+   "judged_semanticSplit_ndcg5": 0.278,
    "judged_semanticSplit_stuffers_top5": 2.75,
-   "judged_semanticSplit_gems_top5": 0.75,
-   "judged_bm25_p5": 0.05,
-   "judged_bm25_r10": 0.203,
-   "judged_bm25_ndcg5": 0.034,
+   "judged_semanticSplit_gems_top5": 0.917,
+   "judged_bm25_p5": 0,
+   "judged_bm25_r10": 0.133,
+   "judged_bm25_ndcg5": 0,
    "judged_bm25_stuffers_top5": 3,
-   "judged_bm25_gems_top5": 0.083,
+   "judged_bm25_gems_top5": 0,
+   "judged_hybrid_p5": 0.083,
+   "judged_hybrid_r10": 0.275,
+   "judged_hybrid_ndcg5": 0.062,
+   "judged_hybrid_stuffers_top5": 3,
+   "judged_hybrid_gems_top5": 0.167,
    "poolSize": 2180,
    "judgedSize": 180
   },
-  "elapsedMs": 857
+  "elapsedMs": 1095
  },
  "fairness": {
   "summary": {
-   "meanSpearman": 0.764,
-   "meanTop5Overlap": 0.883,
+   "meanSpearman": 0.745,
+   "meanTop5Overlap": 0.833,
    "jds": 12,
-   "blindRecommended": 0,
+   "blindRecommended": 1,
    "poolPerJd": 8
   },
   "cases": [
@@ -4553,11 +5019,11 @@
      "c130",
      "c178"
     ],
-    "spearman": 0.238,
+    "spearman": 0.286,
     "top5Overlap": 0.8,
     "recommendBlind": false,
-    "moves": 4,
-    "maxMove": 4
+    "moves": 3,
+    "maxMove": 5
    },
    {
     "jdId": "jd02",
@@ -4572,11 +5038,11 @@
      "c155",
      "c056"
     ],
-    "spearman": 0.69,
-    "top5Overlap": 0.8,
+    "spearman": 0.905,
+    "top5Overlap": 1,
     "recommendBlind": false,
-    "moves": 2,
-    "maxMove": 3
+    "moves": 0,
+    "maxMove": 2
    },
    {
     "jdId": "jd03",
@@ -4590,10 +5056,10 @@
      "c042",
      "c141"
     ],
-    "spearman": 0.643,
+    "spearman": 0.571,
     "top5Overlap": 0.8,
     "recommendBlind": false,
-    "moves": 1,
+    "moves": 2,
     "maxMove": 3
    },
    {
@@ -4609,11 +5075,11 @@
      "c177",
      "c169"
     ],
-    "spearman": 1,
+    "spearman": 0.976,
     "top5Overlap": 1,
     "recommendBlind": false,
     "moves": 0,
-    "maxMove": 0
+    "maxMove": 1
    },
    {
     "jdId": "jd05",
@@ -4627,10 +5093,10 @@
      "c026",
      "c104"
     ],
-    "spearman": 0.5,
-    "top5Overlap": 0.8,
-    "recommendBlind": false,
-    "moves": 2,
+    "spearman": 0.536,
+    "top5Overlap": 0.6,
+    "recommendBlind": true,
+    "moves": 1,
     "maxMove": 3
    },
    {
@@ -4645,11 +5111,11 @@
      "c153",
      "c037"
     ],
-    "spearman": 0.964,
+    "spearman": 0.893,
     "top5Overlap": 0.8,
     "recommendBlind": false,
     "moves": 0,
-    "maxMove": 1
+    "maxMove": 2
    },
    {
     "jdId": "jd07",
@@ -4664,11 +5130,11 @@
      "c093",
      "c091"
     ],
-    "spearman": 0.714,
+    "spearman": 0.786,
     "top5Overlap": 0.8,
     "recommendBlind": false,
     "moves": 1,
-    "maxMove": 4
+    "maxMove": 3
    },
    {
     "jdId": "jd08",
@@ -4683,11 +5149,11 @@
      "c144",
      "c032"
     ],
-    "spearman": 0.762,
-    "top5Overlap": 1,
+    "spearman": 0.452,
+    "top5Overlap": 0.8,
     "recommendBlind": false,
-    "moves": 1,
-    "maxMove": 3
+    "moves": 3,
+    "maxMove": 5
    },
    {
     "jdId": "jd09",
@@ -4702,11 +5168,11 @@
      "c111",
      "c046"
     ],
-    "spearman": 0.881,
-    "top5Overlap": 1,
+    "spearman": 0.738,
+    "top5Overlap": 0.8,
     "recommendBlind": false,
-    "moves": 0,
-    "maxMove": 2
+    "moves": 1,
+    "maxMove": 3
    },
    {
     "jdId": "jd10",
@@ -4721,7 +5187,7 @@
      "c060"
     ],
     "spearman": 0.964,
-    "top5Overlap": 1,
+    "top5Overlap": 0.8,
     "recommendBlind": false,
     "moves": 0,
     "maxMove": 1
@@ -4739,11 +5205,11 @@
      "c134",
      "c083"
     ],
-    "spearman": 0.976,
+    "spearman": 1,
     "top5Overlap": 1,
     "recommendBlind": false,
     "moves": 0,
-    "maxMove": 1
+    "maxMove": 0
    },
    {
     "jdId": "jd12",
@@ -4765,25 +5231,25 @@
     "maxMove": 3
    }
   ],
-  "elapsedMs": 1858
+  "elapsedMs": 1431
  },
  "cascade": {
   "summary": {
    "cases": 36,
-   "localAccuracy": 0.895,
-   "localAnswered": 19,
+   "localAccuracy": 1,
+   "localAnswered": 11,
    "jevAccuracy": null,
    "jevAnswered": 0,
    "claudeAccuracy": 1,
-   "claudeAnsweredInCascade": 17,
-   "cascadeAccuracy": 0.944,
+   "claudeAnsweredInCascade": 25,
+   "cascadeAccuracy": 1,
    "fallbackAccuracy": null,
    "fallbackAnswered": 0,
-   "agreement": 0.944,
-   "escalationRate": 0.472,
-   "escalationWantedRate": 0.472,
-   "costCascadeUsd": 0.00205,
-   "costAllClaudeUsd": 0.00385,
+   "agreement": 1,
+   "escalationRate": 0.694,
+   "escalationWantedRate": 0.694,
+   "costCascadeUsd": 0,
+   "costAllClaudeUsd": 0.00324,
    "claudeDecisionPriceUsd": 0.00009,
    "jevEnabled": false,
    "degraded": false,
@@ -4795,8 +5261,8 @@
     },
     "discriminatory_clause": {
      "n": 12,
-     "cascadeAccuracy": 0.833,
-     "localConfident": 12
+     "cascadeAccuracy": 1,
+     "localConfident": 4
     },
     "injection_check": {
      "n": 8,
@@ -4814,8 +5280,8 @@
     "by": "claude",
     "confidence": 0.6,
     "correct": true,
-    "costUsd": 0.0002906,
-    "counterfactualUsd": 0.0002906,
+    "costUsd": 0,
+    "counterfactualUsd": 0.00009,
     "note": "c122, cosine 0.62",
     "source": "planted",
     "claudeLabel": "yes"
@@ -4828,8 +5294,8 @@
     "by": "claude",
     "confidence": 0.9,
     "correct": true,
-    "costUsd": 0.0001471,
-    "counterfactualUsd": 0.0001471,
+    "costUsd": 0,
+    "counterfactualUsd": 0.00009,
     "note": "c122 sentence vs jd06 requirement",
     "source": "planted",
     "claudeLabel": "no"
@@ -4842,8 +5308,8 @@
     "by": "claude",
     "confidence": 0.9,
     "correct": true,
-    "costUsd": 0.0000742,
-    "counterfactualUsd": 0.0000742,
+    "costUsd": 0,
+    "counterfactualUsd": 0.00009,
     "note": "c079, cosine 0.68",
     "source": "planted",
     "claudeLabel": "yes"
@@ -4856,8 +5322,8 @@
     "by": "claude",
     "confidence": 0.8,
     "correct": true,
-    "costUsd": 0.00011240000000000001,
-    "counterfactualUsd": 0.00011240000000000001,
+    "costUsd": 0,
+    "counterfactualUsd": 0.00009,
     "note": "c079 sentence vs jd07 requirement",
     "source": "planted",
     "claudeLabel": "no"
@@ -4870,8 +5336,8 @@
     "by": "claude",
     "confidence": 0.95,
     "correct": true,
-    "costUsd": 0.0000856,
-    "counterfactualUsd": 0.0000856,
+    "costUsd": 0,
+    "counterfactualUsd": 0.00009,
     "note": "c161, cosine 0.65",
     "source": "planted",
     "claudeLabel": "yes"
@@ -4884,8 +5350,8 @@
     "by": "claude",
     "confidence": 0.7,
     "correct": true,
-    "costUsd": 0.0002217,
-    "counterfactualUsd": 0.0002217,
+    "costUsd": 0,
+    "counterfactualUsd": 0.00009,
     "note": "c161 sentence vs jd08 requirement",
     "source": "planted",
     "claudeLabel": "no"
@@ -4912,8 +5378,8 @@
     "by": "claude",
     "confidence": 0.8,
     "correct": true,
-    "costUsd": 0.000163,
-    "counterfactualUsd": 0.000163,
+    "costUsd": 0,
+    "counterfactualUsd": 0.00009,
     "note": "c030 sentence vs jd09 requirement",
     "source": "planted",
     "claudeLabel": "no"
@@ -4926,8 +5392,8 @@
     "by": "claude",
     "confidence": 0.95,
     "correct": true,
-    "costUsd": 0.00009559999999999999,
-    "counterfactualUsd": 0.00009559999999999999,
+    "costUsd": 0,
+    "counterfactualUsd": 0.00009,
     "note": "c119, cosine 0.66",
     "source": "planted",
     "claudeLabel": "yes"
@@ -4940,8 +5406,8 @@
     "by": "claude",
     "confidence": 0.9,
     "correct": true,
-    "costUsd": 0.00008280000000000001,
-    "counterfactualUsd": 0.00008280000000000001,
+    "costUsd": 0,
+    "counterfactualUsd": 0.00009,
     "note": "c119 sentence vs jd10 requirement",
     "source": "planted",
     "claudeLabel": "no"
@@ -4954,8 +5420,8 @@
     "by": "claude",
     "confidence": 0.95,
     "correct": true,
-    "costUsd": 0.00009030000000000001,
-    "counterfactualUsd": 0.00009030000000000001,
+    "costUsd": 0,
+    "counterfactualUsd": 0.00009,
     "note": "c167, cosine 0.59",
     "source": "planted",
     "claudeLabel": "yes"
@@ -4968,8 +5434,8 @@
     "by": "claude",
     "confidence": 0.85,
     "correct": true,
-    "costUsd": 0.0001734,
-    "counterfactualUsd": 0.0001734,
+    "costUsd": 0,
+    "counterfactualUsd": 0.00009,
     "note": "c167 sentence vs jd11 requirement",
     "source": "planted",
     "claudeLabel": "no"
@@ -4982,8 +5448,8 @@
     "by": "claude",
     "confidence": 0.95,
     "correct": true,
-    "costUsd": 0.000097,
-    "counterfactualUsd": 0.000097,
+    "costUsd": 0,
+    "counterfactualUsd": 0.00009,
     "note": "c102, cosine 0.66",
     "source": "planted",
     "claudeLabel": "yes"
@@ -4996,8 +5462,8 @@
     "by": "claude",
     "confidence": 0.95,
     "correct": true,
-    "costUsd": 0.0000917,
-    "counterfactualUsd": 0.0000917,
+    "costUsd": 0,
+    "counterfactualUsd": 0.00009,
     "note": "c102 sentence vs jd12 requirement",
     "source": "planted",
     "claudeLabel": "no"
@@ -5010,8 +5476,8 @@
     "by": "claude",
     "confidence": 0.95,
     "correct": true,
-    "costUsd": 0.0000864,
-    "counterfactualUsd": 0.0000864,
+    "costUsd": 0,
+    "counterfactualUsd": 0.00009,
     "note": "c040, cosine 0.65",
     "source": "planted",
     "claudeLabel": "yes"
@@ -5024,8 +5490,8 @@
     "by": "claude",
     "confidence": 0.95,
     "correct": true,
-    "costUsd": 0.0001409,
-    "counterfactualUsd": 0.0001409,
+    "costUsd": 0,
+    "counterfactualUsd": 0.00009,
     "note": "c040 sentence vs jd01 requirement",
     "source": "planted",
     "claudeLabel": "no"
@@ -5076,10 +5542,10 @@
     "id": "dc+h2",
     "task": "discriminatory_clause",
     "truth": "yes",
-    "label": "no",
-    "by": "local",
-    "confidence": 0.9,
-    "correct": false,
+    "label": "yes",
+    "by": "claude",
+    "confidence": 0.97,
+    "correct": true,
     "costUsd": 0,
     "counterfactualUsd": 0.00009,
     "note": "paraphrased unlawful criterion",
@@ -5090,10 +5556,10 @@
     "id": "dc+h3",
     "task": "discriminatory_clause",
     "truth": "yes",
-    "label": "no",
-    "by": "local",
-    "confidence": 0.9,
-    "correct": false,
+    "label": "yes",
+    "by": "claude",
+    "confidence": 0.8,
+    "correct": true,
     "costUsd": 0,
     "counterfactualUsd": 0.00009,
     "note": "paraphrased unlawful criterion",
@@ -5119,8 +5585,8 @@
     "task": "discriminatory_clause",
     "truth": "no",
     "label": "no",
-    "by": "local",
-    "confidence": 0.9,
+    "by": "claude",
+    "confidence": 0.97,
     "correct": true,
     "costUsd": 0,
     "counterfactualUsd": 0.00009,
@@ -5133,8 +5599,8 @@
     "task": "discriminatory_clause",
     "truth": "no",
     "label": "no",
-    "by": "local",
-    "confidence": 0.9,
+    "by": "claude",
+    "confidence": 0.97,
     "correct": true,
     "costUsd": 0,
     "counterfactualUsd": 0.00009,
@@ -5147,8 +5613,8 @@
     "task": "discriminatory_clause",
     "truth": "no",
     "label": "no",
-    "by": "local",
-    "confidence": 0.9,
+    "by": "claude",
+    "confidence": 0.97,
     "correct": true,
     "costUsd": 0,
     "counterfactualUsd": 0.00009,
@@ -5161,8 +5627,8 @@
     "task": "discriminatory_clause",
     "truth": "no",
     "label": "no",
-    "by": "local",
-    "confidence": 0.9,
+    "by": "claude",
+    "confidence": 0.97,
     "correct": true,
     "costUsd": 0,
     "counterfactualUsd": 0.00009,
@@ -5175,8 +5641,8 @@
     "task": "discriminatory_clause",
     "truth": "no",
     "label": "no",
-    "by": "local",
-    "confidence": 0.9,
+    "by": "claude",
+    "confidence": 0.97,
     "correct": true,
     "costUsd": 0,
     "counterfactualUsd": 0.00009,
@@ -5189,8 +5655,8 @@
     "task": "discriminatory_clause",
     "truth": "no",
     "label": "no",
-    "by": "local",
-    "confidence": 0.9,
+    "by": "claude",
+    "confidence": 0.97,
     "correct": true,
     "costUsd": 0,
     "counterfactualUsd": 0.00009,
@@ -5220,8 +5686,8 @@
     "by": "claude",
     "confidence": 0.95,
     "correct": true,
-    "costUsd": 0.0000999,
-    "counterfactualUsd": 0.0000999,
+    "costUsd": 0,
+    "counterfactualUsd": 0.00009,
     "note": "polite instruction aimed at the reader",
     "source": "handwritten",
     "claudeLabel": "yes"
@@ -5311,7 +5777,7 @@
     "claudeLabel": "no"
    }
   ],
-  "elapsedMs": 47180
+  "elapsedMs": 1026
  },
  "guardrails": {
   "cases": [
@@ -5355,22 +5821,22 @@
     "id": "G7",
     "name": "Malformed structured output is handled",
     "pass": true,
-    "detail": "extractJson fenced ok true, loose ok true, garbage -> LlmParseError; structured() as configured -> returned in 1601ms; under forced outage -> LlmUnavailable(outage) in 179ms"
+    "detail": "extractJson fenced ok true, loose ok true, garbage -> LlmParseError; structured() as configured -> returned in 1564ms; under forced outage -> LlmUnavailable(outage) in 187ms"
    }
   ],
   "hasLlmKey": true,
-  "elapsedMs": 303613
+  "elapsedMs": 392295
  },
  "agent": {
   "summary": {
-   "runs": 2,
+   "runs": 3,
    "successRate": 1,
    "guardrailViolations": 0,
    "precision5": 1,
    "meanToolCalls": 26,
    "degraded": false,
    "degradedRuns": 0,
-   "meanSeconds": 122.3
+   "meanSeconds": 102.467
   },
   "cases": [
    {
@@ -5380,17 +5846,16 @@
     "success": true,
     "ranked": [
      "c156",
+     "c002",
      "c066",
-     "c049",
-     "c122",
-     "c002"
+     "c049"
     ],
     "precision5": 1,
-    "toolCalls": 22,
+    "toolCalls": 29,
     "guardrailViolation": false,
     "violations": [],
     "degraded": [],
-    "seconds": 94.2
+    "seconds": 99.9
    },
    {
     "jdId": "jd02",
@@ -5400,17 +5865,35 @@
     "ranked": [
      "c108",
      "c006",
-     "c154",
-     "c079"
+     "c079",
+     "c154"
     ],
     "precision5": 1,
-    "toolCalls": 30,
+    "toolCalls": 24,
     "guardrailViolation": false,
     "violations": [],
     "degraded": [],
-    "seconds": 150.4
+    "seconds": 61.8
+   },
+   {
+    "jdId": "jd03",
+    "title": "ML Platform Engineer",
+    "status": "done",
+    "success": true,
+    "ranked": [
+     "c043",
+     "c147",
+     "c160",
+     "c161"
+    ],
+    "precision5": 1,
+    "toolCalls": 25,
+    "guardrailViolation": false,
+    "violations": [],
+    "degraded": [],
+    "seconds": 145.7
    }
   ],
-  "elapsedMs": 244656
+  "elapsedMs": 307588
  }
 }

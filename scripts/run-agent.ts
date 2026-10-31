@@ -55,6 +55,9 @@ if (store.getRun(runId)?.status === "waiting_approval") {
 }
 store.flush();
 console.log(`\nfinished in ${((Date.now() - t0) / 1000).toFixed(1)}s; status=${store.getRun(runId)?.status}; phase=${state.phase}; tool calls=${state.toolCalls.length}`);
+const { spendSummary } = await import("../src/lib/llm");
+const sp = spendSummary(runId);
+console.log(`llm calls=${sp.calls} cached=${sp.cached} cost=$${sp.cost}`);
 console.log("sequence:", state.toolCalls.map((t) => t.name).join(" → "));
 if (state.audit) console.log(`fairness: rho=${state.audit.spearman} overlap=${state.audit.top5Overlap}\n  ${state.audit.findings.join("\n  ")}`);
 process.exit(0);

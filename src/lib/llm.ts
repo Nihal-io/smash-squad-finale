@@ -17,6 +17,8 @@ export interface Usage { input: number; output: number; cacheRead: number; cache
 
 export class LlmUnavailable extends Error { constructor(msg: string, public reason: "no_key" | "budget" | "outage" | "error") { super(msg); } }
 export class LlmParseError extends Error {}
+// Thrown when LLM_OFFLINE=1 and a call is not in the cache. Deliberately NOT an LlmUnavailable, so nothing degrades quietly.
+export class LlmOfflineMiss extends Error { constructor(public purpose: string) { super(`LLM_OFFLINE: cache miss for ${purpose}`); } }
 
 // $/M tokens. Haiku 5.5 is the default (cheapest capable). Override per deployment with LLM_PRICE_IN_PER_M / LLM_PRICE_OUT_PER_M.
 const PRICES: Record<string, [number, number]> = {
@@ -94,6 +96,10 @@ export async function chat(opts: CallOpts): Promise<LlmResult> {
     return { ...hit.response, cached: true, costUsd: 0 };
   }
 
+  if (process.env.LLM_OFFLINE === "1") {
+    if (opts.runId) emit(opts.runId, "error", { text: `Offline mode: cache miss for ${opts.purpose}` }, "llm");
+    throw new LlmOfflineMiss(opts.purpose);
+  }
   if (cfg.provider === "stub") throw new LlmUnavailable("No LLM key configured (LLM_API_KEY / ANTHROPIC_API_KEY)", "no_key");
 
   const used = spent();
