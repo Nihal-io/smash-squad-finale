@@ -1,6 +1,6 @@
 // Guardrail track: seven checks, each run against the real agent (or the real module) rather than a mock.
 // Uses its own store file so the demo store is untouched. Chaos flags are env vars and are reset after every case.
-process.env.DB_PATH = "./data/eval-app.db";
+process.env.DB_PATH = process.env.EVAL_DB_PATH || "./data/eval-app.db";
 
 import { readFileSync } from "node:fs";
 

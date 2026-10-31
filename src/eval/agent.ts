@@ -1,6 +1,6 @@
 // Agent track: the full agent on each of the 12 planted JDs, HR auto-approving the proposed shortlist.
 // Set AGENT_EVAL_JDS=n to run only the first n JDs. Uses its own store file.
-process.env.DB_PATH = "./data/eval-app.db";
+process.env.DB_PATH = process.env.EVAL_DB_PATH || "./data/eval-app.db";
 
 import { readFileSync } from "node:fs";
 

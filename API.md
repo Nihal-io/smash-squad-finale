@@ -44,6 +44,8 @@ Step kinds and payloads the UI should render:
 | `done` | `{final:{ranked, weights, summary, officialBlind}, summary:{toolCalls, reformulations, dropped, llm, cascade}, degraded}` |
 | `error` | `{text}` |
 
+Each `ShortlistItem` also carries `claims[]` from the assessment module (`{claimId, skill, claim, status: verified|contradicted|not_tested, score?, reason, questions[]}`) and `assessmentSource` (`generated`, `company` when `data/assessments/active.json` exists, or `built-in` when the module fell back). The run state keeps the module's persisted plan per candidate under `candidates[id].assessV2`.
+
 ## POST /api/run/:id/approve
 Request `{"approved": string[], "removed": string[]}` → `200 {"ok":true}`; `409` if the run is not waiting for approval. Resumes the agent in the background.
 

@@ -5,7 +5,7 @@ import type Anthropic from "@anthropic-ai/sdk";
 import { chat, LlmUnavailable, type ChatMessage } from "../lib/llm";
 import { store } from "../lib/store";
 import { emit } from "../lib/trace";
-import { dbHealthy } from "../lib/db";
+import { dbHealthy, getPool } from "../lib/db";
 import { spendSummary } from "../lib/llm";
 import { cascadeSummary, decide, sentences } from "../lib/decide";
 import { embedTexts, QUERY_PREFIX } from "../lib/embed";
@@ -257,7 +257,8 @@ async function getCheckpointer(): Promise<BaseCheckpointSaver> {
   if (process.env.DATABASE_URL && (await dbHealthy())) {
     try {
       const { PostgresSaver } = await import("@langchain/langgraph-checkpoint-postgres");
-      const saver = PostgresSaver.fromConnString(process.env.DATABASE_URL, { schema: "langgraph" } as any);
+      // Share the app's small pool so one process never holds more than a few pooler connections.
+      const saver = new PostgresSaver(getPool()!, undefined, { schema: "langgraph" } as any);
       await saver.setup();
       checkpointer = saver;
       return saver;

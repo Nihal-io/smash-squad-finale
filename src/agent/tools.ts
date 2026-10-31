@@ -11,6 +11,7 @@ import { type AgentState, type Phase, type CandidateState, mustHaves, hasFullEvi
 import { sendAssessmentEmail } from "../lib/mailer";
 import { runInSandbox } from "../lib/sandbox";
 import { createAssessment, collectResponses, gradeAnswer } from "./assess";
+import { prepareAssessment, toLegacyAssessment, gradeWithModule } from "./assess-adapter";
 
 export class GateError extends Error { constructor(msg: string, public gate: string) { super(msg); } }
 export class ApprovalInterrupt extends Error { constructor(public payload: { candidateIds: string[]; rationale: string }) { super("waiting for HR approval"); } }
@@ -213,9 +214,20 @@ export const create_assessment: ToolSpec = {
       const st = ensureCandidate(state, c.candidate_id);
       if (st.dropped) continue;
       try {
-        const a = await createAssessment(state, st, c.unverified_requirement_ids, runId);
+        let a: NonNullable<CandidateState["assessment"]>;
+        try {
+          const prep = await prepareAssessment(state, st, c.unverified_requirement_ids, runId);
+          st.assessV2 = { claims: prep.claims, plan: prep.plan, jdSkills: prep.jdSkills, source: prep.source, verifiedByEvidence: prep.verifiedByEvidence, matches: prep.matches };
+          a = toLegacyAssessment(state, st, prep);
+          emit(runId, "note", { text: `Assessment module: ${prep.claims.length} claims extracted for ${st.name}, ${prep.verifiedByEvidence.length} already covered by cited evidence, ${prep.plan.questions.length} ${prep.source} question(s) target the rest${prep.plan.uncovered.length ? `; ${prep.plan.uncovered.length} claim(s) not tested` : ""}.`, candidateId: st.id }, "create_assessment");
+        } catch (e: any) {
+          if (e instanceof GateError) throw e;
+          st.assessV2 = undefined;
+          emit(runId, "note", { banner: "fallback", text: `Automatic fallback: assessment module error — ${String(e?.message ?? e).slice(0, 160)}. Using the built-in assessment generator for ${st.name}.`, candidateId: st.id }, "create_assessment");
+          a = await createAssessment(state, st, c.unverified_requirement_ids, runId);
+        }
         st.assessment = a;
-        out.push({ candidate_id: st.id, assessment_id: a.id, targets: a.unverified, questions: a.questions.map((q) => ({ kind: q.kind, prompt: clip(q.prompt, 160), targets: q.targets })) });
+        out.push({ candidate_id: st.id, assessment_id: a.id, source: st.assessV2 ? st.assessV2.source : "built-in", targets: a.unverified, questions: a.questions.map((q) => ({ id: q.id, kind: q.kind, prompt: clip(q.prompt, 160), targets: q.targets })) });
       } catch (e: any) {
         if (e instanceof GateError) throw e;
         out.push({ candidate_id: st.id, error: `assessment generation failed: ${String(e?.message ?? e).slice(0, 120)}; call again for this candidate` });
@@ -272,11 +284,15 @@ export const run_code: ToolSpec = {
     for (const id of input.candidate_ids) {
       const st = state.candidates[id];
       const q = st?.assessment?.questions.find((x) => x.kind === "code");
-      const ans = st?.responses?.find((r) => r.kind === "code");
+      const ans = q ? st?.responses?.find((r) => (r.questionId && r.questionId === q.id) || (!r.questionId && r.kind === "code")) : undefined;
       if (!st || !q || !ans) { out.push({ candidate_id: id, error: "no coding answer collected" }); continue; }
-      const r = await runInSandbox(ans.answer, q.tests ?? []);
-      (st as any)._tests = r;
-      out.push({ candidate_id: id, passed: r.passed, total: r.total, error: r.error });
+      try {
+        const r = await runInSandbox(ans.answer, q.tests ?? []);
+        (st as any)._tests = r;
+        out.push({ candidate_id: id, passed: r.passed, total: r.total, error: r.error });
+      } catch (e: any) {
+        out.push({ candidate_id: id, error: `sandbox error: ${String(e?.message ?? e).slice(0, 100)}` });
+      }
     }
     return { results: out };
   },
@@ -293,6 +309,19 @@ export const grade_answer: ToolSpec = {
       const st = state.candidates[id];
       if (!st?.responses) { out.push({ candidate_id: id, error: "collect responses first" }); continue; }
       const tests = (st as any)._tests as { passed: number; total: number } | undefined;
+      if (st.assessV2) {
+        try {
+          const g = await gradeWithModule(state, st, st.assessV2 as any, runId);
+          st.grade = { ...g.grade, regraded: input.regrade };
+          st.claimVerdicts = g.verdicts;
+          const counts = { verified: 0, contradicted: 0, not_tested: 0 } as Record<string, number>;
+          for (const v of g.verdicts) counts[v.status] = (counts[v.status] ?? 0) + 1;
+          out.push({ candidate_id: id, total: st.grade.total, flaggedForHr: st.grade.flaggedForHr, claims: counts, verdicts: g.verdicts.map((v) => ({ skill: v.skill, status: v.status, score: v.score })), parts: st.grade.parts.map((p) => ({ kind: p.kind, score: p.score, confidence: p.confidence })) });
+          continue;
+        } catch (e: any) {
+          emit(runId, "note", { banner: "fallback", text: `Automatic fallback: assessment module error — ${String(e?.message ?? e).slice(0, 160)}. Grading ${st.name} with the built-in rubric grader.`, candidateId: id }, "grade_answer");
+        }
+      }
       st.grade = await gradeAnswer(state, st, tests, input.regrade, runId);
       out.push({ candidate_id: id, total: st.grade.total, flaggedForHr: st.grade.flaggedForHr, parts: st.grade.parts.map((p) => ({ kind: p.kind, score: p.score, confidence: p.confidence })) });
     }
