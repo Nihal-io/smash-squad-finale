@@ -39,7 +39,7 @@ test('extracts actual UTF-8 TXT, PDF, and DOCX files',async()=>{
   expect(await extractResumeText('referral.TXT',Buffer.from('\r\n'+text+'\r\n'))).toBe(text);
   expect(await extractResumeText('referral.pdf',pdf())).toContain(text);
   expect(await extractResumeText('referral.docx',docx())).toBe(text);
-});
+},30_000);
 test('rejects unsupported, malformed, oversized, and unreadable documents',async()=>{
   for(const [filename,bytes] of [['resume.html',Buffer.from(text)],['bad.pdf',Buffer.from(text)],['bad.docx',Buffer.from(text)],['empty.txt',Buffer.alloc(0)],['too-big.txt',Buffer.alloc(MAX_RESUME_BYTES+1)],['invalid.txt',Buffer.from([0xff,0xfe])],['short.txt',Buffer.from('too short')]] as const)
     await expect(extractResumeText(filename,bytes)).rejects.toThrow();

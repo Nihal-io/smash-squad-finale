@@ -58,6 +58,8 @@ for(const mode of ['generated','company'] as const)test(`${mode}: waits for HR a
   source=mode;const id=referralSnapshot().records[0].id,run=createReferralRun('Backend engineer needs Python APIs and Kubernetes',[id],'backend'),before=invites;
   expect(()=>beginReferralApproval(run,[id])).toThrow();
   await checkReferrals(run,deps);expect(store.getRun(run)?.status).toBe('waiting_approval');expect(invites).toBe(before);
+  delete store.getRun(run)!.state.jd.refused; // Main's newer JD shape, as well as older saved runs.
+  expect(referralRunView(run).refused).toEqual([]);
   expect(referralRunView(run).candidates[0].missing).toEqual(['Kubernetes production operations']);
   beginReferralApproval(run,[id]);expect(()=>beginReferralApproval(run,[id])).toThrow();
   await prepareReferralAssessments(run,deps);expect(store.getRun(run)?.status).toBe('waiting_responses');expect(invites).toBe(before+1);
