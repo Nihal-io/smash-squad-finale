@@ -10,10 +10,13 @@ async function sha256Hex(s: string): Promise<string> {
 const GATE_PAGE = `<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Passcode</title>
-<style>body{font-family:system-ui,sans-serif;display:flex;min-height:100vh;align-items:center;justify-content:center;margin:0;background:#f6f7f9}
-form{background:#fff;padding:28px;border-radius:10px;box-shadow:0 2px 12px rgba(0,0,0,.08);display:flex;flex-direction:column;gap:12px;min-width:260px}
-input,button{font:inherit;padding:10px;border-radius:6px;border:1px solid #c9ced6}button{background:#1f2937;color:#fff;border:0;cursor:pointer}
-#err{color:#b91c1c;font-size:14px;min-height:18px}</style></head>
+<style>/* mirrors the palette tokens in public/index.html (this page renders before that file is reachable) */
+:root{color-scheme:dark;--bg:#121110;--panel:#1B1A18;--control:#6B655C;--text:#F2EFEA;--accent:#8FA2FF;--on-accent:#121110;--bad:#F2897D;--shadow:rgba(0,0,0,.55)}
+@media (prefers-color-scheme: light){:root{color-scheme:light;--bg:#F7F6F3;--panel:#FFFFFF;--control:#8C867C;--text:#1C1A17;--accent:#3247C2;--on-accent:#FFFFFF;--bad:#B42318;--shadow:rgba(28,26,23,.16)}}
+body{font-family:system-ui,sans-serif;display:flex;min-height:100vh;align-items:center;justify-content:center;margin:0;background:var(--bg);color:var(--text)}
+form{background:var(--panel);padding:28px;border-radius:10px;box-shadow:0 2px 12px var(--shadow);display:flex;flex-direction:column;gap:12px;min-width:260px}
+input,button{font:inherit;padding:10px;border-radius:6px;border:1px solid var(--control)}input{background:var(--bg);color:var(--text)}button{background:var(--accent);color:var(--on-accent);border:0;cursor:pointer}
+#err{color:var(--bad);font-size:14px;min-height:18px}</style></head>
 <body><form id="f"><strong>Enter passcode</strong>
 <input id="p" type="password" autocomplete="current-password" autofocus required>
 <button type="submit">Continue</button><div id="err"></div></form>
