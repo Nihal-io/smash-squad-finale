@@ -185,11 +185,11 @@ async function degradedPipeline(state: AgentState) {
   const T = Object.fromEntries(ALL_TOOLS.map((t) => [t.name, t]));
   if (state.phase === "SOURCE") {
     if (!state.memoryApplied.length) await execTool(state, T.recall_memory, { reason: auto("load HR notes for this role"), role: state.roleKey }, "auto");
-    for (const r of state.jd.requirements) await execTool(state, T.search_candidates, { reason: auto(`one search per requirement: "${r.text}"`), query: `${state.jd.title}: ${r.text}`, k: 12, view: "visible" }, "auto");
+    for (const r of state.jd.requirements) await execTool(state, T.search_candidates, { reason: auto(`one search per requirement: "${r.text}"`), query: `${state.jd.title}: ${r.text}`, k: 20, view: "visible" }, "auto");
     // Local-only evidence: best sentence per must-have, accepted only when the local tier is confident.
     const musts = mustHaves(state);
     const rv = await embedTexts(musts.map((m) => QUERY_PREFIX + m.text));
-    const pool = Object.values(state.candidates).filter((c) => !c.dropped).sort((a, b) => b.seen - a.seen || b.semantic - a.semantic).slice(0, 12);
+    const pool = Object.values(state.candidates).filter((c) => !c.dropped).sort((a, b) => b.seen - a.seen || b.semantic - a.semantic).slice(0, 16);
     for (const c of pool) {
       if (evidencedCandidates(state).length >= state.targetN) break;
       const row = getCandidateLocal(c.id)!;

@@ -20,6 +20,7 @@ export async function GET(req: Request, { params }: { params: Promise<{ id: stri
       let lastSeq = 0;
       let lastStatus: string | null = null;
       let ticks = 0;
+      let timer: ReturnType<typeof setInterval> | undefined;
 
       const onAbort = () => close();
       const write = (s: string) => {
@@ -51,7 +52,7 @@ export async function GET(req: Request, { params }: { params: Promise<{ id: stri
 
       const unsub = subscribe(id, sendStep);
       cleanup = () => {
-        clearInterval(timer);
+        if (timer) clearInterval(timer);
         unsub();
         req.signal.removeEventListener("abort", onAbort);
       };
@@ -68,7 +69,7 @@ export async function GET(req: Request, { params }: { params: Promise<{ id: stri
         if (TERMINAL.has(run.status) && history(id).length <= lastSeq) close();
       };
 
-      const timer = setInterval(() => {
+      timer = setInterval(() => {
         if (closed) return;
         ticks++;
         checkStatus();

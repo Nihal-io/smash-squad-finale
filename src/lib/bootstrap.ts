@@ -36,3 +36,10 @@ export async function ensureData(): Promise<void> {
     console.log(`[bootstrap] database already holds ${rows[0].n} candidates`);
   }
 }
+
+let once: Promise<void> | null = null;
+/** Runs ensureData at most once per process; safe to call from every Node route. */
+export function ensureDataOnce(): Promise<void> {
+  if (!once) once = ensureData().catch((e) => { console.error("[bootstrap] failed:", e); });
+  return once;
+}

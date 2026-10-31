@@ -1,3 +1,4 @@
+import { ensureDataOnce } from "@/src/lib/bootstrap";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { NextResponse } from "next/server";
@@ -18,6 +19,7 @@ function presetArchetype(presetId?: string): string | undefined {
 }
 
 export async function POST(req: Request) {
+  await ensureDataOnce();
   const body = await req.json().catch(() => null);
   const jdText = typeof body?.jdText === "string" ? body.jdText.trim() : "";
   if (!jdText) return NextResponse.json({ error: "jdText required" }, { status: 400 });
