@@ -10,3 +10,8 @@ out/
 supabase/.temp/
 .cache/
 models/
+data/app.db
+data/app.db.tmp
+data/eval-app.db
+data/eval-app.db.tmp
+data/hf/

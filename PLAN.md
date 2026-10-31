@@ -145,3 +145,13 @@ Haiku-class pricing assumed (~$1/M in, $5/M out; overridable via `LLM_PRICE_IN_P
 **Cut order if >15 min behind:** Resend → outbox only · collect_responses → seeded answers · cross-session memory → per-run · public-track eval → 50 jobs · agent eval → 6 JDs. **Never cut:** shortlist + evidence, fairness, approval gate, one refusal, eval page.
 
 **STOPPED. Type "go".**
+
+---
+
+## 9. Later amendments folded in
+
+**F. Model cascade.** `src/lib/decide.ts`: local embeddings/rules → JEV (decision-only, `src/lib/jev.ts`, enabled by `JEV_URL`) → Claude, only when earlier tiers are unsure or below `DECIDE_THRESHOLD` (0.8). Tasks: requirement_support, injection_check, discriminatory_clause, short_answer_pass. Evidence = top sentence per requirement by cosine, then decide(); spans are verbatim by construction. Every decision logged with tier, confidence, cost and the all-Claude counterfactual. `CASCADE=off` sends everything to Claude. JEV endpoint, auth, input format and confidence field: still needed from you; the client assumes `POST {task,input} → {label,confidence?}` until then.
+
+**Deploy.** Railway target, see `DEPLOY.md`. `PORT`, `DB_PATH` (file-backed app state), `MODEL_CACHE` from env. Boot seeds and embeds when data is missing. `GET /health`. `APP_PASSCODE` gate on every page and API route. Budget enforced in `llm.ts`.
+
+**Agent runtime note.** Current Claude models reject `temperature`; determinism comes from the per-call cache and `effort: low`.
