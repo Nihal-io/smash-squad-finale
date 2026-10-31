@@ -22,6 +22,8 @@ export interface ShortlistItem {
   dropped?: string;
   gradeFlag?: string;
   simulatedResponses: boolean;
+  claims: { claimId: string; skill: string; claim: string; status: "verified" | "contradicted" | "not_tested"; score?: number; reason: string; questions: string[] }[]; // from the assessment module; empty on the built-in path
+  assessmentSource?: "generated" | "company" | "built-in";
 }
 
 export type FairnessRow = FairnessAudit["rows"][number];
@@ -44,6 +46,7 @@ export function toShortlist(state: AgentState): ShortlistItem[] {
       final: +(assessment === null ? c.semantic : 0.6 * c.semantic + 0.4 * assessment).toFixed(3),
       evidence: c.evidence, unverified: musts.filter((m) => !c.evidence.some((e) => e.requirementId === m)),
       flags: c.flags, dropped: c.dropped, gradeFlag: c.grade?.flaggedForHr, simulatedResponses: !!c.responses,
+      claims: c.claimVerdicts ?? [], assessmentSource: c.assessV2 ? c.assessV2.source : c.assessment ? "built-in" : undefined,
     };
   });
 }

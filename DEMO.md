@@ -14,7 +14,7 @@ Before the demo: `bun run demo:reset`, then `bun run dev`, open `http://localhos
 4. **Approve.** The modal opens with five candidates. Remove one if you like. Click "Approve and send assessments".
    Say: *Nothing is sent before this click. The send tool refuses without an approval record.*
 
-5. **Watch ASSESS.** One call each: create, send, collect, run code, grade. Hover a shortlist card: assessment scores differ, the outbox holds five emails, answers are labelled "Simulated", hidden tests show 1/3 to 3/3.
+5. **Watch ASSESS.** One call each: create, send, collect, run code, grade. The assessment module extracts each candidate's claims, treats the ones we already quoted as verified, and writes two or three questions for the rest. Each card then shows claim verdicts: verified, contradicted or not tested, with the question behind each. The outbox holds five emails, answers are labelled "Simulated".
 
 6. **Open Fairness.** Two columns, visible and hidden identity, with rank arrows, Spearman ρ, top-5 overlap, and the gender and college-tier split of each top 5. Flip "Use blind ranking as the official shortlist".
    Say: *Same shortlist, re-ranked with names, colleges and gender removed. The numbers are whatever they are.*

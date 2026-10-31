@@ -1,6 +1,6 @@
 // Fairness track: for each of the 12 planted JDs, rerank a pool of 8 labelled candidates on identity-redacted vectors
 // and compare with the visible ranking. Deterministic, no LLM involved.
-process.env.DB_PATH = "./data/eval-app.db";
+process.env.DB_PATH = process.env.EVAL_DB_PATH || "./data/eval-app.db";
 
 import { readFileSync } from "node:fs";
 

@@ -1,0 +1,202 @@
+[
+  {
+    "id": "honest-1",
+    "flavour": "honest",
+    "claims": [
+      {
+        "id": "sql",
+        "skill": "SQL",
+        "assertion": "I have built production systems using SQL.",
+        "evidence": "I have built production systems using SQL.",
+        "verified": false
+      },
+      {
+        "id": "python",
+        "skill": "Python",
+        "assertion": "I have built production systems using Python.",
+        "evidence": "I have built production systems using Python.",
+        "verified": false
+      }
+    ]
+  },
+  {
+    "id": "honest-2",
+    "flavour": "honest",
+    "claims": [
+      {
+        "id": "http",
+        "skill": "HTTP",
+        "assertion": "I have built production systems using HTTP.",
+        "evidence": "I have built production systems using HTTP.",
+        "verified": false
+      },
+      {
+        "id": "docker",
+        "skill": "Docker",
+        "assertion": "I have built production systems using Docker.",
+        "evidence": "I have built production systems using Docker.",
+        "verified": false
+      }
+    ]
+  },
+  {
+    "id": "honest-3",
+    "flavour": "honest",
+    "claims": [
+      {
+        "id": "statistics",
+        "skill": "Statistics",
+        "assertion": "I have built production systems using Statistics.",
+        "evidence": "I have built production systems using Statistics.",
+        "verified": false
+      },
+      {
+        "id": "etl",
+        "skill": "ETL",
+        "assertion": "I have built production systems using ETL.",
+        "evidence": "I have built production systems using ETL.",
+        "verified": false
+      }
+    ]
+  },
+  {
+    "id": "honest-4",
+    "flavour": "honest",
+    "claims": [
+      {
+        "id": "redis",
+        "skill": "Redis",
+        "assertion": "I have built production systems using Redis.",
+        "evidence": "I have built production systems using Redis.",
+        "verified": false
+      },
+      {
+        "id": "security",
+        "skill": "Security",
+        "assertion": "I have built production systems using Security.",
+        "evidence": "I have built production systems using Security.",
+        "verified": false
+      }
+    ]
+  },
+  {
+    "id": "honest-5",
+    "flavour": "honest",
+    "claims": [
+      {
+        "id": "coding",
+        "skill": "Coding",
+        "assertion": "I have built production systems using Coding.",
+        "evidence": "I have built production systems using Coding.",
+        "verified": false
+      },
+      {
+        "id": "cobol",
+        "skill": "Cobol",
+        "assertion": "I have built production systems using Cobol.",
+        "evidence": "I have built production systems using Cobol.",
+        "verified": false
+      }
+    ]
+  },
+  {
+    "id": "inflated-1",
+    "flavour": "inflated",
+    "claims": [
+      {
+        "id": "sql",
+        "skill": "SQL",
+        "assertion": "I have built production systems using SQL.",
+        "evidence": "I have built production systems using SQL.",
+        "verified": false
+      },
+      {
+        "id": "python",
+        "skill": "Python",
+        "assertion": "I have built production systems using Python.",
+        "evidence": "I have built production systems using Python.",
+        "verified": false
+      }
+    ]
+  },
+  {
+    "id": "inflated-2",
+    "flavour": "inflated",
+    "claims": [
+      {
+        "id": "http",
+        "skill": "HTTP",
+        "assertion": "I have built production systems using HTTP.",
+        "evidence": "I have built production systems using HTTP.",
+        "verified": false
+      },
+      {
+        "id": "docker",
+        "skill": "Docker",
+        "assertion": "I have built production systems using Docker.",
+        "evidence": "I have built production systems using Docker.",
+        "verified": false
+      }
+    ]
+  },
+  {
+    "id": "inflated-3",
+    "flavour": "inflated",
+    "claims": [
+      {
+        "id": "statistics",
+        "skill": "Statistics",
+        "assertion": "I have built production systems using Statistics.",
+        "evidence": "I have built production systems using Statistics.",
+        "verified": false
+      },
+      {
+        "id": "etl",
+        "skill": "ETL",
+        "assertion": "I have built production systems using ETL.",
+        "evidence": "I have built production systems using ETL.",
+        "verified": false
+      }
+    ]
+  },
+  {
+    "id": "inflated-4",
+    "flavour": "inflated",
+    "claims": [
+      {
+        "id": "redis",
+        "skill": "Redis",
+        "assertion": "I have built production systems using Redis.",
+        "evidence": "I have built production systems using Redis.",
+        "verified": false
+      },
+      {
+        "id": "security",
+        "skill": "Security",
+        "assertion": "I have built production systems using Security.",
+        "evidence": "I have built production systems using Security.",
+        "verified": false
+      }
+    ]
+  },
+  {
+    "id": "inflated-5",
+    "flavour": "inflated",
+    "claims": [
+      {
+        "id": "coding",
+        "skill": "Coding",
+        "assertion": "I have built production systems using Coding.",
+        "evidence": "I have built production systems using Coding.",
+        "verified": false
+      },
+      {
+        "id": "cobol",
+        "skill": "Cobol",
+        "assertion": "I have built production systems using Cobol.",
+        "evidence": "I have built production systems using Cobol.",
+        "verified": false
+      }
+    ]
+  }
+]

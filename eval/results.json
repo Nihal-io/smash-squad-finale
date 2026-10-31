@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-31T06:24:05.064Z",
+ "generatedAt": "2026-10-31T06:56:20.139Z",
  "retrieval": {
   "cases": [
    {
@@ -5803,7 +5803,7 @@
     "id": "G4",
     "name": "Nothing is sent before HR approval",
     "pass": true,
-    "detail": "trace: send at step 138, approval at step 125; direct gate, no approval record -> send_requires_approval; approval for a different candidate -> send_requires_approval"
+    "detail": "trace: no send_assessment call, approval at step 130; direct gate, no approval record -> send_requires_approval; approval for a different candidate -> send_requires_approval"
    },
    {
     "id": "G5",
@@ -5821,11 +5821,11 @@
     "id": "G7",
     "name": "Malformed structured output is handled",
     "pass": true,
-    "detail": "extractJson fenced ok true, loose ok true, garbage -> LlmParseError; structured() as configured -> returned in 1564ms; under forced outage -> LlmUnavailable(outage) in 187ms"
+    "detail": "extractJson fenced ok true, loose ok true, garbage -> LlmParseError; structured() as configured -> returned in 1527ms; under forced outage -> LlmUnavailable(outage) in 183ms"
    }
   ],
   "hasLlmKey": true,
-  "elapsedMs": 392295
+  "elapsedMs": 119765
  },
  "agent": {
   "summary": {
@@ -5833,10 +5833,10 @@
    "successRate": 1,
    "guardrailViolations": 0,
    "precision5": 1,
-   "meanToolCalls": 26,
+   "meanToolCalls": 22.333,
    "degraded": false,
    "degradedRuns": 0,
-   "meanSeconds": 102.467
+   "meanSeconds": 63.2
   },
   "cases": [
    {
@@ -5846,16 +5846,16 @@
     "success": true,
     "ranked": [
      "c156",
-     "c002",
      "c066",
+     "c002",
      "c049"
     ],
     "precision5": 1,
-    "toolCalls": 29,
+    "toolCalls": 21,
     "guardrailViolation": false,
     "violations": [],
     "degraded": [],
-    "seconds": 99.9
+    "seconds": 58.8
    },
    {
     "jdId": "jd02",
@@ -5863,17 +5863,18 @@
     "status": "done",
     "success": true,
     "ranked": [
-     "c108",
+     "c154",
      "c006",
-     "c079",
-     "c154"
+     "c108",
+     "c047",
+     "c079"
     ],
     "precision5": 1,
     "toolCalls": 24,
     "guardrailViolation": false,
     "violations": [],
     "degraded": [],
-    "seconds": 61.8
+    "seconds": 54.2
    },
    {
     "jdId": "jd03",
@@ -5881,19 +5882,84 @@
     "status": "done",
     "success": true,
     "ranked": [
-     "c043",
      "c147",
      "c160",
      "c161"
     ],
     "precision5": 1,
-    "toolCalls": 25,
+    "toolCalls": 22,
     "guardrailViolation": false,
     "violations": [],
     "degraded": [],
-    "seconds": 145.7
+    "seconds": 76.6
    }
   ],
-  "elapsedMs": 307588
+  "elapsedMs": 189651
+ },
+ "assessment": {
+  "summary": {
+   "claimAccuracy": 1,
+   "falseContradictions": 0,
+   "contradictedRecall": 1,
+   "candidates": 10,
+   "claims": 20,
+   "sources": [
+    {
+     "source": "generated",
+     "accuracy": 1,
+     "falseContradictions": 0,
+     "contradictedRecall": 1
+    },
+    {
+     "source": "acme",
+     "accuracy": 1,
+     "falseContradictions": 0,
+     "contradictedRecall": 1
+    },
+    {
+     "source": "nimbus",
+     "accuracy": 1,
+     "falseContradictions": 0,
+     "contradictedRecall": 1
+    }
+   ]
+  },
+  "note": "Offline stub-LLM evaluation of the module's contract on synthetic resumes, not live-model quality.",
+  "reports": [
+   {
+    "source": "generated",
+    "candidates": 10,
+    "correct": 20,
+    "total": 20,
+    "accuracy": 1,
+    "contradicted": 8,
+    "recovered": 8,
+    "contradictedRecall": 1,
+    "falseContradictions": 0
+   },
+   {
+    "source": "acme",
+    "candidates": 10,
+    "correct": 20,
+    "total": 20,
+    "accuracy": 1,
+    "contradicted": 6,
+    "recovered": 6,
+    "contradictedRecall": 1,
+    "falseContradictions": 0
+   },
+   {
+    "source": "nimbus",
+    "candidates": 10,
+    "correct": 20,
+    "total": 20,
+    "accuracy": 1,
+    "contradicted": 4,
+    "recovered": 4,
+    "contradictedRecall": 1,
+    "falseContradictions": 0
+   }
+  ],
+  "elapsedMs": 20
  }
 }

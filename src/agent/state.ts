@@ -17,9 +17,11 @@ export interface CandidateState {
   failedClaims: { requirementId: string; quote: string; reason: string }[];
   flags: string[]; // prompt_injection, grader_disagreement, ...
   dropped?: string; // reason
-  assessment?: { id: string; questions: { kind: "short" | "scenario" | "code"; prompt: string; rubric: string; tests?: { input: string; expected: string }[]; targets: string[] }[]; emailSubject: string; emailBody: string; unverified: string[] };
+  assessment?: { id: string; questions: { id?: string; kind: "short" | "scenario" | "code"; prompt: string; rubric: string; tests?: { input: string; expected: string }[]; targets: string[] }[]; emailSubject: string; emailBody: string; unverified: string[] };
+  assessV2?: { claims: any[]; plan: any; jdSkills: string[]; source: "generated" | "company"; verifiedByEvidence: string[]; matches?: any[] }; // persisted plan from the assessment module
+  claimVerdicts?: { claimId: string; skill: string; claim: string; status: "verified" | "contradicted" | "not_tested"; score?: number; reason: string; questions: string[] }[];
   sent?: { channel: "resend" | "outbox"; at: number };
-  responses?: { kind: "short" | "scenario" | "code"; answer: string }[];
+  responses?: { kind: "short" | "scenario" | "code"; answer: string; questionId?: string }[];
   grade?: { total: number; parts: { kind: string; score: number; confidence: number; testsPassed?: number; testsTotal?: number; note?: string }[]; regraded: boolean; flaggedForHr?: string };
   final?: number;
 }

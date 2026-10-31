@@ -1,0 +1,142 @@
+{
+  "honest-1": {
+    "generated": {
+      "sql": "verified",
+      "python": "verified"
+    },
+    "acme": {
+      "sql": "verified",
+      "python": "verified"
+    },
+    "nimbus": {
+      "sql": "verified",
+      "python": "verified"
+    }
+  },
+  "honest-2": {
+    "generated": {
+      "http": "verified",
+      "docker": "verified"
+    },
+    "acme": {
+      "http": "verified",
+      "docker": "verified"
+    },
+    "nimbus": {
+      "http": "not_tested",
+      "docker": "not_tested"
+    }
+  },
+  "honest-3": {
+    "generated": {
+      "statistics": "verified",
+      "etl": "verified"
+    },
+    "acme": {
+      "statistics": "not_tested",
+      "etl": "not_tested"
+    },
+    "nimbus": {
+      "statistics": "verified",
+      "etl": "verified"
+    }
+  },
+  "honest-4": {
+    "generated": {
+      "redis": "verified",
+      "security": "verified"
+    },
+    "acme": {
+      "redis": "verified",
+      "security": "verified"
+    },
+    "nimbus": {
+      "redis": "not_tested",
+      "security": "not_tested"
+    }
+  },
+  "honest-5": {
+    "generated": {
+      "coding": "not_tested",
+      "cobol": "not_tested"
+    },
+    "acme": {
+      "coding": "not_tested",
+      "cobol": "not_tested"
+    },
+    "nimbus": {
+      "coding": "not_tested",
+      "cobol": "not_tested"
+    }
+  },
+  "inflated-1": {
+    "generated": {
+      "sql": "contradicted",
+      "python": "contradicted"
+    },
+    "acme": {
+      "sql": "contradicted",
+      "python": "contradicted"
+    },
+    "nimbus": {
+      "sql": "contradicted",
+      "python": "contradicted"
+    }
+  },
+  "inflated-2": {
+    "generated": {
+      "http": "contradicted",
+      "docker": "contradicted"
+    },
+    "acme": {
+      "http": "contradicted",
+      "docker": "contradicted"
+    },
+    "nimbus": {
+      "http": "not_tested",
+      "docker": "not_tested"
+    }
+  },
+  "inflated-3": {
+    "generated": {
+      "statistics": "contradicted",
+      "etl": "contradicted"
+    },
+    "acme": {
+      "statistics": "not_tested",
+      "etl": "not_tested"
+    },
+    "nimbus": {
+      "statistics": "contradicted",
+      "etl": "contradicted"
+    }
+  },
+  "inflated-4": {
+    "generated": {
+      "redis": "contradicted",
+      "security": "contradicted"
+    },
+    "acme": {
+      "redis": "contradicted",
+      "security": "contradicted"
+    },
+    "nimbus": {
+      "redis": "not_tested",
+      "security": "not_tested"
+    }
+  },
+  "inflated-5": {
+    "generated": {
+      "coding": "not_tested",
+      "cobol": "not_tested"
+    },
+    "acme": {
+      "coding": "not_tested",
+      "cobol": "not_tested"
+    },
+    "nimbus": {
+      "coding": "not_tested",
+      "cobol": "not_tested"
+    }
+  }
+}

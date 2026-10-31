@@ -33,7 +33,7 @@ let dbDownUntil = 0;
 export function getPool(): Pool | null {
   const url = process.env.DATABASE_URL;
   if (!url) return null;
-  if (!pool) pool = new Pool({ connectionString: url, ssl: { rejectUnauthorized: false }, max: 4, connectionTimeoutMillis: 6000 });
+  if (!pool) pool = new Pool({ connectionString: url, ssl: { rejectUnauthorized: false }, max: 3, connectionTimeoutMillis: 6000 });
   return pool;
 }
 

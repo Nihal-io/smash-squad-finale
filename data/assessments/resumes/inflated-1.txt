@@ -1,0 +1,4 @@
+Candidate inflated-1
+College: Example University
+I have built production systems using SQL.
+I have built production systems using Python.

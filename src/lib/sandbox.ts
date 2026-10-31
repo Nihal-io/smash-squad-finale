@@ -4,8 +4,10 @@ import { newQuickJSWASMModuleFromVariant, shouldInterruptAfterDeadline } from "q
 let modP: ReturnType<typeof newQuickJSWASMModuleFromVariant> | null = null;
 async function mod() {
   if (!modP) {
-    const variant = await import("@jitl/quickjs-wasmfile-release-sync");
-    modP = newQuickJSWASMModuleFromVariant(variant.default as any);
+    const mod: any = await import("@jitl/quickjs-wasmfile-release-sync");
+    // Interop differs between Bun and the Next bundle: the variant may be the default export or the module itself.
+    const variant = mod?.default?.type ? mod.default : mod?.type ? mod : (mod?.default ?? mod);
+    modP = newQuickJSWASMModuleFromVariant(variant as any);
   }
   return modP;
 }

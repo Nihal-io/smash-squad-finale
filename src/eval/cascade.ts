@@ -1,7 +1,7 @@
 // Cascade track: labelled decisions run through decide() (local -> JEV -> Claude). Reports accuracy per tier,
 // escalation rate and cost against the all-Claude counterfactual. When no LLM is available the local tier is still
 // scored on its own and the result is marked degraded. Uses its own store file.
-process.env.DB_PATH = "./data/eval-app.db";
+process.env.DB_PATH = process.env.EVAL_DB_PATH || "./data/eval-app.db";
 
 import { readFileSync } from "node:fs";
 

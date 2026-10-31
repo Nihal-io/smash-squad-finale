@@ -36,6 +36,7 @@ await optional("planted", "./retrieval", "runRetrievalEval", (r) => {
 await optional("guardrails", "./guardrails", "runGuardrailEval", (r) => console.log(`guardrails: ${r.cases.filter((c: any) => c.pass).length}/${r.cases.length} pass`));
 await optional("fairness", "./fairness", "runFairnessEval", (r) => console.log(`fairness: mean spearman=${r.summary.meanSpearman} mean top5 overlap=${r.summary.meanTop5Overlap}`));
 await optional("agent", "./agent", "runAgentEval", (r) => console.log(`agent: success ${r.summary.successRate} violations ${r.summary.guardrailViolations} P@5 ${r.summary.precision5} mean tool calls ${r.summary.meanToolCalls}`));
+await optional("assessment", "./assessment", "runAssessmentEval", (r) => console.log(`assessment module: claim accuracy ${r.summary.claimAccuracy} false contradictions ${r.summary.falseContradictions} (offline stub eval)`));
 await optional("cascade", "./cascade", "runCascadeEval", (r) => console.log(`cascade: jev acc ${r.summary.jevAccuracy} claude acc ${r.summary.claudeAccuracy} agreement ${r.summary.agreement} escalation ${r.summary.escalationRate}`));
 
 const p = results.planted?.summary;

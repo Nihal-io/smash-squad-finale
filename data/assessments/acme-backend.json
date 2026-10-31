@@ -1,0 +1,123 @@
+{
+  "company": "Acme",
+  "title": "Backend assessment",
+  "timeLimitMin": 40,
+  "maxQuestions": 8,
+  "passMark": 0.8,
+  "questions": [
+    {
+      "id": "sql",
+      "type": "mcq",
+      "prompt": "Which SQL clause filters groups after aggregation?",
+      "skills": [
+        "SQL"
+      ],
+      "options": [
+        "WHERE",
+        "HAVING",
+        "ORDER BY"
+      ],
+      "answerKey": "HAVING",
+      "weight": 1,
+      "required": true,
+      "estimatedMinutes": 5,
+      "claimIds": []
+    },
+    {
+      "id": "python",
+      "type": "short",
+      "prompt": "Explain how a Python generator behaves compared with a list.",
+      "skills": [
+        "Python"
+      ],
+      "rubric": "Full credit for lazy iteration using yield without storing the whole sequence; zero for claiming it eagerly stores all values.",
+      "weight": 1,
+      "required": false,
+      "estimatedMinutes": 5,
+      "claimIds": []
+    },
+    {
+      "id": "http",
+      "type": "short",
+      "prompt": "What does HTTP status 404 mean?",
+      "skills": [
+        "HTTP"
+      ],
+      "answerKey": "Not Found",
+      "weight": 1,
+      "required": false,
+      "estimatedMinutes": 5,
+      "claimIds": []
+    },
+    {
+      "id": "docker",
+      "type": "short",
+      "prompt": "Name the build recipe file used by docker build.",
+      "skills": [
+        "Docker"
+      ],
+      "answerKey": "Dockerfile",
+      "weight": 1,
+      "required": false,
+      "estimatedMinutes": 5,
+      "claimIds": []
+    },
+    {
+      "id": "security",
+      "type": "short",
+      "prompt": "Which query technique prevents SQL injection for user-supplied values?",
+      "skills": [
+        "Security"
+      ],
+      "answerKey": "Parameterized queries",
+      "weight": 1,
+      "required": false,
+      "estimatedMinutes": 5,
+      "claimIds": []
+    },
+    {
+      "id": "redis",
+      "type": "short",
+      "prompt": "Which Redis command sets a key with an expiry in seconds?",
+      "skills": [
+        "Redis"
+      ],
+      "answerKey": "SETEX",
+      "weight": 1,
+      "required": false,
+      "estimatedMinutes": 5,
+      "claimIds": []
+    },
+    {
+      "id": "testing",
+      "type": "short",
+      "prompt": "What test level checks one isolated function?",
+      "skills": [
+        "Testing"
+      ],
+      "answerKey": "Unit test",
+      "weight": 1,
+      "required": false,
+      "estimatedMinutes": 5,
+      "claimIds": []
+    },
+    {
+      "id": "code",
+      "type": "code",
+      "prompt": "Write a function that returns the sum of an integer array.",
+      "skills": [
+        "Coding"
+      ],
+      "tests": [
+        {
+          "input": "[1,2,3]",
+          "expected": "6"
+        }
+      ],
+      "weight": 1,
+      "required": false,
+      "estimatedMinutes": 5,
+      "claimIds": []
+    }
+  ]
+}

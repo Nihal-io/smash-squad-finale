@@ -43,4 +43,4 @@ Hybrid scores below semantic on the planted set because the true fits never use 
 
 ## Credits
 
-Public resumes from `michaelozon/candidate-matching-synthetic` (MIT). Embeddings: `Xenova/bge-small-en-v1.5` via transformers.js. LangGraph.js, pgvector, QuickJS, hyparquet. Full list with licenses in `CREDITS.md`. No real people appear in the data.
+Assessment module (claim extraction, targeted questions, grading and claim verification in `src/assess`): Ritvik Yadgirkar. Public resumes from `michaelozon/candidate-matching-synthetic` (MIT). Embeddings: `Xenova/bge-small-en-v1.5` via transformers.js. LangGraph.js, pgvector, QuickJS, hyparquet. Full list with licenses in `CREDITS.md`. No real people appear in the data.
