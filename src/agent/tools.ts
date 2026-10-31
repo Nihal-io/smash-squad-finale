@@ -1,9 +1,10 @@
 // The agent's tools. Every input schema starts with `reason`. Gates are enforced here in code, never by the prompt.
+import { readFileSync } from "node:fs";
 import { z } from "zod";
 import { zodToJsonSchema } from "zod-to-json-schema";
 import { embedTexts, QUERY_PREFIX } from "../lib/embed";
 import { searchPool, getCandidates, getCandidateLocal, memVector, dot } from "../lib/db";
-import { decide, sentences } from "../lib/decide";
+import { decide, sentences, injectionQuote } from "../lib/decide";
 import { store } from "../lib/store";
 import { emit } from "../lib/trace";
 import { fairnessAudit } from "./fairness";
@@ -74,7 +75,8 @@ export const get_profile: ToolSpec = {
     const inj = await decide("injection_check", { text: c.visible_text }, runId);
     if (inj.label === "yes" && !st.flags.includes("prompt_injection")) {
       st.flags.push("prompt_injection");
-      emit(runId, "refusal", { kind: "prompt_injection", candidateId: c.id, name: c.name, text: `Profile contains instruction-like text ("${clip(c.bio.match(/ignore[^.]*\./i)?.[0] ?? c.bio, 90)}"). Treated as data, ignored, and flagged.` }, "get_profile");
+      const quote = clip(injectionQuote(c.visible_text) || c.bio, 160);
+      emit(runId, "refusal", { kind: "prompt_injection", candidateId: c.id, name: c.name, quote, text: `Ignored instructions found in candidate text: "${quote}". Treated as data and flagged; it does not change the ranking.` }, "get_profile");
     }
     // Per-requirement best sentence by cosine (local, $0) so the agent sees where to look.
     const sents = sentences(c.visible_text);
@@ -193,6 +195,16 @@ export const request_hr_approval: ToolSpec = {
 };
 
 // ---------- ASSESS (list-based: one call covers every approved candidate) ----------
+export const LOOPING_ANSWER = "function solve(input) {\n  let n = 0;\n  while (true) { n++; }\n  return String(n);\n}";
+
+let presetCache: any[] | null = null;
+function presetFlag(runId: string, flag: string): boolean {
+  const presetId = store.getRun(runId)?.presetId;
+  if (!presetId) return false;
+  try { presetCache ??= JSON.parse(readFileSync("data/jds.json", "utf8")).presets ?? []; } catch { presetCache = []; }
+  return !!presetCache!.find((p) => p.id === presetId)?.[flag];
+}
+
 function approvedOnly(state: AgentState, ids: string[], runId: string, gateName: string) {
   const approved = store.approval(state.runId)?.candidateIds ?? [];
   const bad = ids.filter((id) => !approved.includes(id));
@@ -268,6 +280,14 @@ export const collect_responses: ToolSpec = {
       if (!st?.assessment) { out.push({ candidate_id: id, error: "no assessment" }); continue; }
       if (!st.sent) { out.push({ candidate_id: id, error: "assessment was never sent; send it first" }); continue; }
       st.responses = await collectResponses(state, st, runId);
+      // Planted sandbox case: on a preset marked simulatedCodeTimeout, the first simulated code answer never returns,
+      // so run_code has to stop it at the time limit and the run carries on.
+      const code = st.responses.find((r) => r.kind === "code");
+      if (code && !state.codeTimeoutProbe && presetFlag(runId, "simulatedCodeTimeout")) {
+        code.answer = LOOPING_ANSWER;
+        state.codeTimeoutProbe = id;
+        emit(runId, "note", { text: `Simulated code answer for ${st.name} never returns (planted sandbox case); run_code must stop it at the time limit.`, simulated: true, candidateId: id }, "collect_responses");
+      }
       out.push({ candidate_id: id, answers: st.responses.map((r) => ({ kind: r.kind, preview: clip(r.answer, 140) })) });
     }
     return { simulated: true, collected: out.filter((o) => !o.error).length, responses: out };
@@ -289,7 +309,7 @@ export const run_code: ToolSpec = {
       try {
         const r = await runInSandbox(ans.answer, q.tests ?? []);
         (st as any)._tests = r;
-        out.push({ candidate_id: id, passed: r.passed, total: r.total, error: r.error });
+        out.push({ candidate_id: id, passed: r.passed, total: r.total, error: r.error, ...(r.timedOut ? { timedOut: true } : {}) });
       } catch (e: any) {
         out.push({ candidate_id: id, error: `sandbox error: ${String(e?.message ?? e).slice(0, 100)}` });
       }
@@ -316,7 +336,7 @@ export const grade_answer: ToolSpec = {
           st.claimVerdicts = g.verdicts;
           const counts = { verified: 0, contradicted: 0, not_tested: 0 } as Record<string, number>;
           for (const v of g.verdicts) counts[v.status] = (counts[v.status] ?? 0) + 1;
-          out.push({ candidate_id: id, total: st.grade.total, flaggedForHr: st.grade.flaggedForHr, claims: counts, verdicts: g.verdicts.map((v) => ({ skill: v.skill, status: v.status, score: v.score })), parts: st.grade.parts.map((p) => ({ kind: p.kind, score: p.score, confidence: p.confidence })) });
+          out.push({ candidate_id: id, total: st.grade.total, flaggedForHr: st.grade.flaggedForHr, claims: counts, verdicts: g.verdicts.map((v) => ({ skill: v.skill, status: v.status, score: v.score, ...(v.cause ? { cause: v.cause } : {}) })), parts: st.grade.parts.map((p) => ({ kind: p.kind, score: p.score, confidence: p.confidence })) });
           continue;
         } catch (e: any) {
           emit(runId, "note", { banner: "fallback", text: `Automatic fallback: assessment module error — ${String(e?.message ?? e).slice(0, 160)}. Grading ${st.name} with the built-in rubric grader.`, candidateId: id }, "grade_answer");

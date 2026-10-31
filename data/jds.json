@@ -206,7 +206,8 @@
     "embeddings pipeline",
     "API design"
    ],
-   "text": "Senior Backend Engineer, Retrieval Platform\n\nWe are building a retrieval platform. You will own our vector search stack and the embeddings pipeline that feeds it, ship semantic search features, tune Postgres, write Python services, and lead API design for internal consumers.\n\nMust have: vector search, Python, Postgres.\nNice to have: embeddings pipeline, API design.\nSeniority: senior."
+   "text": "Senior Backend Engineer, Retrieval Platform\n\nWe are building a retrieval platform. You will own our vector search stack and the embeddings pipeline that feeds it, ship semantic search features, tune Postgres, write Python services, and lead API design for internal consumers.\n\nMust have: vector search, Python, Postgres.\nNice to have: embeddings pipeline, API design.\nSeniority: senior.",
+   "simulatedCodeTimeout": true
   },
   {
    "id": "jd10",

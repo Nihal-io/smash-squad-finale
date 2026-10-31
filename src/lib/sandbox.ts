@@ -14,11 +14,16 @@ async function mod() {
 
 export interface TestResult { input: string; expected: string; got: string; pass: boolean }
 
-export async function runInSandbox(code: string, tests: { input: string; expected: string }[], timeoutMs = 1500): Promise<{ passed: number; total: number; results: TestResult[]; error?: string }> {
+export const SANDBOX_TIMEOUT_MS = 1500;
+
+// timedOut: the code hit the time limit and the runtime killed it; the remaining tests are not run.
+export async function runInSandbox(code: string, tests: { input: string; expected: string }[], timeoutMs = SANDBOX_TIMEOUT_MS): Promise<{ passed: number; total: number; results: TestResult[]; error?: string; timedOut?: boolean }> {
   const QuickJS = await mod();
   const results: TestResult[] = [];
   let error: string | undefined;
+  let timedOut = false;
   for (const t of tests) {
+    if (timedOut) { results.push({ input: t.input, expected: t.expected, got: "__NOT_RUN__ earlier test timed out", pass: false }); continue; }
     const rt = QuickJS.newRuntime();
     rt.setMemoryLimit(32 * 1024 * 1024);
     rt.setMaxStackSize(512 * 1024);
@@ -28,7 +33,12 @@ export async function runInSandbox(code: string, tests: { input: string; expecte
       const src = `${code}\n;(function(){ try { return String(solve(${JSON.stringify(t.input)})); } catch (e) { return "__ERR__ " + String(e && e.message || e); } })()`;
       const r = vm.evalCode(src);
       let got: string;
-      if (r.error) { got = "__ERR__ " + JSON.stringify(vm.dump(r.error)); r.error.dispose(); }
+      if (r.error) {
+        const err = vm.dump(r.error); r.error.dispose();
+        // QuickJS reports a deadline interrupt as an uncatchable InternalError("interrupted").
+        if (/interrupted/i.test(String(err?.message ?? err))) { timedOut = true; error = `code timed out after ${timeoutMs} ms and was stopped`; got = "__TIMEOUT__"; }
+        else got = "__ERR__ " + JSON.stringify(err);
+      }
       else { got = String(vm.dump(r.value)); r.value.dispose(); }
       results.push({ input: t.input, expected: t.expected, got, pass: got.trim() === t.expected.trim() });
     } catch (e: any) {
@@ -39,5 +49,5 @@ export async function runInSandbox(code: string, tests: { input: string; expecte
       rt.dispose();
     }
   }
-  return { passed: results.filter((r) => r.pass).length, total: results.length, results, error };
+  return { passed: results.filter((r) => r.pass).length, total: results.length, results, error, ...(timedOut ? { timedOut } : {}) };
 }

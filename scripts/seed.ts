@@ -2,6 +2,7 @@
 // Writes data/candidates.json, data/jds.json, data/eval-labels.json
 import { writeFileSync, mkdirSync } from "node:fs";
 import { redactProfile } from "../src/lib/redact";
+import { plantInjection, DEMO_INJECTION } from "../src/lib/plant";
 
 import { mulberry32, FIRST_F, FIRST_M, FIRST_NB, LAST, TIER1, TIER2, TIER3, WOMENS_COLLEGE, type Gender, type Tier } from "../src/lib/synth";
 
@@ -395,10 +396,12 @@ for (const l of Object.values(labels)) {
   l.hiddenGems = l.hiddenGems.map((x) => idMap.get(x)!);
 }
 injectionId = idMap.get(injectionId)!;
+// The demo injection line goes into a preset-1 true fit (see src/lib/plant.ts).
+for (const c of shuffled) plantInjection(c);
 
 // Preset JDs for the UI: three JDs from the planted set, taken exactly as written.
 const presets = [
-  { ...jds[0] },
+  { ...jds[0], simulatedCodeTimeout: true }, // one simulated code answer never returns (sandbox case)
   { ...jds[9] },
   { ...jds[3] },
 ];
@@ -406,7 +409,7 @@ const presets = [
 mkdirSync("data", { recursive: true });
 writeFileSync("data/planted.json", JSON.stringify(shuffled.map((c) => ({ ...c, source: "planted", role: c.archetype })), null, 1));
 writeFileSync("data/jds.json", JSON.stringify({ jds, presets }, null, 1));
-writeFileSync("data/eval-labels.json", JSON.stringify({ injectionCandidateId: injectionId, labels }, null, 1));
+writeFileSync("data/eval-labels.json", JSON.stringify({ injectionCandidateId: injectionId, demoInjectionCandidateId: DEMO_INJECTION.candidateId, labels }, null, 1));
 
 const byTier = [1, 2, 3].map((t) => shuffled.filter((c) => c.tier === t).length);
 const byGender = ["female", "male", "non-binary"].map((g) => shuffled.filter((c) => c.gender === g).length);

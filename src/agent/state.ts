@@ -19,7 +19,7 @@ export interface CandidateState {
   dropped?: string; // reason
   assessment?: { id: string; questions: { id?: string; kind: "short" | "scenario" | "code"; prompt: string; rubric: string; tests?: { input: string; expected: string }[]; targets: string[] }[]; emailSubject: string; emailBody: string; unverified: string[] };
   assessV2?: { claims: any[]; plan: any; jdSkills: string[]; source: "generated" | "company"; verifiedByEvidence: string[]; matches?: any[] }; // persisted plan from the assessment module
-  claimVerdicts?: { claimId: string; skill: string; claim: string; status: "verified" | "contradicted" | "not_tested"; score?: number; reason: string; questions: string[] }[];
+  claimVerdicts?: { claimId: string; skill: string; claim: string; status: "verified" | "contradicted" | "not_tested"; score?: number; reason: string; questions: string[]; cause?: "code_timeout" }[];
   sent?: { channel: "resend" | "outbox"; at: number };
   responses?: { kind: "short" | "scenario" | "code"; answer: string; questionId?: string }[];
   grade?: { total: number; parts: { kind: string; score: number; confidence: number; testsPassed?: number; testsTotal?: number; note?: string }[]; regraded: boolean; flaggedForHr?: string };
@@ -54,6 +54,7 @@ export interface AgentState {
   memoryApplied: string[];
   degraded: string[]; // banners
   nudges: number;
+  codeTimeoutProbe?: string; // candidate whose simulated code answer was replaced by a never-returning one (planted case)
   final?: { ranked: string[]; weights: { semantic: number; assessment: number }; summary: string; officialBlind: boolean };
   runSummary?: { toolCalls: number; reformulations: number; dropped: { id: string; name: string; reason: string }[]; llm: any; cascade: any };
 }

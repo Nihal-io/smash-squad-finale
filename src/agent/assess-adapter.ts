@@ -154,7 +154,7 @@ export function toLegacyAssessment(state: AgentState, st: CandidateState, prep: 
 }
 
 // ---------- grading: module rubric grades + our sandbox for code, then claim verdicts ----------
-export interface ClaimVerdict { claimId: string; skill: string; claim: string; status: ClaimResult["status"]; score?: number; reason: string; questions: string[] }
+export interface ClaimVerdict { claimId: string; skill: string; claim: string; status: ClaimResult["status"]; score?: number; reason: string; questions: string[]; cause?: "code_timeout" }
 
 export async function gradeWithModule(state: AgentState, st: CandidateState, prep: PreparedAssessment, runId: string): Promise<{ grade: NonNullable<CandidateState["grade"]>; verdicts: ClaimVerdict[]; tests?: { passed: number; total: number } }> {
   const answers: Record<string, string> = {};
@@ -163,16 +163,18 @@ export async function gradeWithModule(state: AgentState, st: CandidateState, pre
   let grades: Grade[] = await gradeAnswers(prep.plan, answers, llm);
   // The module leaves code pending ("needs sandbox"). Run the hidden tests and supply the grade it expects.
   let tests: { passed: number; total: number } | undefined;
+  const timedOutQ = new Set<string>();
   for (const q of prep.plan.questions) {
     if (q.type !== "code") continue;
     const ans = answers[q.id];
     let r: Awaited<ReturnType<typeof runInSandbox>> | null = null;
     let sandboxError: string | null = null;
     try { r = ans && q.tests?.length ? await runInSandbox(ans, q.tests) : null; } catch (e: any) { sandboxError = String(e?.message ?? e).slice(0, 100); }
+    if (r?.timedOut) { timedOutQ.add(q.id); r = null; sandboxError = "code timed out"; }
     if (r) tests = { passed: r.passed, total: r.total };
     // A sandbox failure leaves the code claim "not tested" (unusable grade) rather than failing the whole candidate.
     grades = grades.map((g) => g.questionId === q.id && g.status === "pending"
-      ? (r ? { questionId: q.id, status: "graded", score: r.total ? r.passed / r.total : 0, confidence: 1, reason: `hidden tests ${r.passed}/${r.total}`, answerExcerpt: g.answerExcerpt } : { ...g, status: "unusable", reason: sandboxError ? `sandbox error: ${sandboxError}` : "no code answer or no hidden tests" })
+      ? (r ? { questionId: q.id, status: "graded", score: r.total ? r.passed / r.total : 0, confidence: 1, reason: `hidden tests ${r.passed}/${r.total}`, answerExcerpt: g.answerExcerpt } : { ...g, status: "unusable", reason: timedOutQ.has(q.id) ? "code timed out; the sandbox stopped it at the time limit" : sandboxError ? `sandbox error: ${sandboxError}` : "no code answer or no hidden tests" })
       : g);
   }
   const results = verifyClaims(prep.claims, prep.plan, grades);
@@ -188,7 +190,8 @@ export async function gradeWithModule(state: AgentState, st: CandidateState, pre
   const flaggedForHr = unusable.length ? `${unusable.length} answer(s) could not be graded` : lowConf.length ? "grader confidence is low on some answers" : undefined;
   const verdicts: ClaimVerdict[] = results.map((r) => {
     const cl = prep.claims.find((x) => x.id === r.claimId)!;
-    return { claimId: r.claimId, skill: cl.skill, claim: cl.assertion, status: r.status, score: r.score === undefined ? undefined : +r.score.toFixed(3), reason: r.reason, questions: r.questionIds.map((id) => byQ.get(id)?.prompt ?? id) };
+    const timedOut = r.status === "not_tested" && r.questionIds.some((id) => timedOutQ.has(id));
+    return { claimId: r.claimId, skill: cl.skill, claim: cl.assertion, status: r.status, score: r.score === undefined ? undefined : +r.score.toFixed(3), reason: timedOut ? "not tested (code timed out)" : r.reason, questions: r.questionIds.map((id) => byQ.get(id)?.prompt ?? id), ...(timedOut ? { cause: "code_timeout" as const } : {}) };
   });
   return { grade: { total, parts: parts as any, regraded: false, flaggedForHr }, verdicts, tests };
 }

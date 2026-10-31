@@ -622,6 +622,7 @@ function peek(name, r) {
   if (r == null) return '';
   if (name === 'search_candidates' && r.results) return `${r.results.length} results · top ${r.spread?.top ?? ''} · ${r.source || ''}`;
   if (name === 'cite_evidence') { if (r.results) { const ok = r.results.filter(x => x.accepted).length; return `${ok}/${r.results.length} accepted · must-haves ${r.mustHavesCovered || ''}${r.results.filter(x => !x.accepted).map(x => ' · ' + x.requirement_id + ' rejected: ' + clip(x.reason || '', 60)).join('')}`; } return r.accepted ? `accepted · ${r.strength} · ${r.basis || ''} · by ${r.decidedBy} ${r.confidence}` : 'rejected · ' + clip(r.reason || '', 70); }
+  if (name === 'run_code' && r.results) return r.results.map(x => `${x.candidate_id}: ${x.timedOut ? 'code timed out, stopped' : x.total != null ? x.passed + '/' + x.total + ' tests' : clip(x.error || '', 40)}`).join(' · ');
   return clip(typeof r === 'string' ? r : JSON.stringify(r), 100);
 }
 const tcDecision = n => { const c = S.cards[n ?? S.lastN]; return c ? $('.chips', c) : null; };
@@ -644,7 +645,7 @@ const H = {
   refusal(p) {
     if (p.kind === 'prompt_injection') {
       if (p.candidateId) { prog(p.candidateId).flags.push('prompt_injection'); S.names[p.candidateId] = p.name; }
-      add('refuse', `<div class="step-h"><span class="tag refused">Refused</span><span class="kind">Instructions inside a profile: ${esc(p.name || p.candidateId)}</span></div><p style="margin-top:8px">${esc(p.text)}</p>`);
+      add('refuse', `<div class="step-h"><span class="tag refused">Ignored</span><span class="kind">Ignored instructions found in candidate text: ${esc(p.name || p.candidateId)}</span></div>${p.quote ? `<blockquote class="inj">${esc(p.quote)}</blockquote>` : ''}<p style="margin-top:8px">Treated as data and flagged; it does not change the ranking.</p>`);
     } else {
       add('refuse', `<div class="step-h"><span class="tag refused">Refused</span><span class="kind">Call refused</span></div><p style="margin-top:8px">${esc(p.reason || p.text || '')}</p>`);
     }
@@ -821,7 +822,7 @@ function renderShortlist() {
       ${it.prov ? '' : `<div class="formula">${it.assessment == null ? 'final = semantic alone' : `final = ${w.semantic} semantic + ${w.assessment} assessment`}</div>`}
       ${badges ? `<div class="badges">${badges}</div>` : ''}
       <div class="ecs">${(it.evidence || []).map((e, k) => `<button class="ec ${esc(e.strength)}" data-cid="${esc(it.id)}" data-i="${k}" title="${esc(e.strength)} · confidence ${num(e.confidence)}"><span class="sd"></span><span class="rt">${esc(S.reqs[e.requirementId]?.text || e.requirementId)}</span>${e.basis ? `<span class="bs ${esc(e.basis)}">${esc(e.basis)}</span>` : ''}<span class="by ${esc(e.by)}">${esc(e.by)}</span></button>`).join('')}</div>
-      ${(it.claims && it.claims.length) ? `<div class="cvs">${it.claims.map(cv => `<div class="cv ${esc(cv.status)}" title="${esc((cv.questions || []).join(' | ') || 'no question covered this claim')}"><span class="cvl">${cv.status === 'not_tested' ? 'not tested' : esc(cv.status)}</span><span class="cvt"><b>${esc(cv.skill)}</b> ${esc(cv.claim)}</span>${cv.score != null ? `<span class="cvn">${num(cv.score)}</span>` : ''}</div>`).join('')}<div class="cvh">Claim verdicts from the assessment (${esc(it.assessmentSource || 'generated')} questions). Hover a row for the question.</div></div>` : ''}
+      ${(it.claims && it.claims.length) ? `<div class="cvs">${it.claims.map(cv => `<div class="cv ${esc(cv.status)}" title="${esc((cv.questions || []).join(' | ') || 'no question covered this claim')}"><span class="cvl">${cv.status === 'not_tested' ? (cv.cause === 'code_timeout' ? 'not tested (code timed out)' : 'not tested') : esc(cv.status)}</span><span class="cvt"><b>${esc(cv.skill)}</b> ${esc(cv.claim)}</span>${cv.score != null ? `<span class="cvn">${num(cv.score)}</span>` : ''}</div>`).join('')}<div class="cvh">Claim verdicts from the assessment (${esc(it.assessmentSource || 'generated')} questions). Hover a row for the question.</div></div>` : ''}
       ${(it.unverified || []).length ? `<div class="tba"><b>To be assessed:</b> ${it.unverified.map(u => esc(S.reqs[u]?.text || u)).join('; ')}</div>` : ''}
       ${it.prov ? '' : '<button class="link nofit">Not a fit</button>'}
     </article>`;

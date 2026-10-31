@@ -22,7 +22,7 @@ export interface ShortlistItem {
   dropped?: string;
   gradeFlag?: string;
   simulatedResponses: boolean;
-  claims: { claimId: string; skill: string; claim: string; status: "verified" | "contradicted" | "not_tested"; score?: number; reason: string; questions: string[] }[]; // from the assessment module; empty on the built-in path
+  claims: { claimId: string; skill: string; claim: string; status: "verified" | "contradicted" | "not_tested"; score?: number; reason: string; questions: string[]; cause?: "code_timeout" }[]; // from the assessment module; empty on the built-in path
   assessmentSource?: "generated" | "company" | "built-in";
 }
 

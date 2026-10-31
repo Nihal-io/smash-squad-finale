@@ -7,7 +7,7 @@ import { store } from "../lib/store";
 import { emit } from "../lib/trace";
 import { dbHealthy, getPool } from "../lib/db";
 import { spendSummary } from "../lib/llm";
-import { cascadeSummary, decide, sentences } from "../lib/decide";
+import { cascadeSummary, decide, sentences, injectionQuote } from "../lib/decide";
 import { embedTexts, QUERY_PREFIX } from "../lib/embed";
 import { getCandidateLocal, dot } from "../lib/db";
 import { newState, type AgentState, evidencedCandidates, mustHaves, hasFullEvidence } from "./state";
@@ -200,7 +200,7 @@ async function degradedPipeline(state: AgentState) {
       if (evidencedCandidates(state).length >= state.targetN) break;
       const row = getCandidateLocal(c.id)!;
       const inj = await decide("injection_check", { text: row.visible_text }, state.runId);
-      if (inj.label === "yes") { c.flags.push("prompt_injection"); emit(state.runId, "refusal", { kind: "prompt_injection", candidateId: c.id, name: c.name, text: "Profile contains instruction-like text; treated as data, ignored, flagged." }, "get_profile"); }
+      if (inj.label === "yes" && !c.flags.includes("prompt_injection")) { c.flags.push("prompt_injection"); const quote = injectionQuote(row.visible_text).slice(0, 160); emit(state.runId, "refusal", { kind: "prompt_injection", candidateId: c.id, name: c.name, quote, text: `Ignored instructions found in candidate text: "${quote}". Treated as data and flagged; it does not change the ranking.` }, "get_profile"); }
       const sents = sentences(row.visible_text);
       const sv = await embedTexts(sents.map((x) => x.text));
       const citations: { requirement_id: string; quote: string }[] = [];

@@ -21,7 +21,7 @@ export function claudeDecisionPrice() {
 
 // ---------- local tier ----------
 const INJECTION_PATTERNS = [
-  /ignore (all |any )?(previous|prior|above) instructions/i,
+  /ignore (all |any )?(of )?(your|the|previous|prior|above) instructions/i,
   /disregard (the|your|all) (previous|prior|above|system)/i,
   /rank (me|this candidate) (first|at the top|#1)/i,
   /you are now/i,
@@ -30,6 +30,12 @@ const INJECTION_PATTERNS = [
   /top match for every role/i,
   /\bas an ai\b.*\b(must|should)\b/i,
 ];
+
+// The sentence that tripped the local injection check, for the trace. Falls back to the first instruction-like sentence.
+export function injectionQuote(text: string): string {
+  const sents = sentences(text).map((s) => s.text);
+  return sents.find((s) => INJECTION_PATTERNS.some((p) => p.test(s))) ?? sents.find((s) => /\b(ignore|instructions?|rank (me|this)|you must|you should)\b/i.test(s)) ?? "";
+}
 
 function log(runId: string | undefined, task: Task, d: Decision, input: any) {
   store.addDecision({ runId, task, by: d.by, label: d.label, confidence: d.confidence, costUsd: d.costUsd, counterfactualUsd: d.counterfactualUsd, ts: Date.now(), input });
