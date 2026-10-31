@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-31T06:11:25.648Z",
+ "generatedAt": "2026-10-31T06:12:19.908Z",
  "retrieval": {
   "cases": [
    {
@@ -725,7 +725,7 @@
   },
   "elapsedMs": 526
  },
- "headline": "Planted nDCG@5: semantic 0.208 · hybrid undefined · keyword 0.034 · 7/7 guardrails pass · agent success 0 · blind-ranking rho 0.764",
+ "headline": "Planted nDCG@5: semantic 0.208 · hybrid undefined · keyword 0.034 · 7/7 guardrails pass · agent success 1 · blind-ranking rho 0.764",
  "public": {
   "summary": {
    "jobs": 100,
@@ -5364,42 +5364,53 @@
  "agent": {
   "summary": {
    "runs": 2,
-   "successRate": 0,
+   "successRate": 1,
    "guardrailViolations": 0,
-   "precision5": 0,
-   "meanToolCalls": 23,
+   "precision5": 1,
+   "meanToolCalls": 26,
    "degraded": false,
    "degradedRuns": 0,
-   "meanSeconds": 74.1
+   "meanSeconds": 122.3
   },
   "cases": [
    {
     "jdId": "jd01",
     "title": "Senior Backend Engineer, Retrieval Platform",
-    "status": "failed",
-    "success": false,
-    "ranked": [],
-    "precision5": null,
-    "toolCalls": 21,
+    "status": "done",
+    "success": true,
+    "ranked": [
+     "c156",
+     "c066",
+     "c049",
+     "c122",
+     "c002"
+    ],
+    "precision5": 1,
+    "toolCalls": 22,
     "guardrailViolation": false,
     "violations": [],
     "degraded": [],
-    "seconds": 76
+    "seconds": 94.2
    },
    {
     "jdId": "jd02",
     "title": "Frontend Engineer, Design Systems",
-    "status": "failed",
-    "success": false,
-    "ranked": [],
-    "precision5": null,
-    "toolCalls": 25,
+    "status": "done",
+    "success": true,
+    "ranked": [
+     "c108",
+     "c006",
+     "c154",
+     "c079"
+    ],
+    "precision5": 1,
+    "toolCalls": 30,
     "guardrailViolation": false,
     "violations": [],
     "degraded": [],
-    "seconds": 72.2
+    "seconds": 150.4
    }
   ],
-  "elapsedMs": 148386
+  "elapsedMs": 244656
  }
 }

@@ -100,8 +100,9 @@ function flushNow() {
       if (other) db = mergeInto(db, other, true);
     }
   } catch {}
-  writeFileSync(p + ".tmp", JSON.stringify(db));
-  renameSync(p + ".tmp", p);
+  const tmp = `${p}.${process.pid}.tmp`;
+  writeFileSync(tmp, JSON.stringify(db));
+  renameSync(tmp, p);
   dirty = false;
   try { loadedMtime = statSync(p).mtimeMs; } catch {}
 }
@@ -127,8 +128,9 @@ function flushCache() {
   const p = cachePath();
   mkdirSync(dirname(p), { recursive: true });
   try { if (existsSync(p) && statSync(p).mtimeMs !== cacheMtime) cacheDb = { ...JSON.parse(readFileSync(p, "utf8")), ...cacheDb }; } catch {}
-  writeFileSync(p + ".tmp", JSON.stringify(cacheDb));
-  renameSync(p + ".tmp", p);
+  const tmp = `${p}.${process.pid}.tmp`;
+  writeFileSync(tmp, JSON.stringify(cacheDb));
+  renameSync(tmp, p);
   cacheDirty = false;
   try { cacheMtime = statSync(p).mtimeMs; } catch {}
 }

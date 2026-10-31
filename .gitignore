@@ -17,3 +17,4 @@ data/eval-app.db.tmp
 data/hf/
 data/llm-cache.db
 data/llm-cache.db.tmp
+data/*.tmp

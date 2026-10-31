@@ -88,7 +88,9 @@ async function local(task: Task, input: any): Promise<Decision | null> {
     const [v] = await embedTexts([QUERY_PREFIX + input.line]);
     const best = Math.max(...(await bank()).map((b) => dot(v, b)));
     if (best >= 0.8) return { label: "unsure", confidence: 0.5, by: "local", costUsd: 0, counterfactualUsd: cf, rationale: `resembles a known unlawful phrasing (${best.toFixed(2)})` };
-    return { label: "no", confidence: 0.9, by: "local", costUsd: 0, counterfactualUsd: cf };
+    // A JD has only a handful of lines, so a "no" here stays below the threshold and escalates when a model is available:
+    // paraphrased unlawful criteria are exactly what the regexes miss.
+    return { label: "no", confidence: 0.7, by: "local", costUsd: 0, counterfactualUsd: cf, rationale: `no known pattern (nearest bank similarity ${best.toFixed(2)})` };
   }
   return null; // short_answer_pass has no local tier
 }
