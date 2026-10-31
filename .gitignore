@@ -3,3 +3,4 @@ node_modules
 .next
 .vercel
 graphify-out/cache
+supabase/.temp
