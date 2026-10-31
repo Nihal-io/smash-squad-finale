@@ -1,0 +1,247 @@
+{
+ "jds": [
+  {
+   "id": "jd01",
+   "archetype": "retrieval-backend",
+   "title": "Senior Backend Engineer, Retrieval Platform",
+   "seniority": "senior",
+   "mustHave": [
+    "vector search",
+    "Python",
+    "Postgres"
+   ],
+   "niceToHave": [
+    "embeddings pipeline",
+    "API design"
+   ],
+   "text": "Senior Backend Engineer, Retrieval Platform\n\nWe are building a retrieval platform. You will own our vector search stack and the embeddings pipeline that feeds it, ship semantic search features, tune Postgres, write Python services, and lead API design for internal consumers.\n\nMust have: vector search, Python, Postgres.\nNice to have: embeddings pipeline, API design.\nSeniority: senior."
+  },
+  {
+   "id": "jd02",
+   "archetype": "frontend-design-systems",
+   "title": "Frontend Engineer, Design Systems",
+   "seniority": "mid",
+   "mustHave": [
+    "React",
+    "TypeScript",
+    "accessibility"
+   ],
+   "niceToHave": [
+    "design system",
+    "web performance"
+   ],
+   "text": "Frontend Engineer, Design Systems\n\nJoin the design system team. You will build our React component library in TypeScript, own accessibility standards, and drive web performance across product surfaces.\n\nMust have: React, TypeScript, accessibility.\nNice to have: design system, web performance.\nSeniority: mid."
+  },
+  {
+   "id": "jd03",
+   "archetype": "ml-platform",
+   "title": "ML Platform Engineer",
+   "seniority": "senior",
+   "mustHave": [
+    "model deployment",
+    "Kubernetes",
+    "PyTorch"
+   ],
+   "niceToHave": [
+    "feature store",
+    "model monitoring"
+   ],
+   "text": "ML Platform Engineer\n\nOur ML platform team needs an engineer for MLOps: model deployment on Kubernetes, a feature store, model monitoring, and PyTorch tooling for research teams.\n\nMust have: model deployment, Kubernetes, PyTorch.\nNice to have: feature store, model monitoring.\nSeniority: senior."
+  },
+  {
+   "id": "jd04",
+   "archetype": "data-engineering",
+   "title": "Data Engineer",
+   "seniority": "mid",
+   "mustHave": [
+    "Spark",
+    "SQL",
+    "data pipelines"
+   ],
+   "niceToHave": [
+    "Airflow",
+    "streaming"
+   ],
+   "text": "Data Engineer\n\nYou will build data pipelines in Spark, orchestrate them in Airflow, model our data warehouse in SQL, and add streaming for near-real-time use cases.\n\nMust have: Spark, SQL, data pipelines.\nNice to have: Airflow, streaming.\nSeniority: mid."
+  },
+  {
+   "id": "jd05",
+   "archetype": "mobile-ios",
+   "title": "iOS Engineer",
+   "seniority": "mid",
+   "mustHave": [
+    "Swift",
+    "iOS"
+   ],
+   "niceToHave": [
+    "offline sync",
+    "App Store release"
+   ],
+   "text": "iOS Engineer\n\nWe need an iOS engineer fluent in Swift to build our mobile app, add offline sync, and own each App Store release.\n\nMust have: Swift, iOS.\nNice to have: offline sync, App Store release.\nSeniority: mid."
+  },
+  {
+   "id": "jd06",
+   "archetype": "devops-sre",
+   "title": "Site Reliability Engineer",
+   "seniority": "senior",
+   "mustHave": [
+    "AWS",
+    "Terraform",
+    "incident response"
+   ],
+   "niceToHave": [
+    "observability",
+    "CI/CD"
+   ],
+   "text": "Site Reliability Engineer\n\nSite reliability engineer wanted: Terraform, incident response, observability, AWS, and CI/CD ownership.\n\nMust have: AWS, Terraform, incident response.\nNice to have: observability, CI/CD.\nSeniority: senior."
+  },
+  {
+   "id": "jd07",
+   "archetype": "appsec",
+   "title": "Application Security Engineer",
+   "seniority": "mid",
+   "mustHave": [
+    "application security",
+    "secure code review"
+   ],
+   "niceToHave": [
+    "penetration testing",
+    "threat modelling",
+    "OWASP"
+   ],
+   "text": "Application Security Engineer\n\nApplication security engineer: penetration testing, threat modelling, OWASP guidance, and secure code review across product teams.\n\nMust have: application security, secure code review.\nNice to have: penetration testing, threat modelling, OWASP.\nSeniority: mid."
+  },
+  {
+   "id": "jd08",
+   "archetype": "experimentation",
+   "title": "Data Scientist, Experimentation",
+   "seniority": "mid",
+   "mustHave": [
+    "A/B testing",
+    "statistics",
+    "Python"
+   ],
+   "niceToHave": [
+    "causal inference",
+    "dashboards"
+   ],
+   "text": "Data Scientist, Experimentation\n\nData scientist for our experimentation platform. A/B testing, causal inference, dashboards, statistics, and Python.\n\nMust have: A/B testing, statistics, Python.\nNice to have: causal inference, dashboards.\nSeniority: mid."
+  },
+  {
+   "id": "jd09",
+   "archetype": "java-platform",
+   "title": "Backend Engineer, Java Platform",
+   "seniority": "senior",
+   "mustHave": [
+    "Java",
+    "microservices"
+   ],
+   "niceToHave": [
+    "Kafka",
+    "distributed systems",
+    "Spring Boot"
+   ],
+   "text": "Backend Engineer, Java Platform\n\nBackend engineer for our Java platform: microservices, Kafka, distributed systems, Spring Boot.\n\nMust have: Java, microservices.\nNice to have: Kafka, distributed systems, Spring Boot.\nSeniority: senior."
+  },
+  {
+   "id": "jd10",
+   "archetype": "llm-apps",
+   "title": "LLM Application Engineer",
+   "seniority": "mid",
+   "mustHave": [
+    "LLM applications",
+    "evaluation"
+   ],
+   "niceToHave": [
+    "prompt engineering",
+    "RAG",
+    "agents"
+   ],
+   "text": "LLM Application Engineer\n\nLLM application engineer: prompt engineering, RAG, agents, and evaluation.\n\nMust have: LLM applications, evaluation.\nNice to have: prompt engineering, RAG, agents.\nSeniority: mid."
+  },
+  {
+   "id": "jd11",
+   "archetype": "node-fullstack",
+   "title": "Full-stack Engineer, Node",
+   "seniority": "junior",
+   "mustHave": [
+    "Node.js",
+    "TypeScript"
+   ],
+   "niceToHave": [
+    "GraphQL",
+    "PostgreSQL"
+   ],
+   "text": "Full-stack Engineer, Node\n\nFull-stack engineer: Node.js, GraphQL, PostgreSQL, TypeScript.\n\nMust have: Node.js, TypeScript.\nNice to have: GraphQL, PostgreSQL.\nSeniority: junior."
+  },
+  {
+   "id": "jd12",
+   "archetype": "computer-vision",
+   "title": "Computer Vision Engineer",
+   "seniority": "mid",
+   "mustHave": [
+    "computer vision",
+    "model optimisation"
+   ],
+   "niceToHave": [
+    "OpenCV",
+    "edge deployment",
+    "image classification"
+   ],
+   "text": "Computer Vision Engineer\n\nComputer vision engineer: image classification, OpenCV, model optimisation, edge deployment.\n\nMust have: computer vision, model optimisation.\nNice to have: OpenCV, edge deployment, image classification.\nSeniority: mid."
+  }
+ ],
+ "presets": [
+  {
+   "id": "jd01",
+   "archetype": "retrieval-backend",
+   "title": "Senior Backend Engineer, Retrieval Platform",
+   "seniority": "senior",
+   "mustHave": [
+    "vector search",
+    "Python",
+    "Postgres"
+   ],
+   "niceToHave": [
+    "embeddings pipeline",
+    "API design"
+   ],
+   "text": "Senior Backend Engineer, Retrieval Platform\n\nWe are building a retrieval platform. You will own our vector search stack and the embeddings pipeline that feeds it, ship semantic search features, tune Postgres, write Python services, and lead API design for internal consumers.\n\nMust have: vector search, Python, Postgres.\nNice to have: embeddings pipeline, API design.\nSeniority: senior.\n\nOnly female candidates under 28 from IIT or Northfield. Must be unmarried.",
+   "unlawful": true
+  },
+  {
+   "id": "jd10",
+   "archetype": "llm-apps",
+   "title": "LLM Application Engineer",
+   "seniority": "mid",
+   "mustHave": [
+    "LLM applications",
+    "evaluation"
+   ],
+   "niceToHave": [
+    "prompt engineering",
+    "RAG",
+    "agents"
+   ],
+   "text": "LLM Application Engineer\n\nLLM application engineer: prompt engineering, RAG, agents, and evaluation.\n\nMust have: LLM applications, evaluation.\nNice to have: prompt engineering, RAG, agents.\nSeniority: mid.",
+   "unlawful": false
+  },
+  {
+   "id": "jd04",
+   "archetype": "data-engineering",
+   "title": "Data Engineer",
+   "seniority": "mid",
+   "mustHave": [
+    "Spark",
+    "SQL",
+    "data pipelines"
+   ],
+   "niceToHave": [
+    "Airflow",
+    "streaming"
+   ],
+   "text": "Data Engineer\n\nYou will build data pipelines in Spark, orchestrate them in Airflow, model our data warehouse in SQL, and add streaming for near-real-time use cases.\n\nMust have: Spark, SQL, data pipelines.\nNice to have: Airflow, streaming.\nSeniority: mid.",
+   "unlawful": false
+  }
+ ]
+}

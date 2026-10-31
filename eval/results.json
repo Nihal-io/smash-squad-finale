@@ -1,0 +1,729 @@
+{
+ "generatedAt": "2026-10-31T04:58:02.319Z",
+ "retrieval": {
+  "cases": [
+   {
+    "jdId": "jd01",
+    "title": "Senior Backend Engineer, Retrieval Platform",
+    "relevant": [
+     "c122",
+     "c156",
+     "c066",
+     "c002",
+     "c049"
+    ],
+    "stuffers": [
+     "c127",
+     "c130",
+     "c178"
+    ],
+    "hiddenGems": [
+     "c122",
+     "c002",
+     "c049"
+    ],
+    "semantic": {
+     "top10": [
+      "c130",
+      "c178",
+      "c127",
+      "c156",
+      "c122",
+      "c049",
+      "c002",
+      "c134",
+      "c027",
+      "c066"
+     ],
+     "p5": 0.4,
+     "r10": 1,
+     "ndcg5": 0.277,
+     "stuffersInTop5": 3,
+     "gemsInTop5": 1
+    },
+    "bm25": {
+     "top10": [
+      "c178",
+      "c130",
+      "c127",
+      "c027",
+      "c122",
+      "c049",
+      "c066",
+      "c032",
+      "c156",
+      "c144"
+     ],
+     "p5": 0.2,
+     "r10": 0.8,
+     "ndcg5": 0.131,
+     "stuffersInTop5": 3,
+     "gemsInTop5": 1
+    }
+   },
+   {
+    "jdId": "jd02",
+    "title": "Frontend Engineer, Design Systems",
+    "relevant": [
+     "c079",
+     "c034",
+     "c047",
+     "c154",
+     "c108",
+     "c006"
+    ],
+    "stuffers": [
+     "c155",
+     "c056",
+     "c070"
+    ],
+    "hiddenGems": [
+     "c079"
+    ],
+    "semantic": {
+     "top10": [
+      "c056",
+      "c155",
+      "c070",
+      "c079",
+      "c034",
+      "c134",
+      "c120",
+      "c023",
+      "c149",
+      "c124"
+     ],
+     "p5": 0.4,
+     "r10": 0.333,
+     "ndcg5": 0.277,
+     "stuffersInTop5": 3,
+     "gemsInTop5": 1
+    },
+    "bm25": {
+     "top10": [
+      "c056",
+      "c155",
+      "c070",
+      "c154",
+      "c006",
+      "c108",
+      "c047",
+      "c079",
+      "c164",
+      "c012"
+     ],
+     "p5": 0.4,
+     "r10": 0.833,
+     "ndcg5": 0.277,
+     "stuffersInTop5": 3,
+     "gemsInTop5": 0
+    }
+   },
+   {
+    "jdId": "jd03",
+    "title": "ML Platform Engineer",
+    "relevant": [
+     "c161",
+     "c160",
+     "c043",
+     "c147"
+    ],
+    "stuffers": [
+     "c089",
+     "c042",
+     "c141"
+    ],
+    "hiddenGems": [
+     "c161",
+     "c160",
+     "c147"
+    ],
+    "semantic": {
+     "top10": [
+      "c141",
+      "c042",
+      "c089",
+      "c030",
+      "c178",
+      "c016",
+      "c041",
+      "c051",
+      "c130",
+      "c171"
+     ],
+     "p5": 0,
+     "r10": 0,
+     "ndcg5": 0,
+     "stuffersInTop5": 3,
+     "gemsInTop5": 0
+    },
+    "bm25": {
+     "top10": [
+      "c042",
+      "c141",
+      "c089",
+      "c024",
+      "c054",
+      "c074",
+      "c100",
+      "c077",
+      "c020",
+      "c026"
+     ],
+     "p5": 0,
+     "r10": 0,
+     "ndcg5": 0,
+     "stuffersInTop5": 3,
+     "gemsInTop5": 0
+    }
+   },
+   {
+    "jdId": "jd04",
+    "title": "Data Engineer",
+    "relevant": [
+     "c030",
+     "c118",
+     "c171",
+     "c051",
+     "c016",
+     "c041"
+    ],
+    "stuffers": [
+     "c177",
+     "c169",
+     "c135"
+    ],
+    "hiddenGems": [
+     "c030",
+     "c118",
+     "c041"
+    ],
+    "semantic": {
+     "top10": [
+      "c177",
+      "c135",
+      "c169",
+      "c030",
+      "c051",
+      "c016",
+      "c041",
+      "c118",
+      "c171",
+      "c132"
+     ],
+     "p5": 0.4,
+     "r10": 1,
+     "ndcg5": 0.277,
+     "stuffersInTop5": 3,
+     "gemsInTop5": 1
+    },
+    "bm25": {
+     "top10": [
+      "c135",
+      "c177",
+      "c169",
+      "c163",
+      "c132",
+      "c011",
+      "c025",
+      "c064",
+      "c102",
+      "c145"
+     ],
+     "p5": 0,
+     "r10": 0,
+     "ndcg5": 0,
+     "stuffersInTop5": 3,
+     "gemsInTop5": 0
+    }
+   },
+   {
+    "jdId": "jd05",
+    "title": "iOS Engineer",
+    "relevant": [
+     "c119",
+     "c158",
+     "c126",
+     "c075"
+    ],
+    "stuffers": [
+     "c112",
+     "c026",
+     "c104"
+    ],
+    "hiddenGems": [
+     "c119",
+     "c158"
+    ],
+    "semantic": {
+     "top10": [
+      "c026",
+      "c104",
+      "c112",
+      "c075",
+      "c126",
+      "c119",
+      "c158",
+      "c090",
+      "c161",
+      "c101"
+     ],
+     "p5": 0.4,
+     "r10": 1,
+     "ndcg5": 0.319,
+     "stuffersInTop5": 3,
+     "gemsInTop5": 0
+    },
+    "bm25": {
+     "top10": [
+      "c026",
+      "c112",
+      "c104",
+      "c089",
+      "c042",
+      "c141",
+      "c100",
+      "c170",
+      "c020",
+      "c097"
+     ],
+     "p5": 0,
+     "r10": 0,
+     "ndcg5": 0,
+     "stuffersInTop5": 3,
+     "gemsInTop5": 0
+    }
+   },
+   {
+    "jdId": "jd06",
+    "title": "Site Reliability Engineer",
+    "relevant": [
+     "c167",
+     "c069",
+     "c145",
+     "c015"
+    ],
+    "stuffers": [
+     "c008",
+     "c153",
+     "c037"
+    ],
+    "hiddenGems": [
+     "c167",
+     "c145"
+    ],
+    "semantic": {
+     "top10": [
+      "c008",
+      "c037",
+      "c153",
+      "c045",
+      "c013",
+      "c032",
+      "c096",
+      "c001",
+      "c091",
+      "c049"
+     ],
+     "p5": 0,
+     "r10": 0,
+     "ndcg5": 0,
+     "stuffersInTop5": 3,
+     "gemsInTop5": 0
+    },
+    "bm25": {
+     "top10": [
+      "c153",
+      "c008",
+      "c037",
+      "c079",
+      "c034",
+      "c108",
+      "c047",
+      "c071",
+      "c101",
+      "c045"
+     ],
+     "p5": 0,
+     "r10": 0,
+     "ndcg5": 0,
+     "stuffersInTop5": 3,
+     "gemsInTop5": 0
+    }
+   },
+   {
+    "jdId": "jd07",
+    "title": "Application Security Engineer",
+    "relevant": [
+     "c102",
+     "c055",
+     "c099",
+     "c140",
+     "c065",
+     "c159"
+    ],
+    "stuffers": [
+     "c093",
+     "c091",
+     "c116"
+    ],
+    "hiddenGems": [
+     "c102",
+     "c055",
+     "c099",
+     "c065",
+     "c159"
+    ],
+    "semantic": {
+     "top10": [
+      "c093",
+      "c091",
+      "c116",
+      "c140",
+      "c070",
+      "c020",
+      "c032",
+      "c131",
+      "c128",
+      "c055"
+     ],
+     "p5": 0.2,
+     "r10": 0.333,
+     "ndcg5": 0.146,
+     "stuffersInTop5": 3,
+     "gemsInTop5": 0
+    },
+    "bm25": {
+     "top10": [
+      "c091",
+      "c116",
+      "c093",
+      "c123",
+      "c137",
+      "c032",
+      "c142",
+      "c041",
+      "c016",
+      "c118"
+     ],
+     "p5": 0,
+     "r10": 0,
+     "ndcg5": 0,
+     "stuffersInTop5": 3,
+     "gemsInTop5": 0
+    }
+   },
+   {
+    "jdId": "jd08",
+    "title": "Data Scientist, Experimentation",
+    "relevant": [
+     "c040",
+     "c117",
+     "c082",
+     "c009",
+     "c142"
+    ],
+    "stuffers": [
+     "c027",
+     "c144",
+     "c032"
+    ],
+    "hiddenGems": [
+     "c040",
+     "c117",
+     "c009"
+    ],
+    "semantic": {
+     "top10": [
+      "c032",
+      "c027",
+      "c144",
+      "c127",
+      "c082",
+      "c009",
+      "c132",
+      "c117",
+      "c142",
+      "c169"
+     ],
+     "p5": 0.2,
+     "r10": 0.8,
+     "ndcg5": 0.131,
+     "stuffersInTop5": 3,
+     "gemsInTop5": 0
+    },
+    "bm25": {
+     "top10": [
+      "c027",
+      "c032",
+      "c144",
+      "c169",
+      "c135",
+      "c177",
+      "c127",
+      "c178",
+      "c130",
+      "c145"
+     ],
+     "p5": 0,
+     "r10": 0,
+     "ndcg5": 0,
+     "stuffersInTop5": 3,
+     "gemsInTop5": 0
+    }
+   },
+   {
+    "jdId": "jd09",
+    "title": "Backend Engineer, Java Platform",
+    "relevant": [
+     "c028",
+     "c039",
+     "c138",
+     "c005",
+     "c086"
+    ],
+    "stuffers": [
+     "c157",
+     "c111",
+     "c046"
+    ],
+    "hiddenGems": [
+     "c028",
+     "c039",
+     "c138",
+     "c005",
+     "c086"
+    ],
+    "semantic": {
+     "top10": [
+      "c111",
+      "c157",
+      "c046",
+      "c016",
+      "c005",
+      "c118",
+      "c086",
+      "c028",
+      "c141",
+      "c138"
+     ],
+     "p5": 0.2,
+     "r10": 0.8,
+     "ndcg5": 0.131,
+     "stuffersInTop5": 3,
+     "gemsInTop5": 1
+    },
+    "bm25": {
+     "top10": [
+      "c111",
+      "c046",
+      "c157",
+      "c144",
+      "c016",
+      "c028",
+      "c005",
+      "c118",
+      "c138",
+      "c086"
+     ],
+     "p5": 0,
+     "r10": 0.8,
+     "ndcg5": 0,
+     "stuffersInTop5": 3,
+     "gemsInTop5": 0
+    }
+   },
+   {
+    "jdId": "jd10",
+    "title": "LLM Application Engineer",
+    "relevant": [
+     "c100",
+     "c162",
+     "c077",
+     "c020"
+    ],
+    "stuffers": [
+     "c131",
+     "c129",
+     "c060"
+    ],
+    "hiddenGems": [
+     "c100",
+     "c162"
+    ],
+    "semantic": {
+     "top10": [
+      "c131",
+      "c060",
+      "c129",
+      "c138",
+      "c116",
+      "c013",
+      "c140",
+      "c005",
+      "c063",
+      "c069"
+     ],
+     "p5": 0,
+     "r10": 0,
+     "ndcg5": 0,
+     "stuffersInTop5": 3,
+     "gemsInTop5": 0
+    },
+    "bm25": {
+     "top10": [
+      "c129",
+      "c060",
+      "c131",
+      "c091",
+      "c116",
+      "c093",
+      "c053",
+      "c073",
+      "c146",
+      "c013"
+     ],
+     "p5": 0,
+     "r10": 0,
+     "ndcg5": 0,
+     "stuffersInTop5": 3,
+     "gemsInTop5": 0
+    }
+   },
+   {
+    "jdId": "jd11",
+    "title": "Full-stack Engineer, Node",
+    "relevant": [
+     "c088",
+     "c124",
+     "c059",
+     "c176",
+     "c023",
+     "c172"
+    ],
+    "stuffers": [
+     "c134",
+     "c083",
+     "c012"
+    ],
+    "hiddenGems": [
+     "c088",
+     "c124",
+     "c023"
+    ],
+    "semantic": {
+     "top10": [
+      "c134",
+      "c083",
+      "c012",
+      "c120",
+      "c139",
+      "c122",
+      "c124",
+      "c023",
+      "c056",
+      "c070"
+     ],
+     "p5": 0,
+     "r10": 0.333,
+     "ndcg5": 0,
+     "stuffersInTop5": 3,
+     "gemsInTop5": 0
+    },
+    "bm25": {
+     "top10": [
+      "c012",
+      "c134",
+      "c083",
+      "c056",
+      "c070",
+      "c155",
+      "c122",
+      "c002",
+      "c071",
+      "c101"
+     ],
+     "p5": 0,
+     "r10": 0,
+     "ndcg5": 0,
+     "stuffersInTop5": 3,
+     "gemsInTop5": 0
+    }
+   },
+   {
+    "jdId": "jd12",
+    "title": "Computer Vision Engineer",
+    "relevant": [
+     "c011",
+     "c132",
+     "c081",
+     "c064",
+     "c163",
+     "c025"
+    ],
+    "stuffers": [
+     "c054",
+     "c024",
+     "c074"
+    ],
+    "hiddenGems": [
+     "c011",
+     "c132",
+     "c081"
+    ],
+    "semantic": {
+     "top10": [
+      "c054",
+      "c074",
+      "c024",
+      "c011",
+      "c132",
+      "c163",
+      "c090",
+      "c178",
+      "c064",
+      "c101"
+     ],
+     "p5": 0.4,
+     "r10": 0.667,
+     "ndcg5": 0.277,
+     "stuffersInTop5": 3,
+     "gemsInTop5": 2
+    },
+    "bm25": {
+     "top10": [
+      "c054",
+      "c074",
+      "c024",
+      "c089",
+      "c042",
+      "c141",
+      "c100",
+      "c077",
+      "c020",
+      "c079"
+     ],
+     "p5": 0,
+     "r10": 0,
+     "ndcg5": 0,
+     "stuffersInTop5": 3,
+     "gemsInTop5": 0
+    }
+   }
+  ],
+  "summary": {
+   "semantic_p5": 0.217,
+   "semantic_r10": 0.522,
+   "semantic_ndcg5": 0.153,
+   "semantic_stuffers_top5": 3,
+   "semantic_gems_top5": 0.5,
+   "bm25_p5": 0.05,
+   "bm25_r10": 0.203,
+   "bm25_ndcg5": 0.034,
+   "bm25_stuffers_top5": 3,
+   "bm25_gems_top5": 0.083
+  },
+  "elapsedMs": 526
+ },
+ "headline": "Semantic nDCG@5 0.153 vs keyword 0.034 across 12 JDs"
+}

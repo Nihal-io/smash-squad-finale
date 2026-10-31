@@ -1,6 +1,12 @@
-.env*
-node_modules
-.next
+.env
+.env.*
+!.env.example
+node_modules/
+.next/
+out/
 .vercel
-graphify-out/cache
-supabase/.temp
+*.log
+.DS_Store
+supabase/.temp/
+.cache/
+models/

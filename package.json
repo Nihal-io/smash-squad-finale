@@ -1,0 +1,44 @@
+{
+  "name": "reverse-match-copilot",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "seed": "bun run scripts/seed.ts",
+    "embed": "bun run scripts/embed.ts",
+    "migrate": "bun run scripts/migrate.ts",
+    "eval": "bun run src/eval/index.ts",
+    "agent": "bun run scripts/run-agent.ts",
+    "prewarm": "bun run scripts/prewarm.ts"
+  },
+  "dependencies": {
+    "@huggingface/transformers": "^3.3.3",
+    "@langchain/core": "^0.3.40",
+    "@langchain/langgraph": "^0.2.50",
+    "@langchain/langgraph-checkpoint-postgres": "^0.0.4",
+    "next": "15.3.1",
+    "pg": "^8.13.3",
+    "quickjs-emscripten": "^0.31.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "resend": "^4.1.2",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.4",
+    "@types/node": "^22.14.0",
+    "@types/pg": "^8.11.11",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "supabase": "^2.122.0",
+    "tailwindcss": "^4.1.4",
+    "typescript": "^5.8.3"
+  },
+  "trustedDependencies": [
+    "onnxruntime-node",
+    "protobufjs"
+  ]
+}
