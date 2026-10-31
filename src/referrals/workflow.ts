@@ -130,7 +130,9 @@ export function failReferralRun(runId:string,error:unknown){
 /** Candidate-facing question data; excludes stored keys, rubrics and test cases. */
 export function referralRunView(runId:string){
   const s=load(runId);
-  return {runId,status:store.getRun(runId)!.status,title:s.jd.title,refused:s.jd.refused,degraded:s.degraded,
+  // Older saved runs carry refusals; current main no longer defines that field.
+  const refused=(s.jd as typeof s.jd & {refused?:{line:string;reason:string}[]}).refused??[];
+  return {runId,status:store.getRun(runId)!.status,title:s.jd.title,refused,degraded:s.degraded,
     errors:s.referralErrors?.map(()=> 'A processing step failed. Check server logs.'),
     candidates:s.referralIds.map(id=>{const c=s.candidates[id];return {id,name:c?.name??getCandidateLocal(id)?.name,
       semantic:c?.semantic??null,evidence:c?.evidence??[],missing:s.jd.requirements.filter(r=>!c?.evidence.some(e=>e.requirementId===r.id)).map(r=>r.text),
