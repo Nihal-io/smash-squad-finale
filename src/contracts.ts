@@ -45,7 +45,7 @@ export function toShortlist(state: AgentState): ShortlistItem[] {
       id, name: c.name, rank: i + 1, semantic: +c.semantic.toFixed(3), assessment,
       final: +(assessment === null ? c.semantic : 0.6 * c.semantic + 0.4 * assessment).toFixed(3),
       evidence: c.evidence, unverified: musts.filter((m) => !c.evidence.some((e) => e.requirementId === m)),
-      flags: c.flags, dropped: c.dropped, gradeFlag: c.grade?.flaggedForHr, simulatedResponses: !!c.responses,
+      flags: c.flags, dropped: c.dropped, gradeFlag: c.grade?.flaggedForHr, simulatedResponses: !!c.responses && c.responsesSimulated !== false,
       claims: c.claimVerdicts ?? [], assessmentSource: c.assessV2 ? c.assessV2.source : c.assessment ? "built-in" : undefined,
     };
   });
