@@ -1,0 +1,97 @@
+{
+  "company": "Nimbus",
+  "title": "Data assessment",
+  "timeLimitMin": 30,
+  "maxQuestions": 6,
+  "passMark": 0.75,
+  "questions": [
+    {
+      "id": "sql",
+      "type": "mcq",
+      "prompt": "Which SQL clause filters groups after aggregation?",
+      "skills": [
+        "SQL"
+      ],
+      "options": [
+        "WHERE",
+        "HAVING",
+        "ORDER BY"
+      ],
+      "answerKey": "HAVING",
+      "weight": 1,
+      "required": true,
+      "estimatedMinutes": 5,
+      "claimIds": []
+    },
+    {
+      "id": "python",
+      "type": "short",
+      "prompt": "Explain how a Python generator behaves compared with a list.",
+      "skills": [
+        "Python"
+      ],
+      "rubric": "Full credit for lazy iteration using yield without storing the whole sequence; zero for claiming it eagerly stores all values.",
+      "weight": 1,
+      "required": false,
+      "estimatedMinutes": 5,
+      "claimIds": []
+    },
+    {
+      "id": "stats",
+      "type": "short",
+      "prompt": "Which statistic is the middle value of sorted observations?",
+      "skills": [
+        "Statistics"
+      ],
+      "answerKey": "Median",
+      "weight": 1,
+      "required": false,
+      "estimatedMinutes": 5,
+      "claimIds": []
+    },
+    {
+      "id": "etl",
+      "type": "short",
+      "prompt": "Expand ETL.",
+      "skills": [
+        "ETL"
+      ],
+      "answerKey": "Extract Transform Load",
+      "weight": 1,
+      "required": false,
+      "estimatedMinutes": 5,
+      "claimIds": []
+    },
+    {
+      "id": "spark",
+      "type": "short",
+      "prompt": "Which Spark operation triggers execution of a lazy computation?",
+      "skills": [
+        "Spark"
+      ],
+      "answerKey": "Action",
+      "weight": 1,
+      "required": false,
+      "estimatedMinutes": 5,
+      "claimIds": []
+    },
+    {
+      "id": "code",
+      "type": "code",
+      "prompt": "Write a function that returns the sum of an integer array.",
+      "skills": [
+        "Coding"
+      ],
+      "tests": [
+        {
+          "input": "[1,2,3]",
+          "expected": "6"
+        }
+      ],
+      "weight": 1,
+      "required": false,
+      "estimatedMinutes": 5,
+      "claimIds": []
+    }
+  ]
+}
