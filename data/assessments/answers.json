@@ -1,0 +1,240 @@
+{
+  "honest-1": {
+    "generated": {
+      "generated-sql": "HAVING",
+      "generated-python": "A generator uses yield to iterate lazily without storing the entire sequence."
+    },
+    "acme": {
+      "sql": "HAVING",
+      "python": "A generator uses yield to iterate lazily without storing the entire sequence.",
+      "http": "Not Found",
+      "docker": "Dockerfile",
+      "security": "Parameterized queries",
+      "redis": "SETEX",
+      "testing": "Unit test",
+      "code": "return values.reduce((a,b) => a+b, 0)"
+    },
+    "nimbus": {
+      "sql": "HAVING",
+      "python": "A generator uses yield to iterate lazily without storing the entire sequence.",
+      "stats": "Median",
+      "etl": "Extract Transform Load",
+      "spark": "Action",
+      "code": "return values.reduce((a,b) => a+b, 0)"
+    }
+  },
+  "honest-2": {
+    "generated": {
+      "generated-http": "Not Found",
+      "generated-docker": "Dockerfile"
+    },
+    "acme": {
+      "sql": "HAVING",
+      "python": "A generator uses yield to iterate lazily without storing the entire sequence.",
+      "http": "Not Found",
+      "docker": "Dockerfile",
+      "security": "Parameterized queries",
+      "redis": "SETEX",
+      "testing": "Unit test",
+      "code": "return values.reduce((a,b) => a+b, 0)"
+    },
+    "nimbus": {
+      "sql": "HAVING",
+      "python": "A generator uses yield to iterate lazily without storing the entire sequence.",
+      "stats": "Median",
+      "etl": "Extract Transform Load",
+      "spark": "Action",
+      "code": "return values.reduce((a,b) => a+b, 0)"
+    }
+  },
+  "honest-3": {
+    "generated": {
+      "generated-stats": "Median",
+      "generated-etl": "Extract Transform Load"
+    },
+    "acme": {
+      "sql": "HAVING",
+      "python": "A generator uses yield to iterate lazily without storing the entire sequence.",
+      "http": "Not Found",
+      "docker": "Dockerfile",
+      "security": "Parameterized queries",
+      "redis": "SETEX",
+      "testing": "Unit test",
+      "code": "return values.reduce((a,b) => a+b, 0)"
+    },
+    "nimbus": {
+      "sql": "HAVING",
+      "python": "A generator uses yield to iterate lazily without storing the entire sequence.",
+      "stats": "Median",
+      "etl": "Extract Transform Load",
+      "spark": "Action",
+      "code": "return values.reduce((a,b) => a+b, 0)"
+    }
+  },
+  "honest-4": {
+    "generated": {
+      "generated-security": "Parameterized queries",
+      "generated-redis": "SETEX"
+    },
+    "acme": {
+      "sql": "HAVING",
+      "python": "A generator uses yield to iterate lazily without storing the entire sequence.",
+      "http": "Not Found",
+      "docker": "Dockerfile",
+      "security": "Parameterized queries",
+      "redis": "SETEX",
+      "testing": "Unit test",
+      "code": "return values.reduce((a,b) => a+b, 0)"
+    },
+    "nimbus": {
+      "sql": "HAVING",
+      "python": "A generator uses yield to iterate lazily without storing the entire sequence.",
+      "stats": "Median",
+      "etl": "Extract Transform Load",
+      "spark": "Action",
+      "code": "return values.reduce((a,b) => a+b, 0)"
+    }
+  },
+  "honest-5": {
+    "generated": {
+      "generated-code": "return values.reduce((a,b) => a+b, 0)"
+    },
+    "acme": {
+      "sql": "HAVING",
+      "python": "A generator uses yield to iterate lazily without storing the entire sequence.",
+      "http": "Not Found",
+      "docker": "Dockerfile",
+      "security": "Parameterized queries",
+      "redis": "SETEX",
+      "testing": "Unit test",
+      "code": "return values.reduce((a,b) => a+b, 0)"
+    },
+    "nimbus": {
+      "sql": "HAVING",
+      "python": "A generator uses yield to iterate lazily without storing the entire sequence.",
+      "stats": "Median",
+      "etl": "Extract Transform Load",
+      "spark": "Action",
+      "code": "return values.reduce((a,b) => a+b, 0)"
+    }
+  },
+  "inflated-1": {
+    "generated": {
+      "generated-sql": "I do not know",
+      "generated-python": "I do not know"
+    },
+    "acme": {
+      "sql": "I do not know",
+      "python": "I do not know",
+      "http": "I do not know",
+      "docker": "I do not know",
+      "security": "I do not know",
+      "redis": "I do not know",
+      "testing": "I do not know",
+      "code": "I do not know"
+    },
+    "nimbus": {
+      "sql": "I do not know",
+      "python": "I do not know",
+      "stats": "I do not know",
+      "etl": "I do not know",
+      "spark": "I do not know",
+      "code": "I do not know"
+    }
+  },
+  "inflated-2": {
+    "generated": {
+      "generated-http": "I do not know",
+      "generated-docker": "I do not know"
+    },
+    "acme": {
+      "sql": "I do not know",
+      "python": "I do not know",
+      "http": "I do not know",
+      "docker": "I do not know",
+      "security": "I do not know",
+      "redis": "I do not know",
+      "testing": "I do not know",
+      "code": "I do not know"
+    },
+    "nimbus": {
+      "sql": "I do not know",
+      "python": "I do not know",
+      "stats": "I do not know",
+      "etl": "I do not know",
+      "spark": "I do not know",
+      "code": "I do not know"
+    }
+  },
+  "inflated-3": {
+    "generated": {
+      "generated-stats": "I do not know",
+      "generated-etl": "I do not know"
+    },
+    "acme": {
+      "sql": "I do not know",
+      "python": "I do not know",
+      "http": "I do not know",
+      "docker": "I do not know",
+      "security": "I do not know",
+      "redis": "I do not know",
+      "testing": "I do not know",
+      "code": "I do not know"
+    },
+    "nimbus": {
+      "sql": "I do not know",
+      "python": "I do not know",
+      "stats": "I do not know",
+      "etl": "I do not know",
+      "spark": "I do not know",
+      "code": "I do not know"
+    }
+  },
+  "inflated-4": {
+    "generated": {
+      "generated-security": "I do not know",
+      "generated-redis": "I do not know"
+    },
+    "acme": {
+      "sql": "I do not know",
+      "python": "I do not know",
+      "http": "I do not know",
+      "docker": "I do not know",
+      "security": "I do not know",
+      "redis": "I do not know",
+      "testing": "I do not know",
+      "code": "I do not know"
+    },
+    "nimbus": {
+      "sql": "I do not know",
+      "python": "I do not know",
+      "stats": "I do not know",
+      "etl": "I do not know",
+      "spark": "I do not know",
+      "code": "I do not know"
+    }
+  },
+  "inflated-5": {
+    "generated": {
+      "generated-code": "I do not know"
+    },
+    "acme": {
+      "sql": "I do not know",
+      "python": "I do not know",
+      "http": "I do not know",
+      "docker": "I do not know",
+      "security": "I do not know",
+      "redis": "I do not know",
+      "testing": "I do not know",
+      "code": "I do not know"
+    },
+    "nimbus": {
+      "sql": "I do not know",
+      "python": "I do not know",
+      "stats": "I do not know",
+      "etl": "I do not know",
+      "spark": "I do not know",
+      "code": "I do not know"
+    }
+  }
+}
