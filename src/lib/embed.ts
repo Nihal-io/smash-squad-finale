@@ -12,7 +12,8 @@ async function getPipe(): Promise<FeatureExtractionPipeline> {
     pipe = (async () => {
       const { pipeline, env } = await import("@huggingface/transformers");
       env.cacheDir = process.env.HF_CACHE_DIR || ".cache/hf";
-      return (await pipeline("feature-extraction", EMBED_MODEL, { dtype: "fp32" })) as FeatureExtractionPipeline;
+      const p: any = await (pipeline as any)("feature-extraction", EMBED_MODEL, { dtype: "fp32" });
+      return p as FeatureExtractionPipeline;
     })();
   }
   return pipe;
