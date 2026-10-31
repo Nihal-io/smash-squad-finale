@@ -60,7 +60,7 @@ export function newState(runId: string, roleKey: string, raw: string, chaos: Rec
   return {
     runId, roleKey, chaos,
     jd: { raw, title: "", seniority: "", requirements: [], refused: [] },
-    phase: "SOURCE", targetN: 6, reformulations: 0, toolCalls: [], searches: [], candidates: {}, shortlist: [], memoryApplied: [], degraded: [], nudges: 0,
+    phase: "SOURCE", targetN: 5, reformulations: 0, toolCalls: [], searches: [], candidates: {}, shortlist: [], memoryApplied: [], degraded: [], nudges: 0,
   };
 }
 

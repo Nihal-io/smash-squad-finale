@@ -30,8 +30,7 @@ async function execTool(state: AgentState, tool: ToolSpec, rawInput: any, source
   const runId = state.runId;
   const parsed = tool.schema.safeParse(rawInput);
   if (!parsed.success) {
-    const msg = `invalid input for ${tool.name}: ${parsed.error.issues.map((i: any) => `${i.path.join(".")}: ${i.message}`).join("; ")}`;
-    state.toolCalls.push({ n: state.toolCalls.length + 1, name: tool.name, reason: String(rawInput?.reason ?? ""), ok: false, summary: msg, phase: state.phase });
+    const msg = `invalid input for ${tool.name}: ${parsed.error.issues.map((i: any) => `${i.path.join(".")}: ${i.message}`).join("; ")}. Required fields: ${Object.keys((tool.schema as any).shape ?? {}).join(", ")}`;
     emit(runId, "tool_result", { name: tool.name, ok: false, error: msg }, tool.name);
     return { ok: false, result: { error: msg } };
   }
@@ -95,14 +94,14 @@ async function stepNode(s: G): Promise<Partial<G>> {
 
   if (state.toolCalls.length >= MAX_TOOL_CALLS && state.phase !== "DONE") {
     emit(runId, "note", { banner: "limit", text: `Tool-call limit (${MAX_TOOL_CALLS}) reached; finishing deterministically with the work done so far.` }, "supervisor");
-    await degradedTail(state);
+    if (state.phase === "SOURCE") await degradedPipeline(state); else await degradedTail(state);
     return { agent: state, messages };
   }
 
   const tools = toolsForPhase(state.phase);
   let r;
   try {
-    r = await chat({ purpose: `supervisor:${state.phase}`, system: SUPERVISOR_SYSTEM, messages, tools: toolDefs(tools), maxTokens: 700, runId, effort: "low" });
+    r = await chat({ purpose: `supervisor:${state.phase}`, system: SUPERVISOR_SYSTEM, messages, tools: toolDefs(tools), maxTokens: 2000, runId, effort: "low" });
   } catch (e) {
     if (e instanceof LlmUnavailable) {
       const kind = e.reason === "budget" ? "budget" : "llm";
@@ -118,7 +117,11 @@ async function stepNode(s: G): Promise<Partial<G>> {
   if (!use) {
     state.nudges++;
     if (r.text) emit(runId, "note", { text: r.text.slice(0, 300) }, "supervisor");
-    if (state.nudges > 2) { emit(runId, "note", { text: "Supervisor stopped calling tools; finishing deterministically." }, "supervisor"); await degradedTail(state); return { agent: state, messages }; }
+    if (state.nudges > 2) {
+      emit(runId, "note", { banner: "limit", text: "Supervisor stopped calling tools; finishing with the automatic evidence pass." }, "supervisor");
+      if (state.phase === "SOURCE") await degradedPipeline(state); else await degradedTail(state);
+      return { agent: state, messages };
+    }
     messages.push({ role: "assistant", content: r.text || "(no tool call)" }, { role: "user", content: `You must call exactly one tool now. ${stateDigest(state)}` });
     return { agent: state, messages };
   }
@@ -181,9 +184,12 @@ function finish(state: AgentState) {
 
 // ---------- degraded pipeline (no LLM): deterministic tool sequence with local evidence ----------
 async function degradedPipeline(state: AgentState) {
-  const auto = (reason: string) => `automatic (${state.degraded.includes("budget") ? "budget cap" : "LLM unavailable"}): ${reason}`;
+  const auto = (reason: string) => `automatic (${state.degraded.includes("budget") ? "budget cap" : state.degraded.includes("llm") ? "LLM unavailable" : "supervisor stalled"}): ${reason}`;
   const T = Object.fromEntries(ALL_TOOLS.map((t) => [t.name, t]));
   if (state.phase === "SOURCE") {
+    if (evidencedCandidates(state).length >= 2) {
+      emit(state.runId, "note", { text: `Proposing the ${evidencedCandidates(state).length} candidates that already have full evidence.` }, "supervisor");
+    } else {
     if (!state.memoryApplied.length) await execTool(state, T.recall_memory, { reason: auto("load HR notes for this role"), role: state.roleKey }, "auto");
     for (const r of state.jd.requirements) await execTool(state, T.search_candidates, { reason: auto(`one search per requirement: "${r.text}"`), query: `${state.jd.title}: ${r.text}`, k: 20, view: "visible" }, "auto");
     // Local-only evidence: best sentence per must-have, accepted only when the local tier is confident.
@@ -203,10 +209,11 @@ async function degradedPipeline(state: AgentState) {
         c.coverage[musts[i].id] = best;
         await execTool(state, T.cite_evidence, { reason: auto(`best sentence for "${musts[i].text}" has cosine ${best.toFixed(2)}`), candidate_id: c.id, requirement_id: musts[i].id, quote: sents[bi].text }, "auto");
       }
-      if (!hasFullEvidence(c, state)) await execTool(state, T.drop_candidate, { reason: auto("not every must-have could be evidenced from the profile"), candidate_id: c.id, why: "no verbatim evidence for every must-have (local check)" }, "auto");
+      if (!hasFullEvidence(c, state)) await execTool(state, T.drop_candidate, { reason: auto("not every must-have could be evidenced from the profile"), candidate_id: c.id, why: "no verbatim evidence for every must-have (automatic check)" }, "auto");
+    }
     }
     const ev = evidencedCandidates(state).sort((a, b) => b.semantic - a.semantic).slice(0, state.targetN);
-    if (ev.length) {
+    if (ev.length >= 2) {
       state.shortlist = ev.map((c) => c.id);
       store.patchRun(state.runId, { status: "waiting_approval", state });
       const payload = approvalPayload(state, state.shortlist, "Embedding-only shortlist with locally verified evidence (LLM unavailable).");

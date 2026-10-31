@@ -162,12 +162,14 @@ export const request_hr_approval: ToolSpec = {
   name: "request_hr_approval",
   description: "Propose the shortlist (5–8 ids, each with evidence for every must-have) to HR and pause until HR approves. HR may remove candidates. Nothing is sent to anyone before this returns approved.",
   phases: ["SOURCE"],
-  schema: z.object({ reason, candidate_ids: z.array(z.string()).min(1).max(10), rationale: z.string().min(10) }),
+  schema: z.object({ reason, candidate_ids: z.array(z.string()).min(1).max(10), rationale: z.string().default("Proposed by the agent; see the reason line.") }),
   async run(input, { state }) {
     const musts = mustHaves(state);
     const bad = (input.candidate_ids as string[]).filter((id) => { const c = state.candidates[id]; return !c || c.dropped || !hasFullEvidence(c, state); });
     if (bad.length) throw new GateError(`Cannot request approval: ${bad.join(", ")} lack validated evidence for every must-have (${musts.map((m) => m.id).join(", ")}) or were dropped. Cite evidence first or drop them.`, "approval_requires_evidence");
-    if (input.candidate_ids.length < Math.min(state.targetN, 5) && state.reformulations < 2) throw new GateError(`Only ${input.candidate_ids.length} candidates have full evidence; target is ${state.targetN}. Search more (reformulate or broaden) before asking HR.`, "approval_needs_more_candidates");
+    const n = input.candidate_ids.length;
+    if (n < 3) throw new GateError(`Only ${n} candidate(s) have full evidence; at least 3 are needed. Open more profiles and cite evidence, or reformulate the search.`, "approval_needs_more_candidates");
+    if (n < state.targetN && state.reformulations < 1 && state.toolCalls.length < 10) throw new GateError(`${n} candidates have full evidence; target is ${state.targetN}. Try one reformulated or broader search first, then ask again.`, "approval_needs_more_candidates");
     state.shortlist = input.candidate_ids;
     throw new ApprovalInterrupt({ candidateIds: input.candidate_ids, rationale: input.rationale });
   },

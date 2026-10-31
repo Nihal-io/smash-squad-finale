@@ -36,7 +36,7 @@ export async function parseJd(state: AgentState): Promise<void> {
       runId,
       system: "Extract hiring requirements from a job description. Keep each requirement short (2–6 words), concrete and skill-based. Do not include anything about gender, age, religion, caste, marital status, disability, nationality or specific college names.",
       messages: [{ role: "user", content: lawful }],
-      maxTokens: 600,
+      maxTokens: 1500,
     });
     state.jd.title = r.data.title;
     state.jd.seniority = r.data.seniority;
