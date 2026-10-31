@@ -18,7 +18,7 @@ export interface RunRecord {
   roleKey: string;
   jdText: string;
   presetId?: string;
-  status: "running" | "waiting_approval" | "done" | "failed" | "stopped";
+  status: "running" | "waiting_approval" | "waiting_responses" | "done" | "failed" | "stopped";
   chaos: Record<string, boolean>;
   createdAt: number;
   updatedAt: number;

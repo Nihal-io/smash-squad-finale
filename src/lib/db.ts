@@ -3,6 +3,7 @@ import { Pool } from "pg";
 import { readFileSync } from "node:fs";
 import { EMBED_DIM } from "./embed";
 import { BM25, rrf } from "./bm25";
+import { referralSnapshot, referralCandidate } from "../referrals/store";
 
 export interface CandidateRow {
   id: string;
@@ -57,14 +58,25 @@ export async function dbHealthy(): Promise<boolean> {
 // ---------- in-memory store over the same vectors ----------
 interface Mem { candidates: CandidateRow[]; byId: Map<string, CandidateRow>; index: Map<string, number>; vectors: Float32Array }
 let mem: Mem | null = null;
+let referralVersion = '';
 
 export function loadMemory(): Mem {
-  if (!mem) {
+  const referrals = referralSnapshot();
+  if (!mem || referralVersion !== referrals.version) {
     const candidates = JSON.parse(readFileSync("data/candidates.json", "utf8")) as CandidateRow[];
     const buf = readFileSync("data/vectors.bin");
-    const vectors = new Float32Array(buf.buffer, buf.byteOffset, buf.byteLength / 4);
-    if (vectors.length !== candidates.length * 2 * EMBED_DIM) throw new Error("vectors.bin does not match candidates.json; run bun run embed");
+    const baseVectors = new Float32Array(buf.buffer, buf.byteOffset, buf.byteLength / 4);
+    if (baseVectors.length !== candidates.length * 2 * EMBED_DIM) throw new Error("vectors.bin does not match candidates.json; run bun run embed");
+    const vectors = new Float32Array(baseVectors.length + referrals.records.length * 2 * EMBED_DIM);
+    vectors.set(baseVectors);
+    referrals.records.forEach((record, i) => {
+      const off = baseVectors.length + i * 2 * EMBED_DIM;
+      vectors.set(record.visibleVector, off); vectors.set(record.redactedVector, off + EMBED_DIM);
+      candidates.push(referralCandidate(record));
+    });
     mem = { candidates, byId: new Map(candidates.map((c) => [c.id, c])), index: new Map(candidates.map((c, i) => [c.id, i])), vectors };
+    referralVersion = referrals.version;
+    bm25Index.visible = undefined; bm25Index.redacted = undefined;
   }
   return mem;
 }
@@ -110,7 +122,11 @@ export async function vectorSearch(queryVec: ArrayLike<number>, mode: Mode, k: n
         `select id, 1 - (${col} <=> $1::vector) as score from candidates ${where.length ? "where " + where.join(" and ") : ""} order by ${col} <=> $1::vector limit $2`,
         params,
       );
-      return { hits: r.rows.map((x: any) => ({ id: x.id, score: Number(x.score) })), source: "pgvector" };
+      const hits = new Map<string, SearchHit>(r.rows.map((x: any) => [x.id, { id: x.id, score: Number(x.score) }]));
+      // Uploaded resumes live in a private sidecar, including when the seed pool is in Postgres.
+      for (const h of memorySearch(queryVec, mode, k, c => c.source === 'referral' &&
+        (filters?.minYoe === undefined || c.yoe >= filters.minYoe) && (filters?.maxYoe === undefined || c.yoe <= filters.maxYoe))) hits.set(h.id,h);
+      return { hits: [...hits.values()].sort((a,b) => b.score-a.score).slice(0,k), source: "pgvector" };
     } catch {
       dbDownUntil = Date.now() + 30_000;
     }
@@ -122,6 +138,7 @@ export async function vectorSearch(queryVec: ArrayLike<number>, mode: Mode, k: n
 // ---------- keyword (BM25) and hybrid (RRF) over the same pool ----------
 const bm25Index: Partial<Record<Mode, BM25>> = {};
 function bm25For(mode: Mode): BM25 {
+  loadMemory(); // Refresh the keyword index after an upload in this or another process.
   if (!bm25Index[mode]) {
     const { candidates } = loadMemory();
     bm25Index[mode] = new BM25(candidates.map((c) => ({ id: c.id, text: mode === "visible" ? c.visible_text : c.redacted_text })));
@@ -160,7 +177,7 @@ export async function getCandidates(ids: string[]): Promise<CandidateRow[]> {
         [ids],
       );
       const byId = new Map(r.rows.map((x: any) => [x.id, x as CandidateRow]));
-      return ids.map((id) => byId.get(id)!).filter(Boolean);
+      return ids.map((id) => byId.get(id) ?? getCandidateLocal(id)).filter((c): c is CandidateRow => !!c);
     } catch {
       dbDownUntil = Date.now() + 30_000;
     }
