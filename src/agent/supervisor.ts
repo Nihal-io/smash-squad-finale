@@ -288,7 +288,7 @@ export interface RunOptions { runId: string; jdText: string; roleKey: string; pr
 export async function startRun(o: RunOptions): Promise<AgentState> {
   const state = newState(o.runId, o.roleKey, o.jdText, o.chaos ?? {});
   store.putRun({ id: o.runId, roleKey: o.roleKey, jdText: o.jdText, presetId: o.presetId, status: "running", chaos: o.chaos ?? {}, createdAt: Date.now(), updatedAt: Date.now(), state });
-  emit(o.runId, "start", { roleKey: o.roleKey, presetId: o.presetId, chaos: o.chaos ?? {}, cascade: process.env.CASCADE !== "off" }, "run");
+  emit(o.runId, "start", { roleKey: o.roleKey, presetId: o.presetId, cascade: process.env.CASCADE !== "off" }, "run");
   const g = await graph();
   const out = await g.invoke({ agent: state, messages: [] }, { configurable: { thread_id: o.runId }, recursionLimit: 120 });
   return out.agent;

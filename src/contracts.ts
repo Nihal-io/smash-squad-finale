@@ -28,8 +28,6 @@ export interface ShortlistItem {
 
 export type FairnessRow = FairnessAudit["rows"][number];
 
-export interface ChaosFlags { LLM_OUTAGE: boolean; DB_DOWN: boolean; BUDGET_ZERO: boolean }
-
 export interface SpendSummary { calls: number; cached: number; cost: number; budget: number; totalSpent: number; remaining: number }
 export interface CascadeSummary { decisions: number; byTier: Record<string, number>; resolvedBeforeClaude: number; resolvedByJev: number; escalationRate: number; actualUsd: number; allClaudeUsd: number }
 

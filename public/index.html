@@ -49,15 +49,6 @@ code,pre,.mono{font-family:var(--mono)}
 .spend b{color:var(--text);font-weight:600;font-variant-numeric:tabular-nums}
 .spend .meter{height:4px;border-radius:4px;background:var(--line);margin:4px 0;overflow:hidden}
 .spend .meter i{display:block;height:100%;background:var(--accent);border-radius:4px;transition:width .4s}
-.chaos{position:relative}
-.chaosbtn{padding:6px 12px;border:1px solid var(--line2);border-radius:8px;color:var(--muted);display:flex;gap:8px;align-items:center}
-.chaosbtn:hover{color:var(--text)}
-.chaosbtn .dot{width:7px;height:7px;border-radius:50%;background:var(--faint)}
-.chaosbtn.active .dot{background:var(--bad);box-shadow:0 0 8px var(--bad)}
-.menu{position:absolute;right:0;top:42px;width:290px;background:var(--panel);border:1px solid var(--line2);border-radius:12px;padding:8px;box-shadow:0 18px 50px #000a}
-.menu label{display:flex;align-items:flex-start;gap:12px;padding:10px;border-radius:8px;cursor:pointer}
-.menu label:hover{background:var(--panel2)}
-.menu small{display:block;color:var(--muted);font-size:12px}
 .sw{position:relative;flex:none;width:34px;height:20px;margin-top:2px}
 .sw input{position:absolute;inset:0;opacity:0;cursor:pointer;margin:0}
 .sw span{position:absolute;inset:0;background:var(--line2);border-radius:20px;transition:.2s;pointer-events:none}
@@ -340,14 +331,6 @@ table.t tr.mean td{font-weight:600;border-top:1px solid var(--line2)}
     <div class="meter"><i id="spBar" style="width:0"></i></div>
     <div class="row1"><span>&nbsp;</span><span>escalation rate <b id="spEsc">–</b></span></div>
   </div>
-  <div class="chaos">
-    <button class="chaosbtn" id="chaosBtn"><span class="dot"></span>Chaos</button>
-    <div class="menu" id="chaosMenu" hidden>
-      <label class="sw-row"><span class="sw"><input type="checkbox" data-flag="LLM_OUTAGE"><span></span></span><div>LLM outage<small>Language model calls fail; ranking falls back to embeddings.</small></div></label>
-      <label class="sw-row"><span class="sw"><input type="checkbox" data-flag="DB_DOWN"><span></span></span><div>DB down<small>Vector store unreachable; search runs in memory.</small></div></label>
-      <label class="sw-row"><span class="sw"><input type="checkbox" data-flag="BUDGET_ZERO"><span></span></span><div>Budget zero<small>No paid calls are allowed.</small></div></label>
-    </div>
-  </div>
 </header>
 
 <main>
@@ -455,7 +438,7 @@ function blankRun() {
 Object.assign(S, { runId: null, status: null, presetId: null, presets: [], blind: false, prevSeq: null, es: null, player: null, spend: null, cascade: null, cache: {} });
 blankRun();
 
-/* ---------- tabs, chaos ---------- */
+/* ---------- tabs ---------- */
 function showTab(t) {
   $$('#tabs button').forEach(b => b.classList.toggle('on', b.dataset.tab === t));
   $$('main>.tab').forEach(s => s.classList.toggle('on', s.id === 'tab-' + t));
@@ -464,17 +447,6 @@ function showTab(t) {
   if (t === 'eval') loadEval();
 }
 $('#tabs').addEventListener('click', e => { const b = e.target.closest('button[data-tab]'); if (b) showTab(b.dataset.tab); });
-$('#chaosBtn').addEventListener('click', e => { e.stopPropagation(); $('#chaosMenu').hidden = !$('#chaosMenu').hidden; });
-document.addEventListener('click', e => { if (!e.target.closest('.chaos')) $('#chaosMenu').hidden = true; });
-function applyChaos(f) {
-  $$('#chaosMenu input').forEach(i => { i.checked = !!f[i.dataset.flag]; });
-  $('#chaosBtn').classList.toggle('active', Object.values(f).some(Boolean));
-}
-$('#chaosMenu').addEventListener('change', async e => {
-  const i = e.target; if (!i.dataset.flag) return;
-  try { applyChaos(await api('/api/chaos', { method: 'POST', body: { [i.dataset.flag]: i.checked } })); }
-  catch { i.checked = !i.checked; toast('Could not update chaos flags', 'bad'); }
-});
 
 /* ---------- spend meter ---------- */
 let spendTimer = null;
@@ -607,8 +579,7 @@ const prog = id => S.prog[id] ??= { id, name: S.names[id] || id, semantic: 0, ev
 const H = {
   start(p) {
     setStatus('running');
-    const flags = Object.entries(p.chaos || {}).filter(([, v]) => v).map(([k]) => k);
-    add('note', `<span>Run started · role <b class="mono">${esc(p.roleKey)}</b>${p.presetId ? ' · preset ' + esc(p.presetId) : ''}${flags.length ? ' · chaos: ' + esc(flags.join(', ')) : ''}${p.cascade ? ' · cascade on' : ''}</span>`);
+    add('note', `<span>Run started · role <b class="mono">${esc(p.roleKey)}</b>${p.presetId ? ' · preset ' + esc(p.presetId) : ''}${p.cascade ? ' · cascade on' : ''}</span>`);
   },
   phase(p) {
     setPhase(p.phase);
@@ -1033,7 +1004,7 @@ function buildMock() {
   const cite = (cid, rid, i, d, extra = []) => { const c = cands[cid], e = c.evidence[i]; return call('cite_evidence', { candidate_id: cid, requirement_id: rid, quote: e.quote }, { accepted: true, strength: e.strength, decidedBy: e.by, confidence: e.confidence, span: [e.start, e.end], evidenceCount: i + 1, mustHavesCovered: `${Math.min(i + 1, 3)}/3` }, { why: d, pre: [D('requirement_support', e.by, 'yes', e.confidence, e.by === 'claude' ? .0004 : 0, { requirement: reqs[i].text }, 'The sentence describes shipped work, not a keyword list.'), ...extra] }); };
   const hit = (id, score, ev) => ({ id, score, seen: 1, name: names[id], snippet: 'engineer: search, retrieval, ranking', evidence: ev || 0, dropped: false });
 
-  push('start', { roleKey: 'backend-retrieval', presetId: 'p_backend', chaos: { LLM_OUTAGE: false, DB_DOWN: false, BUDGET_ZERO: false }, cascade: true });
+  push('start', { roleKey: 'backend-retrieval', presetId: 'p_backend', cascade: true });
   phase('INTAKE', 'Reading the job description and screening it for unlawful criteria');
   push('refusal', { kind: 'unlawful_criteria', line: T, reason: 'Age and college-prestige filters are unlawful screening criteria. The line was removed before sourcing.' });
   push('parsed', { title: 'Senior Backend Engineer, Retrieval Platform', seniority: 'senior', requirements: reqs, refused: [{ line: T, reason: 'Unlawful screening criterion' }] });
@@ -1114,7 +1085,6 @@ function mockStream(onStep, onStatus) {
   const t = setInterval(tick, 250); MK.player = P2;
   return P2;
 }
-let mockChaos = { LLM_OUTAGE: false, DB_DOWN: false, BUDGET_ZERO: false };
 async function mockApi(path, opts) {
   await sleep(40);
   MK ??= buildMock();
@@ -1122,14 +1092,13 @@ async function mockApi(path, opts) {
   if (path === '/health') return { ok: true, db: 'memory', llm: 'stub', candidates: 2180 };
   if (path === '/api/presets') return { presets: MK.presets };
   if (path === '/api/run' && m === 'POST') return { runId: 'run_mock01' };
-  if (path === '/api/runs') return { runs: [{ id: 'run_mock01', roleKey: 'backend-retrieval', jdText: MK.jd, status: MK.player?.done ? 'done' : 'running', chaos: {}, createdAt: Date.now(), updatedAt: Date.now() }] };
+  if (path === '/api/runs') return { runs: [{ id: 'run_mock01', roleKey: 'backend-retrieval', jdText: MK.jd, status: MK.player?.done ? 'done' : 'running', createdAt: Date.now(), updatedAt: Date.now() }] };
   if (/\/approve$/.test(path)) { if (!MK.player || !MK.player.paused) { const e = new Error('not waiting for approval'); e.status = 409; throw e; } MK.player.resume(); return { ok: true }; }
   if (/\/feedback$/.test(path)) return { ok: true };
   let r = path.match(/^\/api\/run\/([^/]+)$/);
-  if (r) { const done = MK.player?.done; return { run: { id: r[1], roleKey: 'backend-retrieval', jdText: MK.jd, presetId: 'p_backend', status: done ? 'done' : MK.player?.paused ? 'waiting_approval' : 'running', chaos: mockChaos, createdAt: Date.now(), updatedAt: Date.now() }, state: null, shortlist: done ? MK.shortlist : [], spend: MK.spend, cascade: MK.cascade, outbox: [] }; }
+  if (r) { const done = MK.player?.done; return { run: { id: r[1], roleKey: 'backend-retrieval', jdText: MK.jd, presetId: 'p_backend', status: done ? 'done' : MK.player?.paused ? 'waiting_approval' : 'running', createdAt: Date.now(), updatedAt: Date.now() }, state: null, shortlist: done ? MK.shortlist : [], spend: MK.spend, cascade: MK.cascade, outbox: [] }; }
   r = path.match(/^\/api\/candidates\/([^/]+)$/);
   if (r) { const c = MK.cands[decodeURIComponent(r[1])]; if (!c) { const e = new Error('not found'); e.status = 404; throw e; } return c.row; }
-  if (path === '/api/chaos') { if (m === 'POST') mockChaos = { ...mockChaos, ...b }; return { ...mockChaos }; }
   if (path === '/api/spend') return { spend: MK.spend, cascade: MK.cascade, cacheEntries: 31 };
   if (path === '/api/eval') return MK.eval;
   const e = new Error('not found'); e.status = 404; throw e;
@@ -1139,7 +1108,7 @@ async function mockApi(path, opts) {
 (async function boot() {
   if (MOCK) { $('#mockTag').hidden = false; document.title = 'Reverse Match (mock)'; }
   renderShortlist(); renderFairness();
-  await Promise.all([loadPresets(), loadRuns(), loadHealth(), api('/api/chaos').then(applyChaos).catch(() => {}), api('/api/spend').then(r => { S.spend = r.spend; S.cascade = r.cascade; renderSpend(); }).catch(() => {})]);
+  await Promise.all([loadPresets(), loadRuns(), loadHealth(), api('/api/spend').then(r => { S.spend = r.spend; S.cascade = r.cascade; renderSpend(); }).catch(() => {})]);
   if (MOCK && S.presets[0]) { S.presetId = S.presets[0].id; $('#jd').value = S.presets[0].text; markPreset(); postRun(); }
 })();
 })();

@@ -14,7 +14,7 @@ Request `{"passcode":"..."}` → `200 {"ok":true}` + `Set-Cookie: rm_pass=<hash>
 `200 {"presets": Preset[]}` — 3 presets; `presets[0].unlawful === true` (contains a line the agent must strip).
 
 ## POST /api/run
-Request `{"jdText": string, "presetId"?: string, "roleKey"?: string}`. Chaos flags are global (see /api/chaos).
+Request `{"jdText": string, "presetId"?: string, "roleKey"?: string}`.
 Response `202 {"runId":"run_abc123"}`. The run executes in the background; follow it on the events stream.
 
 ## GET /api/run/:id
@@ -27,7 +27,7 @@ Replays every stored Step for the run, then streams live ones. Each message: `ev
 Step kinds and payloads the UI should render:
 | kind | payload |
 |---|---|
-| `start` | `{roleKey, presetId, chaos, cascade}` |
+| `start` | `{roleKey, presetId, cascade}` |
 | `phase` | `{phase:"INTAKE"\|"SOURCE"\|"ASSESS"\|"AUDIT"\|"FINALIZE", text}` |
 | `refusal` | `{kind:"unlawful_criteria", line, reason}` or `{kind:"prompt_injection", candidateId, name, text}` |
 | `parsed` | `{title, seniority, requirements: Requirement[], refused:[{line,reason}]}` |
@@ -57,9 +57,6 @@ Request `{"note": string, "rejectedCandidateId"?: string, "preferredSkills"?: st
 
 ## GET /api/candidates/:id
 `200 Candidate` (includes `visible_text` and `redacted_text`; evidence spans index into `visible_text`). `404` if unknown.
-
-## GET /api/chaos · POST /api/chaos
-GET → `200 ChaosFlags`. POST `{"LLM_OUTAGE"?:bool,"DB_DOWN"?:bool,"BUDGET_ZERO"?:bool}` → `200 ChaosFlags`. Flags apply to runs started afterwards (and to in-flight LLM calls).
 
 ## GET /api/spend
 `200 {"spend": SpendSummary, "cascade": CascadeSummary, "cacheEntries": number}` — totals across all runs.

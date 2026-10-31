@@ -26,11 +26,6 @@ export async function POST(req: Request) {
   const presetId = typeof body?.presetId === "string" ? body.presetId : undefined;
   const roleKey: string = (typeof body?.roleKey === "string" && body.roleKey) || presetArchetype(presetId) || "custom";
   const runId = `run_${Date.now().toString(36)}${Math.random().toString(36).slice(2, 5)}`;
-  const chaos = {
-    LLM_OUTAGE: process.env.CHAOS_LLM_OUTAGE === "1",
-    DB_DOWN: process.env.CHAOS_DB_DOWN === "1",
-    BUDGET_ZERO: process.env.CHAOS_BUDGET_ZERO === "1",
-  };
-  runInBackground(runId, () => startRun({ runId, jdText, roleKey, presetId, chaos }));
+  runInBackground(runId, () => startRun({ runId, jdText, roleKey, presetId }));
   return NextResponse.json({ runId }, { status: 202 });
 }
