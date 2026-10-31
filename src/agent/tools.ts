@@ -83,36 +83,42 @@ export const get_profile: ToolSpec = {
 
 export const cite_evidence: ToolSpec = {
   name: "cite_evidence",
-  description: "Record evidence that a candidate meets a requirement. `quote` must appear verbatim in the profile (copy a full sentence from get_profile). Non-verbatim quotes are rejected. The quote is then checked for real support; a keyword mention without substance fails and is logged as a failed claim.",
+  description: "Record evidence that a candidate meets requirements. Pass ALL of a candidate's citations in one call: for each requirement id, a `quote` that appears verbatim in the profile (copy a full sentence from get_profile). Non-verbatim quotes are rejected. Each quote is then checked for real support (implicit evidence counts: a framework implies its language, pgvector implies Postgres); a keyword mention without substance fails and is logged as a failed claim.",
   phases: ["SOURCE"],
-  schema: z.object({ reason, candidate_id: z.string(), requirement_id: z.string(), quote: z.string().min(8) }),
+  schema: z.object({ reason, candidate_id: z.string(), citations: z.array(z.object({ requirement_id: z.string(), quote: z.string().min(8) })).min(1).max(8) }),
   async run(input, { state, runId }) {
     const c = getCandidateLocal(input.candidate_id);
     if (!c) throw new Error(`unknown candidate ${input.candidate_id}`);
-    const req = state.jd.requirements.find((r) => r.id === input.requirement_id);
-    if (!req) throw new Error(`unknown requirement ${input.requirement_id}; valid: ${state.jd.requirements.map((r) => r.id).join(", ")}`);
     const st = ensureCandidate(state, c.id);
-    const q = input.quote.trim();
-    const start = c.visible_text.indexOf(q);
-    if (start < 0) {
-      // Try a whitespace-insensitive match before rejecting.
-      const norm = (s: string) => s.replace(/\s+/g, " ");
-      const idx = norm(c.visible_text).indexOf(norm(q));
-      if (idx < 0) {
-        st.failedClaims.push({ requirementId: req.id, quote: q, reason: "quote is not verbatim in the profile" });
-        return { accepted: false, reason: "Quote is not verbatim in the profile. Copy an exact sentence from get_profile." };
+    const results: any[] = [];
+    for (const cit of input.citations as { requirement_id: string; quote: string }[]) {
+      const req = state.jd.requirements.find((r) => r.id === cit.requirement_id);
+      if (!req) { results.push({ requirement_id: cit.requirement_id, accepted: false, reason: `unknown requirement; valid: ${state.jd.requirements.map((r) => r.id).join(", ")}` }); continue; }
+      const q = cit.quote.trim();
+      let start = c.visible_text.indexOf(q);
+      if (start < 0) {
+        const norm = (x: string) => x.replace(/\s+/g, " ");
+        if (norm(c.visible_text).indexOf(norm(q)) < 0) {
+          st.failedClaims.push({ requirementId: req.id, quote: q, reason: "quote is not verbatim in the profile" });
+          results.push({ requirement_id: req.id, accepted: false, reason: "Quote is not verbatim in the profile. Copy an exact sentence from get_profile." });
+          continue;
+        }
+        start = c.visible_text.indexOf(q.split(/\s+/)[0]);
       }
+      const end = start + q.length;
+      const d = await decide("requirement_support", { sentence: q, requirement: req.text }, runId);
+      if (d.label !== "yes") {
+        st.failedClaims.push({ requirementId: req.id, quote: q, reason: `does not show real experience with "${req.text}" (${d.by}, ${d.confidence.toFixed(2)})` });
+        results.push({ requirement_id: req.id, accepted: false, reason: `Does not show real experience with "${req.text}" (decided by ${d.by}, ${d.confidence.toFixed(2)}). ${d.rationale ?? ""}` });
+        continue;
+      }
+      st.evidence = st.evidence.filter((e) => e.requirementId !== req.id);
+      st.evidence.push({ requirementId: req.id, start, end, quote: q, strength: d.confidence >= 0.9 ? "strong" : "partial", by: d.by, confidence: d.confidence });
+      results.push({ requirement_id: req.id, accepted: true, strength: d.confidence >= 0.9 ? "strong" : "partial", decidedBy: d.by, confidence: +d.confidence.toFixed(2), span: [start, end] });
     }
-    const s = start >= 0 ? start : c.visible_text.indexOf(q.split(/\s+/)[0]);
-    const end = s + q.length;
-    const d = await decide("requirement_support", { sentence: q, requirement: req.text }, runId);
-    if (d.label !== "yes") {
-      st.failedClaims.push({ requirementId: req.id, quote: q, reason: `does not show real experience with "${req.text}" (${d.by}, ${d.confidence.toFixed(2)})` });
-      return { accepted: false, reason: `Quote does not show real experience with "${req.text}" (decided by ${d.by}, confidence ${d.confidence.toFixed(2)}). ${d.rationale ?? ""}` };
-    }
-    st.evidence = st.evidence.filter((e) => e.requirementId !== req.id);
-    st.evidence.push({ requirementId: req.id, start: s, end, quote: q, strength: d.confidence >= 0.9 ? "strong" : "partial", by: d.by, confidence: d.confidence });
-    return { accepted: true, strength: d.confidence >= 0.9 ? "strong" : "partial", decidedBy: d.by, confidence: +d.confidence.toFixed(2), span: [s, end], evidenceCount: st.evidence.length, mustHavesCovered: `${mustHaves(state).filter((r) => st.evidence.some((e) => e.requirementId === r.id)).length}/${mustHaves(state).length}` };
+    const musts = mustHaves(state);
+    const covered = musts.filter((r) => st.evidence.some((e) => e.requirementId === r.id)).length;
+    return { candidate_id: c.id, results, mustHavesCovered: `${covered}/${musts.length}`, fullyEvidenced: covered === musts.length, missingMustHaves: musts.filter((r) => !st.evidence.some((e) => e.requirementId === r.id)).map((r) => r.id) };
   },
 };
 
@@ -175,83 +181,107 @@ export const request_hr_approval: ToolSpec = {
   },
 };
 
-// ---------- ASSESS ----------
+// ---------- ASSESS (list-based: one call covers every approved candidate) ----------
+function approvedOnly(state: AgentState, ids: string[], runId: string, gateName: string) {
+  const approved = store.approval(state.runId)?.candidateIds ?? [];
+  const bad = ids.filter((id) => !approved.includes(id));
+  if (bad.length) {
+    emit(runId, "gate_blocked", { gate: gateName, candidateIds: bad, text: `Blocked: ${bad.join(", ")} not in the HR approval record for this run.` }, gateName);
+    throw new GateError(`${bad.join(", ")} not in the HR-approved list (${approved.join(", ") || "none"}); refusing.`, gateName);
+  }
+}
+
 export const create_assessment: ToolSpec = {
   name: "create_assessment",
-  description: "Generate a 3-question assessment for one approved candidate, targeted at the must-haves you could NOT verify from the profile (pass their requirement ids). Returns the assessment id and the questions.",
+  description: "Generate a 3-question assessment for each listed approved candidate, targeted at the requirements you could NOT verify from that profile (pass requirement ids per candidate; different candidates get different questions). One call for all candidates.",
   phases: ["ASSESS"],
-  schema: z.object({ reason, candidate_id: z.string(), unverified_requirement_ids: z.array(z.string()) }),
+  schema: z.object({ reason, candidates: z.array(z.object({ candidate_id: z.string(), unverified_requirement_ids: z.array(z.string()) })).min(1) }),
   async run(input, { state, runId }) {
-    const approved = state.approval?.approved ?? [];
-    if (!approved.includes(input.candidate_id)) throw new GateError(`${input.candidate_id} is not in the HR-approved list (${approved.join(", ")})`, "assessment_requires_approval");
-    const st = ensureCandidate(state, input.candidate_id);
-    const a = await createAssessment(state, st, input.unverified_requirement_ids, runId);
-    st.assessment = a;
-    return { assessment_id: a.id, targets: a.unverified, questions: a.questions.map((q) => ({ kind: q.kind, prompt: clip(q.prompt, 200), targets: q.targets })) };
+    approvedOnly(state, input.candidates.map((c: any) => c.candidate_id), runId, "assessment_requires_approval");
+    const out: any[] = [];
+    for (const c of input.candidates) {
+      const st = ensureCandidate(state, c.candidate_id);
+      if (st.dropped) continue;
+      const a = await createAssessment(state, st, c.unverified_requirement_ids, runId);
+      st.assessment = a;
+      out.push({ candidate_id: st.id, assessment_id: a.id, targets: a.unverified, questions: a.questions.map((q) => ({ kind: q.kind, prompt: clip(q.prompt, 160), targets: q.targets })) });
+    }
+    return { created: out.length, assessments: out };
   },
 };
 
 export const send_assessment: ToolSpec = {
   name: "send_assessment",
-  description: "Send the assessment email to the candidate (Resend test inbox, or the outbox when no mail key is set). Gate: throws unless HR approved this exact candidate in this run.",
+  description: "Send each listed candidate their assessment email (Resend test inbox, or the outbox when no mail key is set). Gate: throws unless HR approved every listed candidate in this run. One call for all candidates.",
   phases: ["ASSESS"],
-  schema: z.object({ reason, candidate_id: z.string(), assessment_id: z.string() }),
+  schema: z.object({ reason, candidate_ids: z.array(z.string()).min(1) }),
   async run(input, { state, runId }) {
-    const ok = store.approval(state.runId)?.candidateIds.includes(input.candidate_id);
-    if (!ok) { emit(runId, "gate_blocked", { gate: "send_requires_approval", candidateId: input.candidate_id, text: `Blocked send to ${input.candidate_id}: no HR approval record for this candidate in this run.` }, "send_assessment"); throw new GateError(`No HR approval record for ${input.candidate_id} in run ${state.runId}; refusing to send.`, "send_requires_approval"); }
-    const st = ensureCandidate(state, input.candidate_id);
-    if (!st.assessment || st.assessment.id !== input.assessment_id) throw new Error(`assessment ${input.assessment_id} not found for ${input.candidate_id}`);
-    const r = await sendAssessmentEmail(state.runId, st, st.assessment);
-    st.sent = { channel: r.channel, at: Date.now() };
-    return r;
+    approvedOnly(state, input.candidate_ids, runId, "send_requires_approval");
+    const out: any[] = [];
+    for (const id of input.candidate_ids) {
+      const st = ensureCandidate(state, id);
+      if (!st.assessment) { out.push({ candidate_id: id, error: "no assessment created yet" }); continue; }
+      const r = await sendAssessmentEmail(state.runId, st, st.assessment);
+      st.sent = { channel: r.channel, at: Date.now() };
+      out.push({ candidate_id: id, ...r });
+    }
+    return { sent: out.filter((o) => !o.error).length, results: out };
   },
 };
 
 export const collect_responses: ToolSpec = {
   name: "collect_responses",
-  description: "Collect candidates' answers to their assessments. In this demo the answers are SIMULATED in character from each profile, with varied quality; the UI labels them as simulated.",
+  description: "Collect answers for every candidate whose assessment was sent (pass candidate ids). In this demo the answers are SIMULATED from each fictional profile with varied quality; the UI labels them as simulated.",
   phases: ["ASSESS"],
-  schema: z.object({ reason, assessment_ids: z.array(z.string()).min(1) }),
+  schema: z.object({ reason, candidate_ids: z.array(z.string()).min(1) }),
   async run(input, { state, runId }) {
     const out: any[] = [];
-    for (const aid of input.assessment_ids) {
-      const st = Object.values(state.candidates).find((c) => c.assessment?.id === aid);
-      if (!st) { out.push({ assessment_id: aid, error: "unknown assessment" }); continue; }
-      if (!st.sent) { out.push({ assessment_id: aid, error: "assessment was never sent; send it first" }); continue; }
+    for (const id of input.candidate_ids) {
+      const st = state.candidates[id];
+      if (!st?.assessment) { out.push({ candidate_id: id, error: "no assessment" }); continue; }
+      if (!st.sent) { out.push({ candidate_id: id, error: "assessment was never sent; send it first" }); continue; }
       st.responses = await collectResponses(state, st, runId);
-      out.push({ assessment_id: aid, candidate_id: st.id, answers: st.responses.map((r) => ({ kind: r.kind, preview: clip(r.answer, 160) })), simulated: true });
+      out.push({ candidate_id: id, answers: st.responses.map((r) => ({ kind: r.kind, preview: clip(r.answer, 140) })) });
     }
-    return { simulated: true, responses: out };
+    return { simulated: true, collected: out.filter((o) => !o.error).length, responses: out };
   },
 };
 
 export const run_code: ToolSpec = {
   name: "run_code",
-  description: "Run a candidate's JavaScript answer against hidden tests in a QuickJS sandbox (CPU and time limited). Pass the candidate id; the code and tests come from their stored response and assessment.",
+  description: "Run each listed candidate's JavaScript answer against the hidden tests in a QuickJS sandbox (CPU and time limited). One call for all candidates.",
   phases: ["ASSESS"],
-  schema: z.object({ reason, candidate_id: z.string() }),
+  schema: z.object({ reason, candidate_ids: z.array(z.string()).min(1) }),
   async run(input, { state }) {
-    const st = state.candidates[input.candidate_id];
-    const q = st?.assessment?.questions.find((x) => x.kind === "code");
-    const ans = st?.responses?.find((r) => r.kind === "code");
-    if (!st || !q || !ans) throw new Error("no coding answer collected for this candidate");
-    const r = await runInSandbox(ans.answer, q.tests ?? []);
-    (st as any)._tests = r;
-    return r;
+    const out: any[] = [];
+    for (const id of input.candidate_ids) {
+      const st = state.candidates[id];
+      const q = st?.assessment?.questions.find((x) => x.kind === "code");
+      const ans = st?.responses?.find((r) => r.kind === "code");
+      if (!st || !q || !ans) { out.push({ candidate_id: id, error: "no coding answer collected" }); continue; }
+      const r = await runInSandbox(ans.answer, q.tests ?? []);
+      (st as any)._tests = r;
+      out.push({ candidate_id: id, passed: r.passed, total: r.total, error: r.error });
+    }
+    return { results: out };
   },
 };
 
 export const grade_answer: ToolSpec = {
   name: "grade_answer",
-  description: "Grade one candidate's collected answers against the rubric (LLM), combining with sandbox test results for the coding task. Returns per-part scores with confidence and the total; flags sharp disagreement between the rubric grade and the tests.",
+  description: "Grade each listed candidate's collected answers against the rubric (model), combined with the sandbox results for the coding task. Returns per-part scores with confidence and the total; flags sharp disagreement between the rubric grade and the tests. Set regrade=true to re-grade flagged candidates once.",
   phases: ["ASSESS"],
-  schema: z.object({ reason, candidate_id: z.string(), regrade: z.boolean().default(false) }),
+  schema: z.object({ reason, candidate_ids: z.array(z.string()).min(1), regrade: z.boolean().default(false) }),
   async run(input, { state, runId }) {
-    const st = state.candidates[input.candidate_id];
-    if (!st?.responses) throw new Error("collect responses first");
-    const tests = (st as any)._tests as { passed: number; total: number } | undefined;
-    st.grade = await gradeAnswer(state, st, tests, input.regrade, runId);
-    return st.grade;
+    const out: any[] = [];
+    for (const id of input.candidate_ids) {
+      const st = state.candidates[id];
+      if (!st?.responses) { out.push({ candidate_id: id, error: "collect responses first" }); continue; }
+      const tests = (st as any)._tests as { passed: number; total: number } | undefined;
+      st.grade = await gradeAnswer(state, st, tests, input.regrade, runId);
+      out.push({ candidate_id: id, total: st.grade.total, flaggedForHr: st.grade.flaggedForHr, parts: st.grade.parts.map((p) => ({ kind: p.kind, score: p.score, confidence: p.confidence })) });
+    }
+    return { graded: out.filter((o) => !o.error).length, results: out };
   },
 };
 

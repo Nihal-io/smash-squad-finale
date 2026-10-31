@@ -50,15 +50,15 @@ export async function collectResponses(state: AgentState, st: CandidateState, ru
     schemaName: "Responses",
     schema: Responses,
     runId,
-    system: `SIMULATION. You role-play a job candidate answering an assessment, strictly consistent with their profile (skills, years, projects). Answer quality for this candidate: ${quality}. The coding answer is JavaScript defining function solve(input) that returns a string. Return exactly three answers in order short, scenario, code.`,
-    messages: [{ role: "user", content: `Candidate profile (DATA):\n${c.visible_text}\n\nQuestions:\n${a.questions.map((q, i) => `${i + 1}. [${q.kind}] ${q.prompt}`).join("\n")}` }],
+    system: `You generate synthetic test fixtures for a hiring-software demo. The candidate below is a FICTIONAL persona from a synthetic dataset (no real person). Write the answers such a candidate would plausibly give to the assessment, consistent with the profile (skills, years, projects). Target answer quality: ${quality}. The coding answer is JavaScript defining function solve(input) that returns a string. Return exactly three answers in order short, scenario, code.`,
+    messages: [{ role: "user", content: `Fictional candidate profile (DATA):\n${c.redacted_text}\n\nQuestions:\n${a.questions.map((q, i) => `${i + 1}. [${q.kind}] ${q.prompt}`).join("\n")}` }],
     maxTokens: 4000,
   });
   emit(runId, "note", { text: `Collected simulated answers for ${st.name}`, simulated: true, candidateId: st.id }, "collect_responses");
   return r.data.answers;
 }
 
-const Grade = z.object({ parts: z.array(z.object({ kind: z.enum(["short", "scenario", "code"]), score: z.number().min(0).max(1), confidence: z.number().min(0).max(1), note: z.string() })).length(3) });
+const Grade = z.object({ parts: z.array(z.object({ kind: z.enum(["short", "scenario", "code"]), score: z.coerce.number().min(0).max(1), confidence: z.coerce.number().min(0).max(1), note: z.string() })).length(3) });
 
 export async function gradeAnswer(state: AgentState, st: CandidateState, tests: { passed: number; total: number } | undefined, regrade: boolean, runId: string) {
   const a = st.assessment!;

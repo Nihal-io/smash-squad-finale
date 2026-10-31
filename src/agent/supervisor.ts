@@ -203,12 +203,15 @@ async function degradedPipeline(state: AgentState) {
       if (inj.label === "yes") { c.flags.push("prompt_injection"); emit(state.runId, "refusal", { kind: "prompt_injection", candidateId: c.id, name: c.name, text: "Profile contains instruction-like text; treated as data, ignored, flagged." }, "get_profile"); }
       const sents = sentences(row.visible_text);
       const sv = await embedTexts(sents.map((x) => x.text));
+      const citations: { requirement_id: string; quote: string }[] = [];
+      const why: string[] = [];
       for (let i = 0; i < musts.length; i++) {
         let best = -1, bi = 0;
         sv.forEach((v, j) => { const d = dot(rv[i], v); if (d > best) { best = d; bi = j; } });
         c.coverage[musts[i].id] = best;
-        await execTool(state, T.cite_evidence, { reason: auto(`best sentence for "${musts[i].text}" has cosine ${best.toFixed(2)}`), candidate_id: c.id, requirement_id: musts[i].id, quote: sents[bi].text }, "auto");
+        if (sents[bi]) { citations.push({ requirement_id: musts[i].id, quote: sents[bi].text }); why.push(`${musts[i].text} ${best.toFixed(2)}`); }
       }
+      if (citations.length) await execTool(state, T.cite_evidence, { reason: auto(`best sentence per must-have by cosine: ${why.join(", ")}`), candidate_id: c.id, citations }, "auto");
       if (!hasFullEvidence(c, state)) await execTool(state, T.drop_candidate, { reason: auto("not every must-have could be evidenced from the profile"), candidate_id: c.id, why: "no verbatim evidence for every must-have (automatic check)" }, "auto");
     }
     }
@@ -234,7 +237,7 @@ async function degradedTail(state: AgentState) {
   const T = Object.fromEntries(ALL_TOOLS.map((t) => [t.name, t]));
   const live = (state.approval?.approved ?? state.shortlist).filter((id) => state.candidates[id] && !state.candidates[id].dropped);
   if (live.length < 2) { emit(state.runId, "error", { text: "Fewer than two live candidates; cannot audit or finalize." }, "supervisor"); state.phase = "DONE"; store.patchRun(state.runId, { status: "failed", state }); return; }
-  if (state.phase === "ASSESS") { emit(state.runId, "phase", { phase: "AUDIT", text: "Skipping assessments (no LLM available). Entering AUDIT." }, "phase"); state.phase = "AUDIT"; }
+  if (state.phase === "ASSESS") { emit(state.runId, "phase", { phase: "AUDIT", text: "Skipping the remaining assessments (budget, call limit or no model). Entering AUDIT." }, "phase"); state.phase = "AUDIT"; }
   if (state.phase === "AUDIT") {
     await execTool(state, T.fairness_audit, { reason: "automatic: audit the live shortlist on redacted vectors", shortlist_ids: live }, "auto");
     state.phase = "FINALIZE";

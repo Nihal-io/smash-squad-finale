@@ -41,15 +41,16 @@
   "projects": [
    "Built a FAISS index over 40M product descriptions and cut p95 lookup latency from 900ms to 60ms.",
    "Served a fine-tuned sentence encoder behind a FastAPI gateway with batched inference and warm caches.",
-   "Replaced an Elasticsearch stack with pgvector and HNSW indexes, then tuned recall against a labelled set."
+   "Replaced an Elasticsearch stack with pgvector and HNSW indexes, then tuned recall against a labelled set.",
+   "Wrote the Python ingestion and query services around the index, with asyncio workers and typed FastAPI endpoints."
   ],
   "bio": "Builder focused on dense passage ranking.",
   "archetype": "retrieval-backend",
   "planted": "true_fit",
   "planted_for": "retrieval-backend",
   "flags": [],
-  "visible_text": "Hana Tanaka. Builder focused on dense passage ranking.\nHana studied at Greenhill Institute and has 6 years of experience. She would describe her strengths as: dense passage ranking, PostgreSQL query tuning, FastAPI services.\nProjects: Built a FAISS index over 40M product descriptions and cut p95 lookup latency from 900ms to 60ms. Served a fine-tuned sentence encoder behind a FastAPI gateway with batched inference and warm caches. Replaced an Elasticsearch stack with pgvector and HNSW indexes, then tuned recall against a labelled set.",
-  "redacted_text": "[CANDIDATE]. Builder focused on dense passage ranking.\n[CANDIDATE] studied at [COLLEGE] and has 6 years of experience. They would describe their strengths as: dense passage ranking, PostgreSQL query tuning, FastAPI services.\nProjects: Built a FAISS index over 40M product descriptions and cut p95 lookup latency from 900ms to 60ms. Served a fine-tuned sentence encoder behind a FastAPI gateway with batched inference and warm caches. Replaced an Elasticsearch stack with pgvector and HNSW indexes, then tuned recall against a labelled set.",
+  "visible_text": "Hana Tanaka. Builder focused on dense passage ranking.\nHana studied at Greenhill Institute and has 6 years of experience. She would describe her strengths as: dense passage ranking, PostgreSQL query tuning, FastAPI services.\nProjects: Built a FAISS index over 40M product descriptions and cut p95 lookup latency from 900ms to 60ms. Served a fine-tuned sentence encoder behind a FastAPI gateway with batched inference and warm caches. Replaced an Elasticsearch stack with pgvector and HNSW indexes, then tuned recall against a labelled set. Wrote the Python ingestion and query services around the index, with asyncio workers and typed FastAPI endpoints.",
+  "redacted_text": "[CANDIDATE]. Builder focused on dense passage ranking.\n[CANDIDATE] studied at [COLLEGE] and has 6 years of experience. They would describe their strengths as: dense passage ranking, PostgreSQL query tuning, FastAPI services.\nProjects: Built a FAISS index over 40M product descriptions and cut p95 lookup latency from 900ms to 60ms. Served a fine-tuned sentence encoder behind a FastAPI gateway with batched inference and warm caches. Replaced an Elasticsearch stack with pgvector and HNSW indexes, then tuned recall against a labelled set. Wrote the Python ingestion and query services around the index, with asyncio workers and typed FastAPI endpoints.",
   "source": "planted",
   "role": "retrieval-backend"
  },
@@ -120,17 +121,18 @@
    "service mesh"
   ],
   "projects": [
-   "Handled partition tolerance and leader election for a config service.",
+   "Built Java microservices on Spring with Kafka between them, contract-tested and deployed independently.",
    "Built event-driven consumers that process 50k messages a second with exactly-once semantics.",
-   "Wrote Kotlin and Spring services with contract tests across teams."
+   "Wrote Kotlin and Spring services with contract tests across teams.",
+   "Split a monolith into JVM services behind a mesh with zero-downtime cutovers."
   ],
   "bio": "Engineer who likes partition tolerance and consensus.",
   "archetype": "java-platform",
   "planted": "true_fit",
   "planted_for": "java-platform",
   "flags": [],
-  "visible_text": "Karthik Silva. Engineer who likes partition tolerance and consensus.\nKarthik studied at Oakridge Institute of Technology and has 9 years of experience. He would describe his strengths as: event-driven consumers, Kotlin and Spring, service mesh.\nProjects: Handled partition tolerance and leader election for a config service. Built event-driven consumers that process 50k messages a second with exactly-once semantics. Wrote Kotlin and Spring services with contract tests across teams.",
-  "redacted_text": "[CANDIDATE]. Engineer who likes partition tolerance and consensus.\n[CANDIDATE] studied at [COLLEGE] and has 9 years of experience. They would describe their strengths as: event-driven consumers, Kotlin and Spring, service mesh.\nProjects: Handled partition tolerance and leader election for a config service. Built event-driven consumers that process 50k messages a second with exactly-once semantics. Wrote Kotlin and Spring services with contract tests across teams.",
+  "visible_text": "Karthik Silva. Engineer who likes partition tolerance and consensus.\nKarthik studied at Oakridge Institute of Technology and has 9 years of experience. He would describe his strengths as: event-driven consumers, Kotlin and Spring, service mesh.\nProjects: Built Java microservices on Spring with Kafka between them, contract-tested and deployed independently. Built event-driven consumers that process 50k messages a second with exactly-once semantics. Wrote Kotlin and Spring services with contract tests across teams. Split a monolith into JVM services behind a mesh with zero-downtime cutovers.",
+  "redacted_text": "[CANDIDATE]. Engineer who likes partition tolerance and consensus.\n[CANDIDATE] studied at [COLLEGE] and has 9 years of experience. They would describe their strengths as: event-driven consumers, Kotlin and Spring, service mesh.\nProjects: Built Java microservices on Spring with Kafka between them, contract-tested and deployed independently. Built event-driven consumers that process 50k messages a second with exactly-once semantics. Wrote Kotlin and Spring services with contract tests across teams. Split a monolith into JVM services behind a mesh with zero-downtime cutovers.",
   "source": "planted",
   "role": "java-platform"
  },
@@ -149,17 +151,18 @@
    "Core Web Vitals work"
   ],
   "projects": [
-   "Migrated a JavaScript codebase to strict typing with zero any escapes.",
+   "Rebuilt the component kit in strict TypeScript with ARIA roles, keyboard navigation and screen-reader labels on every control.",
    "Ran WCAG 2.1 audits with screen readers and fixed focus traps across the checkout flow.",
-   "Shipped a shared UI kit with design tokens adopted by six product squads, with Storybook docs for every piece."
+   "Shipped a shared UI kit with design tokens adopted by six product squads, with Storybook docs for every piece.",
+   "Brought Largest Contentful Paint under 1.5s on the marketing site by code-splitting and image work."
   ],
   "bio": "Practitioner working on next.js and preact uis.",
   "archetype": "frontend-design-systems",
   "planted": "true_fit",
   "planted_for": "frontend-design-systems",
   "flags": [],
-  "visible_text": "Sara Joshi. Practitioner working on next.js and preact uis.\nSara studied at Carrow National Institute and has 5 years of experience. She would describe her strengths as: Storybook-driven components, shared UI kit with design tokens, Next.js and Preact UIs, WCAG audits and screen-reader testing, Core Web Vitals work.\nProjects: Migrated a JavaScript codebase to strict typing with zero any escapes. Ran WCAG 2.1 audits with screen readers and fixed focus traps across the checkout flow. Shipped a shared UI kit with design tokens adopted by six product squads, with Storybook docs for every piece.",
-  "redacted_text": "[CANDIDATE]. Practitioner working on next.js and preact uis.\n[CANDIDATE] studied at [COLLEGE] and has 5 years of experience. They would describe their strengths as: Storybook-driven components, shared UI kit with design tokens, Next.js and Preact UIs, WCAG audits and screen-reader testing, Core Web Vitals work.\nProjects: Migrated a JavaScript codebase to strict typing with zero any escapes. Ran WCAG 2.1 audits with screen readers and fixed focus traps across the checkout flow. Shipped a shared UI kit with design tokens adopted by six product squads, with Storybook docs for every piece.",
+  "visible_text": "Sara Joshi. Practitioner working on next.js and preact uis.\nSara studied at Carrow National Institute and has 5 years of experience. She would describe her strengths as: Storybook-driven components, shared UI kit with design tokens, Next.js and Preact UIs, WCAG audits and screen-reader testing, Core Web Vitals work.\nProjects: Rebuilt the component kit in strict TypeScript with ARIA roles, keyboard navigation and screen-reader labels on every control. Ran WCAG 2.1 audits with screen readers and fixed focus traps across the checkout flow. Shipped a shared UI kit with design tokens adopted by six product squads, with Storybook docs for every piece. Brought Largest Contentful Paint under 1.5s on the marketing site by code-splitting and image work.",
+  "redacted_text": "[CANDIDATE]. Practitioner working on next.js and preact uis.\n[CANDIDATE] studied at [COLLEGE] and has 5 years of experience. They would describe their strengths as: Storybook-driven components, shared UI kit with design tokens, Next.js and Preact UIs, WCAG audits and screen-reader testing, Core Web Vitals work.\nProjects: Rebuilt the component kit in strict TypeScript with ARIA roles, keyboard navigation and screen-reader labels on every control. Ran WCAG 2.1 audits with screen readers and fixed focus traps across the checkout flow. Shipped a shared UI kit with design tokens adopted by six product squads, with Storybook docs for every piece. Brought Largest Contentful Paint under 1.5s on the marketing site by code-splitting and image work.",
   "source": "planted",
   "role": "frontend-design-systems"
  },
@@ -232,15 +235,17 @@
   ],
   "projects": [
    "Ran randomised experiments on pricing with sequential tests and clear stopping rules.",
-   "Built Looker and Metabase reporting that product managers trust."
+   "Designed and analysed A/B tests in Python with power calculations, sequential testing and clear statistics for product managers.",
+   "Used difference-in-differences to measure a regional launch where randomisation was impossible.",
+   "Wrote the team's pandas and statsmodels toolkit for variance reduction."
   ],
   "bio": "Builder focused on difference-in-differences.",
   "archetype": "experimentation",
   "planted": "true_fit",
   "planted_for": "experimentation",
   "flags": [],
-  "visible_text": "Ravi Desai. Builder focused on difference-in-differences.\nRavi studied at Bluefield College and has 6 years of experience. He would describe his strengths as: Bayesian decision rules, Looker and Metabase reporting, difference-in-differences.\nProjects: Ran randomised experiments on pricing with sequential tests and clear stopping rules. Built Looker and Metabase reporting that product managers trust.",
-  "redacted_text": "[CANDIDATE]. Builder focused on difference-in-differences.\n[CANDIDATE] studied at [COLLEGE] and has 6 years of experience. They would describe their strengths as: Bayesian decision rules, Looker and Metabase reporting, difference-in-differences.\nProjects: Ran randomised experiments on pricing with sequential tests and clear stopping rules. Built Looker and Metabase reporting that product managers trust.",
+  "visible_text": "Ravi Desai. Builder focused on difference-in-differences.\nRavi studied at Bluefield College and has 6 years of experience. He would describe his strengths as: Bayesian decision rules, Looker and Metabase reporting, difference-in-differences.\nProjects: Ran randomised experiments on pricing with sequential tests and clear stopping rules. Designed and analysed A/B tests in Python with power calculations, sequential testing and clear statistics for product managers. Used difference-in-differences to measure a regional launch where randomisation was impossible. Wrote the team's pandas and statsmodels toolkit for variance reduction.",
+  "redacted_text": "[CANDIDATE]. Builder focused on difference-in-differences.\n[CANDIDATE] studied at [COLLEGE] and has 6 years of experience. They would describe their strengths as: Bayesian decision rules, Looker and Metabase reporting, difference-in-differences.\nProjects: Ran randomised experiments on pricing with sequential tests and clear stopping rules. Designed and analysed A/B tests in Python with power calculations, sequential testing and clear statistics for product managers. Used difference-in-differences to measure a regional launch where randomisation was impossible. Wrote the team's pandas and statsmodels toolkit for variance reduction.",
   "source": "planted",
   "role": "experimentation"
  },
@@ -285,16 +290,18 @@
    "on-device inference"
   ],
   "projects": [
-   "Built camera pipelines that run on-device inference at 30fps on a Jetson.",
-   "Quantised ViT models to TensorRT and ONNX with under 1% accuracy loss."
+   "Delivered computer vision pipelines for shelf cameras: detection models trained, quantised and deployed on edge devices.",
+   "Quantised ViT models to TensorRT and ONNX with under 1% accuracy loss.",
+   "Trained detection and segmentation networks for shelf monitoring with 92% mAP.",
+   "Built camera pipelines that run on-device inference at 30fps on a Jetson."
   ],
   "bio": "Engineer who likes cnn and vit training.",
   "archetype": "computer-vision",
   "planted": "true_fit",
   "planted_for": "computer-vision",
   "flags": [],
-  "visible_text": "Tanvi Bhat. Engineer who likes cnn and vit training.\nTanvi studied at Eastvale Engineering College and has 3 years of experience. She would describe her strengths as: camera pipelines, quantised to TensorRT and ONNX, detection and segmentation networks, on-device inference.\nProjects: Built camera pipelines that run on-device inference at 30fps on a Jetson. Quantised ViT models to TensorRT and ONNX with under 1% accuracy loss.",
-  "redacted_text": "[CANDIDATE]. Engineer who likes cnn and vit training.\n[CANDIDATE] studied at [COLLEGE] and has 3 years of experience. They would describe their strengths as: camera pipelines, quantised to TensorRT and ONNX, detection and segmentation networks, on-device inference.\nProjects: Built camera pipelines that run on-device inference at 30fps on a Jetson. Quantised ViT models to TensorRT and ONNX with under 1% accuracy loss.",
+  "visible_text": "Tanvi Bhat. Engineer who likes cnn and vit training.\nTanvi studied at Eastvale Engineering College and has 3 years of experience. She would describe her strengths as: camera pipelines, quantised to TensorRT and ONNX, detection and segmentation networks, on-device inference.\nProjects: Delivered computer vision pipelines for shelf cameras: detection models trained, quantised and deployed on edge devices. Quantised ViT models to TensorRT and ONNX with under 1% accuracy loss. Trained detection and segmentation networks for shelf monitoring with 92% mAP. Built camera pipelines that run on-device inference at 30fps on a Jetson.",
+  "redacted_text": "[CANDIDATE]. Engineer who likes cnn and vit training.\n[CANDIDATE] studied at [COLLEGE] and has 3 years of experience. They would describe their strengths as: camera pipelines, quantised to TensorRT and ONNX, detection and segmentation networks, on-device inference.\nProjects: Delivered computer vision pipelines for shelf cameras: detection models trained, quantised and deployed on edge devices. Quantised ViT models to TensorRT and ONNX with under 1% accuracy loss. Trained detection and segmentation networks for shelf monitoring with 92% mAP. Built camera pipelines that run on-device inference at 30fps on a Jetson.",
   "source": "planted",
   "role": "computer-vision"
  },
@@ -395,15 +402,16 @@
   "projects": [
    "Held 99.95% uptime for a payments API while on-call, and wrote the postmortems when it slipped.",
    "Built Grafana and Prometheus dashboards with SLO burn alerts.",
-   "Cut GitHub Actions pipeline time from 25 to 7 minutes with caching and test sharding."
+   "Cut GitHub Actions pipeline time from 25 to 7 minutes with caching and test sharding.",
+   "Codified EC2 and EKS estates in Pulumi and HCL with drift detection."
   ],
   "bio": "Engineer who likes on-call for 99.95% uptime. Former fraternity chapter lead.",
   "archetype": "devops-sre",
   "planted": "true_fit",
   "planted_for": "devops-sre",
   "flags": [],
-  "visible_text": "Felix Sharma. Engineer who likes on-call for 99.95% uptime. Former fraternity chapter lead.\nFelix studied at Meridian Institute of Technology and has 11 years of experience. He would describe his strengths as: ran postmortems, Grafana and Prometheus dashboards, infrastructure as code with Pulumi and HCL.\nProjects: Held 99.95% uptime for a payments API while on-call, and wrote the postmortems when it slipped. Built Grafana and Prometheus dashboards with SLO burn alerts. Cut GitHub Actions pipeline time from 25 to 7 minutes with caching and test sharding.",
-  "redacted_text": "[CANDIDATE]. Engineer who likes on-call for 99.95% uptime. Former [STUDENT ORG] chapter lead.\n[CANDIDATE] studied at [COLLEGE] and has 11 years of experience. They would describe their strengths as: ran postmortems, Grafana and Prometheus dashboards, infrastructure as code with Pulumi and HCL.\nProjects: Held 99.95% uptime for a payments API while on-call, and wrote the postmortems when it slipped. Built Grafana and Prometheus dashboards with SLO burn alerts. Cut GitHub Actions pipeline time from 25 to 7 minutes with caching and test sharding.",
+  "visible_text": "Felix Sharma. Engineer who likes on-call for 99.95% uptime. Former fraternity chapter lead.\nFelix studied at Meridian Institute of Technology and has 11 years of experience. He would describe his strengths as: ran postmortems, Grafana and Prometheus dashboards, infrastructure as code with Pulumi and HCL.\nProjects: Held 99.95% uptime for a payments API while on-call, and wrote the postmortems when it slipped. Built Grafana and Prometheus dashboards with SLO burn alerts. Cut GitHub Actions pipeline time from 25 to 7 minutes with caching and test sharding. Codified EC2 and EKS estates in Pulumi and HCL with drift detection.",
+  "redacted_text": "[CANDIDATE]. Engineer who likes on-call for 99.95% uptime. Former [STUDENT ORG] chapter lead.\n[CANDIDATE] studied at [COLLEGE] and has 11 years of experience. They would describe their strengths as: ran postmortems, Grafana and Prometheus dashboards, infrastructure as code with Pulumi and HCL.\nProjects: Held 99.95% uptime for a payments API while on-call, and wrote the postmortems when it slipped. Built Grafana and Prometheus dashboards with SLO burn alerts. Cut GitHub Actions pipeline time from 25 to 7 minutes with caching and test sharding. Codified EC2 and EKS estates in Pulumi and HCL with drift detection.",
   "source": "planted",
   "role": "devops-sre"
  },
@@ -422,16 +430,18 @@
    "DAG orchestration"
   ],
   "projects": [
-   "Wrote Kafka consumers that land clickstream events in BigQuery within a minute.",
-   "Modelled a Snowflake warehouse with dbt, with tests on every mart."
+   "Wrote the SQL that reconciles finance and product marts, with window functions and tested dbt models.",
+   "Modelled a Snowflake warehouse with dbt, with tests on every mart.",
+   "Rebuilt nightly PySpark jobs on Databricks and cut the batch window from 6 hours to 50 minutes.",
+   "Owned DAG orchestration for 200+ daily tasks with retries and SLA alerts."
   ],
   "bio": "Engineer who likes kafka consumers. Former fraternity chapter lead.",
   "archetype": "data-engineering",
   "planted": "true_fit",
   "planted_for": "data-engineering",
   "flags": [],
-  "visible_text": "Samuel Pillai. Engineer who likes kafka consumers. Former fraternity chapter lead.\nSamuel studied at Carrow National Institute and has 5 years of experience. He would describe his strengths as: Snowflake and BigQuery modelling, Kafka consumers, PySpark and Databricks jobs, ELT with dbt, DAG orchestration.\nProjects: Wrote Kafka consumers that land clickstream events in BigQuery within a minute. Modelled a Snowflake warehouse with dbt, with tests on every mart.",
-  "redacted_text": "[CANDIDATE]. Engineer who likes kafka consumers. Former [STUDENT ORG] chapter lead.\n[CANDIDATE] studied at [COLLEGE] and has 5 years of experience. They would describe their strengths as: Snowflake and BigQuery modelling, Kafka consumers, PySpark and Databricks jobs, ELT with dbt, DAG orchestration.\nProjects: Wrote Kafka consumers that land clickstream events in BigQuery within a minute. Modelled a Snowflake warehouse with dbt, with tests on every mart.",
+  "visible_text": "Samuel Pillai. Engineer who likes kafka consumers. Former fraternity chapter lead.\nSamuel studied at Carrow National Institute and has 5 years of experience. He would describe his strengths as: Snowflake and BigQuery modelling, Kafka consumers, PySpark and Databricks jobs, ELT with dbt, DAG orchestration.\nProjects: Wrote the SQL that reconciles finance and product marts, with window functions and tested dbt models. Modelled a Snowflake warehouse with dbt, with tests on every mart. Rebuilt nightly PySpark jobs on Databricks and cut the batch window from 6 hours to 50 minutes. Owned DAG orchestration for 200+ daily tasks with retries and SLA alerts.",
+  "redacted_text": "[CANDIDATE]. Engineer who likes kafka consumers. Former [STUDENT ORG] chapter lead.\n[CANDIDATE] studied at [COLLEGE] and has 5 years of experience. They would describe their strengths as: Snowflake and BigQuery modelling, Kafka consumers, PySpark and Databricks jobs, ELT with dbt, DAG orchestration.\nProjects: Wrote the SQL that reconciles finance and product marts, with window functions and tested dbt models. Modelled a Snowflake warehouse with dbt, with tests on every mart. Rebuilt nightly PySpark jobs on Databricks and cut the batch window from 6 hours to 50 minutes. Owned DAG orchestration for 200+ daily tasks with retries and SLA alerts.",
   "source": "planted",
   "role": "data-engineering"
  },
@@ -528,16 +538,17 @@
   ],
   "projects": [
    "Built a grounded chat assistant over internal docs with citation spans checked against sources.",
-   "Added guardrails and refusal handling for unsafe requests.",
-   "Graded model outputs with rubrics and a held-out set, and tracked regressions per release."
+   "Shipped LLM applications end to end: retrieval over internal docs, tool calls with approval, and an evaluation set that gates every release.",
+   "Graded model outputs with rubrics and a held-out set, and tracked regressions per release.",
+   "Shipped tool-calling workflows with human approval before anything irreversible."
   ],
   "bio": "Engineer who likes guardrails and refusal handling.",
   "archetype": "llm-apps",
   "planted": "true_fit",
   "planted_for": "llm-apps",
   "flags": [],
-  "visible_text": "Nora Sharma. Engineer who likes guardrails and refusal handling.\nNora studied at St. Ada's College for Women and has 6 years of experience. She would describe her strengths as: guardrails and refusal handling, tool-calling workflows, LangGraph.\nProjects: Built a grounded chat assistant over internal docs with citation spans checked against sources. Added guardrails and refusal handling for unsafe requests. Graded model outputs with rubrics and a held-out set, and tracked regressions per release.",
-  "redacted_text": "[CANDIDATE]. Engineer who likes guardrails and refusal handling.\n[CANDIDATE] studied at [COLLEGE] and has 6 years of experience. They would describe their strengths as: guardrails and refusal handling, tool-calling workflows, LangGraph.\nProjects: Built a grounded chat assistant over internal docs with citation spans checked against sources. Added guardrails and refusal handling for unsafe requests. Graded model outputs with rubrics and a held-out set, and tracked regressions per release.",
+  "visible_text": "Nora Sharma. Engineer who likes guardrails and refusal handling.\nNora studied at St. Ada's College for Women and has 6 years of experience. She would describe her strengths as: guardrails and refusal handling, tool-calling workflows, LangGraph.\nProjects: Built a grounded chat assistant over internal docs with citation spans checked against sources. Shipped LLM applications end to end: retrieval over internal docs, tool calls with approval, and an evaluation set that gates every release. Graded model outputs with rubrics and a held-out set, and tracked regressions per release. Shipped tool-calling workflows with human approval before anything irreversible.",
+  "redacted_text": "[CANDIDATE]. Engineer who likes guardrails and refusal handling.\n[CANDIDATE] studied at [COLLEGE] and has 6 years of experience. They would describe their strengths as: guardrails and refusal handling, tool-calling workflows, LangGraph.\nProjects: Built a grounded chat assistant over internal docs with citation spans checked against sources. Shipped LLM applications end to end: retrieval over internal docs, tool calls with approval, and an evaluation set that gates every release. Graded model outputs with rubrics and a held-out set, and tracked regressions per release. Shipped tool-calling workflows with human approval before anything irreversible.",
   "source": "planted",
   "role": "llm-apps"
  },
@@ -608,16 +619,17 @@
   ],
   "projects": [
    "Owned Prisma migrations and backfills for a growing schema.",
-   "Delivered end-to-end features from database to UI for a scheduling product.",
-   "Designed an Apollo schema with federation across two services."
+   "Built Node.js services in TypeScript with Fastify and Prisma, from schema to deployed endpoint.",
+   "Designed an Apollo schema with federation across two services.",
+   "Built Express and Fastify APIs for a marketplace with rate limits and auth."
   ],
   "bio": "Engineer who likes express and fastify apis. Former sorority treasurer.",
   "archetype": "node-fullstack",
   "planted": "true_fit",
   "planted_for": "node-fullstack",
   "flags": [],
-  "visible_text": "Fatima Kulkarni. Engineer who likes express and fastify apis. Former sorority treasurer.\nFatima studied at Oakridge Institute of Technology and has 3 years of experience. She would describe her strengths as: Prisma migrations, Apollo schema design, Express and Fastify APIs, end-to-end features from DB to UI.\nProjects: Owned Prisma migrations and backfills for a growing schema. Delivered end-to-end features from database to UI for a scheduling product. Designed an Apollo schema with federation across two services.",
-  "redacted_text": "[CANDIDATE]. Engineer who likes express and fastify apis. Former [STUDENT ORG] treasurer.\n[CANDIDATE] studied at [COLLEGE] and has 3 years of experience. They would describe their strengths as: Prisma migrations, Apollo schema design, Express and Fastify APIs, end-to-end features from DB to UI.\nProjects: Owned Prisma migrations and backfills for a growing schema. Delivered end-to-end features from database to UI for a scheduling product. Designed an Apollo schema with federation across two services.",
+  "visible_text": "Fatima Kulkarni. Engineer who likes express and fastify apis. Former sorority treasurer.\nFatima studied at Oakridge Institute of Technology and has 3 years of experience. She would describe her strengths as: Prisma migrations, Apollo schema design, Express and Fastify APIs, end-to-end features from DB to UI.\nProjects: Owned Prisma migrations and backfills for a growing schema. Built Node.js services in TypeScript with Fastify and Prisma, from schema to deployed endpoint. Designed an Apollo schema with federation across two services. Built Express and Fastify APIs for a marketplace with rate limits and auth.",
+  "redacted_text": "[CANDIDATE]. Engineer who likes express and fastify apis. Former [STUDENT ORG] treasurer.\n[CANDIDATE] studied at [COLLEGE] and has 3 years of experience. They would describe their strengths as: Prisma migrations, Apollo schema design, Express and Fastify APIs, end-to-end features from DB to UI.\nProjects: Owned Prisma migrations and backfills for a growing schema. Built Node.js services in TypeScript with Fastify and Prisma, from schema to deployed endpoint. Designed an Apollo schema with federation across two services. Built Express and Fastify APIs for a marketplace with rate limits and auth.",
   "source": "planted",
   "role": "node-fullstack"
  },
@@ -662,17 +674,18 @@
    "camera pipelines"
   ],
   "projects": [
-   "Quantised ViT models to TensorRT and ONNX with under 1% accuracy loss.",
+   "Delivered computer vision pipelines for shelf cameras: detection models trained, quantised and deployed on edge devices.",
    "Trained detection and segmentation networks for shelf monitoring with 92% mAP.",
-   "Built camera pipelines that run on-device inference at 30fps on a Jetson."
+   "Built camera pipelines that run on-device inference at 30fps on a Jetson.",
+   "Quantised ViT models to TensorRT and ONNX with under 1% accuracy loss."
   ],
   "bio": "Engineer who likes quantised to tensorrt and onnx. Former sorority treasurer.",
   "archetype": "computer-vision",
   "planted": "true_fit",
   "planted_for": "computer-vision",
   "flags": [],
-  "visible_text": "Pooja Pillai. Engineer who likes quantised to tensorrt and onnx. Former sorority treasurer.\nPooja studied at Sunfield Technical University and has 3 years of experience. She would describe her strengths as: on-device inference, quantised to TensorRT and ONNX, camera pipelines.\nProjects: Quantised ViT models to TensorRT and ONNX with under 1% accuracy loss. Trained detection and segmentation networks for shelf monitoring with 92% mAP. Built camera pipelines that run on-device inference at 30fps on a Jetson.",
-  "redacted_text": "[CANDIDATE]. Engineer who likes quantised to tensorrt and onnx. Former [STUDENT ORG] treasurer.\n[CANDIDATE] studied at [COLLEGE] and has 3 years of experience. They would describe their strengths as: on-device inference, quantised to TensorRT and ONNX, camera pipelines.\nProjects: Quantised ViT models to TensorRT and ONNX with under 1% accuracy loss. Trained detection and segmentation networks for shelf monitoring with 92% mAP. Built camera pipelines that run on-device inference at 30fps on a Jetson.",
+  "visible_text": "Pooja Pillai. Engineer who likes quantised to tensorrt and onnx. Former sorority treasurer.\nPooja studied at Sunfield Technical University and has 3 years of experience. She would describe her strengths as: on-device inference, quantised to TensorRT and ONNX, camera pipelines.\nProjects: Delivered computer vision pipelines for shelf cameras: detection models trained, quantised and deployed on edge devices. Trained detection and segmentation networks for shelf monitoring with 92% mAP. Built camera pipelines that run on-device inference at 30fps on a Jetson. Quantised ViT models to TensorRT and ONNX with under 1% accuracy loss.",
+  "redacted_text": "[CANDIDATE]. Engineer who likes quantised to tensorrt and onnx. Former [STUDENT ORG] treasurer.\n[CANDIDATE] studied at [COLLEGE] and has 3 years of experience. They would describe their strengths as: on-device inference, quantised to TensorRT and ONNX, camera pipelines.\nProjects: Delivered computer vision pipelines for shelf cameras: detection models trained, quantised and deployed on edge devices. Trained detection and segmentation networks for shelf monitoring with 92% mAP. Built camera pipelines that run on-device inference at 30fps on a Jetson. Quantised ViT models to TensorRT and ONNX with under 1% accuracy loss.",
   "source": "planted",
   "role": "computer-vision"
  },
@@ -749,15 +762,16 @@
   "projects": [
    "Wrote Kotlin and Spring services with contract tests across teams.",
    "Split a monolith into JVM services behind a mesh with zero-downtime cutovers.",
-   "Handled partition tolerance and leader election for a config service."
+   "Built Java microservices on Spring with Kafka between them, contract-tested and deployed independently.",
+   "Built event-driven consumers that process 50k messages a second with exactly-once semantics."
   ],
   "bio": "Engineer who likes kotlin and spring. Former fraternity chapter lead.",
   "archetype": "java-platform",
   "planted": "true_fit",
   "planted_for": "java-platform",
   "flags": [],
-  "visible_text": "Leon Tanaka. Engineer who likes kotlin and spring. Former fraternity chapter lead.\nLeon studied at Riverbend Polytechnic and has 6 years of experience. He would describe his strengths as: service mesh, partition tolerance and consensus, event-driven consumers, Kotlin and Spring.\nProjects: Wrote Kotlin and Spring services with contract tests across teams. Split a monolith into JVM services behind a mesh with zero-downtime cutovers. Handled partition tolerance and leader election for a config service.",
-  "redacted_text": "[CANDIDATE]. Engineer who likes kotlin and spring. Former [STUDENT ORG] chapter lead.\n[CANDIDATE] studied at [COLLEGE] and has 6 years of experience. They would describe their strengths as: service mesh, partition tolerance and consensus, event-driven consumers, Kotlin and Spring.\nProjects: Wrote Kotlin and Spring services with contract tests across teams. Split a monolith into JVM services behind a mesh with zero-downtime cutovers. Handled partition tolerance and leader election for a config service.",
+  "visible_text": "Leon Tanaka. Engineer who likes kotlin and spring. Former fraternity chapter lead.\nLeon studied at Riverbend Polytechnic and has 6 years of experience. He would describe his strengths as: service mesh, partition tolerance and consensus, event-driven consumers, Kotlin and Spring.\nProjects: Wrote Kotlin and Spring services with contract tests across teams. Split a monolith into JVM services behind a mesh with zero-downtime cutovers. Built Java microservices on Spring with Kafka between them, contract-tested and deployed independently. Built event-driven consumers that process 50k messages a second with exactly-once semantics.",
+  "redacted_text": "[CANDIDATE]. Engineer who likes kotlin and spring. Former [STUDENT ORG] chapter lead.\n[CANDIDATE] studied at [COLLEGE] and has 6 years of experience. They would describe their strengths as: service mesh, partition tolerance and consensus, event-driven consumers, Kotlin and Spring.\nProjects: Wrote Kotlin and Spring services with contract tests across teams. Split a monolith into JVM services behind a mesh with zero-downtime cutovers. Built Java microservices on Spring with Kafka between them, contract-tested and deployed independently. Built event-driven consumers that process 50k messages a second with exactly-once semantics.",
   "source": "planted",
   "role": "java-platform"
  },
@@ -803,17 +817,18 @@
    "Kafka consumers"
   ],
   "projects": [
-   "Owned DAG orchestration for 200+ daily tasks with retries and SLA alerts.",
+   "Wrote the SQL that reconciles finance and product marts, with window functions and tested dbt models.",
    "Rebuilt nightly PySpark jobs on Databricks and cut the batch window from 6 hours to 50 minutes.",
-   "Modelled a Snowflake warehouse with dbt, with tests on every mart."
+   "Modelled a Snowflake warehouse with dbt, with tests on every mart.",
+   "Wrote Kafka consumers that land clickstream events in BigQuery within a minute."
   ],
   "bio": "Engineer who likes pyspark and databricks jobs.",
   "archetype": "data-engineering",
   "planted": "true_fit",
   "planted_for": "data-engineering",
   "flags": [],
-  "visible_text": "Sam Nair. Engineer who likes pyspark and databricks jobs.\nSam studied at Riverbend Polytechnic and has 7 years of experience. They would describe their strengths as: PySpark and Databricks jobs, ELT with dbt, Snowflake and BigQuery modelling, DAG orchestration, Kafka consumers.\nProjects: Owned DAG orchestration for 200+ daily tasks with retries and SLA alerts. Rebuilt nightly PySpark jobs on Databricks and cut the batch window from 6 hours to 50 minutes. Modelled a Snowflake warehouse with dbt, with tests on every mart.",
-  "redacted_text": "[CANDIDATE]. Engineer who likes pyspark and databricks jobs.\n[CANDIDATE] studied at [COLLEGE] and has 7 years of experience. They would describe their strengths as: PySpark and Databricks jobs, ELT with dbt, Snowflake and BigQuery modelling, DAG orchestration, Kafka consumers.\nProjects: Owned DAG orchestration for 200+ daily tasks with retries and SLA alerts. Rebuilt nightly PySpark jobs on Databricks and cut the batch window from 6 hours to 50 minutes. Modelled a Snowflake warehouse with dbt, with tests on every mart.",
+  "visible_text": "Sam Nair. Engineer who likes pyspark and databricks jobs.\nSam studied at Riverbend Polytechnic and has 7 years of experience. They would describe their strengths as: PySpark and Databricks jobs, ELT with dbt, Snowflake and BigQuery modelling, DAG orchestration, Kafka consumers.\nProjects: Wrote the SQL that reconciles finance and product marts, with window functions and tested dbt models. Rebuilt nightly PySpark jobs on Databricks and cut the batch window from 6 hours to 50 minutes. Modelled a Snowflake warehouse with dbt, with tests on every mart. Wrote Kafka consumers that land clickstream events in BigQuery within a minute.",
+  "redacted_text": "[CANDIDATE]. Engineer who likes pyspark and databricks jobs.\n[CANDIDATE] studied at [COLLEGE] and has 7 years of experience. They would describe their strengths as: PySpark and Databricks jobs, ELT with dbt, Snowflake and BigQuery modelling, DAG orchestration, Kafka consumers.\nProjects: Wrote the SQL that reconciles finance and product marts, with window functions and tested dbt models. Rebuilt nightly PySpark jobs on Databricks and cut the batch window from 6 hours to 50 minutes. Modelled a Snowflake warehouse with dbt, with tests on every mart. Wrote Kafka consumers that land clickstream events in BigQuery within a minute.",
   "source": "planted",
   "role": "data-engineering"
  },
@@ -913,15 +928,17 @@
   ],
   "projects": [
    "Brought Largest Contentful Paint under 1.5s on the marketing site by code-splitting and image work.",
-   "Shipped a shared UI kit with design tokens adopted by six product squads, with Storybook docs for every piece."
+   "Rebuilt the component kit in strict TypeScript with ARIA roles, keyboard navigation and screen-reader labels on every control.",
+   "Ran WCAG 2.1 audits with screen readers and fixed focus traps across the checkout flow.",
+   "Migrated a JavaScript codebase to strict typing with zero any escapes."
   ],
   "bio": "Builder focused on strictly typed frontends. Active in the Women Who Code chapter.",
   "archetype": "frontend-design-systems",
   "planted": "true_fit",
   "planted_for": "frontend-design-systems",
   "flags": [],
-  "visible_text": "Divya Kulkarni. Builder focused on strictly typed frontends. Active in the Women Who Code chapter.\nDivya studied at Meridian Institute of Technology and has 3 years of experience. She would describe her strengths as: strictly typed frontends, Storybook-driven components, shared UI kit with design tokens.\nProjects: Brought Largest Contentful Paint under 1.5s on the marketing site by code-splitting and image work. Shipped a shared UI kit with design tokens adopted by six product squads, with Storybook docs for every piece.",
-  "redacted_text": "[CANDIDATE]. Builder focused on strictly typed frontends. Active in the [COMMUNITY] chapter.\n[CANDIDATE] studied at [COLLEGE] and has 3 years of experience. They would describe their strengths as: strictly typed frontends, Storybook-driven components, shared UI kit with design tokens.\nProjects: Brought Largest Contentful Paint under 1.5s on the marketing site by code-splitting and image work. Shipped a shared UI kit with design tokens adopted by six product squads, with Storybook docs for every piece.",
+  "visible_text": "Divya Kulkarni. Builder focused on strictly typed frontends. Active in the Women Who Code chapter.\nDivya studied at Meridian Institute of Technology and has 3 years of experience. She would describe her strengths as: strictly typed frontends, Storybook-driven components, shared UI kit with design tokens.\nProjects: Brought Largest Contentful Paint under 1.5s on the marketing site by code-splitting and image work. Rebuilt the component kit in strict TypeScript with ARIA roles, keyboard navigation and screen-reader labels on every control. Ran WCAG 2.1 audits with screen readers and fixed focus traps across the checkout flow. Migrated a JavaScript codebase to strict typing with zero any escapes.",
+  "redacted_text": "[CANDIDATE]. Builder focused on strictly typed frontends. Active in the [COMMUNITY] chapter.\n[CANDIDATE] studied at [COLLEGE] and has 3 years of experience. They would describe their strengths as: strictly typed frontends, Storybook-driven components, shared UI kit with design tokens.\nProjects: Brought Largest Contentful Paint under 1.5s on the marketing site by code-splitting and image work. Rebuilt the component kit in strict TypeScript with ARIA roles, keyboard navigation and screen-reader labels on every control. Ran WCAG 2.1 audits with screen readers and fixed focus traps across the checkout flow. Migrated a JavaScript codebase to strict typing with zero any escapes.",
   "source": "planted",
   "role": "frontend-design-systems"
  },
@@ -1048,15 +1065,17 @@
   ],
   "projects": [
    "Built event-driven consumers that process 50k messages a second with exactly-once semantics.",
-   "Handled partition tolerance and leader election for a config service."
+   "Handled partition tolerance and leader election for a config service.",
+   "Wrote Kotlin and Spring services with contract tests across teams.",
+   "Built Java microservices on Spring with Kafka between them, contract-tested and deployed independently."
   ],
   "bio": "Builder focused on kotlin and spring.",
   "archetype": "java-platform",
   "planted": "true_fit",
   "planted_for": "java-platform",
   "flags": [],
-  "visible_text": "Aman Osei. Builder focused on kotlin and spring.\nAman studied at Bluefield College and has 8 years of experience. He would describe his strengths as: event-driven consumers, Kotlin and Spring, JVM services.\nProjects: Built event-driven consumers that process 50k messages a second with exactly-once semantics. Handled partition tolerance and leader election for a config service.",
-  "redacted_text": "[CANDIDATE]. Builder focused on kotlin and spring.\n[CANDIDATE] studied at [COLLEGE] and has 8 years of experience. They would describe their strengths as: event-driven consumers, Kotlin and Spring, JVM services.\nProjects: Built event-driven consumers that process 50k messages a second with exactly-once semantics. Handled partition tolerance and leader election for a config service.",
+  "visible_text": "Aman Osei. Builder focused on kotlin and spring.\nAman studied at Bluefield College and has 8 years of experience. He would describe his strengths as: event-driven consumers, Kotlin and Spring, JVM services.\nProjects: Built event-driven consumers that process 50k messages a second with exactly-once semantics. Handled partition tolerance and leader election for a config service. Wrote Kotlin and Spring services with contract tests across teams. Built Java microservices on Spring with Kafka between them, contract-tested and deployed independently.",
+  "redacted_text": "[CANDIDATE]. Builder focused on kotlin and spring.\n[CANDIDATE] studied at [COLLEGE] and has 8 years of experience. They would describe their strengths as: event-driven consumers, Kotlin and Spring, JVM services.\nProjects: Built event-driven consumers that process 50k messages a second with exactly-once semantics. Handled partition tolerance and leader election for a config service. Wrote Kotlin and Spring services with contract tests across teams. Built Java microservices on Spring with Kafka between them, contract-tested and deployed independently.",
   "source": "planted",
   "role": "java-platform"
  },
@@ -1075,15 +1094,16 @@
   "projects": [
    "Used difference-in-differences to measure a regional launch where randomisation was impossible.",
    "Ran randomised experiments on pricing with sequential tests and clear stopping rules.",
-   "Wrote the team's pandas and statsmodels toolkit for variance reduction."
+   "Designed and analysed A/B tests in Python with power calculations, sequential testing and clear statistics for product managers.",
+   "Built Looker and Metabase reporting that product managers trust."
   ],
   "bio": "Builder focused on bayesian decision rules. Active in the Women Who Code chapter.",
   "archetype": "experimentation",
   "planted": "true_fit",
   "planted_for": "experimentation",
   "flags": [],
-  "visible_text": "Yuki Nguyen. Builder focused on bayesian decision rules. Active in the Women Who Code chapter.\nYuki studied at Eastvale Engineering College and has 5 years of experience. She would describe her strengths as: difference-in-differences, Looker and Metabase reporting, Bayesian decision rules.\nProjects: Used difference-in-differences to measure a regional launch where randomisation was impossible. Ran randomised experiments on pricing with sequential tests and clear stopping rules. Wrote the team's pandas and statsmodels toolkit for variance reduction.",
-  "redacted_text": "[CANDIDATE]. Builder focused on bayesian decision rules. Active in the [COMMUNITY] chapter.\n[CANDIDATE] studied at [COLLEGE] and has 5 years of experience. They would describe their strengths as: difference-in-differences, Looker and Metabase reporting, Bayesian decision rules.\nProjects: Used difference-in-differences to measure a regional launch where randomisation was impossible. Ran randomised experiments on pricing with sequential tests and clear stopping rules. Wrote the team's pandas and statsmodels toolkit for variance reduction.",
+  "visible_text": "Yuki Nguyen. Builder focused on bayesian decision rules. Active in the Women Who Code chapter.\nYuki studied at Eastvale Engineering College and has 5 years of experience. She would describe her strengths as: difference-in-differences, Looker and Metabase reporting, Bayesian decision rules.\nProjects: Used difference-in-differences to measure a regional launch where randomisation was impossible. Ran randomised experiments on pricing with sequential tests and clear stopping rules. Designed and analysed A/B tests in Python with power calculations, sequential testing and clear statistics for product managers. Built Looker and Metabase reporting that product managers trust.",
+  "redacted_text": "[CANDIDATE]. Builder focused on bayesian decision rules. Active in the [COMMUNITY] chapter.\n[CANDIDATE] studied at [COLLEGE] and has 5 years of experience. They would describe their strengths as: difference-in-differences, Looker and Metabase reporting, Bayesian decision rules.\nProjects: Used difference-in-differences to measure a regional launch where randomisation was impossible. Ran randomised experiments on pricing with sequential tests and clear stopping rules. Designed and analysed A/B tests in Python with power calculations, sequential testing and clear statistics for product managers. Built Looker and Metabase reporting that product managers trust.",
   "source": "planted",
   "role": "experimentation"
  },
@@ -1104,15 +1124,16 @@
   "projects": [
    "Rebuilt nightly PySpark jobs on Databricks and cut the batch window from 6 hours to 50 minutes.",
    "Wrote Kafka consumers that land clickstream events in BigQuery within a minute.",
-   "Modelled a Snowflake warehouse with dbt, with tests on every mart."
+   "Modelled a Snowflake warehouse with dbt, with tests on every mart.",
+   "Owned DAG orchestration for 200+ daily tasks with retries and SLA alerts."
   ],
   "bio": "Practitioner working on snowflake and bigquery modelling.",
   "archetype": "data-engineering",
   "planted": "true_fit",
   "planted_for": "data-engineering",
   "flags": [],
-  "visible_text": "Aditya Fischer. Practitioner working on snowflake and bigquery modelling.\nAditya studied at Bluefield College and has 5 years of experience. He would describe his strengths as: Snowflake and BigQuery modelling, ELT with dbt, DAG orchestration, PySpark and Databricks jobs, Kafka consumers.\nProjects: Rebuilt nightly PySpark jobs on Databricks and cut the batch window from 6 hours to 50 minutes. Wrote Kafka consumers that land clickstream events in BigQuery within a minute. Modelled a Snowflake warehouse with dbt, with tests on every mart.",
-  "redacted_text": "[CANDIDATE]. Practitioner working on snowflake and bigquery modelling.\n[CANDIDATE] studied at [COLLEGE] and has 5 years of experience. They would describe their strengths as: Snowflake and BigQuery modelling, ELT with dbt, DAG orchestration, PySpark and Databricks jobs, Kafka consumers.\nProjects: Rebuilt nightly PySpark jobs on Databricks and cut the batch window from 6 hours to 50 minutes. Wrote Kafka consumers that land clickstream events in BigQuery within a minute. Modelled a Snowflake warehouse with dbt, with tests on every mart.",
+  "visible_text": "Aditya Fischer. Practitioner working on snowflake and bigquery modelling.\nAditya studied at Bluefield College and has 5 years of experience. He would describe his strengths as: Snowflake and BigQuery modelling, ELT with dbt, DAG orchestration, PySpark and Databricks jobs, Kafka consumers.\nProjects: Rebuilt nightly PySpark jobs on Databricks and cut the batch window from 6 hours to 50 minutes. Wrote Kafka consumers that land clickstream events in BigQuery within a minute. Modelled a Snowflake warehouse with dbt, with tests on every mart. Owned DAG orchestration for 200+ daily tasks with retries and SLA alerts.",
+  "redacted_text": "[CANDIDATE]. Practitioner working on snowflake and bigquery modelling.\n[CANDIDATE] studied at [COLLEGE] and has 5 years of experience. They would describe their strengths as: Snowflake and BigQuery modelling, ELT with dbt, DAG orchestration, PySpark and Databricks jobs, Kafka consumers.\nProjects: Rebuilt nightly PySpark jobs on Databricks and cut the batch window from 6 hours to 50 minutes. Wrote Kafka consumers that land clickstream events in BigQuery within a minute. Modelled a Snowflake warehouse with dbt, with tests on every mart. Owned DAG orchestration for 200+ daily tasks with retries and SLA alerts.",
   "source": "planted",
   "role": "data-engineering"
  },
@@ -1160,15 +1181,17 @@
   ],
   "projects": [
    "Wrote Torch training loops with mixed precision that halved GPU hours.",
-   "Built offline-online feature parity checks that caught three silent training-serving skews."
+   "Built offline-online feature parity checks that caught three silent training-serving skews.",
+   "Packaged PyTorch models into containers and rolled them out on EKS clusters with Helm, autoscaling on GPU load.",
+   "Moved twelve models from notebooks to KServe with canary rollouts and automatic rollback."
   ],
   "bio": "Builder focused on torch training loops.",
   "archetype": "ml-platform",
   "planted": "true_fit",
   "planted_for": "ml-platform",
   "flags": [],
-  "visible_text": "Chloe Pillai. Builder focused on torch training loops.\nChloe studied at Carrow National Institute and has 11 years of experience. She would describe her strengths as: drift alerting, shipping models with KServe and Seldon, offline-online feature parity, container orchestration across clusters.\nProjects: Wrote Torch training loops with mixed precision that halved GPU hours. Built offline-online feature parity checks that caught three silent training-serving skews.",
-  "redacted_text": "[CANDIDATE]. Builder focused on torch training loops.\n[CANDIDATE] studied at [COLLEGE] and has 11 years of experience. They would describe their strengths as: drift alerting, shipping models with KServe and Seldon, offline-online feature parity, container orchestration across clusters.\nProjects: Wrote Torch training loops with mixed precision that halved GPU hours. Built offline-online feature parity checks that caught three silent training-serving skews.",
+  "visible_text": "Chloe Pillai. Builder focused on torch training loops.\nChloe studied at Carrow National Institute and has 11 years of experience. She would describe her strengths as: drift alerting, shipping models with KServe and Seldon, offline-online feature parity, container orchestration across clusters.\nProjects: Wrote Torch training loops with mixed precision that halved GPU hours. Built offline-online feature parity checks that caught three silent training-serving skews. Packaged PyTorch models into containers and rolled them out on EKS clusters with Helm, autoscaling on GPU load. Moved twelve models from notebooks to KServe with canary rollouts and automatic rollback.",
+  "redacted_text": "[CANDIDATE]. Builder focused on torch training loops.\n[CANDIDATE] studied at [COLLEGE] and has 11 years of experience. They would describe their strengths as: drift alerting, shipping models with KServe and Seldon, offline-online feature parity, container orchestration across clusters.\nProjects: Wrote Torch training loops with mixed precision that halved GPU hours. Built offline-online feature parity checks that caught three silent training-serving skews. Packaged PyTorch models into containers and rolled them out on EKS clusters with Helm, autoscaling on GPU load. Moved twelve models from notebooks to KServe with canary rollouts and automatic rollback.",
   "source": "planted",
   "role": "ml-platform"
  },
@@ -1269,15 +1292,16 @@
   "projects": [
    "Shipped a shared UI kit with design tokens adopted by six product squads, with Storybook docs for every piece.",
    "Brought Largest Contentful Paint under 1.5s on the marketing site by code-splitting and image work.",
-   "Ran WCAG 2.1 audits with screen readers and fixed focus traps across the checkout flow."
+   "Ran WCAG 2.1 audits with screen readers and fixed focus traps across the checkout flow.",
+   "Rebuilt the component kit in strict TypeScript with ARIA roles, keyboard navigation and screen-reader labels on every control."
   ],
   "bio": "Practitioner working on next.js and preact uis.",
   "archetype": "frontend-design-systems",
   "planted": "true_fit",
   "planted_for": "frontend-design-systems",
   "flags": [],
-  "visible_text": "Leila Bose. Practitioner working on next.js and preact uis.\nLeila studied at Northfield Institute of Technology and has 3 years of experience. She would describe her strengths as: Core Web Vitals work, WCAG audits and screen-reader testing, Next.js and Preact UIs, strictly typed frontends.\nProjects: Shipped a shared UI kit with design tokens adopted by six product squads, with Storybook docs for every piece. Brought Largest Contentful Paint under 1.5s on the marketing site by code-splitting and image work. Ran WCAG 2.1 audits with screen readers and fixed focus traps across the checkout flow.",
-  "redacted_text": "[CANDIDATE]. Practitioner working on next.js and preact uis.\n[CANDIDATE] studied at [COLLEGE] and has 3 years of experience. They would describe their strengths as: Core Web Vitals work, WCAG audits and screen-reader testing, Next.js and Preact UIs, strictly typed frontends.\nProjects: Shipped a shared UI kit with design tokens adopted by six product squads, with Storybook docs for every piece. Brought Largest Contentful Paint under 1.5s on the marketing site by code-splitting and image work. Ran WCAG 2.1 audits with screen readers and fixed focus traps across the checkout flow.",
+  "visible_text": "Leila Bose. Practitioner working on next.js and preact uis.\nLeila studied at Northfield Institute of Technology and has 3 years of experience. She would describe her strengths as: Core Web Vitals work, WCAG audits and screen-reader testing, Next.js and Preact UIs, strictly typed frontends.\nProjects: Shipped a shared UI kit with design tokens adopted by six product squads, with Storybook docs for every piece. Brought Largest Contentful Paint under 1.5s on the marketing site by code-splitting and image work. Ran WCAG 2.1 audits with screen readers and fixed focus traps across the checkout flow. Rebuilt the component kit in strict TypeScript with ARIA roles, keyboard navigation and screen-reader labels on every control.",
+  "redacted_text": "[CANDIDATE]. Practitioner working on next.js and preact uis.\n[CANDIDATE] studied at [COLLEGE] and has 3 years of experience. They would describe their strengths as: Core Web Vitals work, WCAG audits and screen-reader testing, Next.js and Preact UIs, strictly typed frontends.\nProjects: Shipped a shared UI kit with design tokens adopted by six product squads, with Storybook docs for every piece. Brought Largest Contentful Paint under 1.5s on the marketing site by code-splitting and image work. Ran WCAG 2.1 audits with screen readers and fixed focus traps across the checkout flow. Rebuilt the component kit in strict TypeScript with ARIA roles, keyboard navigation and screen-reader labels on every control.",
   "source": "planted",
   "role": "frontend-design-systems"
  },
@@ -1321,17 +1345,18 @@
    "dense passage ranking"
   ],
   "projects": [
-   "Designed REST contracts for a dense passage ranking service used by three internal teams.",
+   "Wrote the Python ingestion and query services around the index, with asyncio workers and typed FastAPI endpoints.",
    "Replaced an Elasticsearch stack with pgvector and HNSW indexes, then tuned recall against a labelled set.",
-   "Built a FAISS index over 40M product descriptions and cut p95 lookup latency from 900ms to 60ms."
+   "Built a FAISS index over 40M product descriptions and cut p95 lookup latency from 900ms to 60ms.",
+   "Served a fine-tuned sentence encoder behind a FastAPI gateway with batched inference and warm caches."
   ],
   "bio": "Builder focused on pgvector and faiss retrieval. Captains the men's football team at work.",
   "archetype": "retrieval-backend",
   "planted": "true_fit",
   "planted_for": "retrieval-backend",
   "flags": [],
-  "visible_text": "Aditya Novak. Builder focused on pgvector and faiss retrieval. Captains the men's football team at work.\nAditya studied at Greenhill Institute and has 6 years of experience. He would describe his strengths as: pgvector and FAISS retrieval, REST contract design, FastAPI services, dense passage ranking.\nProjects: Designed REST contracts for a dense passage ranking service used by three internal teams. Replaced an Elasticsearch stack with pgvector and HNSW indexes, then tuned recall against a labelled set. Built a FAISS index over 40M product descriptions and cut p95 lookup latency from 900ms to 60ms.",
-  "redacted_text": "[CANDIDATE]. Builder focused on pgvector and faiss retrieval. Captains the [GROUP] football team at work.\n[CANDIDATE] studied at [COLLEGE] and has 6 years of experience. They would describe their strengths as: pgvector and FAISS retrieval, REST contract design, FastAPI services, dense passage ranking.\nProjects: Designed REST contracts for a dense passage ranking service used by three internal teams. Replaced an Elasticsearch stack with pgvector and HNSW indexes, then tuned recall against a labelled set. Built a FAISS index over 40M product descriptions and cut p95 lookup latency from 900ms to 60ms.",
+  "visible_text": "Aditya Novak. Builder focused on pgvector and faiss retrieval. Captains the men's football team at work.\nAditya studied at Greenhill Institute and has 6 years of experience. He would describe his strengths as: pgvector and FAISS retrieval, REST contract design, FastAPI services, dense passage ranking.\nProjects: Wrote the Python ingestion and query services around the index, with asyncio workers and typed FastAPI endpoints. Replaced an Elasticsearch stack with pgvector and HNSW indexes, then tuned recall against a labelled set. Built a FAISS index over 40M product descriptions and cut p95 lookup latency from 900ms to 60ms. Served a fine-tuned sentence encoder behind a FastAPI gateway with batched inference and warm caches.",
+  "redacted_text": "[CANDIDATE]. Builder focused on pgvector and faiss retrieval. Captains the [GROUP] football team at work.\n[CANDIDATE] studied at [COLLEGE] and has 6 years of experience. They would describe their strengths as: pgvector and FAISS retrieval, REST contract design, FastAPI services, dense passage ranking.\nProjects: Wrote the Python ingestion and query services around the index, with asyncio workers and typed FastAPI endpoints. Replaced an Elasticsearch stack with pgvector and HNSW indexes, then tuned recall against a labelled set. Built a FAISS index over 40M product descriptions and cut p95 lookup latency from 900ms to 60ms. Served a fine-tuned sentence encoder behind a FastAPI gateway with batched inference and warm caches.",
   "source": "planted",
   "role": "retrieval-backend"
  },
@@ -1376,15 +1401,17 @@
   ],
   "projects": [
    "Owned DAG orchestration for 200+ daily tasks with retries and SLA alerts.",
-   "Rebuilt nightly PySpark jobs on Databricks and cut the batch window from 6 hours to 50 minutes."
+   "Rebuilt nightly PySpark jobs on Databricks and cut the batch window from 6 hours to 50 minutes.",
+   "Modelled a Snowflake warehouse with dbt, with tests on every mart.",
+   "Wrote the SQL that reconciles finance and product marts, with window functions and tested dbt models."
   ],
   "bio": "Builder focused on pyspark and databricks jobs.",
   "archetype": "data-engineering",
   "planted": "true_fit",
   "planted_for": "data-engineering",
   "flags": [],
-  "visible_text": "Manish Petrov. Builder focused on pyspark and databricks jobs.\nManish studied at Lakeside State University and has 7 years of experience. He would describe his strengths as: Snowflake and BigQuery modelling, ELT with dbt, PySpark and Databricks jobs.\nProjects: Owned DAG orchestration for 200+ daily tasks with retries and SLA alerts. Rebuilt nightly PySpark jobs on Databricks and cut the batch window from 6 hours to 50 minutes.",
-  "redacted_text": "[CANDIDATE]. Builder focused on pyspark and databricks jobs.\n[CANDIDATE] studied at [COLLEGE] and has 7 years of experience. They would describe their strengths as: Snowflake and BigQuery modelling, ELT with dbt, PySpark and Databricks jobs.\nProjects: Owned DAG orchestration for 200+ daily tasks with retries and SLA alerts. Rebuilt nightly PySpark jobs on Databricks and cut the batch window from 6 hours to 50 minutes.",
+  "visible_text": "Manish Petrov. Builder focused on pyspark and databricks jobs.\nManish studied at Lakeside State University and has 7 years of experience. He would describe his strengths as: Snowflake and BigQuery modelling, ELT with dbt, PySpark and Databricks jobs.\nProjects: Owned DAG orchestration for 200+ daily tasks with retries and SLA alerts. Rebuilt nightly PySpark jobs on Databricks and cut the batch window from 6 hours to 50 minutes. Modelled a Snowflake warehouse with dbt, with tests on every mart. Wrote the SQL that reconciles finance and product marts, with window functions and tested dbt models.",
+  "redacted_text": "[CANDIDATE]. Builder focused on pyspark and databricks jobs.\n[CANDIDATE] studied at [COLLEGE] and has 7 years of experience. They would describe their strengths as: Snowflake and BigQuery modelling, ELT with dbt, PySpark and Databricks jobs.\nProjects: Owned DAG orchestration for 200+ daily tasks with retries and SLA alerts. Rebuilt nightly PySpark jobs on Databricks and cut the batch window from 6 hours to 50 minutes. Modelled a Snowflake warehouse with dbt, with tests on every mart. Wrote the SQL that reconciles finance and product marts, with window functions and tested dbt models.",
   "source": "planted",
   "role": "data-engineering"
  },
@@ -1484,15 +1511,16 @@
   "projects": [
    "Ran red-team exercises against staging and wrote fixes with the owning teams.",
    "Found and fixed SQL injection and broken auth in a legacy portal before launch.",
-   "Reviewed pull requests for vulnerabilities and built a lint rule that caught unsafe deserialisation."
+   "Owned application security for the web platform: threat models, secure code review on every risky pull request, and fixes shipped with the owning team.",
+   "Led STRIDE analysis for a new payments service."
   ],
   "bio": "Engineer who likes stride analysis.",
   "archetype": "appsec",
   "planted": "true_fit",
   "planted_for": "appsec",
   "flags": [],
-  "visible_text": "Aisha Mukherjee. Engineer who likes stride analysis.\nAisha studied at Riverbend Polytechnic and has 7 years of experience. She would describe her strengths as: found and fixed injection and auth bugs, STRIDE analysis, hardened login flows.\nProjects: Ran red-team exercises against staging and wrote fixes with the owning teams. Found and fixed SQL injection and broken auth in a legacy portal before launch. Reviewed pull requests for vulnerabilities and built a lint rule that caught unsafe deserialisation.",
-  "redacted_text": "[CANDIDATE]. Engineer who likes stride analysis.\n[CANDIDATE] studied at [COLLEGE] and has 7 years of experience. They would describe their strengths as: found and fixed injection and auth bugs, STRIDE analysis, hardened login flows.\nProjects: Ran red-team exercises against staging and wrote fixes with the owning teams. Found and fixed SQL injection and broken auth in a legacy portal before launch. Reviewed pull requests for vulnerabilities and built a lint rule that caught unsafe deserialisation.",
+  "visible_text": "Aisha Mukherjee. Engineer who likes stride analysis.\nAisha studied at Riverbend Polytechnic and has 7 years of experience. She would describe her strengths as: found and fixed injection and auth bugs, STRIDE analysis, hardened login flows.\nProjects: Ran red-team exercises against staging and wrote fixes with the owning teams. Found and fixed SQL injection and broken auth in a legacy portal before launch. Owned application security for the web platform: threat models, secure code review on every risky pull request, and fixes shipped with the owning team. Led STRIDE analysis for a new payments service.",
+  "redacted_text": "[CANDIDATE]. Engineer who likes stride analysis.\n[CANDIDATE] studied at [COLLEGE] and has 7 years of experience. They would describe their strengths as: found and fixed injection and auth bugs, STRIDE analysis, hardened login flows.\nProjects: Ran red-team exercises against staging and wrote fixes with the owning teams. Found and fixed SQL injection and broken auth in a legacy portal before launch. Owned application security for the web platform: threat models, secure code review on every risky pull request, and fixes shipped with the owning team. Led STRIDE analysis for a new payments service.",
   "source": "planted",
   "role": "appsec"
  },
@@ -1593,17 +1621,18 @@
    "Apollo schema design"
   ],
   "projects": [
-   "Owned Prisma migrations and backfills for a growing schema.",
+   "Built Node.js services in TypeScript with Fastify and Prisma, from schema to deployed endpoint.",
    "Designed an Apollo schema with federation across two services.",
-   "Built Express and Fastify APIs for a marketplace with rate limits and auth."
+   "Built Express and Fastify APIs for a marketplace with rate limits and auth.",
+   "Delivered end-to-end features from database to UI for a scheduling product."
   ],
   "bio": "Builder focused on express and fastify apis.",
   "archetype": "node-fullstack",
   "planted": "true_fit",
   "planted_for": "node-fullstack",
   "flags": [],
-  "visible_text": "Tanvi Silva. Builder focused on express and fastify apis.\nTanvi studied at Aldergate Institute of Science and has 1 years of experience. She would describe her strengths as: end-to-end features from DB to UI, Express and Fastify APIs, Prisma migrations, Apollo schema design.\nProjects: Owned Prisma migrations and backfills for a growing schema. Designed an Apollo schema with federation across two services. Built Express and Fastify APIs for a marketplace with rate limits and auth.",
-  "redacted_text": "[CANDIDATE]. Builder focused on express and fastify apis.\n[CANDIDATE] studied at [COLLEGE] and has 1 years of experience. They would describe their strengths as: end-to-end features from DB to UI, Express and Fastify APIs, Prisma migrations, Apollo schema design.\nProjects: Owned Prisma migrations and backfills for a growing schema. Designed an Apollo schema with federation across two services. Built Express and Fastify APIs for a marketplace with rate limits and auth.",
+  "visible_text": "Tanvi Silva. Builder focused on express and fastify apis.\nTanvi studied at Aldergate Institute of Science and has 1 years of experience. She would describe her strengths as: end-to-end features from DB to UI, Express and Fastify APIs, Prisma migrations, Apollo schema design.\nProjects: Built Node.js services in TypeScript with Fastify and Prisma, from schema to deployed endpoint. Designed an Apollo schema with federation across two services. Built Express and Fastify APIs for a marketplace with rate limits and auth. Delivered end-to-end features from database to UI for a scheduling product.",
+  "redacted_text": "[CANDIDATE]. Builder focused on express and fastify apis.\n[CANDIDATE] studied at [COLLEGE] and has 1 years of experience. They would describe their strengths as: end-to-end features from DB to UI, Express and Fastify APIs, Prisma migrations, Apollo schema design.\nProjects: Built Node.js services in TypeScript with Fastify and Prisma, from schema to deployed endpoint. Designed an Apollo schema with federation across two services. Built Express and Fastify APIs for a marketplace with rate limits and auth. Delivered end-to-end features from database to UI for a scheduling product.",
   "source": "planted",
   "role": "node-fullstack"
  },
@@ -1731,15 +1760,17 @@
   ],
   "projects": [
    "Quantised ViT models to TensorRT and ONNX with under 1% accuracy loss.",
-   "Built camera pipelines that run on-device inference at 30fps on a Jetson."
+   "Built camera pipelines that run on-device inference at 30fps on a Jetson.",
+   "Delivered computer vision pipelines for shelf cameras: detection models trained, quantised and deployed on edge devices.",
+   "Trained detection and segmentation networks for shelf monitoring with 92% mAP."
   ],
   "bio": "Practitioner working on cnn and vit training.",
   "archetype": "computer-vision",
   "planted": "true_fit",
   "planted_for": "computer-vision",
   "flags": [],
-  "visible_text": "Yusuf Garcia. Practitioner working on cnn and vit training.\nYusuf studied at Meridian Institute of Technology and has 4 years of experience. He would describe his strengths as: detection and segmentation networks, camera pipelines, CNN and ViT training, on-device inference.\nProjects: Quantised ViT models to TensorRT and ONNX with under 1% accuracy loss. Built camera pipelines that run on-device inference at 30fps on a Jetson.",
-  "redacted_text": "[CANDIDATE]. Practitioner working on cnn and vit training.\n[CANDIDATE] studied at [COLLEGE] and has 4 years of experience. They would describe their strengths as: detection and segmentation networks, camera pipelines, CNN and ViT training, on-device inference.\nProjects: Quantised ViT models to TensorRT and ONNX with under 1% accuracy loss. Built camera pipelines that run on-device inference at 30fps on a Jetson.",
+  "visible_text": "Yusuf Garcia. Practitioner working on cnn and vit training.\nYusuf studied at Meridian Institute of Technology and has 4 years of experience. He would describe his strengths as: detection and segmentation networks, camera pipelines, CNN and ViT training, on-device inference.\nProjects: Quantised ViT models to TensorRT and ONNX with under 1% accuracy loss. Built camera pipelines that run on-device inference at 30fps on a Jetson. Delivered computer vision pipelines for shelf cameras: detection models trained, quantised and deployed on edge devices. Trained detection and segmentation networks for shelf monitoring with 92% mAP.",
+  "redacted_text": "[CANDIDATE]. Practitioner working on cnn and vit training.\n[CANDIDATE] studied at [COLLEGE] and has 4 years of experience. They would describe their strengths as: detection and segmentation networks, camera pipelines, CNN and ViT training, on-device inference.\nProjects: Quantised ViT models to TensorRT and ONNX with under 1% accuracy loss. Built camera pipelines that run on-device inference at 30fps on a Jetson. Delivered computer vision pipelines for shelf cameras: detection models trained, quantised and deployed on edge devices. Trained detection and segmentation networks for shelf monitoring with 92% mAP.",
   "source": "planted",
   "role": "computer-vision"
  },
@@ -1758,15 +1789,17 @@
   ],
   "projects": [
    "Reviewed pull requests for vulnerabilities and built a lint rule that caught unsafe deserialisation.",
-   "Found and fixed SQL injection and broken auth in a legacy portal before launch."
+   "Found and fixed SQL injection and broken auth in a legacy portal before launch.",
+   "Ran red-team exercises against staging and wrote fixes with the owning teams.",
+   "Owned application security for the web platform: threat models, secure code review on every risky pull request, and fixes shipped with the owning team."
   ],
   "bio": "Practitioner working on stride analysis.",
   "archetype": "appsec",
   "planted": "true_fit",
   "planted_for": "appsec",
   "flags": [],
-  "visible_text": "Avi Reddy. Practitioner working on stride analysis.\nAvi studied at Riverbend Polytechnic and has 6 years of experience. They would describe their strengths as: STRIDE analysis, hardened login flows, reviewed pull requests for vulnerabilities, red-team exercises.\nProjects: Reviewed pull requests for vulnerabilities and built a lint rule that caught unsafe deserialisation. Found and fixed SQL injection and broken auth in a legacy portal before launch.",
-  "redacted_text": "[CANDIDATE]. Practitioner working on stride analysis.\n[CANDIDATE] studied at [COLLEGE] and has 6 years of experience. They would describe their strengths as: STRIDE analysis, hardened login flows, reviewed pull requests for vulnerabilities, red-team exercises.\nProjects: Reviewed pull requests for vulnerabilities and built a lint rule that caught unsafe deserialisation. Found and fixed SQL injection and broken auth in a legacy portal before launch.",
+  "visible_text": "Avi Reddy. Practitioner working on stride analysis.\nAvi studied at Riverbend Polytechnic and has 6 years of experience. They would describe their strengths as: STRIDE analysis, hardened login flows, reviewed pull requests for vulnerabilities, red-team exercises.\nProjects: Reviewed pull requests for vulnerabilities and built a lint rule that caught unsafe deserialisation. Found and fixed SQL injection and broken auth in a legacy portal before launch. Ran red-team exercises against staging and wrote fixes with the owning teams. Owned application security for the web platform: threat models, secure code review on every risky pull request, and fixes shipped with the owning team.",
+  "redacted_text": "[CANDIDATE]. Practitioner working on stride analysis.\n[CANDIDATE] studied at [COLLEGE] and has 6 years of experience. They would describe their strengths as: STRIDE analysis, hardened login flows, reviewed pull requests for vulnerabilities, red-team exercises.\nProjects: Reviewed pull requests for vulnerabilities and built a lint rule that caught unsafe deserialisation. Found and fixed SQL injection and broken auth in a legacy portal before launch. Ran red-team exercises against staging and wrote fixes with the owning teams. Owned application security for the web platform: threat models, secure code review on every risky pull request, and fixes shipped with the owning team.",
   "source": "planted",
   "role": "appsec"
  },
@@ -1787,15 +1820,16 @@
   "projects": [
    "Replaced an Elasticsearch stack with pgvector and HNSW indexes, then tuned recall against a labelled set.",
    "Built a FAISS index over 40M product descriptions and cut p95 lookup latency from 900ms to 60ms.",
-   "Designed REST contracts for a dense passage ranking service used by three internal teams."
+   "Designed REST contracts for a dense passage ranking service used by three internal teams.",
+   "Served a fine-tuned sentence encoder behind a FastAPI gateway with batched inference and warm caches."
   ],
   "bio": "Builder focused on sentence-encoder serving.",
   "archetype": "retrieval-backend",
   "planted": "true_fit",
   "planted_for": "retrieval-backend",
   "flags": [],
-  "visible_text": "Elena Bose. Builder focused on sentence-encoder serving.\nElena studied at Carrow National Institute and has 8 years of experience. She would describe her strengths as: pgvector and FAISS retrieval, sentence-encoder serving, FastAPI services, dense passage ranking, REST contract design.\nProjects: Replaced an Elasticsearch stack with pgvector and HNSW indexes, then tuned recall against a labelled set. Built a FAISS index over 40M product descriptions and cut p95 lookup latency from 900ms to 60ms. Designed REST contracts for a dense passage ranking service used by three internal teams.",
-  "redacted_text": "[CANDIDATE]. Builder focused on sentence-encoder serving.\n[CANDIDATE] studied at [COLLEGE] and has 8 years of experience. They would describe their strengths as: pgvector and FAISS retrieval, sentence-encoder serving, FastAPI services, dense passage ranking, REST contract design.\nProjects: Replaced an Elasticsearch stack with pgvector and HNSW indexes, then tuned recall against a labelled set. Built a FAISS index over 40M product descriptions and cut p95 lookup latency from 900ms to 60ms. Designed REST contracts for a dense passage ranking service used by three internal teams.",
+  "visible_text": "Elena Bose. Builder focused on sentence-encoder serving.\nElena studied at Carrow National Institute and has 8 years of experience. She would describe her strengths as: pgvector and FAISS retrieval, sentence-encoder serving, FastAPI services, dense passage ranking, REST contract design.\nProjects: Replaced an Elasticsearch stack with pgvector and HNSW indexes, then tuned recall against a labelled set. Built a FAISS index over 40M product descriptions and cut p95 lookup latency from 900ms to 60ms. Designed REST contracts for a dense passage ranking service used by three internal teams. Served a fine-tuned sentence encoder behind a FastAPI gateway with batched inference and warm caches.",
+  "redacted_text": "[CANDIDATE]. Builder focused on sentence-encoder serving.\n[CANDIDATE] studied at [COLLEGE] and has 8 years of experience. They would describe their strengths as: pgvector and FAISS retrieval, sentence-encoder serving, FastAPI services, dense passage ranking, REST contract design.\nProjects: Replaced an Elasticsearch stack with pgvector and HNSW indexes, then tuned recall against a labelled set. Built a FAISS index over 40M product descriptions and cut p95 lookup latency from 900ms to 60ms. Designed REST contracts for a dense passage ranking service used by three internal teams. Served a fine-tuned sentence encoder behind a FastAPI gateway with batched inference and warm caches.",
   "source": "planted",
   "role": "retrieval-backend"
  },
@@ -1866,15 +1900,17 @@
   ],
   "projects": [
    "Cut GitHub Actions pipeline time from 25 to 7 minutes with caching and test sharding.",
-   "Codified EC2 and EKS estates in Pulumi and HCL with drift detection."
+   "Codified EC2 and EKS estates in Pulumi and HCL with drift detection.",
+   "Ran incident response for an AWS estate: Terraform modules for every account, paging, a 30-minute MTTR and blameless reviews.",
+   "Built Grafana and Prometheus dashboards with SLO burn alerts."
   ],
   "bio": "Engineer who likes on-call for 99.95% uptime.",
   "archetype": "devops-sre",
   "planted": "true_fit",
   "planted_for": "devops-sre",
   "flags": [],
-  "visible_text": "Jay Sharma. Engineer who likes on-call for 99.95% uptime.\nJay studied at Meridian Institute of Technology and has 6 years of experience. They would describe their strengths as: Grafana and Prometheus dashboards, infrastructure as code with Pulumi and HCL, GitHub Actions pipelines.\nProjects: Cut GitHub Actions pipeline time from 25 to 7 minutes with caching and test sharding. Codified EC2 and EKS estates in Pulumi and HCL with drift detection.",
-  "redacted_text": "[CANDIDATE]. Engineer who likes on-call for 99.95% uptime.\n[CANDIDATE] studied at [COLLEGE] and has 6 years of experience. They would describe their strengths as: Grafana and Prometheus dashboards, infrastructure as code with Pulumi and HCL, GitHub Actions pipelines.\nProjects: Cut GitHub Actions pipeline time from 25 to 7 minutes with caching and test sharding. Codified EC2 and EKS estates in Pulumi and HCL with drift detection.",
+  "visible_text": "Jay Sharma. Engineer who likes on-call for 99.95% uptime.\nJay studied at Meridian Institute of Technology and has 6 years of experience. They would describe their strengths as: Grafana and Prometheus dashboards, infrastructure as code with Pulumi and HCL, GitHub Actions pipelines.\nProjects: Cut GitHub Actions pipeline time from 25 to 7 minutes with caching and test sharding. Codified EC2 and EKS estates in Pulumi and HCL with drift detection. Ran incident response for an AWS estate: Terraform modules for every account, paging, a 30-minute MTTR and blameless reviews. Built Grafana and Prometheus dashboards with SLO burn alerts.",
+  "redacted_text": "[CANDIDATE]. Engineer who likes on-call for 99.95% uptime.\n[CANDIDATE] studied at [COLLEGE] and has 6 years of experience. They would describe their strengths as: Grafana and Prometheus dashboards, infrastructure as code with Pulumi and HCL, GitHub Actions pipelines.\nProjects: Cut GitHub Actions pipeline time from 25 to 7 minutes with caching and test sharding. Codified EC2 and EKS estates in Pulumi and HCL with drift detection. Ran incident response for an AWS estate: Terraform modules for every account, paging, a 30-minute MTTR and blameless reviews. Built Grafana and Prometheus dashboards with SLO burn alerts.",
   "source": "planted",
   "role": "devops-sre"
  },
@@ -2027,6 +2063,8 @@
   ],
   "projects": [
    "Ran TestFlight betas and phased rollouts for twelve production releases.",
+   "Shipped three iPhone and iPad apps in Swift, from the first storyboard to App Store review.",
+   "Shipped a SwiftUI rewrite of a 300k-user native Apple app with a 4.8 rating.",
    "Built local-first storage with CoreData and conflict resolution for field workers without signal."
   ],
   "bio": "Engineer who likes swiftui and uikit apps.",
@@ -2034,8 +2072,8 @@
   "planted": "true_fit",
   "planted_for": "mobile-ios",
   "flags": [],
-  "visible_text": "Leila Verma. Engineer who likes swiftui and uikit apps.\nLeila studied at St. Ada's College for Women and has 4 years of experience. She would describe her strengths as: native Apple apps, SwiftUI and UIKit apps, TestFlight to production.\nProjects: Ran TestFlight betas and phased rollouts for twelve production releases. Built local-first storage with CoreData and conflict resolution for field workers without signal.",
-  "redacted_text": "[CANDIDATE]. Engineer who likes swiftui and uikit apps.\n[CANDIDATE] studied at [COLLEGE] and has 4 years of experience. They would describe their strengths as: native Apple apps, SwiftUI and UIKit apps, TestFlight to production.\nProjects: Ran TestFlight betas and phased rollouts for twelve production releases. Built local-first storage with CoreData and conflict resolution for field workers without signal.",
+  "visible_text": "Leila Verma. Engineer who likes swiftui and uikit apps.\nLeila studied at St. Ada's College for Women and has 4 years of experience. She would describe her strengths as: native Apple apps, SwiftUI and UIKit apps, TestFlight to production.\nProjects: Ran TestFlight betas and phased rollouts for twelve production releases. Shipped three iPhone and iPad apps in Swift, from the first storyboard to App Store review. Shipped a SwiftUI rewrite of a 300k-user native Apple app with a 4.8 rating. Built local-first storage with CoreData and conflict resolution for field workers without signal.",
+  "redacted_text": "[CANDIDATE]. Engineer who likes swiftui and uikit apps.\n[CANDIDATE] studied at [COLLEGE] and has 4 years of experience. They would describe their strengths as: native Apple apps, SwiftUI and UIKit apps, TestFlight to production.\nProjects: Ran TestFlight betas and phased rollouts for twelve production releases. Shipped three iPhone and iPad apps in Swift, from the first storyboard to App Store review. Shipped a SwiftUI rewrite of a 300k-user native Apple app with a 4.8 rating. Built local-first storage with CoreData and conflict resolution for field workers without signal.",
   "source": "planted",
   "role": "mobile-ios"
  },
@@ -2079,16 +2117,18 @@
    "tool-calling workflows"
   ],
   "projects": [
-   "Graded model outputs with rubrics and a held-out set, and tracked regressions per release.",
-   "Shipped tool-calling workflows with human approval before anything irreversible."
+   "Shipped LLM applications end to end: retrieval over internal docs, tool calls with approval, and an evaluation set that gates every release.",
+   "Shipped tool-calling workflows with human approval before anything irreversible.",
+   "Added guardrails and refusal handling for unsafe requests.",
+   "Built a grounded chat assistant over internal docs with citation spans checked against sources."
   ],
   "bio": "Practitioner working on graded model outputs with rubrics.",
   "archetype": "llm-apps",
   "planted": "true_fit",
   "planted_for": "llm-apps",
   "flags": [],
-  "visible_text": "Ivan Petrov. Practitioner working on graded model outputs with rubrics.\nIvan studied at Westbrook University and has 5 years of experience. He would describe his strengths as: guardrails and refusal handling, LangGraph, tool-calling workflows.\nProjects: Graded model outputs with rubrics and a held-out set, and tracked regressions per release. Shipped tool-calling workflows with human approval before anything irreversible.",
-  "redacted_text": "[CANDIDATE]. Practitioner working on graded model outputs with rubrics.\n[CANDIDATE] studied at [COLLEGE] and has 5 years of experience. They would describe their strengths as: guardrails and refusal handling, LangGraph, tool-calling workflows.\nProjects: Graded model outputs with rubrics and a held-out set, and tracked regressions per release. Shipped tool-calling workflows with human approval before anything irreversible.",
+  "visible_text": "Ivan Petrov. Practitioner working on graded model outputs with rubrics.\nIvan studied at Westbrook University and has 5 years of experience. He would describe his strengths as: guardrails and refusal handling, LangGraph, tool-calling workflows.\nProjects: Shipped LLM applications end to end: retrieval over internal docs, tool calls with approval, and an evaluation set that gates every release. Shipped tool-calling workflows with human approval before anything irreversible. Added guardrails and refusal handling for unsafe requests. Built a grounded chat assistant over internal docs with citation spans checked against sources.",
+  "redacted_text": "[CANDIDATE]. Practitioner working on graded model outputs with rubrics.\n[CANDIDATE] studied at [COLLEGE] and has 5 years of experience. They would describe their strengths as: guardrails and refusal handling, LangGraph, tool-calling workflows.\nProjects: Shipped LLM applications end to end: retrieval over internal docs, tool calls with approval, and an evaluation set that gates every release. Shipped tool-calling workflows with human approval before anything irreversible. Added guardrails and refusal handling for unsafe requests. Built a grounded chat assistant over internal docs with citation spans checked against sources.",
   "source": "planted",
   "role": "llm-apps"
  },
@@ -2134,15 +2174,17 @@
   ],
   "projects": [
    "Brought Largest Contentful Paint under 1.5s on the marketing site by code-splitting and image work.",
-   "Shipped a shared UI kit with design tokens adopted by six product squads, with Storybook docs for every piece."
+   "Shipped a shared UI kit with design tokens adopted by six product squads, with Storybook docs for every piece.",
+   "Rebuilt the component kit in strict TypeScript with ARIA roles, keyboard navigation and screen-reader labels on every control.",
+   "Migrated a JavaScript codebase to strict typing with zero any escapes."
   ],
   "bio": "Practitioner working on storybook-driven components.",
   "archetype": "frontend-design-systems",
   "planted": "true_fit",
   "planted_for": "frontend-design-systems",
   "flags": [],
-  "visible_text": "Noor Saxena. Practitioner working on storybook-driven components.\nNoor studied at Riverbend Polytechnic and has 7 years of experience. They would describe their strengths as: Storybook-driven components, strictly typed frontends, WCAG audits and screen-reader testing, Core Web Vitals work, Next.js and Preact UIs.\nProjects: Brought Largest Contentful Paint under 1.5s on the marketing site by code-splitting and image work. Shipped a shared UI kit with design tokens adopted by six product squads, with Storybook docs for every piece.",
-  "redacted_text": "[CANDIDATE]. Practitioner working on storybook-driven components.\n[CANDIDATE] studied at [COLLEGE] and has 7 years of experience. They would describe their strengths as: Storybook-driven components, strictly typed frontends, WCAG audits and screen-reader testing, Core Web Vitals work, Next.js and Preact UIs.\nProjects: Brought Largest Contentful Paint under 1.5s on the marketing site by code-splitting and image work. Shipped a shared UI kit with design tokens adopted by six product squads, with Storybook docs for every piece.",
+  "visible_text": "Noor Saxena. Practitioner working on storybook-driven components.\nNoor studied at Riverbend Polytechnic and has 7 years of experience. They would describe their strengths as: Storybook-driven components, strictly typed frontends, WCAG audits and screen-reader testing, Core Web Vitals work, Next.js and Preact UIs.\nProjects: Brought Largest Contentful Paint under 1.5s on the marketing site by code-splitting and image work. Shipped a shared UI kit with design tokens adopted by six product squads, with Storybook docs for every piece. Rebuilt the component kit in strict TypeScript with ARIA roles, keyboard navigation and screen-reader labels on every control. Migrated a JavaScript codebase to strict typing with zero any escapes.",
+  "redacted_text": "[CANDIDATE]. Practitioner working on storybook-driven components.\n[CANDIDATE] studied at [COLLEGE] and has 7 years of experience. They would describe their strengths as: Storybook-driven components, strictly typed frontends, WCAG audits and screen-reader testing, Core Web Vitals work, Next.js and Preact UIs.\nProjects: Brought Largest Contentful Paint under 1.5s on the marketing site by code-splitting and image work. Shipped a shared UI kit with design tokens adopted by six product squads, with Storybook docs for every piece. Rebuilt the component kit in strict TypeScript with ARIA roles, keyboard navigation and screen-reader labels on every control. Migrated a JavaScript codebase to strict typing with zero any escapes.",
   "source": "planted",
   "role": "frontend-design-systems"
  },
@@ -2186,16 +2228,18 @@
    "on-device inference"
   ],
   "projects": [
-   "Trained detection and segmentation networks for shelf monitoring with 92% mAP.",
-   "Built camera pipelines that run on-device inference at 30fps on a Jetson."
+   "Delivered computer vision pipelines for shelf cameras: detection models trained, quantised and deployed on edge devices.",
+   "Built camera pipelines that run on-device inference at 30fps on a Jetson.",
+   "Quantised ViT models to TensorRT and ONNX with under 1% accuracy loss.",
+   "Trained detection and segmentation networks for shelf monitoring with 92% mAP."
   ],
   "bio": "Practitioner working on cnn and vit training. Active in the Women Who Code chapter.",
   "archetype": "computer-vision",
   "planted": "true_fit",
   "planted_for": "computer-vision",
   "flags": [],
-  "visible_text": "Ines Nair. Practitioner working on cnn and vit training. Active in the Women Who Code chapter.\nInes studied at Bluefield College and has 6 years of experience. She would describe her strengths as: quantised to TensorRT and ONNX, CNN and ViT training, detection and segmentation networks, on-device inference.\nProjects: Trained detection and segmentation networks for shelf monitoring with 92% mAP. Built camera pipelines that run on-device inference at 30fps on a Jetson.",
-  "redacted_text": "[CANDIDATE]. Practitioner working on cnn and vit training. Active in the [COMMUNITY] chapter.\n[CANDIDATE] studied at [COLLEGE] and has 6 years of experience. They would describe their strengths as: quantised to TensorRT and ONNX, CNN and ViT training, detection and segmentation networks, on-device inference.\nProjects: Trained detection and segmentation networks for shelf monitoring with 92% mAP. Built camera pipelines that run on-device inference at 30fps on a Jetson.",
+  "visible_text": "Ines Nair. Practitioner working on cnn and vit training. Active in the Women Who Code chapter.\nInes studied at Bluefield College and has 6 years of experience. She would describe her strengths as: quantised to TensorRT and ONNX, CNN and ViT training, detection and segmentation networks, on-device inference.\nProjects: Delivered computer vision pipelines for shelf cameras: detection models trained, quantised and deployed on edge devices. Built camera pipelines that run on-device inference at 30fps on a Jetson. Quantised ViT models to TensorRT and ONNX with under 1% accuracy loss. Trained detection and segmentation networks for shelf monitoring with 92% mAP.",
+  "redacted_text": "[CANDIDATE]. Practitioner working on cnn and vit training. Active in the [COMMUNITY] chapter.\n[CANDIDATE] studied at [COLLEGE] and has 6 years of experience. They would describe their strengths as: quantised to TensorRT and ONNX, CNN and ViT training, detection and segmentation networks, on-device inference.\nProjects: Delivered computer vision pipelines for shelf cameras: detection models trained, quantised and deployed on edge devices. Built camera pipelines that run on-device inference at 30fps on a Jetson. Quantised ViT models to TensorRT and ONNX with under 1% accuracy loss. Trained detection and segmentation networks for shelf monitoring with 92% mAP.",
   "source": "planted",
   "role": "computer-vision"
  },
@@ -2215,15 +2259,17 @@
   ],
   "projects": [
    "Wrote the team's pandas and statsmodels toolkit for variance reduction.",
-   "Ran randomised experiments on pricing with sequential tests and clear stopping rules."
+   "Designed and analysed A/B tests in Python with power calculations, sequential testing and clear statistics for product managers.",
+   "Used difference-in-differences to measure a regional launch where randomisation was impossible.",
+   "Built Looker and Metabase reporting that product managers trust."
   ],
   "bio": "Engineer who likes bayesian decision rules. Former sorority treasurer.",
   "archetype": "experimentation",
   "planted": "true_fit",
   "planted_for": "experimentation",
   "flags": [],
-  "visible_text": "Meera Ahmed. Engineer who likes bayesian decision rules. Former sorority treasurer.\nMeera studied at Lakeside State University and has 4 years of experience. She would describe her strengths as: pandas and statsmodels, randomised experiments and uplift, Looker and Metabase reporting, difference-in-differences, Bayesian decision rules.\nProjects: Wrote the team's pandas and statsmodels toolkit for variance reduction. Ran randomised experiments on pricing with sequential tests and clear stopping rules.",
-  "redacted_text": "[CANDIDATE]. Engineer who likes bayesian decision rules. Former [STUDENT ORG] treasurer.\n[CANDIDATE] studied at [COLLEGE] and has 4 years of experience. They would describe their strengths as: pandas and statsmodels, randomised experiments and uplift, Looker and Metabase reporting, difference-in-differences, Bayesian decision rules.\nProjects: Wrote the team's pandas and statsmodels toolkit for variance reduction. Ran randomised experiments on pricing with sequential tests and clear stopping rules.",
+  "visible_text": "Meera Ahmed. Engineer who likes bayesian decision rules. Former sorority treasurer.\nMeera studied at Lakeside State University and has 4 years of experience. She would describe her strengths as: pandas and statsmodels, randomised experiments and uplift, Looker and Metabase reporting, difference-in-differences, Bayesian decision rules.\nProjects: Wrote the team's pandas and statsmodels toolkit for variance reduction. Designed and analysed A/B tests in Python with power calculations, sequential testing and clear statistics for product managers. Used difference-in-differences to measure a regional launch where randomisation was impossible. Built Looker and Metabase reporting that product managers trust.",
+  "redacted_text": "[CANDIDATE]. Engineer who likes bayesian decision rules. Former [STUDENT ORG] treasurer.\n[CANDIDATE] studied at [COLLEGE] and has 4 years of experience. They would describe their strengths as: pandas and statsmodels, randomised experiments and uplift, Looker and Metabase reporting, difference-in-differences, Bayesian decision rules.\nProjects: Wrote the team's pandas and statsmodels toolkit for variance reduction. Designed and analysed A/B tests in Python with power calculations, sequential testing and clear statistics for product managers. Used difference-in-differences to measure a regional launch where randomisation was impossible. Built Looker and Metabase reporting that product managers trust.",
   "source": "planted",
   "role": "experimentation"
  },
@@ -2322,17 +2368,18 @@
    "service mesh"
   ],
   "projects": [
-   "Handled partition tolerance and leader election for a config service.",
+   "Built Java microservices on Spring with Kafka between them, contract-tested and deployed independently.",
    "Built event-driven consumers that process 50k messages a second with exactly-once semantics.",
-   "Wrote Kotlin and Spring services with contract tests across teams."
+   "Wrote Kotlin and Spring services with contract tests across teams.",
+   "Split a monolith into JVM services behind a mesh with zero-downtime cutovers."
   ],
   "bio": "Practitioner working on kotlin and spring.",
   "archetype": "java-platform",
   "planted": "true_fit",
   "planted_for": "java-platform",
   "flags": [],
-  "visible_text": "Siddharth Mukherjee. Practitioner working on kotlin and spring.\nSiddharth studied at Riverbend Polytechnic and has 7 years of experience. He would describe his strengths as: Kotlin and Spring, partition tolerance and consensus, JVM services, service mesh.\nProjects: Handled partition tolerance and leader election for a config service. Built event-driven consumers that process 50k messages a second with exactly-once semantics. Wrote Kotlin and Spring services with contract tests across teams.",
-  "redacted_text": "[CANDIDATE]. Practitioner working on kotlin and spring.\n[CANDIDATE] studied at [COLLEGE] and has 7 years of experience. They would describe their strengths as: Kotlin and Spring, partition tolerance and consensus, JVM services, service mesh.\nProjects: Handled partition tolerance and leader election for a config service. Built event-driven consumers that process 50k messages a second with exactly-once semantics. Wrote Kotlin and Spring services with contract tests across teams.",
+  "visible_text": "Siddharth Mukherjee. Practitioner working on kotlin and spring.\nSiddharth studied at Riverbend Polytechnic and has 7 years of experience. He would describe his strengths as: Kotlin and Spring, partition tolerance and consensus, JVM services, service mesh.\nProjects: Built Java microservices on Spring with Kafka between them, contract-tested and deployed independently. Built event-driven consumers that process 50k messages a second with exactly-once semantics. Wrote Kotlin and Spring services with contract tests across teams. Split a monolith into JVM services behind a mesh with zero-downtime cutovers.",
+  "redacted_text": "[CANDIDATE]. Practitioner working on kotlin and spring.\n[CANDIDATE] studied at [COLLEGE] and has 7 years of experience. They would describe their strengths as: Kotlin and Spring, partition tolerance and consensus, JVM services, service mesh.\nProjects: Built Java microservices on Spring with Kafka between them, contract-tested and deployed independently. Built event-driven consumers that process 50k messages a second with exactly-once semantics. Wrote Kotlin and Spring services with contract tests across teams. Split a monolith into JVM services behind a mesh with zero-downtime cutovers.",
   "source": "planted",
   "role": "java-platform"
  },
@@ -2377,15 +2424,17 @@
   ],
   "projects": [
    "Delivered end-to-end features from database to UI for a scheduling product.",
-   "Built Express and Fastify APIs for a marketplace with rate limits and auth."
+   "Built Express and Fastify APIs for a marketplace with rate limits and auth.",
+   "Designed an Apollo schema with federation across two services.",
+   "Built Node.js services in TypeScript with Fastify and Prisma, from schema to deployed endpoint."
   ],
   "bio": "Engineer who likes prisma migrations.",
   "archetype": "node-fullstack",
   "planted": "true_fit",
   "planted_for": "node-fullstack",
   "flags": [],
-  "visible_text": "Tariq Gupta. Engineer who likes prisma migrations.\nTariq studied at Pinecrest Community College and has 3 years of experience. He would describe his strengths as: Apollo schema design, Prisma migrations, end-to-end features from DB to UI, Express and Fastify APIs.\nProjects: Delivered end-to-end features from database to UI for a scheduling product. Built Express and Fastify APIs for a marketplace with rate limits and auth.",
-  "redacted_text": "[CANDIDATE]. Engineer who likes prisma migrations.\n[CANDIDATE] studied at [COLLEGE] and has 3 years of experience. They would describe their strengths as: Apollo schema design, Prisma migrations, end-to-end features from DB to UI, Express and Fastify APIs.\nProjects: Delivered end-to-end features from database to UI for a scheduling product. Built Express and Fastify APIs for a marketplace with rate limits and auth.",
+  "visible_text": "Tariq Gupta. Engineer who likes prisma migrations.\nTariq studied at Pinecrest Community College and has 3 years of experience. He would describe his strengths as: Apollo schema design, Prisma migrations, end-to-end features from DB to UI, Express and Fastify APIs.\nProjects: Delivered end-to-end features from database to UI for a scheduling product. Built Express and Fastify APIs for a marketplace with rate limits and auth. Designed an Apollo schema with federation across two services. Built Node.js services in TypeScript with Fastify and Prisma, from schema to deployed endpoint.",
+  "redacted_text": "[CANDIDATE]. Engineer who likes prisma migrations.\n[CANDIDATE] studied at [COLLEGE] and has 3 years of experience. They would describe their strengths as: Apollo schema design, Prisma migrations, end-to-end features from DB to UI, Express and Fastify APIs.\nProjects: Delivered end-to-end features from database to UI for a scheduling product. Built Express and Fastify APIs for a marketplace with rate limits and auth. Designed an Apollo schema with federation across two services. Built Node.js services in TypeScript with Fastify and Prisma, from schema to deployed endpoint.",
   "source": "planted",
   "role": "node-fullstack"
  },
@@ -2675,15 +2724,17 @@
   ],
   "projects": [
    "Led STRIDE analysis for a new payments service.",
-   "Ran red-team exercises against staging and wrote fixes with the owning teams."
+   "Ran red-team exercises against staging and wrote fixes with the owning teams.",
+   "Reviewed pull requests for vulnerabilities and built a lint rule that caught unsafe deserialisation.",
+   "Owned application security for the web platform: threat models, secure code review on every risky pull request, and fixes shipped with the owning team."
   ],
   "bio": "Practitioner working on hardened login flows.",
   "archetype": "appsec",
   "planted": "true_fit",
   "planted_for": "appsec",
   "flags": [],
-  "visible_text": "Lucia Tanaka. Practitioner working on hardened login flows.\nLucia studied at Eastvale Engineering College and has 4 years of experience. She would describe her strengths as: STRIDE analysis, reviewed pull requests for vulnerabilities, hardened login flows.\nProjects: Led STRIDE analysis for a new payments service. Ran red-team exercises against staging and wrote fixes with the owning teams.",
-  "redacted_text": "[CANDIDATE]. Practitioner working on hardened login flows.\n[CANDIDATE] studied at [COLLEGE] and has 4 years of experience. They would describe their strengths as: STRIDE analysis, reviewed pull requests for vulnerabilities, hardened login flows.\nProjects: Led STRIDE analysis for a new payments service. Ran red-team exercises against staging and wrote fixes with the owning teams.",
+  "visible_text": "Lucia Tanaka. Practitioner working on hardened login flows.\nLucia studied at Eastvale Engineering College and has 4 years of experience. She would describe her strengths as: STRIDE analysis, reviewed pull requests for vulnerabilities, hardened login flows.\nProjects: Led STRIDE analysis for a new payments service. Ran red-team exercises against staging and wrote fixes with the owning teams. Reviewed pull requests for vulnerabilities and built a lint rule that caught unsafe deserialisation. Owned application security for the web platform: threat models, secure code review on every risky pull request, and fixes shipped with the owning team.",
+  "redacted_text": "[CANDIDATE]. Practitioner working on hardened login flows.\n[CANDIDATE] studied at [COLLEGE] and has 4 years of experience. They would describe their strengths as: STRIDE analysis, reviewed pull requests for vulnerabilities, hardened login flows.\nProjects: Led STRIDE analysis for a new payments service. Ran red-team exercises against staging and wrote fixes with the owning teams. Reviewed pull requests for vulnerabilities and built a lint rule that caught unsafe deserialisation. Owned application security for the web platform: threat models, secure code review on every risky pull request, and fixes shipped with the owning team.",
   "source": "planted",
   "role": "appsec"
  },
@@ -2701,15 +2752,17 @@
   ],
   "projects": [
    "Graded model outputs with rubrics and a held-out set, and tracked regressions per release.",
-   "Shipped tool-calling workflows with human approval before anything irreversible."
+   "Shipped tool-calling workflows with human approval before anything irreversible.",
+   "Shipped LLM applications end to end: retrieval over internal docs, tool calls with approval, and an evaluation set that gates every release.",
+   "Added guardrails and refusal handling for unsafe requests."
   ],
   "bio": "Engineer who likes tool-calling workflows.",
   "archetype": "llm-apps",
   "planted": "true_fit",
   "planted_for": "llm-apps",
   "flags": [],
-  "visible_text": "Ravi Bose. Engineer who likes tool-calling workflows.\nRavi studied at Riverbend Polytechnic and has 4 years of experience. He would describe his strengths as: grounded chat assistants over internal docs, graded model outputs with rubrics, tool-calling workflows.\nProjects: Graded model outputs with rubrics and a held-out set, and tracked regressions per release. Shipped tool-calling workflows with human approval before anything irreversible.",
-  "redacted_text": "[CANDIDATE]. Engineer who likes tool-calling workflows.\n[CANDIDATE] studied at [COLLEGE] and has 4 years of experience. They would describe their strengths as: grounded chat assistants over internal docs, graded model outputs with rubrics, tool-calling workflows.\nProjects: Graded model outputs with rubrics and a held-out set, and tracked regressions per release. Shipped tool-calling workflows with human approval before anything irreversible.",
+  "visible_text": "Ravi Bose. Engineer who likes tool-calling workflows.\nRavi studied at Riverbend Polytechnic and has 4 years of experience. He would describe his strengths as: grounded chat assistants over internal docs, graded model outputs with rubrics, tool-calling workflows.\nProjects: Graded model outputs with rubrics and a held-out set, and tracked regressions per release. Shipped tool-calling workflows with human approval before anything irreversible. Shipped LLM applications end to end: retrieval over internal docs, tool calls with approval, and an evaluation set that gates every release. Added guardrails and refusal handling for unsafe requests.",
+  "redacted_text": "[CANDIDATE]. Engineer who likes tool-calling workflows.\n[CANDIDATE] studied at [COLLEGE] and has 4 years of experience. They would describe their strengths as: grounded chat assistants over internal docs, graded model outputs with rubrics, tool-calling workflows.\nProjects: Graded model outputs with rubrics and a held-out set, and tracked regressions per release. Shipped tool-calling workflows with human approval before anything irreversible. Shipped LLM applications end to end: retrieval over internal docs, tool calls with approval, and an evaluation set that gates every release. Added guardrails and refusal handling for unsafe requests.",
   "source": "planted",
   "role": "llm-apps"
  },
@@ -2755,15 +2808,16 @@
   "projects": [
    "Ran red-team exercises against staging and wrote fixes with the owning teams.",
    "Found and fixed SQL injection and broken auth in a legacy portal before launch.",
-   "Led STRIDE analysis for a new payments service."
+   "Led STRIDE analysis for a new payments service.",
+   "Owned application security for the web platform: threat models, secure code review on every risky pull request, and fixes shipped with the owning team."
   ],
   "bio": "Engineer who likes red-team exercises.",
   "archetype": "appsec",
   "planted": "true_fit",
   "planted_for": "appsec",
   "flags": [],
-  "visible_text": "Marcus Nair. Engineer who likes red-team exercises.\nMarcus studied at Eastvale Engineering College and has 3 years of experience. He would describe his strengths as: STRIDE analysis, found and fixed injection and auth bugs, hardened login flows, red-team exercises.\nProjects: Ran red-team exercises against staging and wrote fixes with the owning teams. Found and fixed SQL injection and broken auth in a legacy portal before launch. Led STRIDE analysis for a new payments service.",
-  "redacted_text": "[CANDIDATE]. Engineer who likes red-team exercises.\n[CANDIDATE] studied at [COLLEGE] and has 3 years of experience. They would describe their strengths as: STRIDE analysis, found and fixed injection and auth bugs, hardened login flows, red-team exercises.\nProjects: Ran red-team exercises against staging and wrote fixes with the owning teams. Found and fixed SQL injection and broken auth in a legacy portal before launch. Led STRIDE analysis for a new payments service.",
+  "visible_text": "Marcus Nair. Engineer who likes red-team exercises.\nMarcus studied at Eastvale Engineering College and has 3 years of experience. He would describe his strengths as: STRIDE analysis, found and fixed injection and auth bugs, hardened login flows, red-team exercises.\nProjects: Ran red-team exercises against staging and wrote fixes with the owning teams. Found and fixed SQL injection and broken auth in a legacy portal before launch. Led STRIDE analysis for a new payments service. Owned application security for the web platform: threat models, secure code review on every risky pull request, and fixes shipped with the owning team.",
+  "redacted_text": "[CANDIDATE]. Engineer who likes red-team exercises.\n[CANDIDATE] studied at [COLLEGE] and has 3 years of experience. They would describe their strengths as: STRIDE analysis, found and fixed injection and auth bugs, hardened login flows, red-team exercises.\nProjects: Ran red-team exercises against staging and wrote fixes with the owning teams. Found and fixed SQL injection and broken auth in a legacy portal before launch. Led STRIDE analysis for a new payments service. Owned application security for the web platform: threat models, secure code review on every risky pull request, and fixes shipped with the owning team.",
   "source": "planted",
   "role": "appsec"
  },
@@ -2917,15 +2971,16 @@
   "projects": [
    "Shipped a shared UI kit with design tokens adopted by six product squads, with Storybook docs for every piece.",
    "Brought Largest Contentful Paint under 1.5s on the marketing site by code-splitting and image work.",
-   "Migrated a JavaScript codebase to strict typing with zero any escapes."
+   "Rebuilt the component kit in strict TypeScript with ARIA roles, keyboard navigation and screen-reader labels on every control.",
+   "Ran WCAG 2.1 audits with screen readers and fixed focus traps across the checkout flow."
   ],
   "bio": "Practitioner working on next.js and preact uis.",
   "archetype": "frontend-design-systems",
   "planted": "true_fit",
   "planted_for": "frontend-design-systems",
   "flags": [],
-  "visible_text": "Ren Tanaka. Practitioner working on next.js and preact uis.\nRen studied at Carrow National Institute and has 3 years of experience. They would describe their strengths as: Storybook-driven components, WCAG audits and screen-reader testing, Core Web Vitals work, shared UI kit with design tokens.\nProjects: Shipped a shared UI kit with design tokens adopted by six product squads, with Storybook docs for every piece. Brought Largest Contentful Paint under 1.5s on the marketing site by code-splitting and image work. Migrated a JavaScript codebase to strict typing with zero any escapes.",
-  "redacted_text": "[CANDIDATE]. Practitioner working on next.js and preact uis.\n[CANDIDATE] studied at [COLLEGE] and has 3 years of experience. They would describe their strengths as: Storybook-driven components, WCAG audits and screen-reader testing, Core Web Vitals work, shared UI kit with design tokens.\nProjects: Shipped a shared UI kit with design tokens adopted by six product squads, with Storybook docs for every piece. Brought Largest Contentful Paint under 1.5s on the marketing site by code-splitting and image work. Migrated a JavaScript codebase to strict typing with zero any escapes.",
+  "visible_text": "Ren Tanaka. Practitioner working on next.js and preact uis.\nRen studied at Carrow National Institute and has 3 years of experience. They would describe their strengths as: Storybook-driven components, WCAG audits and screen-reader testing, Core Web Vitals work, shared UI kit with design tokens.\nProjects: Shipped a shared UI kit with design tokens adopted by six product squads, with Storybook docs for every piece. Brought Largest Contentful Paint under 1.5s on the marketing site by code-splitting and image work. Rebuilt the component kit in strict TypeScript with ARIA roles, keyboard navigation and screen-reader labels on every control. Ran WCAG 2.1 audits with screen readers and fixed focus traps across the checkout flow.",
+  "redacted_text": "[CANDIDATE]. Practitioner working on next.js and preact uis.\n[CANDIDATE] studied at [COLLEGE] and has 3 years of experience. They would describe their strengths as: Storybook-driven components, WCAG audits and screen-reader testing, Core Web Vitals work, shared UI kit with design tokens.\nProjects: Shipped a shared UI kit with design tokens adopted by six product squads, with Storybook docs for every piece. Brought Largest Contentful Paint under 1.5s on the marketing site by code-splitting and image work. Rebuilt the component kit in strict TypeScript with ARIA roles, keyboard navigation and screen-reader labels on every control. Ran WCAG 2.1 audits with screen readers and fixed focus traps across the checkout flow.",
   "source": "planted",
   "role": "frontend-design-systems"
  },
@@ -3160,15 +3215,16 @@
   "projects": [
    "Wrote the team's pandas and statsmodels toolkit for variance reduction.",
    "Used difference-in-differences to measure a regional launch where randomisation was impossible.",
-   "Built Looker and Metabase reporting that product managers trust."
+   "Designed and analysed A/B tests in Python with power calculations, sequential testing and clear statistics for product managers.",
+   "Ran randomised experiments on pricing with sequential tests and clear stopping rules."
   ],
   "bio": "Engineer who likes looker and metabase reporting.",
   "archetype": "experimentation",
   "planted": "true_fit",
   "planted_for": "experimentation",
   "flags": [],
-  "visible_text": "Varun Mukherjee. Engineer who likes looker and metabase reporting.\nVarun studied at Eastvale Engineering College and has 6 years of experience. He would describe his strengths as: difference-in-differences, randomised experiments and uplift, Bayesian decision rules.\nProjects: Wrote the team's pandas and statsmodels toolkit for variance reduction. Used difference-in-differences to measure a regional launch where randomisation was impossible. Built Looker and Metabase reporting that product managers trust.",
-  "redacted_text": "[CANDIDATE]. Engineer who likes looker and metabase reporting.\n[CANDIDATE] studied at [COLLEGE] and has 6 years of experience. They would describe their strengths as: difference-in-differences, randomised experiments and uplift, Bayesian decision rules.\nProjects: Wrote the team's pandas and statsmodels toolkit for variance reduction. Used difference-in-differences to measure a regional launch where randomisation was impossible. Built Looker and Metabase reporting that product managers trust.",
+  "visible_text": "Varun Mukherjee. Engineer who likes looker and metabase reporting.\nVarun studied at Eastvale Engineering College and has 6 years of experience. He would describe his strengths as: difference-in-differences, randomised experiments and uplift, Bayesian decision rules.\nProjects: Wrote the team's pandas and statsmodels toolkit for variance reduction. Used difference-in-differences to measure a regional launch where randomisation was impossible. Designed and analysed A/B tests in Python with power calculations, sequential testing and clear statistics for product managers. Ran randomised experiments on pricing with sequential tests and clear stopping rules.",
+  "redacted_text": "[CANDIDATE]. Engineer who likes looker and metabase reporting.\n[CANDIDATE] studied at [COLLEGE] and has 6 years of experience. They would describe their strengths as: difference-in-differences, randomised experiments and uplift, Bayesian decision rules.\nProjects: Wrote the team's pandas and statsmodels toolkit for variance reduction. Used difference-in-differences to measure a regional launch where randomisation was impossible. Designed and analysed A/B tests in Python with power calculations, sequential testing and clear statistics for product managers. Ran randomised experiments on pricing with sequential tests and clear stopping rules.",
   "source": "planted",
   "role": "experimentation"
  },
@@ -3187,16 +3243,17 @@
   ],
   "projects": [
    "Wrote Kafka consumers that land clickstream events in BigQuery within a minute.",
-   "Owned DAG orchestration for 200+ daily tasks with retries and SLA alerts.",
-   "Modelled a Snowflake warehouse with dbt, with tests on every mart."
+   "Wrote the SQL that reconciles finance and product marts, with window functions and tested dbt models.",
+   "Modelled a Snowflake warehouse with dbt, with tests on every mart.",
+   "Rebuilt nightly PySpark jobs on Databricks and cut the batch window from 6 hours to 50 minutes."
   ],
   "bio": "Engineer who likes elt with dbt.",
   "archetype": "data-engineering",
   "planted": "true_fit",
   "planted_for": "data-engineering",
   "flags": [],
-  "visible_text": "Pranav Saxena. Engineer who likes elt with dbt.\nPranav studied at Eastvale Engineering College and has 5 years of experience. He would describe his strengths as: Snowflake and BigQuery modelling, Kafka consumers, DAG orchestration, PySpark and Databricks jobs.\nProjects: Wrote Kafka consumers that land clickstream events in BigQuery within a minute. Owned DAG orchestration for 200+ daily tasks with retries and SLA alerts. Modelled a Snowflake warehouse with dbt, with tests on every mart.",
-  "redacted_text": "[CANDIDATE]. Engineer who likes elt with dbt.\n[CANDIDATE] studied at [COLLEGE] and has 5 years of experience. They would describe their strengths as: Snowflake and BigQuery modelling, Kafka consumers, DAG orchestration, PySpark and Databricks jobs.\nProjects: Wrote Kafka consumers that land clickstream events in BigQuery within a minute. Owned DAG orchestration for 200+ daily tasks with retries and SLA alerts. Modelled a Snowflake warehouse with dbt, with tests on every mart.",
+  "visible_text": "Pranav Saxena. Engineer who likes elt with dbt.\nPranav studied at Eastvale Engineering College and has 5 years of experience. He would describe his strengths as: Snowflake and BigQuery modelling, Kafka consumers, DAG orchestration, PySpark and Databricks jobs.\nProjects: Wrote Kafka consumers that land clickstream events in BigQuery within a minute. Wrote the SQL that reconciles finance and product marts, with window functions and tested dbt models. Modelled a Snowflake warehouse with dbt, with tests on every mart. Rebuilt nightly PySpark jobs on Databricks and cut the batch window from 6 hours to 50 minutes.",
+  "redacted_text": "[CANDIDATE]. Engineer who likes elt with dbt.\n[CANDIDATE] studied at [COLLEGE] and has 5 years of experience. They would describe their strengths as: Snowflake and BigQuery modelling, Kafka consumers, DAG orchestration, PySpark and Databricks jobs.\nProjects: Wrote Kafka consumers that land clickstream events in BigQuery within a minute. Wrote the SQL that reconciles finance and product marts, with window functions and tested dbt models. Modelled a Snowflake warehouse with dbt, with tests on every mart. Rebuilt nightly PySpark jobs on Databricks and cut the batch window from 6 hours to 50 minutes.",
   "source": "planted",
   "role": "data-engineering"
  },
@@ -3214,6 +3271,8 @@
   ],
   "projects": [
    "Ran TestFlight betas and phased rollouts for twelve production releases.",
+   "Shipped three iPhone and iPad apps in Swift, from the first storyboard to App Store review.",
+   "Shipped a SwiftUI rewrite of a 300k-user native Apple app with a 4.8 rating.",
    "Built local-first storage with CoreData and conflict resolution for field workers without signal."
   ],
   "bio": "Builder focused on swiftui and uikit apps.",
@@ -3221,8 +3280,8 @@
   "planted": "true_fit",
   "planted_for": "mobile-ios",
   "flags": [],
-  "visible_text": "Yuki Nguyen. Builder focused on swiftui and uikit apps.\nYuki studied at Bluefield College and has 6 years of experience. She would describe her strengths as: native Apple apps, SwiftUI and UIKit apps, local-first storage with CoreData.\nProjects: Ran TestFlight betas and phased rollouts for twelve production releases. Built local-first storage with CoreData and conflict resolution for field workers without signal.",
-  "redacted_text": "[CANDIDATE]. Builder focused on swiftui and uikit apps.\n[CANDIDATE] studied at [COLLEGE] and has 6 years of experience. They would describe their strengths as: native Apple apps, SwiftUI and UIKit apps, local-first storage with CoreData.\nProjects: Ran TestFlight betas and phased rollouts for twelve production releases. Built local-first storage with CoreData and conflict resolution for field workers without signal.",
+  "visible_text": "Yuki Nguyen. Builder focused on swiftui and uikit apps.\nYuki studied at Bluefield College and has 6 years of experience. She would describe her strengths as: native Apple apps, SwiftUI and UIKit apps, local-first storage with CoreData.\nProjects: Ran TestFlight betas and phased rollouts for twelve production releases. Shipped three iPhone and iPad apps in Swift, from the first storyboard to App Store review. Shipped a SwiftUI rewrite of a 300k-user native Apple app with a 4.8 rating. Built local-first storage with CoreData and conflict resolution for field workers without signal.",
+  "redacted_text": "[CANDIDATE]. Builder focused on swiftui and uikit apps.\n[CANDIDATE] studied at [COLLEGE] and has 6 years of experience. They would describe their strengths as: native Apple apps, SwiftUI and UIKit apps, local-first storage with CoreData.\nProjects: Ran TestFlight betas and phased rollouts for twelve production releases. Shipped three iPhone and iPad apps in Swift, from the first storyboard to App Store review. Shipped a SwiftUI rewrite of a 300k-user native Apple app with a 4.8 rating. Built local-first storage with CoreData and conflict resolution for field workers without signal.",
   "source": "planted",
   "role": "mobile-ios"
  },
@@ -3294,16 +3353,18 @@
    "pgvector and FAISS retrieval"
   ],
   "projects": [
-   "Replaced an Elasticsearch stack with pgvector and HNSW indexes, then tuned recall against a labelled set.",
-   "Designed REST contracts for a dense passage ranking service used by three internal teams."
+   "Wrote the Python ingestion and query services around the index, with asyncio workers and typed FastAPI endpoints.",
+   "Designed REST contracts for a dense passage ranking service used by three internal teams.",
+   "Served a fine-tuned sentence encoder behind a FastAPI gateway with batched inference and warm caches.",
+   "Built a FAISS index over 40M product descriptions and cut p95 lookup latency from 900ms to 60ms."
   ],
   "bio": "Engineer who likes dense passage ranking.",
   "archetype": "retrieval-backend",
   "planted": "true_fit",
   "planted_for": "retrieval-backend",
   "flags": [],
-  "visible_text": "Yuki Haddad. Engineer who likes dense passage ranking.\nYuki studied at Pinecrest Community College and has 9 years of experience. She would describe her strengths as: REST contract design, FastAPI services, PostgreSQL query tuning, pgvector and FAISS retrieval.\nProjects: Replaced an Elasticsearch stack with pgvector and HNSW indexes, then tuned recall against a labelled set. Designed REST contracts for a dense passage ranking service used by three internal teams.",
-  "redacted_text": "[CANDIDATE]. Engineer who likes dense passage ranking.\n[CANDIDATE] studied at [COLLEGE] and has 9 years of experience. They would describe their strengths as: REST contract design, FastAPI services, PostgreSQL query tuning, pgvector and FAISS retrieval.\nProjects: Replaced an Elasticsearch stack with pgvector and HNSW indexes, then tuned recall against a labelled set. Designed REST contracts for a dense passage ranking service used by three internal teams.",
+  "visible_text": "Yuki Haddad. Engineer who likes dense passage ranking.\nYuki studied at Pinecrest Community College and has 9 years of experience. She would describe her strengths as: REST contract design, FastAPI services, PostgreSQL query tuning, pgvector and FAISS retrieval.\nProjects: Wrote the Python ingestion and query services around the index, with asyncio workers and typed FastAPI endpoints. Designed REST contracts for a dense passage ranking service used by three internal teams. Served a fine-tuned sentence encoder behind a FastAPI gateway with batched inference and warm caches. Built a FAISS index over 40M product descriptions and cut p95 lookup latency from 900ms to 60ms.",
+  "redacted_text": "[CANDIDATE]. Engineer who likes dense passage ranking.\n[CANDIDATE] studied at [COLLEGE] and has 9 years of experience. They would describe their strengths as: REST contract design, FastAPI services, PostgreSQL query tuning, pgvector and FAISS retrieval.\nProjects: Wrote the Python ingestion and query services around the index, with asyncio workers and typed FastAPI endpoints. Designed REST contracts for a dense passage ranking service used by three internal teams. Served a fine-tuned sentence encoder behind a FastAPI gateway with batched inference and warm caches. Built a FAISS index over 40M product descriptions and cut p95 lookup latency from 900ms to 60ms.",
   "source": "planted",
   "role": "retrieval-backend"
  },
@@ -3348,17 +3409,18 @@
    "end-to-end features from DB to UI"
   ],
   "projects": [
-   "Delivered end-to-end features from database to UI for a scheduling product.",
+   "Built Node.js services in TypeScript with Fastify and Prisma, from schema to deployed endpoint.",
    "Owned Prisma migrations and backfills for a growing schema.",
-   "Designed an Apollo schema with federation across two services."
+   "Designed an Apollo schema with federation across two services.",
+   "Built Express and Fastify APIs for a marketplace with rate limits and auth."
   ],
   "bio": "Engineer who likes express and fastify apis.",
   "archetype": "node-fullstack",
   "planted": "true_fit",
   "planted_for": "node-fullstack",
   "flags": [],
-  "visible_text": "Kenji Petrov. Engineer who likes express and fastify apis.\nKenji studied at Pinecrest Community College and has 2 years of experience. He would describe his strengths as: Express and Fastify APIs, Apollo schema design, Prisma migrations, end-to-end features from DB to UI.\nProjects: Delivered end-to-end features from database to UI for a scheduling product. Owned Prisma migrations and backfills for a growing schema. Designed an Apollo schema with federation across two services.",
-  "redacted_text": "[CANDIDATE]. Engineer who likes express and fastify apis.\n[CANDIDATE] studied at [COLLEGE] and has 2 years of experience. They would describe their strengths as: Express and Fastify APIs, Apollo schema design, Prisma migrations, end-to-end features from DB to UI.\nProjects: Delivered end-to-end features from database to UI for a scheduling product. Owned Prisma migrations and backfills for a growing schema. Designed an Apollo schema with federation across two services.",
+  "visible_text": "Kenji Petrov. Engineer who likes express and fastify apis.\nKenji studied at Pinecrest Community College and has 2 years of experience. He would describe his strengths as: Express and Fastify APIs, Apollo schema design, Prisma migrations, end-to-end features from DB to UI.\nProjects: Built Node.js services in TypeScript with Fastify and Prisma, from schema to deployed endpoint. Owned Prisma migrations and backfills for a growing schema. Designed an Apollo schema with federation across two services. Built Express and Fastify APIs for a marketplace with rate limits and auth.",
+  "redacted_text": "[CANDIDATE]. Engineer who likes express and fastify apis.\n[CANDIDATE] studied at [COLLEGE] and has 2 years of experience. They would describe their strengths as: Express and Fastify APIs, Apollo schema design, Prisma migrations, end-to-end features from DB to UI.\nProjects: Built Node.js services in TypeScript with Fastify and Prisma, from schema to deployed endpoint. Owned Prisma migrations and backfills for a growing schema. Designed an Apollo schema with federation across two services. Built Express and Fastify APIs for a marketplace with rate limits and auth.",
   "source": "planted",
   "role": "node-fullstack"
  },
@@ -3404,15 +3466,16 @@
   "projects": [
    "Ran TestFlight betas and phased rollouts for twelve production releases.",
    "Built local-first storage with CoreData and conflict resolution for field workers without signal.",
-   "Shipped a SwiftUI rewrite of a 300k-user native Apple app with a 4.8 rating."
+   "Shipped a SwiftUI rewrite of a 300k-user native Apple app with a 4.8 rating.",
+   "Shipped three iPhone and iPad apps in Swift, from the first storyboard to App Store review."
   ],
   "bio": "Practitioner working on native apple apps.",
   "archetype": "mobile-ios",
   "planted": "true_fit",
   "planted_for": "mobile-ios",
   "flags": [],
-  "visible_text": "Felix Kulkarni. Practitioner working on native apple apps.\nFelix studied at Harrowgate College of Engineering and has 3 years of experience. He would describe his strengths as: native Apple apps, local-first storage with CoreData, SwiftUI and UIKit apps, TestFlight to production.\nProjects: Ran TestFlight betas and phased rollouts for twelve production releases. Built local-first storage with CoreData and conflict resolution for field workers without signal. Shipped a SwiftUI rewrite of a 300k-user native Apple app with a 4.8 rating.",
-  "redacted_text": "[CANDIDATE]. Practitioner working on native apple apps.\n[CANDIDATE] studied at [COLLEGE] and has 3 years of experience. They would describe their strengths as: native Apple apps, local-first storage with CoreData, SwiftUI and UIKit apps, TestFlight to production.\nProjects: Ran TestFlight betas and phased rollouts for twelve production releases. Built local-first storage with CoreData and conflict resolution for field workers without signal. Shipped a SwiftUI rewrite of a 300k-user native Apple app with a 4.8 rating.",
+  "visible_text": "Felix Kulkarni. Practitioner working on native apple apps.\nFelix studied at Harrowgate College of Engineering and has 3 years of experience. He would describe his strengths as: native Apple apps, local-first storage with CoreData, SwiftUI and UIKit apps, TestFlight to production.\nProjects: Ran TestFlight betas and phased rollouts for twelve production releases. Built local-first storage with CoreData and conflict resolution for field workers without signal. Shipped a SwiftUI rewrite of a 300k-user native Apple app with a 4.8 rating. Shipped three iPhone and iPad apps in Swift, from the first storyboard to App Store review.",
+  "redacted_text": "[CANDIDATE]. Practitioner working on native apple apps.\n[CANDIDATE] studied at [COLLEGE] and has 3 years of experience. They would describe their strengths as: native Apple apps, local-first storage with CoreData, SwiftUI and UIKit apps, TestFlight to production.\nProjects: Ran TestFlight betas and phased rollouts for twelve production releases. Built local-first storage with CoreData and conflict resolution for field workers without signal. Shipped a SwiftUI rewrite of a 300k-user native Apple app with a 4.8 rating. Shipped three iPhone and iPad apps in Swift, from the first storyboard to App Store review.",
   "source": "planted",
   "role": "mobile-ios"
  },
@@ -3570,16 +3633,18 @@
    "quantised to TensorRT and ONNX"
   ],
   "projects": [
-   "Built camera pipelines that run on-device inference at 30fps on a Jetson.",
-   "Trained detection and segmentation networks for shelf monitoring with 92% mAP."
+   "Delivered computer vision pipelines for shelf cameras: detection models trained, quantised and deployed on edge devices.",
+   "Trained detection and segmentation networks for shelf monitoring with 92% mAP.",
+   "Quantised ViT models to TensorRT and ONNX with under 1% accuracy loss.",
+   "Built camera pipelines that run on-device inference at 30fps on a Jetson."
   ],
   "bio": "Builder focused on camera pipelines.",
   "archetype": "computer-vision",
   "planted": "true_fit",
   "planted_for": "computer-vision",
   "flags": [],
-  "visible_text": "Amara Menon. Builder focused on camera pipelines.\nAmara studied at Riverbend Polytechnic and has 7 years of experience. She would describe her strengths as: on-device inference, camera pipelines, quantised to TensorRT and ONNX.\nProjects: Built camera pipelines that run on-device inference at 30fps on a Jetson. Trained detection and segmentation networks for shelf monitoring with 92% mAP.",
-  "redacted_text": "[CANDIDATE]. Builder focused on camera pipelines.\n[CANDIDATE] studied at [COLLEGE] and has 7 years of experience. They would describe their strengths as: on-device inference, camera pipelines, quantised to TensorRT and ONNX.\nProjects: Built camera pipelines that run on-device inference at 30fps on a Jetson. Trained detection and segmentation networks for shelf monitoring with 92% mAP.",
+  "visible_text": "Amara Menon. Builder focused on camera pipelines.\nAmara studied at Riverbend Polytechnic and has 7 years of experience. She would describe her strengths as: on-device inference, camera pipelines, quantised to TensorRT and ONNX.\nProjects: Delivered computer vision pipelines for shelf cameras: detection models trained, quantised and deployed on edge devices. Trained detection and segmentation networks for shelf monitoring with 92% mAP. Quantised ViT models to TensorRT and ONNX with under 1% accuracy loss. Built camera pipelines that run on-device inference at 30fps on a Jetson.",
+  "redacted_text": "[CANDIDATE]. Builder focused on camera pipelines.\n[CANDIDATE] studied at [COLLEGE] and has 7 years of experience. They would describe their strengths as: on-device inference, camera pipelines, quantised to TensorRT and ONNX.\nProjects: Delivered computer vision pipelines for shelf cameras: detection models trained, quantised and deployed on edge devices. Trained detection and segmentation networks for shelf monitoring with 92% mAP. Quantised ViT models to TensorRT and ONNX with under 1% accuracy loss. Built camera pipelines that run on-device inference at 30fps on a Jetson.",
   "source": "planted",
   "role": "computer-vision"
  },
@@ -3736,15 +3801,16 @@
   "projects": [
    "Split a monolith into JVM services behind a mesh with zero-downtime cutovers.",
    "Handled partition tolerance and leader election for a config service.",
-   "Wrote Kotlin and Spring services with contract tests across teams."
+   "Wrote Kotlin and Spring services with contract tests across teams.",
+   "Built event-driven consumers that process 50k messages a second with exactly-once semantics."
   ],
   "bio": "Engineer who likes partition tolerance and consensus.",
   "archetype": "java-platform",
   "planted": "true_fit",
   "planted_for": "java-platform",
   "flags": [],
-  "visible_text": "Arjun Garcia. Engineer who likes partition tolerance and consensus.\nArjun studied at Pinecrest Community College and has 12 years of experience. He would describe his strengths as: JVM services, service mesh, event-driven consumers, Kotlin and Spring, partition tolerance and consensus.\nProjects: Split a monolith into JVM services behind a mesh with zero-downtime cutovers. Handled partition tolerance and leader election for a config service. Wrote Kotlin and Spring services with contract tests across teams.",
-  "redacted_text": "[CANDIDATE]. Engineer who likes partition tolerance and consensus.\n[CANDIDATE] studied at [COLLEGE] and has 12 years of experience. They would describe their strengths as: JVM services, service mesh, event-driven consumers, Kotlin and Spring, partition tolerance and consensus.\nProjects: Split a monolith into JVM services behind a mesh with zero-downtime cutovers. Handled partition tolerance and leader election for a config service. Wrote Kotlin and Spring services with contract tests across teams.",
+  "visible_text": "Arjun Garcia. Engineer who likes partition tolerance and consensus.\nArjun studied at Pinecrest Community College and has 12 years of experience. He would describe his strengths as: JVM services, service mesh, event-driven consumers, Kotlin and Spring, partition tolerance and consensus.\nProjects: Split a monolith into JVM services behind a mesh with zero-downtime cutovers. Handled partition tolerance and leader election for a config service. Wrote Kotlin and Spring services with contract tests across teams. Built event-driven consumers that process 50k messages a second with exactly-once semantics.",
+  "redacted_text": "[CANDIDATE]. Engineer who likes partition tolerance and consensus.\n[CANDIDATE] studied at [COLLEGE] and has 12 years of experience. They would describe their strengths as: JVM services, service mesh, event-driven consumers, Kotlin and Spring, partition tolerance and consensus.\nProjects: Split a monolith into JVM services behind a mesh with zero-downtime cutovers. Handled partition tolerance and leader election for a config service. Wrote Kotlin and Spring services with contract tests across teams. Built event-driven consumers that process 50k messages a second with exactly-once semantics.",
   "source": "planted",
   "role": "java-platform"
  },
@@ -3790,16 +3856,18 @@
    "hardened login flows"
   ],
   "projects": [
-   "Ran red-team exercises against staging and wrote fixes with the owning teams.",
-   "Reviewed pull requests for vulnerabilities and built a lint rule that caught unsafe deserialisation."
+   "Owned application security for the web platform: threat models, secure code review on every risky pull request, and fixes shipped with the owning team.",
+   "Reviewed pull requests for vulnerabilities and built a lint rule that caught unsafe deserialisation.",
+   "Found and fixed SQL injection and broken auth in a legacy portal before launch.",
+   "Led STRIDE analysis for a new payments service."
   ],
   "bio": "Engineer who likes hardened login flows. Captains the men's football team at work.",
   "archetype": "appsec",
   "planted": "true_fit",
   "planted_for": "appsec",
   "flags": [],
-  "visible_text": "Elias Bhat. Engineer who likes hardened login flows. Captains the men's football team at work.\nElias studied at Carrow National Institute and has 4 years of experience. He would describe his strengths as: reviewed pull requests for vulnerabilities, STRIDE analysis, found and fixed injection and auth bugs, red-team exercises, hardened login flows.\nProjects: Ran red-team exercises against staging and wrote fixes with the owning teams. Reviewed pull requests for vulnerabilities and built a lint rule that caught unsafe deserialisation.",
-  "redacted_text": "[CANDIDATE]. Engineer who likes hardened login flows. Captains the [GROUP] football team at work.\n[CANDIDATE] studied at [COLLEGE] and has 4 years of experience. They would describe their strengths as: reviewed pull requests for vulnerabilities, STRIDE analysis, found and fixed injection and auth bugs, red-team exercises, hardened login flows.\nProjects: Ran red-team exercises against staging and wrote fixes with the owning teams. Reviewed pull requests for vulnerabilities and built a lint rule that caught unsafe deserialisation.",
+  "visible_text": "Elias Bhat. Engineer who likes hardened login flows. Captains the men's football team at work.\nElias studied at Carrow National Institute and has 4 years of experience. He would describe his strengths as: reviewed pull requests for vulnerabilities, STRIDE analysis, found and fixed injection and auth bugs, red-team exercises, hardened login flows.\nProjects: Owned application security for the web platform: threat models, secure code review on every risky pull request, and fixes shipped with the owning team. Reviewed pull requests for vulnerabilities and built a lint rule that caught unsafe deserialisation. Found and fixed SQL injection and broken auth in a legacy portal before launch. Led STRIDE analysis for a new payments service.",
+  "redacted_text": "[CANDIDATE]. Engineer who likes hardened login flows. Captains the [GROUP] football team at work.\n[CANDIDATE] studied at [COLLEGE] and has 4 years of experience. They would describe their strengths as: reviewed pull requests for vulnerabilities, STRIDE analysis, found and fixed injection and auth bugs, red-team exercises, hardened login flows.\nProjects: Owned application security for the web platform: threat models, secure code review on every risky pull request, and fixes shipped with the owning team. Reviewed pull requests for vulnerabilities and built a lint rule that caught unsafe deserialisation. Found and fixed SQL injection and broken auth in a legacy portal before launch. Led STRIDE analysis for a new payments service.",
   "source": "planted",
   "role": "appsec"
  },
@@ -3848,15 +3916,16 @@
   "projects": [
    "Used difference-in-differences to measure a regional launch where randomisation was impossible.",
    "Built Looker and Metabase reporting that product managers trust.",
-   "Ran randomised experiments on pricing with sequential tests and clear stopping rules."
+   "Ran randomised experiments on pricing with sequential tests and clear stopping rules.",
+   "Wrote the team's pandas and statsmodels toolkit for variance reduction."
   ],
   "bio": "Engineer who likes randomised experiments and uplift. Active in the Women Who Code chapter.",
   "archetype": "experimentation",
   "planted": "true_fit",
   "planted_for": "experimentation",
   "flags": [],
-  "visible_text": "Riya Bose. Engineer who likes randomised experiments and uplift. Active in the Women Who Code chapter.\nRiya studied at Aldergate Institute of Science and has 3 years of experience. She would describe her strengths as: difference-in-differences, Looker and Metabase reporting, Bayesian decision rules, pandas and statsmodels.\nProjects: Used difference-in-differences to measure a regional launch where randomisation was impossible. Built Looker and Metabase reporting that product managers trust. Ran randomised experiments on pricing with sequential tests and clear stopping rules.",
-  "redacted_text": "[CANDIDATE]. Engineer who likes randomised experiments and uplift. Active in the [COMMUNITY] chapter.\n[CANDIDATE] studied at [COLLEGE] and has 3 years of experience. They would describe their strengths as: difference-in-differences, Looker and Metabase reporting, Bayesian decision rules, pandas and statsmodels.\nProjects: Used difference-in-differences to measure a regional launch where randomisation was impossible. Built Looker and Metabase reporting that product managers trust. Ran randomised experiments on pricing with sequential tests and clear stopping rules.",
+  "visible_text": "Riya Bose. Engineer who likes randomised experiments and uplift. Active in the Women Who Code chapter.\nRiya studied at Aldergate Institute of Science and has 3 years of experience. She would describe her strengths as: difference-in-differences, Looker and Metabase reporting, Bayesian decision rules, pandas and statsmodels.\nProjects: Used difference-in-differences to measure a regional launch where randomisation was impossible. Built Looker and Metabase reporting that product managers trust. Ran randomised experiments on pricing with sequential tests and clear stopping rules. Wrote the team's pandas and statsmodels toolkit for variance reduction.",
+  "redacted_text": "[CANDIDATE]. Engineer who likes randomised experiments and uplift. Active in the [COMMUNITY] chapter.\n[CANDIDATE] studied at [COLLEGE] and has 3 years of experience. They would describe their strengths as: difference-in-differences, Looker and Metabase reporting, Bayesian decision rules, pandas and statsmodels.\nProjects: Used difference-in-differences to measure a regional launch where randomisation was impossible. Built Looker and Metabase reporting that product managers trust. Ran randomised experiments on pricing with sequential tests and clear stopping rules. Wrote the team's pandas and statsmodels toolkit for variance reduction.",
   "source": "planted",
   "role": "experimentation"
  },
@@ -3932,16 +4001,17 @@
   ],
   "projects": [
    "Held 99.95% uptime for a payments API while on-call, and wrote the postmortems when it slipped.",
-   "Built Grafana and Prometheus dashboards with SLO burn alerts.",
-   "Cut GitHub Actions pipeline time from 25 to 7 minutes with caching and test sharding."
+   "Ran incident response for an AWS estate: Terraform modules for every account, paging, a 30-minute MTTR and blameless reviews.",
+   "Cut GitHub Actions pipeline time from 25 to 7 minutes with caching and test sharding.",
+   "Codified EC2 and EKS estates in Pulumi and HCL with drift detection."
   ],
   "bio": "Builder focused on github actions pipelines.",
   "archetype": "devops-sre",
   "planted": "true_fit",
   "planted_for": "devops-sre",
   "flags": [],
-  "visible_text": "Tanvi Lindqvist. Builder focused on github actions pipelines.\nTanvi studied at Eastvale Engineering College and has 8 years of experience. She would describe her strengths as: EC2 and EKS, GitHub Actions pipelines, Grafana and Prometheus dashboards, infrastructure as code with Pulumi and HCL, ran postmortems.\nProjects: Held 99.95% uptime for a payments API while on-call, and wrote the postmortems when it slipped. Built Grafana and Prometheus dashboards with SLO burn alerts. Cut GitHub Actions pipeline time from 25 to 7 minutes with caching and test sharding.",
-  "redacted_text": "[CANDIDATE]. Builder focused on github actions pipelines.\n[CANDIDATE] studied at [COLLEGE] and has 8 years of experience. They would describe their strengths as: EC2 and EKS, GitHub Actions pipelines, Grafana and Prometheus dashboards, infrastructure as code with Pulumi and HCL, ran postmortems.\nProjects: Held 99.95% uptime for a payments API while on-call, and wrote the postmortems when it slipped. Built Grafana and Prometheus dashboards with SLO burn alerts. Cut GitHub Actions pipeline time from 25 to 7 minutes with caching and test sharding.",
+  "visible_text": "Tanvi Lindqvist. Builder focused on github actions pipelines.\nTanvi studied at Eastvale Engineering College and has 8 years of experience. She would describe her strengths as: EC2 and EKS, GitHub Actions pipelines, Grafana and Prometheus dashboards, infrastructure as code with Pulumi and HCL, ran postmortems.\nProjects: Held 99.95% uptime for a payments API while on-call, and wrote the postmortems when it slipped. Ran incident response for an AWS estate: Terraform modules for every account, paging, a 30-minute MTTR and blameless reviews. Cut GitHub Actions pipeline time from 25 to 7 minutes with caching and test sharding. Codified EC2 and EKS estates in Pulumi and HCL with drift detection.",
+  "redacted_text": "[CANDIDATE]. Builder focused on github actions pipelines.\n[CANDIDATE] studied at [COLLEGE] and has 8 years of experience. They would describe their strengths as: EC2 and EKS, GitHub Actions pipelines, Grafana and Prometheus dashboards, infrastructure as code with Pulumi and HCL, ran postmortems.\nProjects: Held 99.95% uptime for a payments API while on-call, and wrote the postmortems when it slipped. Ran incident response for an AWS estate: Terraform modules for every account, paging, a 30-minute MTTR and blameless reviews. Cut GitHub Actions pipeline time from 25 to 7 minutes with caching and test sharding. Codified EC2 and EKS estates in Pulumi and HCL with drift detection.",
   "source": "planted",
   "role": "devops-sre"
  },
@@ -3989,15 +4059,16 @@
   "projects": [
    "Wrote Torch training loops with mixed precision that halved GPU hours.",
    "Set up drift alerting on prediction distributions with weekly retraining triggers.",
-   "Built offline-online feature parity checks that caught three silent training-serving skews."
+   "Built offline-online feature parity checks that caught three silent training-serving skews.",
+   "Moved twelve models from notebooks to KServe with canary rollouts and automatic rollback."
   ],
   "bio": "Practitioner working on offline-online feature parity.",
   "archetype": "ml-platform",
   "planted": "true_fit",
   "planted_for": "ml-platform",
   "flags": [],
-  "visible_text": "Ivan Desai. Practitioner working on offline-online feature parity.\nIvan studied at Greenhill Institute and has 7 years of experience. He would describe his strengths as: container orchestration across clusters, offline-online feature parity, shipping models with KServe and Seldon, Torch training loops, drift alerting.\nProjects: Wrote Torch training loops with mixed precision that halved GPU hours. Set up drift alerting on prediction distributions with weekly retraining triggers. Built offline-online feature parity checks that caught three silent training-serving skews.",
-  "redacted_text": "[CANDIDATE]. Practitioner working on offline-online feature parity.\n[CANDIDATE] studied at [COLLEGE] and has 7 years of experience. They would describe their strengths as: container orchestration across clusters, offline-online feature parity, shipping models with KServe and Seldon, Torch training loops, drift alerting.\nProjects: Wrote Torch training loops with mixed precision that halved GPU hours. Set up drift alerting on prediction distributions with weekly retraining triggers. Built offline-online feature parity checks that caught three silent training-serving skews.",
+  "visible_text": "Ivan Desai. Practitioner working on offline-online feature parity.\nIvan studied at Greenhill Institute and has 7 years of experience. He would describe his strengths as: container orchestration across clusters, offline-online feature parity, shipping models with KServe and Seldon, Torch training loops, drift alerting.\nProjects: Wrote Torch training loops with mixed precision that halved GPU hours. Set up drift alerting on prediction distributions with weekly retraining triggers. Built offline-online feature parity checks that caught three silent training-serving skews. Moved twelve models from notebooks to KServe with canary rollouts and automatic rollback.",
+  "redacted_text": "[CANDIDATE]. Practitioner working on offline-online feature parity.\n[CANDIDATE] studied at [COLLEGE] and has 7 years of experience. They would describe their strengths as: container orchestration across clusters, offline-online feature parity, shipping models with KServe and Seldon, Torch training loops, drift alerting.\nProjects: Wrote Torch training loops with mixed precision that halved GPU hours. Set up drift alerting on prediction distributions with weekly retraining triggers. Built offline-online feature parity checks that caught three silent training-serving skews. Moved twelve models from notebooks to KServe with canary rollouts and automatic rollback.",
   "source": "planted",
   "role": "ml-platform"
  },
@@ -4180,15 +4251,16 @@
   "projects": [
    "Ran WCAG 2.1 audits with screen readers and fixed focus traps across the checkout flow.",
    "Shipped a shared UI kit with design tokens adopted by six product squads, with Storybook docs for every piece.",
-   "Migrated a JavaScript codebase to strict typing with zero any escapes."
+   "Migrated a JavaScript codebase to strict typing with zero any escapes.",
+   "Brought Largest Contentful Paint under 1.5s on the marketing site by code-splitting and image work."
   ],
   "bio": "Builder focused on core web vitals work.",
   "archetype": "frontend-design-systems",
   "planted": "true_fit",
   "planted_for": "frontend-design-systems",
   "flags": [],
-  "visible_text": "Pranav Bose. Builder focused on core web vitals work.\nPranav studied at Carrow National Institute and has 5 years of experience. He would describe his strengths as: Storybook-driven components, shared UI kit with design tokens, Next.js and Preact UIs, Core Web Vitals work.\nProjects: Ran WCAG 2.1 audits with screen readers and fixed focus traps across the checkout flow. Shipped a shared UI kit with design tokens adopted by six product squads, with Storybook docs for every piece. Migrated a JavaScript codebase to strict typing with zero any escapes.",
-  "redacted_text": "[CANDIDATE]. Builder focused on core web vitals work.\n[CANDIDATE] studied at [COLLEGE] and has 5 years of experience. They would describe their strengths as: Storybook-driven components, shared UI kit with design tokens, Next.js and Preact UIs, Core Web Vitals work.\nProjects: Ran WCAG 2.1 audits with screen readers and fixed focus traps across the checkout flow. Shipped a shared UI kit with design tokens adopted by six product squads, with Storybook docs for every piece. Migrated a JavaScript codebase to strict typing with zero any escapes.",
+  "visible_text": "Pranav Bose. Builder focused on core web vitals work.\nPranav studied at Carrow National Institute and has 5 years of experience. He would describe his strengths as: Storybook-driven components, shared UI kit with design tokens, Next.js and Preact UIs, Core Web Vitals work.\nProjects: Ran WCAG 2.1 audits with screen readers and fixed focus traps across the checkout flow. Shipped a shared UI kit with design tokens adopted by six product squads, with Storybook docs for every piece. Migrated a JavaScript codebase to strict typing with zero any escapes. Brought Largest Contentful Paint under 1.5s on the marketing site by code-splitting and image work.",
+  "redacted_text": "[CANDIDATE]. Builder focused on core web vitals work.\n[CANDIDATE] studied at [COLLEGE] and has 5 years of experience. They would describe their strengths as: Storybook-driven components, shared UI kit with design tokens, Next.js and Preact UIs, Core Web Vitals work.\nProjects: Ran WCAG 2.1 audits with screen readers and fixed focus traps across the checkout flow. Shipped a shared UI kit with design tokens adopted by six product squads, with Storybook docs for every piece. Migrated a JavaScript codebase to strict typing with zero any escapes. Brought Largest Contentful Paint under 1.5s on the marketing site by code-splitting and image work.",
   "source": "planted",
   "role": "frontend-design-systems"
  },
@@ -4237,16 +4309,17 @@
   ],
   "projects": [
    "Served a fine-tuned sentence encoder behind a FastAPI gateway with batched inference and warm caches.",
-   "Designed REST contracts for a dense passage ranking service used by three internal teams.",
-   "Built a FAISS index over 40M product descriptions and cut p95 lookup latency from 900ms to 60ms."
+   "Wrote the Python ingestion and query services around the index, with asyncio workers and typed FastAPI endpoints.",
+   "Built a FAISS index over 40M product descriptions and cut p95 lookup latency from 900ms to 60ms.",
+   "Replaced an Elasticsearch stack with pgvector and HNSW indexes, then tuned recall against a labelled set."
   ],
   "bio": "Builder focused on pgvector and faiss retrieval.",
   "archetype": "retrieval-backend",
   "planted": "true_fit",
   "planted_for": "retrieval-backend",
   "flags": [],
-  "visible_text": "Ishita Nguyen. Builder focused on pgvector and faiss retrieval.\nIshita studied at Westbrook University and has 11 years of experience. She would describe her strengths as: REST contract design, dense passage ranking, sentence-encoder serving, FastAPI services, pgvector and FAISS retrieval.\nProjects: Served a fine-tuned sentence encoder behind a FastAPI gateway with batched inference and warm caches. Designed REST contracts for a dense passage ranking service used by three internal teams. Built a FAISS index over 40M product descriptions and cut p95 lookup latency from 900ms to 60ms.",
-  "redacted_text": "[CANDIDATE]. Builder focused on pgvector and faiss retrieval.\n[CANDIDATE] studied at [COLLEGE] and has 11 years of experience. They would describe their strengths as: REST contract design, dense passage ranking, sentence-encoder serving, FastAPI services, pgvector and FAISS retrieval.\nProjects: Served a fine-tuned sentence encoder behind a FastAPI gateway with batched inference and warm caches. Designed REST contracts for a dense passage ranking service used by three internal teams. Built a FAISS index over 40M product descriptions and cut p95 lookup latency from 900ms to 60ms.",
+  "visible_text": "Ishita Nguyen. Builder focused on pgvector and faiss retrieval.\nIshita studied at Westbrook University and has 11 years of experience. She would describe her strengths as: REST contract design, dense passage ranking, sentence-encoder serving, FastAPI services, pgvector and FAISS retrieval.\nProjects: Served a fine-tuned sentence encoder behind a FastAPI gateway with batched inference and warm caches. Wrote the Python ingestion and query services around the index, with asyncio workers and typed FastAPI endpoints. Built a FAISS index over 40M product descriptions and cut p95 lookup latency from 900ms to 60ms. Replaced an Elasticsearch stack with pgvector and HNSW indexes, then tuned recall against a labelled set.",
+  "redacted_text": "[CANDIDATE]. Builder focused on pgvector and faiss retrieval.\n[CANDIDATE] studied at [COLLEGE] and has 11 years of experience. They would describe their strengths as: REST contract design, dense passage ranking, sentence-encoder serving, FastAPI services, pgvector and FAISS retrieval.\nProjects: Served a fine-tuned sentence encoder behind a FastAPI gateway with batched inference and warm caches. Wrote the Python ingestion and query services around the index, with asyncio workers and typed FastAPI endpoints. Built a FAISS index over 40M product descriptions and cut p95 lookup latency from 900ms to 60ms. Replaced an Elasticsearch stack with pgvector and HNSW indexes, then tuned recall against a labelled set.",
   "source": "planted",
   "role": "retrieval-backend"
  },
@@ -4294,15 +4367,16 @@
   "projects": [
    "Built local-first storage with CoreData and conflict resolution for field workers without signal.",
    "Ran TestFlight betas and phased rollouts for twelve production releases.",
-   "Shipped a SwiftUI rewrite of a 300k-user native Apple app with a 4.8 rating."
+   "Shipped a SwiftUI rewrite of a 300k-user native Apple app with a 4.8 rating.",
+   "Shipped three iPhone and iPad apps in Swift, from the first storyboard to App Store review."
   ],
   "bio": "Practitioner working on swiftui and uikit apps.",
   "archetype": "mobile-ios",
   "planted": "true_fit",
   "planted_for": "mobile-ios",
   "flags": [],
-  "visible_text": "Karthik Fischer. Practitioner working on swiftui and uikit apps.\nKarthik studied at Riverbend Polytechnic and has 5 years of experience. He would describe his strengths as: local-first storage with CoreData, TestFlight to production, native Apple apps, SwiftUI and UIKit apps.\nProjects: Built local-first storage with CoreData and conflict resolution for field workers without signal. Ran TestFlight betas and phased rollouts for twelve production releases. Shipped a SwiftUI rewrite of a 300k-user native Apple app with a 4.8 rating.",
-  "redacted_text": "[CANDIDATE]. Practitioner working on swiftui and uikit apps.\n[CANDIDATE] studied at [COLLEGE] and has 5 years of experience. They would describe their strengths as: local-first storage with CoreData, TestFlight to production, native Apple apps, SwiftUI and UIKit apps.\nProjects: Built local-first storage with CoreData and conflict resolution for field workers without signal. Ran TestFlight betas and phased rollouts for twelve production releases. Shipped a SwiftUI rewrite of a 300k-user native Apple app with a 4.8 rating.",
+  "visible_text": "Karthik Fischer. Practitioner working on swiftui and uikit apps.\nKarthik studied at Riverbend Polytechnic and has 5 years of experience. He would describe his strengths as: local-first storage with CoreData, TestFlight to production, native Apple apps, SwiftUI and UIKit apps.\nProjects: Built local-first storage with CoreData and conflict resolution for field workers without signal. Ran TestFlight betas and phased rollouts for twelve production releases. Shipped a SwiftUI rewrite of a 300k-user native Apple app with a 4.8 rating. Shipped three iPhone and iPad apps in Swift, from the first storyboard to App Store review.",
+  "redacted_text": "[CANDIDATE]. Practitioner working on swiftui and uikit apps.\n[CANDIDATE] studied at [COLLEGE] and has 5 years of experience. They would describe their strengths as: local-first storage with CoreData, TestFlight to production, native Apple apps, SwiftUI and UIKit apps.\nProjects: Built local-first storage with CoreData and conflict resolution for field workers without signal. Ran TestFlight betas and phased rollouts for twelve production releases. Shipped a SwiftUI rewrite of a 300k-user native Apple app with a 4.8 rating. Shipped three iPhone and iPad apps in Swift, from the first storyboard to App Store review.",
   "source": "planted",
   "role": "mobile-ios"
  },
@@ -4322,15 +4396,17 @@
   ],
   "projects": [
    "Led STRIDE analysis for a new payments service.",
-   "Found and fixed SQL injection and broken auth in a legacy portal before launch."
+   "Found and fixed SQL injection and broken auth in a legacy portal before launch.",
+   "Reviewed pull requests for vulnerabilities and built a lint rule that caught unsafe deserialisation.",
+   "Owned application security for the web platform: threat models, secure code review on every risky pull request, and fixes shipped with the owning team."
   ],
   "bio": "Practitioner working on stride analysis.",
   "archetype": "appsec",
   "planted": "true_fit",
   "planted_for": "appsec",
   "flags": [],
-  "visible_text": "Dev Menon. Practitioner working on stride analysis.\nDev studied at Bluefield College and has 5 years of experience. He would describe his strengths as: reviewed pull requests for vulnerabilities, red-team exercises, STRIDE analysis, found and fixed injection and auth bugs, hardened login flows.\nProjects: Led STRIDE analysis for a new payments service. Found and fixed SQL injection and broken auth in a legacy portal before launch.",
-  "redacted_text": "[CANDIDATE]. Practitioner working on stride analysis.\n[CANDIDATE] studied at [COLLEGE] and has 5 years of experience. They would describe their strengths as: reviewed pull requests for vulnerabilities, red-team exercises, STRIDE analysis, found and fixed injection and auth bugs, hardened login flows.\nProjects: Led STRIDE analysis for a new payments service. Found and fixed SQL injection and broken auth in a legacy portal before launch.",
+  "visible_text": "Dev Menon. Practitioner working on stride analysis.\nDev studied at Bluefield College and has 5 years of experience. He would describe his strengths as: reviewed pull requests for vulnerabilities, red-team exercises, STRIDE analysis, found and fixed injection and auth bugs, hardened login flows.\nProjects: Led STRIDE analysis for a new payments service. Found and fixed SQL injection and broken auth in a legacy portal before launch. Reviewed pull requests for vulnerabilities and built a lint rule that caught unsafe deserialisation. Owned application security for the web platform: threat models, secure code review on every risky pull request, and fixes shipped with the owning team.",
+  "redacted_text": "[CANDIDATE]. Practitioner working on stride analysis.\n[CANDIDATE] studied at [COLLEGE] and has 5 years of experience. They would describe their strengths as: reviewed pull requests for vulnerabilities, red-team exercises, STRIDE analysis, found and fixed injection and auth bugs, hardened login flows.\nProjects: Led STRIDE analysis for a new payments service. Found and fixed SQL injection and broken auth in a legacy portal before launch. Reviewed pull requests for vulnerabilities and built a lint rule that caught unsafe deserialisation. Owned application security for the web platform: threat models, secure code review on every risky pull request, and fixes shipped with the owning team.",
   "source": "planted",
   "role": "appsec"
  },
@@ -4350,16 +4426,17 @@
   ],
   "projects": [
    "Built offline-online feature parity checks that caught three silent training-serving skews.",
-   "Wrote Torch training loops with mixed precision that halved GPU hours.",
-   "Set up drift alerting on prediction distributions with weekly retraining triggers."
+   "Packaged PyTorch models into containers and rolled them out on EKS clusters with Helm, autoscaling on GPU load.",
+   "Set up drift alerting on prediction distributions with weekly retraining triggers.",
+   "Moved twelve models from notebooks to KServe with canary rollouts and automatic rollback."
   ],
   "bio": "Practitioner working on shipping models with kserve and seldon. Former fraternity chapter lead.",
   "archetype": "ml-platform",
   "planted": "true_fit",
   "planted_for": "ml-platform",
   "flags": [],
-  "visible_text": "Arjun Joshi. Practitioner working on shipping models with kserve and seldon. Former fraternity chapter lead.\nArjun studied at Pinecrest Community College and has 9 years of experience. He would describe his strengths as: drift alerting, Torch training loops, offline-online feature parity, shipping models with KServe and Seldon, container orchestration across clusters.\nProjects: Built offline-online feature parity checks that caught three silent training-serving skews. Wrote Torch training loops with mixed precision that halved GPU hours. Set up drift alerting on prediction distributions with weekly retraining triggers.",
-  "redacted_text": "[CANDIDATE]. Practitioner working on shipping models with kserve and seldon. Former [STUDENT ORG] chapter lead.\n[CANDIDATE] studied at [COLLEGE] and has 9 years of experience. They would describe their strengths as: drift alerting, Torch training loops, offline-online feature parity, shipping models with KServe and Seldon, container orchestration across clusters.\nProjects: Built offline-online feature parity checks that caught three silent training-serving skews. Wrote Torch training loops with mixed precision that halved GPU hours. Set up drift alerting on prediction distributions with weekly retraining triggers.",
+  "visible_text": "Arjun Joshi. Practitioner working on shipping models with kserve and seldon. Former fraternity chapter lead.\nArjun studied at Pinecrest Community College and has 9 years of experience. He would describe his strengths as: drift alerting, Torch training loops, offline-online feature parity, shipping models with KServe and Seldon, container orchestration across clusters.\nProjects: Built offline-online feature parity checks that caught three silent training-serving skews. Packaged PyTorch models into containers and rolled them out on EKS clusters with Helm, autoscaling on GPU load. Set up drift alerting on prediction distributions with weekly retraining triggers. Moved twelve models from notebooks to KServe with canary rollouts and automatic rollback.",
+  "redacted_text": "[CANDIDATE]. Practitioner working on shipping models with kserve and seldon. Former [STUDENT ORG] chapter lead.\n[CANDIDATE] studied at [COLLEGE] and has 9 years of experience. They would describe their strengths as: drift alerting, Torch training loops, offline-online feature parity, shipping models with KServe and Seldon, container orchestration across clusters.\nProjects: Built offline-online feature parity checks that caught three silent training-serving skews. Packaged PyTorch models into containers and rolled them out on EKS clusters with Helm, autoscaling on GPU load. Set up drift alerting on prediction distributions with weekly retraining triggers. Moved twelve models from notebooks to KServe with canary rollouts and automatic rollback.",
   "source": "planted",
   "role": "ml-platform"
  },
@@ -4377,15 +4454,17 @@
   ],
   "projects": [
    "Wrote Torch training loops with mixed precision that halved GPU hours.",
-   "Moved twelve models from notebooks to KServe with canary rollouts and automatic rollback."
+   "Moved twelve models from notebooks to KServe with canary rollouts and automatic rollback.",
+   "Packaged PyTorch models into containers and rolled them out on EKS clusters with Helm, autoscaling on GPU load.",
+   "Set up drift alerting on prediction distributions with weekly retraining triggers."
   ],
   "bio": "Engineer who likes shipping models with kserve and seldon. Former fraternity chapter lead.",
   "archetype": "ml-platform",
   "planted": "true_fit",
   "planted_for": "ml-platform",
   "flags": [],
-  "visible_text": "Arjun Reddy. Engineer who likes shipping models with kserve and seldon. Former fraternity chapter lead.\nArjun studied at Eastvale Engineering College and has 7 years of experience. He would describe his strengths as: offline-online feature parity, container orchestration across clusters, shipping models with KServe and Seldon.\nProjects: Wrote Torch training loops with mixed precision that halved GPU hours. Moved twelve models from notebooks to KServe with canary rollouts and automatic rollback.",
-  "redacted_text": "[CANDIDATE]. Engineer who likes shipping models with kserve and seldon. Former [STUDENT ORG] chapter lead.\n[CANDIDATE] studied at [COLLEGE] and has 7 years of experience. They would describe their strengths as: offline-online feature parity, container orchestration across clusters, shipping models with KServe and Seldon.\nProjects: Wrote Torch training loops with mixed precision that halved GPU hours. Moved twelve models from notebooks to KServe with canary rollouts and automatic rollback.",
+  "visible_text": "Arjun Reddy. Engineer who likes shipping models with kserve and seldon. Former fraternity chapter lead.\nArjun studied at Eastvale Engineering College and has 7 years of experience. He would describe his strengths as: offline-online feature parity, container orchestration across clusters, shipping models with KServe and Seldon.\nProjects: Wrote Torch training loops with mixed precision that halved GPU hours. Moved twelve models from notebooks to KServe with canary rollouts and automatic rollback. Packaged PyTorch models into containers and rolled them out on EKS clusters with Helm, autoscaling on GPU load. Set up drift alerting on prediction distributions with weekly retraining triggers.",
+  "redacted_text": "[CANDIDATE]. Engineer who likes shipping models with kserve and seldon. Former [STUDENT ORG] chapter lead.\n[CANDIDATE] studied at [COLLEGE] and has 7 years of experience. They would describe their strengths as: offline-online feature parity, container orchestration across clusters, shipping models with KServe and Seldon.\nProjects: Wrote Torch training loops with mixed precision that halved GPU hours. Moved twelve models from notebooks to KServe with canary rollouts and automatic rollback. Packaged PyTorch models into containers and rolled them out on EKS clusters with Helm, autoscaling on GPU load. Set up drift alerting on prediction distributions with weekly retraining triggers.",
   "source": "planted",
   "role": "ml-platform"
  },
@@ -4405,15 +4484,16 @@
   "projects": [
    "Graded model outputs with rubrics and a held-out set, and tracked regressions per release.",
    "Added guardrails and refusal handling for unsafe requests.",
-   "Built a grounded chat assistant over internal docs with citation spans checked against sources."
+   "Built a grounded chat assistant over internal docs with citation spans checked against sources.",
+   "Shipped tool-calling workflows with human approval before anything irreversible."
   ],
   "bio": "Builder focused on guardrails and refusal handling.",
   "archetype": "llm-apps",
   "planted": "true_fit",
   "planted_for": "llm-apps",
   "flags": [],
-  "visible_text": "Kunal Joshi. Builder focused on guardrails and refusal handling.\nKunal studied at Riverbend Polytechnic and has 5 years of experience. He would describe his strengths as: guardrails and refusal handling, grounded chat assistants over internal docs, tool-calling workflows, LangGraph.\nProjects: Graded model outputs with rubrics and a held-out set, and tracked regressions per release. Added guardrails and refusal handling for unsafe requests. Built a grounded chat assistant over internal docs with citation spans checked against sources.",
-  "redacted_text": "[CANDIDATE]. Builder focused on guardrails and refusal handling.\n[CANDIDATE] studied at [COLLEGE] and has 5 years of experience. They would describe their strengths as: guardrails and refusal handling, grounded chat assistants over internal docs, tool-calling workflows, LangGraph.\nProjects: Graded model outputs with rubrics and a held-out set, and tracked regressions per release. Added guardrails and refusal handling for unsafe requests. Built a grounded chat assistant over internal docs with citation spans checked against sources.",
+  "visible_text": "Kunal Joshi. Builder focused on guardrails and refusal handling.\nKunal studied at Riverbend Polytechnic and has 5 years of experience. He would describe his strengths as: guardrails and refusal handling, grounded chat assistants over internal docs, tool-calling workflows, LangGraph.\nProjects: Graded model outputs with rubrics and a held-out set, and tracked regressions per release. Added guardrails and refusal handling for unsafe requests. Built a grounded chat assistant over internal docs with citation spans checked against sources. Shipped tool-calling workflows with human approval before anything irreversible.",
+  "redacted_text": "[CANDIDATE]. Builder focused on guardrails and refusal handling.\n[CANDIDATE] studied at [COLLEGE] and has 5 years of experience. They would describe their strengths as: guardrails and refusal handling, grounded chat assistants over internal docs, tool-calling workflows, LangGraph.\nProjects: Graded model outputs with rubrics and a held-out set, and tracked regressions per release. Added guardrails and refusal handling for unsafe requests. Built a grounded chat assistant over internal docs with citation spans checked against sources. Shipped tool-calling workflows with human approval before anything irreversible.",
   "source": "planted",
   "role": "llm-apps"
  },
@@ -4432,6 +4512,8 @@
   ],
   "projects": [
    "Built camera pipelines that run on-device inference at 30fps on a Jetson.",
+   "Delivered computer vision pipelines for shelf cameras: detection models trained, quantised and deployed on edge devices.",
+   "Quantised ViT models to TensorRT and ONNX with under 1% accuracy loss.",
    "Trained detection and segmentation networks for shelf monitoring with 92% mAP."
   ],
   "bio": "Engineer who likes camera pipelines.",
@@ -4439,8 +4521,8 @@
   "planted": "true_fit",
   "planted_for": "computer-vision",
   "flags": [],
-  "visible_text": "Maya Kowalski. Engineer who likes camera pipelines.\nMaya studied at Lakeside State University and has 3 years of experience. She would describe her strengths as: camera pipelines, detection and segmentation networks, on-device inference, CNN and ViT training.\nProjects: Built camera pipelines that run on-device inference at 30fps on a Jetson. Trained detection and segmentation networks for shelf monitoring with 92% mAP.",
-  "redacted_text": "[CANDIDATE]. Engineer who likes camera pipelines.\n[CANDIDATE] studied at [COLLEGE] and has 3 years of experience. They would describe their strengths as: camera pipelines, detection and segmentation networks, on-device inference, CNN and ViT training.\nProjects: Built camera pipelines that run on-device inference at 30fps on a Jetson. Trained detection and segmentation networks for shelf monitoring with 92% mAP.",
+  "visible_text": "Maya Kowalski. Engineer who likes camera pipelines.\nMaya studied at Lakeside State University and has 3 years of experience. She would describe her strengths as: camera pipelines, detection and segmentation networks, on-device inference, CNN and ViT training.\nProjects: Built camera pipelines that run on-device inference at 30fps on a Jetson. Delivered computer vision pipelines for shelf cameras: detection models trained, quantised and deployed on edge devices. Quantised ViT models to TensorRT and ONNX with under 1% accuracy loss. Trained detection and segmentation networks for shelf monitoring with 92% mAP.",
+  "redacted_text": "[CANDIDATE]. Engineer who likes camera pipelines.\n[CANDIDATE] studied at [COLLEGE] and has 3 years of experience. They would describe their strengths as: camera pipelines, detection and segmentation networks, on-device inference, CNN and ViT training.\nProjects: Built camera pipelines that run on-device inference at 30fps on a Jetson. Delivered computer vision pipelines for shelf cameras: detection models trained, quantised and deployed on edge devices. Quantised ViT models to TensorRT and ONNX with under 1% accuracy loss. Trained detection and segmentation networks for shelf monitoring with 92% mAP.",
   "source": "planted",
   "role": "computer-vision"
  },
@@ -4537,15 +4619,17 @@
   ],
   "projects": [
    "Codified EC2 and EKS estates in Pulumi and HCL with drift detection.",
-   "Cut GitHub Actions pipeline time from 25 to 7 minutes with caching and test sharding."
+   "Cut GitHub Actions pipeline time from 25 to 7 minutes with caching and test sharding.",
+   "Held 99.95% uptime for a payments API while on-call, and wrote the postmortems when it slipped.",
+   "Ran incident response for an AWS estate: Terraform modules for every account, paging, a 30-minute MTTR and blameless reviews."
   ],
   "bio": "Builder focused on on-call for 99.95% uptime.",
   "archetype": "devops-sre",
   "planted": "true_fit",
   "planted_for": "devops-sre",
   "flags": [],
-  "visible_text": "Ren Menon. Builder focused on on-call for 99.95% uptime.\nRen studied at Bluefield College and has 9 years of experience. They would describe their strengths as: ran postmortems, infrastructure as code with Pulumi and HCL, GitHub Actions pipelines.\nProjects: Codified EC2 and EKS estates in Pulumi and HCL with drift detection. Cut GitHub Actions pipeline time from 25 to 7 minutes with caching and test sharding.",
-  "redacted_text": "[CANDIDATE]. Builder focused on on-call for 99.95% uptime.\n[CANDIDATE] studied at [COLLEGE] and has 9 years of experience. They would describe their strengths as: ran postmortems, infrastructure as code with Pulumi and HCL, GitHub Actions pipelines.\nProjects: Codified EC2 and EKS estates in Pulumi and HCL with drift detection. Cut GitHub Actions pipeline time from 25 to 7 minutes with caching and test sharding.",
+  "visible_text": "Ren Menon. Builder focused on on-call for 99.95% uptime.\nRen studied at Bluefield College and has 9 years of experience. They would describe their strengths as: ran postmortems, infrastructure as code with Pulumi and HCL, GitHub Actions pipelines.\nProjects: Codified EC2 and EKS estates in Pulumi and HCL with drift detection. Cut GitHub Actions pipeline time from 25 to 7 minutes with caching and test sharding. Held 99.95% uptime for a payments API while on-call, and wrote the postmortems when it slipped. Ran incident response for an AWS estate: Terraform modules for every account, paging, a 30-minute MTTR and blameless reviews.",
+  "redacted_text": "[CANDIDATE]. Builder focused on on-call for 99.95% uptime.\n[CANDIDATE] studied at [COLLEGE] and has 9 years of experience. They would describe their strengths as: ran postmortems, infrastructure as code with Pulumi and HCL, GitHub Actions pipelines.\nProjects: Codified EC2 and EKS estates in Pulumi and HCL with drift detection. Cut GitHub Actions pipeline time from 25 to 7 minutes with caching and test sharding. Held 99.95% uptime for a payments API while on-call, and wrote the postmortems when it slipped. Ran incident response for an AWS estate: Terraform modules for every account, paging, a 30-minute MTTR and blameless reviews.",
   "source": "planted",
   "role": "devops-sre"
  },
@@ -4645,15 +4729,16 @@
   "projects": [
    "Rebuilt nightly PySpark jobs on Databricks and cut the batch window from 6 hours to 50 minutes.",
    "Modelled a Snowflake warehouse with dbt, with tests on every mart.",
-   "Wrote Kafka consumers that land clickstream events in BigQuery within a minute."
+   "Wrote the SQL that reconciles finance and product marts, with window functions and tested dbt models.",
+   "Owned DAG orchestration for 200+ daily tasks with retries and SLA alerts."
   ],
   "bio": "Practitioner working on kafka consumers.",
   "archetype": "data-engineering",
   "planted": "true_fit",
   "planted_for": "data-engineering",
   "flags": [],
-  "visible_text": "Elias Nair. Practitioner working on kafka consumers.\nElias studied at Northfield Institute of Technology and has 5 years of experience. He would describe his strengths as: PySpark and Databricks jobs, Kafka consumers, ELT with dbt.\nProjects: Rebuilt nightly PySpark jobs on Databricks and cut the batch window from 6 hours to 50 minutes. Modelled a Snowflake warehouse with dbt, with tests on every mart. Wrote Kafka consumers that land clickstream events in BigQuery within a minute.",
-  "redacted_text": "[CANDIDATE]. Practitioner working on kafka consumers.\n[CANDIDATE] studied at [COLLEGE] and has 5 years of experience. They would describe their strengths as: PySpark and Databricks jobs, Kafka consumers, ELT with dbt.\nProjects: Rebuilt nightly PySpark jobs on Databricks and cut the batch window from 6 hours to 50 minutes. Modelled a Snowflake warehouse with dbt, with tests on every mart. Wrote Kafka consumers that land clickstream events in BigQuery within a minute.",
+  "visible_text": "Elias Nair. Practitioner working on kafka consumers.\nElias studied at Northfield Institute of Technology and has 5 years of experience. He would describe his strengths as: PySpark and Databricks jobs, Kafka consumers, ELT with dbt.\nProjects: Rebuilt nightly PySpark jobs on Databricks and cut the batch window from 6 hours to 50 minutes. Modelled a Snowflake warehouse with dbt, with tests on every mart. Wrote the SQL that reconciles finance and product marts, with window functions and tested dbt models. Owned DAG orchestration for 200+ daily tasks with retries and SLA alerts.",
+  "redacted_text": "[CANDIDATE]. Practitioner working on kafka consumers.\n[CANDIDATE] studied at [COLLEGE] and has 5 years of experience. They would describe their strengths as: PySpark and Databricks jobs, Kafka consumers, ELT with dbt.\nProjects: Rebuilt nightly PySpark jobs on Databricks and cut the batch window from 6 hours to 50 minutes. Modelled a Snowflake warehouse with dbt, with tests on every mart. Wrote the SQL that reconciles finance and product marts, with window functions and tested dbt models. Owned DAG orchestration for 200+ daily tasks with retries and SLA alerts.",
   "source": "planted",
   "role": "data-engineering"
  },
@@ -4672,16 +4757,17 @@
   ],
   "projects": [
    "Owned Prisma migrations and backfills for a growing schema.",
-   "Delivered end-to-end features from database to UI for a scheduling product.",
-   "Built Express and Fastify APIs for a marketplace with rate limits and auth."
+   "Built Node.js services in TypeScript with Fastify and Prisma, from schema to deployed endpoint.",
+   "Built Express and Fastify APIs for a marketplace with rate limits and auth.",
+   "Designed an Apollo schema with federation across two services."
   ],
   "bio": "Practitioner working on prisma migrations.",
   "archetype": "node-fullstack",
   "planted": "true_fit",
   "planted_for": "node-fullstack",
   "flags": [],
-  "visible_text": "Manish Desai. Practitioner working on prisma migrations.\nManish studied at Carrow National Institute and has 1 years of experience. He would describe his strengths as: Prisma migrations, Apollo schema design, Express and Fastify APIs, end-to-end features from DB to UI.\nProjects: Owned Prisma migrations and backfills for a growing schema. Delivered end-to-end features from database to UI for a scheduling product. Built Express and Fastify APIs for a marketplace with rate limits and auth.",
-  "redacted_text": "[CANDIDATE]. Practitioner working on prisma migrations.\n[CANDIDATE] studied at [COLLEGE] and has 1 years of experience. They would describe their strengths as: Prisma migrations, Apollo schema design, Express and Fastify APIs, end-to-end features from DB to UI.\nProjects: Owned Prisma migrations and backfills for a growing schema. Delivered end-to-end features from database to UI for a scheduling product. Built Express and Fastify APIs for a marketplace with rate limits and auth.",
+  "visible_text": "Manish Desai. Practitioner working on prisma migrations.\nManish studied at Carrow National Institute and has 1 years of experience. He would describe his strengths as: Prisma migrations, Apollo schema design, Express and Fastify APIs, end-to-end features from DB to UI.\nProjects: Owned Prisma migrations and backfills for a growing schema. Built Node.js services in TypeScript with Fastify and Prisma, from schema to deployed endpoint. Built Express and Fastify APIs for a marketplace with rate limits and auth. Designed an Apollo schema with federation across two services.",
+  "redacted_text": "[CANDIDATE]. Practitioner working on prisma migrations.\n[CANDIDATE] studied at [COLLEGE] and has 1 years of experience. They would describe their strengths as: Prisma migrations, Apollo schema design, Express and Fastify APIs, end-to-end features from DB to UI.\nProjects: Owned Prisma migrations and backfills for a growing schema. Built Node.js services in TypeScript with Fastify and Prisma, from schema to deployed endpoint. Built Express and Fastify APIs for a marketplace with rate limits and auth. Designed an Apollo schema with federation across two services.",
   "source": "planted",
   "role": "node-fullstack"
  },
@@ -4779,15 +4865,16 @@
   "projects": [
    "Built Express and Fastify APIs for a marketplace with rate limits and auth.",
    "Delivered end-to-end features from database to UI for a scheduling product.",
-   "Owned Prisma migrations and backfills for a growing schema."
+   "Owned Prisma migrations and backfills for a growing schema.",
+   "Designed an Apollo schema with federation across two services."
   ],
   "bio": "Builder focused on express and fastify apis. Mentors women in tech through a campus program.",
   "archetype": "node-fullstack",
   "planted": "true_fit",
   "planted_for": "node-fullstack",
   "flags": [],
-  "visible_text": "Sofia Kulkarni. Builder focused on express and fastify apis. Mentors women in tech through a campus program.\nSofia studied at Harrowgate College of Engineering and has 2 years of experience. She would describe her strengths as: Apollo schema design, Prisma migrations, end-to-end features from DB to UI, Express and Fastify APIs.\nProjects: Built Express and Fastify APIs for a marketplace with rate limits and auth. Delivered end-to-end features from database to UI for a scheduling product. Owned Prisma migrations and backfills for a growing schema.",
-  "redacted_text": "[CANDIDATE]. Builder focused on express and fastify apis. Mentors [COMMUNITY] through a campus program.\n[CANDIDATE] studied at [COLLEGE] and has 2 years of experience. They would describe their strengths as: Apollo schema design, Prisma migrations, end-to-end features from DB to UI, Express and Fastify APIs.\nProjects: Built Express and Fastify APIs for a marketplace with rate limits and auth. Delivered end-to-end features from database to UI for a scheduling product. Owned Prisma migrations and backfills for a growing schema.",
+  "visible_text": "Sofia Kulkarni. Builder focused on express and fastify apis. Mentors women in tech through a campus program.\nSofia studied at Harrowgate College of Engineering and has 2 years of experience. She would describe her strengths as: Apollo schema design, Prisma migrations, end-to-end features from DB to UI, Express and Fastify APIs.\nProjects: Built Express and Fastify APIs for a marketplace with rate limits and auth. Delivered end-to-end features from database to UI for a scheduling product. Owned Prisma migrations and backfills for a growing schema. Designed an Apollo schema with federation across two services.",
+  "redacted_text": "[CANDIDATE]. Builder focused on express and fastify apis. Mentors [COMMUNITY] through a campus program.\n[CANDIDATE] studied at [COLLEGE] and has 2 years of experience. They would describe their strengths as: Apollo schema design, Prisma migrations, end-to-end features from DB to UI, Express and Fastify APIs.\nProjects: Built Express and Fastify APIs for a marketplace with rate limits and auth. Delivered end-to-end features from database to UI for a scheduling product. Owned Prisma migrations and backfills for a growing schema. Designed an Apollo schema with federation across two services.",
   "source": "planted",
   "role": "node-fullstack"
  },

@@ -39,7 +39,7 @@ await optional("cascade", "./cascade", "runCascadeEval", (r) => console.log(`cas
 
 const p = results.planted?.summary;
 const parts = [
-  p ? `Semantic recall@10 ${p.judged_semantic_r10} vs keyword ${p.judged_bm25_r10} on 12 planted JDs` : "",
+  p ? `Semantic nDCG@5 ${p.judged_semantic_ndcg5} vs keyword ${p.judged_bm25_ndcg5} on 12 planted JDs` : "",
   results.guardrails ? `${results.guardrails.cases.filter((c: any) => c.pass).length}/${results.guardrails.cases.length} guardrails pass` : "",
   results.agent ? `agent success ${results.agent.summary.successRate}` : "",
   results.fairness ? `blind-ranking rho ${results.fairness.summary.meanSpearman}` : "",

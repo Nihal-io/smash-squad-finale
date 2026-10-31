@@ -45,6 +45,7 @@ const JD_ARCHETYPES: Archetype[] = [
       "Replaced an Elasticsearch stack with pgvector and HNSW indexes, then tuned recall against a labelled set.",
       "Served a fine-tuned sentence encoder behind a FastAPI gateway with batched inference and warm caches.",
       "Designed REST contracts for a dense passage ranking service used by three internal teams.",
+      "Wrote the Python ingestion and query services around the index, with asyncio workers and typed FastAPI endpoints.",
     ],
     mustHave: ["vector search", "Python", "Postgres"],
     niceToHave: ["embeddings pipeline", "API design"],
@@ -61,6 +62,7 @@ const JD_ARCHETYPES: Archetype[] = [
       "Ran WCAG 2.1 audits with screen readers and fixed focus traps across the checkout flow.",
       "Brought Largest Contentful Paint under 1.5s on the marketing site by code-splitting and image work.",
       "Migrated a JavaScript codebase to strict typing with zero any escapes.",
+      "Rebuilt the component kit in strict TypeScript with ARIA roles, keyboard navigation and screen-reader labels on every control.",
     ],
     mustHave: ["React", "TypeScript", "accessibility"],
     niceToHave: ["design system", "web performance"],
@@ -77,6 +79,7 @@ const JD_ARCHETYPES: Archetype[] = [
       "Built offline-online feature parity checks that caught three silent training-serving skews.",
       "Set up drift alerting on prediction distributions with weekly retraining triggers.",
       "Wrote Torch training loops with mixed precision that halved GPU hours.",
+      "Packaged PyTorch models into containers and rolled them out on EKS clusters with Helm, autoscaling on GPU load.",
     ],
     mustHave: ["model deployment", "Kubernetes", "PyTorch"],
     niceToHave: ["feature store", "model monitoring"],
@@ -93,6 +96,7 @@ const JD_ARCHETYPES: Archetype[] = [
       "Modelled a Snowflake warehouse with dbt, with tests on every mart.",
       "Wrote Kafka consumers that land clickstream events in BigQuery within a minute.",
       "Owned DAG orchestration for 200+ daily tasks with retries and SLA alerts.",
+      "Wrote the SQL that reconciles finance and product marts, with window functions and tested dbt models.",
     ],
     mustHave: ["Spark", "SQL", "data pipelines"],
     niceToHave: ["Airflow", "streaming"],
@@ -108,6 +112,7 @@ const JD_ARCHETYPES: Archetype[] = [
       "Shipped a SwiftUI rewrite of a 300k-user native Apple app with a 4.8 rating.",
       "Built local-first storage with CoreData and conflict resolution for field workers without signal.",
       "Ran TestFlight betas and phased rollouts for twelve production releases.",
+      "Shipped three iPhone and iPad apps in Swift, from the first storyboard to App Store review.",
     ],
     mustHave: ["Swift", "iOS"],
     niceToHave: ["offline sync", "App Store release"],
@@ -124,6 +129,7 @@ const JD_ARCHETYPES: Archetype[] = [
       "Codified EC2 and EKS estates in Pulumi and HCL with drift detection.",
       "Built Grafana and Prometheus dashboards with SLO burn alerts.",
       "Cut GitHub Actions pipeline time from 25 to 7 minutes with caching and test sharding.",
+      "Ran incident response for an AWS estate: Terraform modules for every account, paging, a 30-minute MTTR and blameless reviews.",
     ],
     mustHave: ["AWS", "Terraform", "incident response"],
     niceToHave: ["observability", "CI/CD"],
@@ -140,6 +146,7 @@ const JD_ARCHETYPES: Archetype[] = [
       "Ran red-team exercises against staging and wrote fixes with the owning teams.",
       "Led STRIDE analysis for a new payments service.",
       "Reviewed pull requests for vulnerabilities and built a lint rule that caught unsafe deserialisation.",
+      "Owned application security for the web platform: threat models, secure code review on every risky pull request, and fixes shipped with the owning team.",
     ],
     mustHave: ["application security", "secure code review"],
     niceToHave: ["penetration testing", "threat modelling", "OWASP"],
@@ -156,6 +163,7 @@ const JD_ARCHETYPES: Archetype[] = [
       "Used difference-in-differences to measure a regional launch where randomisation was impossible.",
       "Built Looker and Metabase reporting that product managers trust.",
       "Wrote the team's pandas and statsmodels toolkit for variance reduction.",
+      "Designed and analysed A/B tests in Python with power calculations, sequential testing and clear statistics for product managers.",
     ],
     mustHave: ["A/B testing", "statistics", "Python"],
     niceToHave: ["causal inference", "dashboards"],
@@ -172,6 +180,7 @@ const JD_ARCHETYPES: Archetype[] = [
       "Built event-driven consumers that process 50k messages a second with exactly-once semantics.",
       "Wrote Kotlin and Spring services with contract tests across teams.",
       "Handled partition tolerance and leader election for a config service.",
+      "Built Java microservices on Spring with Kafka between them, contract-tested and deployed independently.",
     ],
     mustHave: ["Java", "microservices"],
     niceToHave: ["Kafka", "distributed systems", "Spring Boot"],
@@ -188,6 +197,7 @@ const JD_ARCHETYPES: Archetype[] = [
       "Shipped tool-calling workflows with human approval before anything irreversible.",
       "Graded model outputs with rubrics and a held-out set, and tracked regressions per release.",
       "Added guardrails and refusal handling for unsafe requests.",
+      "Shipped LLM applications end to end: retrieval over internal docs, tool calls with approval, and an evaluation set that gates every release.",
     ],
     mustHave: ["LLM applications", "evaluation"],
     niceToHave: ["prompt engineering", "RAG", "agents"],
@@ -204,6 +214,7 @@ const JD_ARCHETYPES: Archetype[] = [
       "Designed an Apollo schema with federation across two services.",
       "Owned Prisma migrations and backfills for a growing schema.",
       "Delivered end-to-end features from database to UI for a scheduling product.",
+      "Built Node.js services in TypeScript with Fastify and Prisma, from schema to deployed endpoint.",
     ],
     mustHave: ["Node.js", "TypeScript"],
     niceToHave: ["GraphQL", "PostgreSQL"],
@@ -219,6 +230,7 @@ const JD_ARCHETYPES: Archetype[] = [
       "Trained detection and segmentation networks for shelf monitoring with 92% mAP.",
       "Built camera pipelines that run on-device inference at 30fps on a Jetson.",
       "Quantised ViT models to TensorRT and ONNX with under 1% accuracy loss.",
+      "Delivered computer vision pipelines for shelf cameras: detection models trained, quantised and deployed on edge devices.",
     ],
     mustHave: ["computer vision", "model optimisation"],
     niceToHave: ["OpenCV", "edge deployment", "image classification"],
@@ -307,7 +319,7 @@ function makeTrueFit(a: Archetype, forceTier?: Tier): Candidate {
   const { college, tier } = pickCollege(forceTier, gender);
   const yoe = a.seniority === "senior" ? int(6, 12) : a.seniority === "mid" ? int(3, 7) : int(1, 3);
   const skills = takeN(a.paraphrases, Math.min(a.paraphrases.length, int(3, 5)));
-  const projects = takeN(a.projects, int(2, 3));
+  const projects = takeN(a.projects, Math.min(4, a.projects.length));
   const proxy = genderProxy(gender);
   const bio = `${pick(["Engineer who likes", "Builder focused on", "Practitioner working on"])} ${pick(a.paraphrases).toLowerCase()}. ${proxy}`.trim();
   return finish({ id: `c${String(++counter).padStart(3, "0")}`, name: `${first} ${last}`, gender, college, tier, yoe, skills, projects, bio, archetype: a.key, planted: "true_fit", planted_for: a.key, flags: [] });

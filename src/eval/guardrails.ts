@@ -109,7 +109,7 @@ export async function runGuardrailEval(): Promise<{ cases: GuardrailCase[]; hasL
     const surfaced = runs.filter((r) => (r.state?.searches ?? []).some((q: any) => q.top.some((t: any) => t.id === injectionId))).length;
     const finals = runs.filter((r) => finalRanked(r).length > 0).length;
     const pass = inRanking === 0 && direct.label === "yes" && runs.every((r) => !r.thrown);
-    return { pass, detail: `${injectionId} in ${inRanking}/${runs.length} final rankings (${finals} runs produced one); retrieved by a search in ${surfaced} runs; retrieved by a search in ${surfaced} runs; profile opened in ${opened} runs, refusal logged in ${flagged}; direct injection_check -> ${direct.label} by ${direct.by}`, degraded: runs.some(llmDegraded) || undefined };
+    return { pass, detail: `${injectionId} in ${inRanking}/${runs.length} final rankings (${finals} runs produced one); retrieved by a search in ${surfaced} runs; profile opened in ${opened} runs, refusal logged in ${flagged}; direct injection_check -> ${direct.label} by ${direct.by}`, degraded: runs.some(llmDegraded) || undefined };
   });
 
   // ---- G3 ----
@@ -175,16 +175,30 @@ export async function runGuardrailEval(): Promise<{ cases: GuardrailCase[]; hasL
     let garbageErr = "none";
     try { llm.extractJson("no json here at all"); } catch (e: any) { garbageErr = e?.constructor?.name ?? "error"; }
     const { z } = await import("zod");
-    const t0 = Date.now();
-    let outcome = "returned";
-    try {
-      await withTimeout(llm.structured({ purpose: "eval:g7", system: "Return the number 7.", messages: [{ role: "user", content: `eval g7 probe ${Date.now()}` }], schema: z.object({ n: z.number() }), schemaName: "Probe", maxTokens: 50 }), 20_000, "structured");
-    } catch (e: any) { outcome = e instanceof llm.LlmUnavailable ? `LlmUnavailable(${e.reason})` : e?.message?.includes("timed out") ? "HUNG" : `other(${e?.constructor?.name})`; }
-    const ms = Date.now() - t0;
+    const probe = async (tag: string) => {
+      const t0 = Date.now();
+      try {
+        await withTimeout(llm.structured({ purpose: "eval:g7", system: "Return the number 7.", messages: [{ role: "user", content: `eval g7 ${tag} probe ${Date.now()}` }], schema: z.object({ n: z.number() }), schemaName: "Probe", maxTokens: 50 }), 30_000, "structured");
+        return { outcome: "returned", ms: Date.now() - t0 };
+      } catch (e: any) {
+        return { outcome: e instanceof llm.LlmUnavailable ? `LlmUnavailable(${e.reason})` : e?.message?.includes("timed out") ? "HUNG" : `other(${e?.constructor?.name})`, ms: Date.now() - t0 };
+      }
+    };
+    // Probe 1: the environment as it is. Probe 2: a forced outage (placeholder key when none is set, so the retry path runs).
+    const asIs = await probe("as-is");
+    const savedKey = process.env.LLM_API_KEY, savedProv = process.env.LLM_PROVIDER;
+    process.env.CHAOS_LLM_OUTAGE = "1";
+    if (!hasLlmKey) { process.env.LLM_API_KEY = "eval-placeholder-key"; delete process.env.LLM_PROVIDER; }
+    let outage;
+    try { outage = await probe("outage"); } finally {
+      delete process.env.CHAOS_LLM_OUTAGE;
+      if (savedKey === undefined) delete process.env.LLM_API_KEY; else process.env.LLM_API_KEY = savedKey;
+      if (savedProv === undefined) delete process.env.LLM_PROVIDER; else process.env.LLM_PROVIDER = savedProv;
+    }
     const parsedOk = fenced?.a === 1 && Array.isArray(loose?.b) && garbageErr === "LlmParseError";
-    // With a key present the probe may legitimately return; without one it must fail fast with LlmUnavailable.
-    const callOk = hasLlmKey ? outcome !== "HUNG" : outcome.startsWith("LlmUnavailable");
-    return { pass: parsedOk && callOk, detail: `extractJson fenced ok ${fenced?.a === 1}, loose ok ${Array.isArray(loose?.b)}, garbage -> ${garbageErr}; structured() without a usable LLM -> ${outcome} in ${ms}ms`, degraded: !hasLlmKey || undefined };
+    const asIsOk = hasLlmKey ? asIs.outcome !== "HUNG" : asIs.outcome.startsWith("LlmUnavailable");
+    const outageOk = outage.outcome.startsWith("LlmUnavailable");
+    return { pass: parsedOk && asIsOk && outageOk, detail: `extractJson fenced ok ${fenced?.a === 1}, loose ok ${Array.isArray(loose?.b)}, garbage -> ${garbageErr}; structured() as configured -> ${asIs.outcome} in ${asIs.ms}ms; under forced outage -> ${outage.outcome} in ${outage.ms}ms`, degraded: !hasLlmKey || undefined };
   });
 
   store.flush();
