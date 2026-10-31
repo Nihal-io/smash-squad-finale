@@ -41,6 +41,7 @@ const Responses = z.object({ answers: z.array(z.object({ id: z.string(), answer:
 
 export async function collectResponses(state: AgentState, st: CandidateState, runId: string) {
   const c = getCandidateLocal(st.id)!;
+  if (c.source === 'referral') throw new Error('Uploaded referrals require actual responses through the Referrals workflow; answers cannot be simulated.');
   const a = st.assessment!;
   // Quality varies by a deterministic hash so the demo shows a spread; the model plays the candidate in character.
   const h = [...st.id].reduce((s, ch) => s + ch.charCodeAt(0), 0) % 3;

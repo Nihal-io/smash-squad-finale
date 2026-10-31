@@ -22,6 +22,7 @@ export interface CandidateState {
   claimVerdicts?: { claimId: string; skill: string; claim: string; status: "verified" | "contradicted" | "not_tested"; score?: number; reason: string; questions: string[] }[];
   sent?: { channel: "resend" | "outbox"; at: number };
   responses?: { kind: "short" | "scenario" | "code"; answer: string; questionId?: string }[];
+  responsesSimulated?: boolean; // false for actual replies from uploaded referrals
   grade?: { total: number; parts: { kind: string; score: number; confidence: number; testsPassed?: number; testsTotal?: number; note?: string }[]; regraded: boolean; flaggedForHr?: string };
   final?: number;
 }
